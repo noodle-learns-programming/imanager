@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN"
+ "http://www.getahead.ltd.uk/dwr/dwr10.dtd">
+ 
+<dwr>
+	<allow>
+		<create creator="spring" javascript="BlogItem">
+			<param name="beanName" value="dwrService" />
+		</create>
+	</allow>
+</dwr>
+<!--
+<create creator="spring" javascript="BlogItem1">
+	<param name="class" value="com.imanager.blog.action.BlogItemAction" />
+	<param name="location1" value="spring/spring-env.xml"/>
+	<param name="location2" value="spring/spring-common-datasource.xml"/>
+	<param name="location3" value="spring/spring-imanager-blog.xml"/>
+	<include method="isItem1HasItem2" />
+</create>
+<create javascript="BlogItem1" creator="spring">
+	<param name="class" value="com.imanager.blog.action.BlogItemAction" />
+	<param name="beanName" value="blogItemDao"></param>
+	<include method="isItem1HasItem2" />
+</create>
+
+<create creator="new" javascript="BlogItem1">
+	<param name="class" value="com.imanager.blog.action.BlogItemAction" />
+	<include method="isItem1HasItem2" />
+</create>
+
+-->

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="imanager-blog" extends="webwork-default" namespace="/blog">
+		
+		<interceptors>
+			<interceptor-stack name="modelParamsStack">
+				<interceptor-ref name="params" />
+				<interceptor-ref name="model-driven" />
+				<interceptor-ref name="checkLoginSessions" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<action name="blogContentAction" class="com.imanager.blog.action.BlogContentAction" >
+			<result name="error">../error.jsp</result>
+			<result name="success">blog-item1-list.jsp</result>
+			
+			<result name="initGetBlogContentListBySearch" type="velocity">blog-content-list.vm</result>
+			
+			<result name="getBlogContentListBySearch" type="velocity">blog-content-list.vm</result>
+			
+			<result name="initAddBlogContent" type="velocity">blog-content-add.vm</result>
+			
+			<result name="addBlogContent" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogContentAction</param>
+				<param name="method">initGetBlogContentListBySearch</param>
+			</result>
+			
+			<result name="initUpdateBlogContent" type="velocity">blog-content-update.vm</result>
+			
+			<result name="updateBlogContent" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogContentAction</param>
+				<param name="method">initGetBlogContentListBySearch</param>
+			</result>
+			
+			<result name="logicDeleteBlogContent" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogContentAction</param>
+				<param name="method">initGetBlogContentListBySearch</param>
+			</result>
+			
+			<interceptor-ref name="modelParamsStack" />
+		</action>
+
+		<!-- Get Blog Item1 List -->
+		<action name="blogItemAction" class="com.imanager.blog.action.BlogItemAction" >
+			<result name="error">../error.jsp</result>
+			
+			<result name="getBlogItem1ListByLoginId" type="velocity">blog-item1-list.vm</result>
+			
+			<result name="initAddBlogItem1" type="velocity">blog-item1-add.vm</result>
+			
+			<result name="addBlogItem1" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogItemAction</param>
+				<param name="method">getBlogItem1ListByLoginId</param>
+			</result>
+			
+			<result name="initUpdateItem1" type="velocity">blog-item1-update.vm</result>
+			
+			<result name="updateBlogItem1" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogItemAction</param>
+				<param name="method">getBlogItem1ListByLoginId</param>
+			</result>
+			
+			<result name="logicDeleteBlogItem1" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogItemAction</param>
+				<param name="method">getBlogItem1ListByLoginId</param>
+			</result>
+			
+			<result name="getBlogItem2ListByLoginId" type="velocity">blog-item2-list.vm</result>
+			
+			<result name="initAddBlogItem2" type="velocity">blog-item2-add.vm</result>
+			
+			<result name="addBlogItem2" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogItemAction</param>
+				<param name="method">getBlogItem2ListByLoginId</param>
+			</result>
+			
+			<result name="initUpdateItem2" type="velocity">blog-item2-update.vm</result>
+			
+			<result name="updateBlogItem2" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogItemAction</param>
+				<param name="method">getBlogItem2ListByLoginId</param>
+			</result>
+			
+			<result name="logicDeleteBlogItem2" type="redirect-action">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogItemAction</param>
+				<param name="method">getBlogItem2ListByLoginId</param>
+			</result>
+			
+			<interceptor-ref name="modelParamsStack" />
+		</action>
+		
+	</package>
+</xwork>

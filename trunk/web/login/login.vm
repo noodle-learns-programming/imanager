@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>iManager Login</title>
+		<script type="text/javascript" src="../resource/js/util.js"></script>
+		<script type="text/javascript" src="../resource/js/login/login.js"></script>
+		
+		<script language="javascript">
+			window.onload = function() {
+				document.getElementById("loginId").focus();
+			}
+		 </script>
+</head>
+	
+	<body   topmargin="100" bgcolor="#99CCFF">
+		<center>
+		
+		<h2>登录</h2>
+		<form id="loginForm" action="loginAction!validateUser.action" method="post">
+			<table>
+				<tr>
+					<td align="right">
+						用户名：
+					</td>
+					<td align="left">
+						<input type="text" id="loginId" name="loginId" onkeydown="KeyDown(event)" value="$!loginId" size="20" maxlength="20">
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						密码：
+					</td>
+					<td align="left">
+						<input type="password" id="password" name="password" onkeydown="KeyDown(event)" value="$!password" size="20" maxlength="20">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="登录" onclick="checkLoginForm();">
+						&nbsp;&nbsp;&nbsp;
+						<input type="reset" value="取消">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						#if($actionErrors && $actionErrors.size() > 0)
+							#foreach($err in $actionErrors)
+								<font color="red">$err</font>
+							#end
+						#end
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+		</center>
+	</body>
+</html>
