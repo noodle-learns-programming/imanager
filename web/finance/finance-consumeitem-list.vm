@@ -47,8 +47,8 @@
                 			</tr>
                 			#foreach ($consumeItem in $consumeItemList)
                 				<tr>
-                					<td align = "center"> $!consumeItem.itemName &nbsp; </td>
-                					<td align = "center"> $!consumeItem.address &nbsp; </td>
+                					<td align = "center"> $esc.html($!consumeItem.itemName) &nbsp; </td>
+                					<td align = "center"> $esc.html($!consumeItem.address) &nbsp; </td>
                 					<td align = "center"> $!consumeItem.price &nbsp; </td>
                 					<td align = "center"> $!consumeItem.quantity &nbsp; </td>
                 					<td align = "center"> $!consumeItem.totalPrice &nbsp; </td>
