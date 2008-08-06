@@ -44,5 +44,8 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/spring-2.0.1-src.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/webwork-src-2.2.5.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/xwork.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/toolkit-common-lang-1.0.jar" sourcepath="web/WEB-INF/lib/toolkit-common-lang-1.0-src.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/toolkit-common-lang-1.0-doc.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/toolkit-common-lang-1.0-src.jar"/>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
 </classpath>
