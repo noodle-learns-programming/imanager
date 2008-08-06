@@ -31,7 +31,7 @@
                 			<table border="0" width="100%" height="60" cellpadding="0" cellspacing="0" align="center" >
                 				<tr>
 									<td align="left">标题:</td>
-									<td align="left"><input type="text" name="searchObj.title" size="20" maxlength="20"/></td>
+									<td align="left"><input type="text" name="searchObj.title" value="$esc.html($!searchObj.title)" size="20" maxlength="20"/></td>
                 				</tr>
                 				<tr>
 									<td align="left">开始日期:</td>
@@ -84,8 +84,8 @@
                 			</tr>
 							#foreach($blogContentOutput in $blogContentOutputList)
                 				<tr>
-                					<td align = "center">$blogContentOutput.blogContentId &nbsp; </td>
-                					<td align = "center">$blogContentOutput.title &nbsp; </td>
+                					<td align = "center"> $blogContentOutput.blogContentId &nbsp; </td>
+                					<td align = "center"> $esc.html($blogContentOutput.title) &nbsp; </td>
                 					<td align = "center">
 										#if($blogContentOutput.blogType == 'yc')
 											原创 &nbsp;
@@ -95,10 +95,10 @@
                 							$blogContentOutput.blogType &nbsp;
                 						#end
                 					</td>
-                					<td align = "center">$blogContentOutput.item1Chn &nbsp; </td>
-                					<td align = "center">$blogContentOutput.item2Chn &nbsp; </td>
-                					<td align = "center">$!dateUtil.date($blogContentOutput.blogDate, 'yyyy-MM-dd') &nbsp; </td>
-                					<td align = "center">$blogContentOutput.loginId &nbsp; </td>
+                					<td align = "center"> $esc.html($blogContentOutput.item1Chn) &nbsp; </td>
+                					<td align = "center"> $esc.html($blogContentOutput.item2Chn) &nbsp; </td>
+                					<td align = "center"> $!dateUtil.date($blogContentOutput.blogDate, 'yyyy-MM-dd') &nbsp; </td>
+                					<td align = "center"> $blogContentOutput.loginId &nbsp; </td>
                 					<td align = "center">
                 						<a href="blogContentAction!initUpdateBlogContent.action?blogContentId=$blogContentOutput.blogContentId">更新</a>&nbsp;|&nbsp;
                 						<a href="#" onclick=deleteBlogContent("$blogContentOutput.blogContentId")>删除</a>

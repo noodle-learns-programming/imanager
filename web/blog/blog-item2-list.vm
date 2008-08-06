@@ -33,10 +33,10 @@
 							#foreach($blogItem2 in $blogItem2List)
                 				<tr>
                 					<td align = "center"> $blogItem2.blogItem2Id &nbsp; </td>
-                					<td align = "center"> $blogItem2.item1Chn &nbsp; </td>
-                					<td align = "center"> $blogItem2.item1Eng &nbsp; </td>					
-                					<td align = "center"> $blogItem2.itemChn &nbsp; </td>
-                					<td align = "center"> $blogItem2.itemEng &nbsp; </td>
+                					<td align = "center"> $esc.html($blogItem2.item1Chn) &nbsp; </td>
+                					<td align = "center"> $esc.html($blogItem2.item1Eng) &nbsp; </td>					
+                					<td align = "center"> $esc.html($blogItem2.itemChn) &nbsp; </td>
+                					<td align = "center"> $esc.html($blogItem2.itemEng) &nbsp; </td>
                 					<td align = "center">
                 						<a href="blogItemAction!initUpdateItem2.action?blogItem2Id=$blogItem2.blogItem2Id">¸üÐÂ</a>&nbsp;|&nbsp;
                 						<a href="#" onclick=deleteBlogItem2($blogItem2.blogItem2Id)>É¾³ý</a>
