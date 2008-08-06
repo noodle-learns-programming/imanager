@@ -37,13 +37,13 @@
                     			<tr>
                     				<td align="left">二级类型中文名:</td>
                     				<td align="left">
-                    					<input type="text" id="blogItem2.itemChn" name="blogItem2.itemChn" value="$blogItem2.itemChn" size="100" maxlength="100" />
+                    					<input type="text" id="blogItem2.itemChn" name="blogItem2.itemChn" value="$esc.html($blogItem2.itemChn)" size="100" maxlength="100" />
                     				</td>
                     			</tr>
                     			<tr>
                     				<td align="left">二级类型拼音:</td>
                     				<td align="left">
-                    					<input type="text" id="blogItem2.itemEng" name="blogItem2.itemEng" value="$blogItem2.itemEng" size="100" maxlength="100" />
+                    					<input type="text" id="blogItem2.itemEng" name="blogItem2.itemEng" value="$esc.html($blogItem2.itemEng)" size="100" maxlength="100" />
                     				</td>
                     			</tr>
                     			<tr>

@@ -31,12 +31,12 @@
                     			cellpadding="0" cellspacing="0" align="center" >
                     			<tr>
 									<td align="left">标题:</td>
-                					<td align="left"><input type="text" id="blogContent.title" name="blogContent.title" value="$!blogContent.title" size="100" maxlength="100"></td>
+                					<td align="left"><input type="text" id="blogContent.title" name="blogContent.title" value="$esc.html($!blogContent.title)" size="100" maxlength="100"></td>
                     			</tr>
                     			<tr>
 									<td align="left">内容:</td>
                 					<td align="left">
-										<textarea id="blogContent.content" name="blogContent.content" cols="99" rows="20">$!blogContent.content</textarea>
+										<textarea id="blogContent.content" name="blogContent.content" cols="99" rows="20">$esc.html($!blogContent.content)</textarea>
 									</td>
                     			</tr>
                     			<tr>
@@ -47,7 +47,7 @@
                     			</tr>
                     			<tr>
                     				<td align="left">天气:</td>
-                					<td align="left"><input type="text" id="blogContent.weather" name="blogContent.weather" value="$!blogContent.weather" size="100" maxlength="100"></td>
+                					<td align="left"><input type="text" id="blogContent.weather" name="blogContent.weather" value="$esc.html($!blogContent.weather)" size="100" maxlength="100"></td>
                     			</tr>
                     			<tr>
                     				<td align="left">类型：</td>
