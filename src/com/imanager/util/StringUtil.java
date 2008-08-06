@@ -7,6 +7,11 @@ package com.imanager.util;
  */
 public class StringUtil {
 	
+	/**
+	 * ÅÐ¶Ï×Ö·û´®ÊÇ·ñÎª¿Õ
+	 * @param str
+	 * @return
+	 */
 	public static boolean isEmpty(String str) {
         return ((str == null) || (str.length() == 0));
     }
