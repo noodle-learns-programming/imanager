@@ -21,8 +21,8 @@ public class DwrService {
 	
 	public String isItem1HasItem2(String blogItem1Id) throws Exception {
 		
-		//TODO String currentLoginId = new LoginUtil().getCurrentLogin();
-		String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 
 		try{
 			if(blogItemDao.isItem1HasItem2(blogItem1Id, currentLoginId)){
@@ -40,8 +40,9 @@ public class DwrService {
 
 	public Map<Integer, String> getBlogItem1List(String blogItem1Id) throws Exception {
 		
-		//TODO String currentLoginId = new LoginUtil().getCurrentLogin();
-		String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
+		
 		Map<Integer, String> result = new HashMap<Integer, String>();
 		
 		List<BlogItem2> blogItem2List = blogItemDao.getBlogItem2ByItem1IdNLoginId(blogItem1Id, currentLoginId);
