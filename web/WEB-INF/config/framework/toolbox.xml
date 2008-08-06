@@ -11,12 +11,12 @@
 		<scope>application</scope>
 		<class>com.imanager.util.DateUtil</class>
 	</tool>
-	<!--
 	<tool>
 		<key>esc</key>
 		<scope>application</scope>
-		<class>com.kingsource.util.EncodeUtil</class>
+		<class>com.imanager.util.EncodeUtil</class>
 	</tool>
+	<!--
 	<tool>
 		<key>stringEscUtil</key>
 		<scope>application</scope>
