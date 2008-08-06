@@ -37,6 +37,8 @@ public class FinanceAction extends ActionSupport {
 	private ConsumeItem consumeItem = new ConsumeItem();	//消费记录
 	
 	private String consumeItemId;	//消费记录ID
+	
+	String currentLoginId;
 
 	
 
@@ -47,8 +49,8 @@ public class FinanceAction extends ActionSupport {
 	 */
 	public String doInitGetConsumeItemList() throws Exception {
 		
-		String currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			Date startDate = DateUtil.getMinDate();
@@ -77,8 +79,8 @@ public class FinanceAction extends ActionSupport {
 	 */
 	public String doGetConsumeItemList() throws Exception {
 		
-		String currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			Date endDate = searchObj.getEndDate();
@@ -104,8 +106,8 @@ public class FinanceAction extends ActionSupport {
 	 */
 	public String doInitAddConsumItem() throws Exception {
 		
-		String currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		consumeItem.setFeeDate(new Date());
 		consumeItem.setLoginId(currentLoginId);
@@ -120,8 +122,8 @@ public class FinanceAction extends ActionSupport {
 	 */
 	public String doAddConsumItem() throws Exception {
 		
-		//TODO String currentLoginId = new LoginUtil().getCurrentLogin();
-		String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		String itemNameTrim = consumeItem.getItemName().trim();
 		String addressTrim = consumeItem.getAddress().trim();
 		
@@ -182,8 +184,8 @@ public class FinanceAction extends ActionSupport {
 	 */
 	public String doUpdateConsumItem() throws Exception {
 		
-		String currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		String itemNameTrim = consumeItem.getItemName().trim();
 		String addressTrim = consumeItem.getAddress().trim();
@@ -223,8 +225,8 @@ public class FinanceAction extends ActionSupport {
 	 */
 	public String doLogicDeleteConsumItem() throws Exception {
 		
-		String currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO String currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			if(financeDao.logicDeleteConsumeItemByItemId(consumeItemId, currentLoginId)){
