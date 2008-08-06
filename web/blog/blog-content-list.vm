@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>iManager Blog</title>
+	<link rel="stylesheet" type="text/css" media="all" href="../resource/js/jscalendar/skins/aqua/theme.css" title="Aqua" />
+	<script type="text/javascript" src="../resource/js/jscalendar/calendar.js"></script>
+	<script type="text/javascript" src="../resource/js/jscalendar/showCalendar.js"></script>
+	<script type="text/javascript" src="../resource/js/jscalendar/lang/cn_utf8.js"></script>
+	<script type="text/javascript" src="../dwr/interface/BlogItem.js"></script>
+    <script type="text/javascript" src="../dwr/engine.js"></script>
+    <script type="text/javascript" src="../dwr/util.js"></script>
+    <script type="text/javascript" src="../resource/js/util.js"></script>
+    <script type="text/javascript" src="../resource/js/blog/content.js"></script>
+</head>
+	
+	<body topmargin="10" bgcolor="#99CCFF">
+		<center>
+			#parse("/framework/header.vm")
+			<br/><br/><br/>
+				
+			<table border="0" width="80%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150">
+        				#parse("/blog/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+		
+                		<h2>Blog列表</h2>
+                		<form action="blogContentAction!getBlogContentListBySearch.action" method="post">
+                			<table border="0" width="100%" height="60" cellpadding="0" cellspacing="0" align="center" >
+                				<tr>
+									<td align="left">标题:</td>
+									<td align="left"><input type="text" name="searchObj.title" size="20" maxlength="20"/></td>
+                				</tr>
+                				<tr>
+									<td align="left">开始日期:</td>
+									<td align="left">
+										<input type="text" id="searchObj.startBlogDate" name="searchObj.startBlogDate" readonly="true" value="$!dateUtil.date($!searchObj.startBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.startBlogDate', '%Y-%m-%d');">
+									</td>
+								</tr>
+								<tr>
+									<td align="left">结束日期:</td>
+									<td align="left">
+										<input type="text" id="searchObj.engBlogDate" name="searchObj.engBlogDate" readonly="true" value="$!dateUtil.date($!searchObj.engBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.engBlogDate', '%Y-%m-%d');">
+									</td>
+                				</tr>
+                				<tr>
+                					<td align="left">类型:</td>
+                					<td align="left">
+                						<select name="searchObj.blogType">
+                							<option value="">请选择</option>
+                							<option value="y">原创</option>
+                							<option value="z">转载</option>
+                						</select>&nbsp;&nbsp;
+                						明细1：<select id="blogContent.blogItem1Id" name="searchObj.blogItem1Id" onchange="getBlogItem2List();">
+                							<option value="">请选择</option>
+											#foreach($blogItem1 in $blogItem1List)
+                								<option value="$blogItem1.blogItem1Id">$blogItem1.itemChn</option>
+											#end
+										</select>&nbsp;&nbsp;
+                						明细2：<select id="blogContent.blogItem2Id" name="searchObj.blogItem2Id">
+                							<option value="">请选择</option>
+                						</select>
+                					</td>
+                				</tr>
+                				<tr>
+                					<td align="left" colspan="2"><input type="submit" name="submit" value="查询" /></td>
+                				</tr>
+                			</table>
+                		</form>
+		
+                		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
+                			cellpadding="0" cellspacing="0" align="center" >
+                			<tr>
+                				<th align="center">编号</th>
+                				<th align="center">标题</th>
+                				<th align="center">类型</th>
+                				<th align="center">明细1</th>
+                				<th align="center">明细2</th>
+                				<th align="center">时间</th>
+                				<th align="center">作者</th>
+                				<th align="center">操作</th>
+                			</tr>
+							#foreach($blogContentOutput in $blogContentOutputList)
+                				<tr>
+                					<td align = "center">$blogContentOutput.blogContentId &nbsp; </td>
+                					<td align = "center">$blogContentOutput.title &nbsp; </td>
+                					<td align = "center">
+										#if($blogContentOutput.blogType == 'yc')
+											原创 &nbsp;
+										#elseif($blogContentOutput.blogType == 'zz')
+                							转载 &nbsp;
+                						#else
+                							$blogContentOutput.blogType &nbsp;
+                						#end
+                					</td>
+                					<td align = "center">$blogContentOutput.item1Chn &nbsp; </td>
+                					<td align = "center">$blogContentOutput.item2Chn &nbsp; </td>
+                					<td align = "center">$!dateUtil.date($blogContentOutput.blogDate, 'yyyy-MM-dd') &nbsp; </td>
+                					<td align = "center">$blogContentOutput.loginId &nbsp; </td>
+                					<td align = "center">
+                						<a href="blogContentAction!initUpdateBlogContent.action?blogContentId=$blogContentOutput.blogContentId">更新</a>&nbsp;|&nbsp;
+                						<a href="#" onclick=deleteBlogContent("$blogContentOutput.blogContentId")>删除</a>
+                					</td>
+                				</tr>
+							#end
+                		</table>
+					</td>
+				</tr>
+			</table>
+		</center>
+
+	</body>
+</html>

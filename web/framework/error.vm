@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+	<title>iManager</title>
+</head>
+
+<body>
+
+<div id="Content">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td width="37%" align="right"><img src="../resource/images/feedback/error.gif" width="52" height="52" /></td>
+			<td width="63%" class="Ftit">
+				<span class="actionErrors">
+					#if($actionErrors && $actionErrors.size() > 0)
+						#foreach($err in $actionErrors)
+							$err<br>
+						#end
+					#else
+						系统错误：$!exception.toString()
+					#end
+				</span>
+			</td>
+		</tr>
+	</table>
+	<br />
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center">
+				<a href="javascript: history.back()" class="Button02">返 回</a>
+			</td>
+		</tr>
+	</table>
+</div>
+	
+</body>
+</html>

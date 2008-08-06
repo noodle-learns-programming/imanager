@@ -1,0 +1,73 @@
+<!-- 
+@author Yang Qiang
+@version $Revision: 1.1.0 $ $Date: 2008/05/01 00:00:00 $
+-->
+<project name="webwork" basedir="." default="war">
+	
+	<target name="init">
+		<echo message="begin to init......" />
+		
+		<property file="build.properties" />
+	
+		<echo message="end of init......success!" />
+	</target>
+	
+	<target name="clean" depends="init">
+		<echo message="begin to clean......" />
+		
+		<delete file="${build.deploy}/*.*" />
+		
+		<echo message="begin to clean......success!" />
+	</target>
+	
+	<path id="compile.classpath">
+		<pathelement location="${build.dir}/classes"/>
+		
+		<fileset dir="${build.dir}/lib">
+			<include name="*.jar"/>
+			<include name="*.zip"/>
+		</fileset>
+	</path>
+	
+	<target name="compile" depends="clean">
+		<echo message="begin to compile......" />
+		
+		<!--
+			<javac srcdir="./src" destdir="./web/WEB-INF/classes" debug="yes"> 
+				<classpath refid="compile.classpath"/>
+			</javac>
+		-->
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${build.dir}/config/framework" includes="*.properties,*.xml" excludes="**/CVS/*,**/.nbattrs,**/.project,**/.classpath"/>
+		</copy>
+		
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${build.dir}/config/ibatis" includes="*.properties,*.xml" excludes="**/CVS/*,**/.nbattrs,**/.project,**/.classpath"/>
+		</copy>
+		
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${build.dir}/config/spring" includes="*.properties,*.xml" excludes="**/CVS/*,**/.nbattrs,**/.project,**/.classpath"/>
+		</copy>
+		
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${build.dir}/config/webwork" includes="*.properties,*.xml" excludes="**/CVS/*,**/.nbattrs,**/.project,**/.classpath"/>
+		</copy>
+		
+		<echo message="end of compile......success!" />
+	</target>
+	
+	<target name="war" depends="compile">		
+		<echo message="begin to war......" />
+		
+		<!-- <mkdir dir="${build.deploy}"/> -->
+		
+		<war destfile="${build.deploy}/iManager.war" webxml="${build.dir}/web.xml">
+			<!-- <classes dir="${build.dir}/classes" /> -->
+			<webinf dir="${build.dir}/lib" includes="*.tld,*.dtd" />
+			<fileset dir="web" excludes="WEB-INF/web.xml" />
+			<!--<lib dir="${build.dir}/lib" includes="*.jar" />-->
+		</war>
+		
+		<echo message="end of war......success!" />
+	</target>
+</project>
