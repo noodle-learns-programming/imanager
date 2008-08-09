@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ContactType">
+
+	<typeAlias alias="contactType" type="com.imanager.contact.domain.ContactType" />
+	
+	<insert id="insertContactType"
+		parameterClass="contactType">
+		<![CDATA[
+			insert into contact_type 
+				(creator, gmt_created, modifier, gmt_modified, is_deleted, contact_type, login_id) 
+			VALUES 
+				(#creator#, now(), #modifier#, now(), 'no', #contactType#, #loginId#)
+		]]>
+	</insert>
+	
+	<select id="getContactTypeListByLoginId"
+		parameterClass="java.lang.String"
+		resultClass="contactType">
+		<![CDATA[
+			select	contact_type_id		as contactTypeId,
+					creator				as creator,
+					gmt_created			as gmtCreated,
+					modifier			as modifier,
+					gmt_modified		as gmtModified,
+					is_deleted			as isDeleted,
+					contact_type		as contactType,
+					login_id			as loginId
+			from	contact_type 
+			where	is_deleted = 'no' and login_id = #loginId#
+			order by gmt_created asc
+		]]>
+	</select>
+	
+	<select id="getContactTypeById"
+		parameterClass="java.lang.String"
+		resultClass="contactType">
+		<![CDATA[
+			select	contact_type_id		as contactTypeId,
+					creator				as creator,
+					gmt_created			as gmtCreated,
+					modifier			as modifier,
+					gmt_modified		as gmtModified,
+					is_deleted			as isDeleted,
+					contact_type		as contactType,
+					login_id			as loginId
+			from	contact_type 
+			where	contact_type_id = #contactTypeId#
+		]]>
+	</select>
+	
+	<update id="updateContactType" 
+		parameterClass="contactType">
+		<![CDATA[
+			update	contact_type 
+			set 	modifier		= #modifier#,
+					gmt_modified	= now(),
+					contact_type	= #contactType#
+			where	is_deleted = 'no' and contact_type_id = #contactTypeId#
+		]]>
+	</update>
+	
+	<update id="logicDeleteContactType" 
+		parameterClass="java.util.Map">
+		<![CDATA[
+			update	contact_type 
+			set 	modifier		= #modifier#,
+					gmt_modified	= now(),
+					is_deleted		= 'yes'
+			where	contact_type_id = #contactTypeId#
+		]]>
+	</update>
+
+</sqlMap>
