@@ -1,0 +1,9 @@
+	<table bgcolor="#E1E1E1" border="1" bordercolor="blue" width="150" height="60"
+			cellpadding="0" cellspacing="0">
+		<tr valign="middle">
+			<td align="center"><a href="contactTypeAction!getContactTypeListByLoginId.action">联系类型列表</a></td>
+		</tr>
+		<tr valign="middle">
+			<td align="center"><a href="contactTypeAction!initAddContactType.action">添加联系类型</a></td>
+		</tr>
+	</table>
