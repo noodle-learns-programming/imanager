@@ -3,8 +3,8 @@
 		<tr valign="middle">
 			<td align="center"><a href="../finance/financeAction!doInitGetConsumeItemList.action">财务系统管理</a></td>
 			<td align="center"><a href="../blog/blogContentAction!initGetBlogContentListBySearch.action">日志系统管理</a></td>
-			<td align="center"><a href="#">合同管理</a></td>
-			<td align="center"><a href="#">提成管理</a></td>
+			<td align="center"><a href="../contact/contactTypeAction!getContactTypeListByLoginId.action">联系人管理</a></td>
+			<td align="center">提成管理</td>
 			<td align="center">业务员管理</td>
 			<td align="center">业务员管理</td>
 			<td align="center">业务员管理</td>
