@@ -6,5 +6,6 @@
 	<include file="webwork-imanager-login.xml" />
 	<include file="webwork-imanager-finance.xml" />
 	<include file="webwork-imanager-blog.xml" />
+	<include file="webwork-imanager-contact.xml" />
 </xwork>
   
