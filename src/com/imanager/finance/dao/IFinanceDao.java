@@ -3,7 +3,7 @@ package com.imanager.finance.dao;
 import java.util.List;
 
 import com.imanager.finance.domain.ConsumeItem;
-import com.imanager.finance.domain.input.SearchObj;
+import com.imanager.finance.domain.input.FinanceSearchObj;
 
 public interface IFinanceDao {
 
@@ -19,7 +19,7 @@ public interface IFinanceDao {
 	 * @param searchObj
 	 * @return
 	 */
-	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, SearchObj searchObj);
+	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, FinanceSearchObj searchObj);
 	
 	/**
 	 * 根据LoginId和查询条件获得消费列表消费总额
@@ -27,7 +27,7 @@ public interface IFinanceDao {
 	 * @param searchObj
 	 * @return
 	 */
-	public double getConsumeItemListSumByIdNDate(String loginId, SearchObj searchObj);
+	public double getConsumeItemListSumByIdNDate(String loginId, FinanceSearchObj searchObj);
 
 	/**
 	 * 根据ItemId获得消费记录
