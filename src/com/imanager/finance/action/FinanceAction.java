@@ -11,7 +11,7 @@ import com.imanager.common.DateUtil;
 import com.imanager.common.LoginUtil;
 import com.imanager.finance.dao.IFinanceDao;
 import com.imanager.finance.domain.ConsumeItem;
-import com.imanager.finance.domain.input.SearchObj;
+import com.imanager.finance.domain.input.FinanceSearchObj;
 import com.opensymphony.xwork.ActionSupport;
 
 /**
@@ -28,7 +28,7 @@ public class FinanceAction extends ActionSupport {
 	
 	private IFinanceDao financeDao;
 	
-	private SearchObj searchObj = new SearchObj();	//查询对象
+	private FinanceSearchObj searchObj = new FinanceSearchObj();	//查询对象
 	
 	private List<ConsumeItem> consumeItemList;	//消费列表
 	
@@ -242,11 +242,11 @@ public class FinanceAction extends ActionSupport {
 	}
 	
 	
-	public SearchObj getSearchObj() {
+	public FinanceSearchObj getSearchObj() {
 		return searchObj;
 	}
 
-	public void setSearchObj(SearchObj searchObj) {
+	public void setSearchObj(FinanceSearchObj searchObj) {
 		this.searchObj = searchObj;
 	}
 
