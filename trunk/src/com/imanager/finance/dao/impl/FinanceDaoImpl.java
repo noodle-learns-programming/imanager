@@ -9,7 +9,7 @@ import org.springframework.orm.ibatis.SqlMapClientOperations;
 
 import com.imanager.finance.dao.IFinanceDao;
 import com.imanager.finance.domain.ConsumeItem;
-import com.imanager.finance.domain.input.SearchObj;
+import com.imanager.finance.domain.input.FinanceSearchObj;
 
 public class FinanceDaoImpl implements IFinanceDao {
 
@@ -30,7 +30,7 @@ public class FinanceDaoImpl implements IFinanceDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, SearchObj searchObj) {
+	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, FinanceSearchObj searchObj) {
 		Map map = new HashMap();
 		map.put("loginId", loginId);
 		map.put("startDate", searchObj.getStartDate());
@@ -49,7 +49,7 @@ public class FinanceDaoImpl implements IFinanceDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public double getConsumeItemListSumByIdNDate(String loginId, SearchObj searchObj) {
+	public double getConsumeItemListSumByIdNDate(String loginId, FinanceSearchObj searchObj) {
 		Map map = new HashMap();
 		map.put("loginId", loginId);
 		map.put("startDate", searchObj.getStartDate());
