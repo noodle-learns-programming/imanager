@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ContactItem">
+
+	<typeAlias alias="contactItem" type="com.imanager.contact.domain.ContactItem" />
+	
+	<resultMap id="contact-item-result" class="contactItem">
+		<result property="creator" column="creator"/>
+		<result property="gmtCreated" column="gmt_created"/>
+		<result property="modifier" column="modifier"/>
+		<result property="gmtModified" column="gmt_modified"/>
+		<result property="isDeleted" column="is_deleted"/>
+		<result property="contactItemId" column="contact_item_id"/>
+		<result property="name" column="name"/>
+		<result property="pinyin" column="pinyin"/>
+		<result property="englishName" column="english_name"/>
+		<result property="nickName" column="nick_name"/>
+		<result property="sex" column="sex"/>
+		<result property="age" column="age"/>
+		<result property="birthday" column="birthday"/>
+		<result property="marriage" column="marriage"/>
+		<result property="nativePlace" column="native_place"/>
+		<result property="clCountry" column="cl_country"/>
+		<result property="clProvince" column="cl_province"/>
+		<result property="clCity" column="cl_city"/>
+		<result property="clSubcity" column="cl_subcity"/>
+		<result property="address" column="address"/>
+		<result property="zip" column="zip"/>
+		<result property="school" column="school"/>
+		<result property="schoolAddress" column="school_address"/>
+		<result property="company" column="company"/>
+		<result property="companyAddress" column="company_address"/>
+		<result property="mobile1" column="mobile1"/>
+		<result property="mobile2" column="mobile2"/>
+		<result property="mobile1City" column="mobile1_city"/>
+		<result property="mobile2City" column="mobile2_city"/>
+		<result property="familyPhone1" column="family_phone1"/>
+		<result property="familyPhone2" column="family_phone2"/>
+		<result property="familyPhone1City" column="family_phone1_city"/>
+		<result property="familyPhone2City" column="family_phone2_city"/>
+		<result property="workPhone1" column="work_phone1"/>
+		<result property="workPhone2" column="work_phone2"/>
+		<result property="workPhone1City" column="work_phone1_city"/>
+		<result property="workPhone2City" column="work_phone2_city"/>
+		<result property="email1" column="email1"/>
+		<result property="email2" column="email2"/>
+		<result property="email1Note" column="email1_note"/>
+		<result property="email2Note" column="email2_note"/>
+		<result property="qq1" column="qq1"/>
+		<result property="qq2" column="qq2"/>
+		<result property="qq1Note" column="qq1_note"/>
+		<result property="qq2Note" column="qq2_note"/>
+		<result property="msn1" column="msn1"/>
+		<result property="msn2" column="msn2"/>
+		<result property="msn1Note" column="msn1_note"/>
+		<result property="msn2Note" column="msn2_note"/>
+		<result property="yahoo1" column="yahoo1"/>
+		<result property="yahoo2" column="yahoo2"/>
+		<result property="yahoo1Note" column="yahoo1_note"/>
+		<result property="yahoo2Note" column="yahoo2_note"/>
+		<result property="aliwang1" column="aliwang1"/>
+		<result property="aliwang2" column="aliwang2"/>
+		<result property="aliwang1Note" column="aliwang1_note"/>
+		<result property="aliwang2Note" column="aliwang2_note"/>
+		<result property="web1" column="web1"/>
+		<result property="web2" column="web2"/>
+		<result property="web1Note" column="web1_note"/>
+		<result property="web2Note" column="web2_note"/>
+		<result property="other1" column="other1"/>
+		<result property="other2" column="other2"/>
+		<result property="other1Note" column="other1_note"/>
+		<result property="other2Note" column="other2_note"/>
+		<result property="note" column="note"/>
+		<result property="loginId" column="login_id"/>
+	</resultMap>
+	
+	<insert id="insertContactItem"
+		parameterClass="contactItem">
+		<![CDATA[
+			insert into contact_item 
+				(creator, gmt_created, modifier, gmt_modified, is_deleted, name, pinyin, english_name, nick_name, sex, age, birthday, 
+				marriage, native_place, cl_country, cl_province, cl_city, cl_subcity, address, zip, school, school_address, 
+				company, company_address, mobile1, mobile2, mobile1_city, mobile2_city, family_phone1, family_phone2, 
+				family_phone1_city, family_phone2_city, work_phone1, work_phone2, work_phone1_city, work_phone2_city, email1, email2,
+				email1_note, email2_note, qq1, qq2, qq1_note, qq2_note, msn1, msn2, msn1_note, msn2_note, yahoo1, yahoo2, 
+				yahoo1_note, yahoo2_note, aliwang1, aliwang2, aliwang1_note, aliwang2_note, web1, web2, web1_note, web2_note, 
+				other1, other2, other1_note, other2_note, note, login_id) 
+			VALUES 
+				(#creator#, now(), #modifier#, now(), 'no', #name#, #pinyin#, #englishName#, #nickName#, #sex#, #age#, #birthday#, 
+				#marriage#, #nativePlace#, #clCountry#, #clProvince#, #clCity#, #clSubcity#, #address#, #zip#, #school#, #schoolAddress#, 
+				#company#, #companyAddress#, #mobile1#, #mobile2#, #mobile1City#, #mobile2City#, #familyPhone1#, #familyPhone2#, 
+				#familyPhone1City#, #familyPhone2City#, #workPhone1#, #workPhone2#, #workPhone1City#, #workPhone2City#, #email1#, #email2#, 
+				#email1Note#, #email2Note#, #qq1#, #qq2#, #qq1Note#, #qq2Note#, #msn1#, #msn2#, #msn1Note#, #msn2Note#, #yahoo1#, #yahoo2#, 
+				#yahoo1Note#, #yahoo2Note#, #aliwang1#, #aliwang2#, #aliwang1Note#, #aliwang2Note#, #web1#, #web2#, #web1Note#, #web2Note#, 
+				#other1#, #other2#, #other1Note#, #other2Note#, #note#, #loginId#)
+		]]>
+	</insert>
+	
+	<select id="getContactItemListByLoginId"
+		parameterClass="java.lang.String"
+		resultMap="contact-item-result">
+		<![CDATA[
+			select	* 
+			from	contact_item 
+			where	is_deleted = 'no' and login_id = #loginId#
+			order by gmt_created asc
+		]]>
+	</select>
+	
+	<select id="getContactItemById"
+		parameterClass="java.lang.String"
+		resultMap="contact-item-result">
+		<![CDATA[
+			select	* 
+			from	contact_item 
+			where	contact_item_id = #contactItemId#
+		]]>
+	</select>
+	
+	<update id="updateContactItem" 
+		parameterClass="contactItem">
+		<![CDATA[
+			update	contact_item 
+			set 	modifier		= #modifier#,
+					gmt_modified	= now(),
+					name			= #name#,
+					pinyin			= #pinyin#,
+					english_name	= #englishName#,
+					nick_name		= #nickName#,
+					sex				= #sex#,
+					age				= #age#,
+					birthday		= #birthday#,
+					marriage		= #marriage#,
+					native_place	= #nativePlace#,
+					cl_country		= #clCountry#,
+					cl_province		= #clProvince#,
+					cl_city			= #clCity#,
+					cl_subcity		= #clSubcity#,
+					address			= #address#,
+					zip				= #zip#,
+					school			= #school#,
+					school_address	= #schoolAddress#,
+					company			= #company#,
+					company_address	= #companyAddress#,
+					mobile1			= #mobile1#,
+					mobile2			= #mobile2#,
+					mobile1_city	= #mobile1City#,
+					mobile2_city	= #mobile2City#,
+					family_phone1	= #familyPhone1#,
+					family_phone2	= #familyPhone2#,
+					family_phone1_city = #familyPhone1City#,
+					family_phone2_city = #familyPhone2City#,
+					work_phone1		= #workPhone1#,
+					work_phone2		= #workPhone2#,
+					work_phone1_city = #workPhone1City#,
+					work_phone2_city = #workPhone2City#,
+					email1			= #email1#,
+					email2			= #email2#,
+					email1_note		= #email1Note#,
+					email2_note		= #email2Note#,
+					qq1				= #qq1#,
+					qq2				= #qq2#,
+					qq1_note		= #qq1Note#,
+					qq2_note		= #qq2Note#,
+					msn1			= #msn1#,
+					msn2			= #msn2#,
+					msn1_note		= #msn1Note#,
+					msn2_note		= #msn2Note#,
+					yahoo1			= #yahoo1#,
+					yahoo2			= #yahoo2#,
+					yahoo1_note		= #yahoo1Note#,
+					yahoo2_note		= #yahoo2Note#,
+					aliwang1		= #aliwang1#,
+					aliwang2		= #aliwang2#,
+					aliwang1_note	= #aliwang1Note#,
+					aliwang2_note	= #aliwang2Note#,
+					web1			= #web1#,
+					web2			= #web2#,
+					web1_note		= #web1Note#,
+					web2_note		= #web2Note#,
+					other1			= #other1#,
+					other2			= #other2#,
+					other1_note		= #other1Note#,
+					other2_note		= #other2Note#,
+					note			= #note#
+			where	is_deleted = 'no' and contact_item_id = #contactItemId#
+		]]>
+	</update>
+	
+	<update id="logicDeleteContactItem" 
+		parameterClass="java.util.Map">
+		<![CDATA[
+			update	contact_item 
+			set 	modifier		= #modifier#,
+					gmt_modified	= now(),
+					is_deleted		= 'yes'
+			where	contact_item_id = #contactItemId#
+		]]>
+	</update>
+
+</sqlMap>
