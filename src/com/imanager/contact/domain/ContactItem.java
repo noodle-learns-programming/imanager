@@ -17,55 +17,55 @@ public class ContactItem extends Basement{
 	private String marriage;
 	private String nativePlace;
 	private String clCountry;
-	private String cl_province;
-	private String cl_city;
-	private String cl_subcity;
+	private String clProvince;
+	private String clCity;
+	private String clSubcity;
 	private String address;
 	private String zip;
 	private String school;
-	private String school_address;
+	private String schoolAddress;
 	private String company;
-	private String company_address;
+	private String companyAddress;
 	private String mobile1;
 	private String mobile2;
-	private String mobile1_city;
-	private String mobile2_city;
-	private String family_phone1;
-	private String family_phone2;
-	private String family_phone1_city;
-	private String family_phone2_city;
-	private String work_phone1;
-	private String work_phone2;
-	private String work_phone1_city;
-	private String work_phone2_city;
+	private String mobile1City;
+	private String mobile2City;
+	private String familyPhone1;
+	private String familyPhone2;
+	private String familyPhone1City;
+	private String familyPhone2City;
+	private String workPhone1;
+	private String workPhone2;
+	private String workPhone1City;
+	private String workPhone2City;
 	private String email1;
 	private String email2;
-	private String email1_note;
-	private String email2_note;
+	private String email1Note;
+	private String email2Note;
 	private String qq1;
 	private String qq2;
-	private String qq1_note;
-	private String qq2_note;
+	private String qq1Note;
+	private String qq2Note;
 	private String msn1;
 	private String msn2;
-	private String msn1_note;
-	private String msn2_note;
+	private String msn1Note;
+	private String msn2Note;
 	private String yahoo1;
 	private String yahoo2;
-	private String yahoo1_note;
-	private String yahoo2_note;
+	private String yahoo1Note;
+	private String yahoo2Note;
 	private String aliwang1;
 	private String aliwang2;
-	private String aliwang1_note;
-	private String aliwang2_note;
+	private String aliwang1Note;
+	private String aliwang2Note;
 	private String web1;
 	private String web2;
-	private String web1_note;
-	private String web2_note;
+	private String web1Note;
+	private String web2Note;
 	private String other1;
 	private String other2;
-	private String other1_note;
-	private String other2_note;
+	private String other1Note;
+	private String other2Note;
 	private String note;
 	public int getContactItemId() {
 		return contactItemId;
@@ -133,23 +133,23 @@ public class ContactItem extends Basement{
 	public void setClCountry(String clCountry) {
 		this.clCountry = clCountry;
 	}
-	public String getCl_province() {
-		return cl_province;
+	public String getClProvince() {
+		return clProvince;
 	}
-	public void setCl_province(String cl_province) {
-		this.cl_province = cl_province;
+	public void setClProvince(String clProvince) {
+		this.clProvince = clProvince;
 	}
-	public String getCl_city() {
-		return cl_city;
+	public String getClCity() {
+		return clCity;
 	}
-	public void setCl_city(String cl_city) {
-		this.cl_city = cl_city;
+	public void setClCity(String clCity) {
+		this.clCity = clCity;
 	}
-	public String getCl_subcity() {
-		return cl_subcity;
+	public String getClSubcity() {
+		return clSubcity;
 	}
-	public void setCl_subcity(String cl_subcity) {
-		this.cl_subcity = cl_subcity;
+	public void setClSubcity(String clSubcity) {
+		this.clSubcity = clSubcity;
 	}
 	public String getAddress() {
 		return address;
@@ -169,11 +169,11 @@ public class ContactItem extends Basement{
 	public void setSchool(String school) {
 		this.school = school;
 	}
-	public String getSchool_address() {
-		return school_address;
+	public String getSchoolAddress() {
+		return schoolAddress;
 	}
-	public void setSchool_address(String school_address) {
-		this.school_address = school_address;
+	public void setSchoolAddress(String schoolAddress) {
+		this.schoolAddress = schoolAddress;
 	}
 	public String getCompany() {
 		return company;
@@ -181,11 +181,11 @@ public class ContactItem extends Basement{
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public String getCompany_address() {
-		return company_address;
+	public String getCompanyAddress() {
+		return companyAddress;
 	}
-	public void setCompany_address(String company_address) {
-		this.company_address = company_address;
+	public void setCompanyAddress(String companyAddress) {
+		this.companyAddress = companyAddress;
 	}
 	public String getMobile1() {
 		return mobile1;
@@ -199,65 +199,65 @@ public class ContactItem extends Basement{
 	public void setMobile2(String mobile2) {
 		this.mobile2 = mobile2;
 	}
-	public String getMobile1_city() {
-		return mobile1_city;
+	public String getMobile1City() {
+		return mobile1City;
 	}
-	public void setMobile1_city(String mobile1_city) {
-		this.mobile1_city = mobile1_city;
+	public void setMobile1City(String mobile1City) {
+		this.mobile1City = mobile1City;
 	}
-	public String getMobile2_city() {
-		return mobile2_city;
+	public String getMobile2City() {
+		return mobile2City;
 	}
-	public void setMobile2_city(String mobile2_city) {
-		this.mobile2_city = mobile2_city;
+	public void setMobile2City(String mobile2City) {
+		this.mobile2City = mobile2City;
 	}
-	public String getFamily_phone1() {
-		return family_phone1;
+	public String getFamilyPhone1() {
+		return familyPhone1;
 	}
-	public void setFamily_phone1(String family_phone1) {
-		this.family_phone1 = family_phone1;
+	public void setFamilyPhone1(String familyPhone1) {
+		this.familyPhone1 = familyPhone1;
 	}
-	public String getFamily_phone2() {
-		return family_phone2;
+	public String getFamilyPhone2() {
+		return familyPhone2;
 	}
-	public void setFamily_phone2(String family_phone2) {
-		this.family_phone2 = family_phone2;
+	public void setFamilyPhone2(String familyPhone2) {
+		this.familyPhone2 = familyPhone2;
 	}
-	public String getFamily_phone1_city() {
-		return family_phone1_city;
+	public String getFamilyPhone1City() {
+		return familyPhone1City;
 	}
-	public void setFamily_phone1_city(String family_phone1_city) {
-		this.family_phone1_city = family_phone1_city;
+	public void setFamilyPhone1City(String familyPhone1City) {
+		this.familyPhone1City = familyPhone1City;
 	}
-	public String getFamily_phone2_city() {
-		return family_phone2_city;
+	public String getFamilyPhone2City() {
+		return familyPhone2City;
 	}
-	public void setFamily_phone2_city(String family_phone2_city) {
-		this.family_phone2_city = family_phone2_city;
+	public void setFamilyPhone2City(String familyPhone2City) {
+		this.familyPhone2City = familyPhone2City;
 	}
-	public String getWork_phone1() {
-		return work_phone1;
+	public String getWorkPhone1() {
+		return workPhone1;
 	}
-	public void setWork_phone1(String work_phone1) {
-		this.work_phone1 = work_phone1;
+	public void setWorkPhone1(String workPhone1) {
+		this.workPhone1 = workPhone1;
 	}
-	public String getWork_phone2() {
-		return work_phone2;
+	public String getWorkPhone2() {
+		return workPhone2;
 	}
-	public void setWork_phone2(String work_phone2) {
-		this.work_phone2 = work_phone2;
+	public void setWorkPhone2(String workPhone2) {
+		this.workPhone2 = workPhone2;
 	}
-	public String getWork_phone1_city() {
-		return work_phone1_city;
+	public String getWorkPhone1City() {
+		return workPhone1City;
 	}
-	public void setWork_phone1_city(String work_phone1_city) {
-		this.work_phone1_city = work_phone1_city;
+	public void setWorkPhone1City(String workPhone1City) {
+		this.workPhone1City = workPhone1City;
 	}
-	public String getWork_phone2_city() {
-		return work_phone2_city;
+	public String getWorkPhone2City() {
+		return workPhone2City;
 	}
-	public void setWork_phone2_city(String work_phone2_city) {
-		this.work_phone2_city = work_phone2_city;
+	public void setWorkPhone2City(String workPhone2City) {
+		this.workPhone2City = workPhone2City;
 	}
 	public String getEmail1() {
 		return email1;
@@ -271,17 +271,17 @@ public class ContactItem extends Basement{
 	public void setEmail2(String email2) {
 		this.email2 = email2;
 	}
-	public String getEmail1_note() {
-		return email1_note;
+	public String getEmail1Note() {
+		return email1Note;
 	}
-	public void setEmail1_note(String email1_note) {
-		this.email1_note = email1_note;
+	public void setEmail1Note(String email1Note) {
+		this.email1Note = email1Note;
 	}
-	public String getEmail2_note() {
-		return email2_note;
+	public String getEmail2Note() {
+		return email2Note;
 	}
-	public void setEmail2_note(String email2_note) {
-		this.email2_note = email2_note;
+	public void setEmail2Note(String email2Note) {
+		this.email2Note = email2Note;
 	}
 	public String getQq1() {
 		return qq1;
@@ -295,17 +295,17 @@ public class ContactItem extends Basement{
 	public void setQq2(String qq2) {
 		this.qq2 = qq2;
 	}
-	public String getQq1_note() {
-		return qq1_note;
+	public String getQq1Note() {
+		return qq1Note;
 	}
-	public void setQq1_note(String qq1_note) {
-		this.qq1_note = qq1_note;
+	public void setQq1Note(String qq1Note) {
+		this.qq1Note = qq1Note;
 	}
-	public String getQq2_note() {
-		return qq2_note;
+	public String getQq2Note() {
+		return qq2Note;
 	}
-	public void setQq2_note(String qq2_note) {
-		this.qq2_note = qq2_note;
+	public void setQq2Note(String qq2Note) {
+		this.qq2Note = qq2Note;
 	}
 	public String getMsn1() {
 		return msn1;
@@ -319,17 +319,17 @@ public class ContactItem extends Basement{
 	public void setMsn2(String msn2) {
 		this.msn2 = msn2;
 	}
-	public String getMsn1_note() {
-		return msn1_note;
+	public String getMsn1Note() {
+		return msn1Note;
 	}
-	public void setMsn1_note(String msn1_note) {
-		this.msn1_note = msn1_note;
+	public void setMsn1Note(String msn1Note) {
+		this.msn1Note = msn1Note;
 	}
-	public String getMsn2_note() {
-		return msn2_note;
+	public String getMsn2Note() {
+		return msn2Note;
 	}
-	public void setMsn2_note(String msn2_note) {
-		this.msn2_note = msn2_note;
+	public void setMsn2Note(String msn2Note) {
+		this.msn2Note = msn2Note;
 	}
 	public String getYahoo1() {
 		return yahoo1;
@@ -343,17 +343,17 @@ public class ContactItem extends Basement{
 	public void setYahoo2(String yahoo2) {
 		this.yahoo2 = yahoo2;
 	}
-	public String getYahoo1_note() {
-		return yahoo1_note;
+	public String getYahoo1Note() {
+		return yahoo1Note;
 	}
-	public void setYahoo1_note(String yahoo1_note) {
-		this.yahoo1_note = yahoo1_note;
+	public void setYahoo1Note(String yahoo1Note) {
+		this.yahoo1Note = yahoo1Note;
 	}
-	public String getYahoo2_note() {
-		return yahoo2_note;
+	public String getYahoo2Note() {
+		return yahoo2Note;
 	}
-	public void setYahoo2_note(String yahoo2_note) {
-		this.yahoo2_note = yahoo2_note;
+	public void setYahoo2Note(String yahoo2Note) {
+		this.yahoo2Note = yahoo2Note;
 	}
 	public String getAliwang1() {
 		return aliwang1;
@@ -367,17 +367,17 @@ public class ContactItem extends Basement{
 	public void setAliwang2(String aliwang2) {
 		this.aliwang2 = aliwang2;
 	}
-	public String getAliwang1_note() {
-		return aliwang1_note;
+	public String getAliwang1Note() {
+		return aliwang1Note;
 	}
-	public void setAliwang1_note(String aliwang1_note) {
-		this.aliwang1_note = aliwang1_note;
+	public void setAliwang1Note(String aliwang1Note) {
+		this.aliwang1Note = aliwang1Note;
 	}
-	public String getAliwang2_note() {
-		return aliwang2_note;
+	public String getAliwang2Note() {
+		return aliwang2Note;
 	}
-	public void setAliwang2_note(String aliwang2_note) {
-		this.aliwang2_note = aliwang2_note;
+	public void setAliwang2Note(String aliwang2Note) {
+		this.aliwang2Note = aliwang2Note;
 	}
 	public String getWeb1() {
 		return web1;
@@ -391,17 +391,17 @@ public class ContactItem extends Basement{
 	public void setWeb2(String web2) {
 		this.web2 = web2;
 	}
-	public String getWeb1_note() {
-		return web1_note;
+	public String getWeb1Note() {
+		return web1Note;
 	}
-	public void setWeb1_note(String web1_note) {
-		this.web1_note = web1_note;
+	public void setWeb1Note(String web1Note) {
+		this.web1Note = web1Note;
 	}
-	public String getWeb2_note() {
-		return web2_note;
+	public String getWeb2Note() {
+		return web2Note;
 	}
-	public void setWeb2_note(String web2_note) {
-		this.web2_note = web2_note;
+	public void setWeb2Note(String web2Note) {
+		this.web2Note = web2Note;
 	}
 	public String getOther1() {
 		return other1;
@@ -415,17 +415,17 @@ public class ContactItem extends Basement{
 	public void setOther2(String other2) {
 		this.other2 = other2;
 	}
-	public String getOther1_note() {
-		return other1_note;
+	public String getOther1Note() {
+		return other1Note;
 	}
-	public void setOther1_note(String other1_note) {
-		this.other1_note = other1_note;
+	public void setOther1Note(String other1Note) {
+		this.other1Note = other1Note;
 	}
-	public String getOther2_note() {
-		return other2_note;
+	public String getOther2Note() {
+		return other2Note;
 	}
-	public void setOther2_note(String other2_note) {
-		this.other2_note = other2_note;
+	public void setOther2Note(String other2Note) {
+		this.other2Note = other2Note;
 	}
 	public String getNote() {
 		return note;
