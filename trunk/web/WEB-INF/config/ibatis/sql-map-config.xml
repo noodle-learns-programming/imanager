@@ -9,5 +9,6 @@
 	<sqlMap resource="sql-map-blog_item.xml" />
 	<sqlMap resource="sql-map-blog_content.xml" />
 	<sqlMap resource="sql-map-contact_type.xml" />
+	<sqlMap resource="sql-map-contact_item.xml" />
 
 </sqlMapConfig>
