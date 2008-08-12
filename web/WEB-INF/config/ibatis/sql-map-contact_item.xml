@@ -71,6 +71,7 @@
 		<result property="other1Note" column="other1_note"/>
 		<result property="other2Note" column="other2_note"/>
 		<result property="note" column="note"/>
+		<result property="contactTypeId" column="contact_type_id"/>
 		<result property="loginId" column="login_id"/>
 	</resultMap>
 	
@@ -84,7 +85,7 @@
 				family_phone1_city, family_phone2_city, work_phone1, work_phone2, work_phone1_city, work_phone2_city, email1, email2,
 				email1_note, email2_note, qq1, qq2, qq1_note, qq2_note, msn1, msn2, msn1_note, msn2_note, yahoo1, yahoo2, 
 				yahoo1_note, yahoo2_note, aliwang1, aliwang2, aliwang1_note, aliwang2_note, web1, web2, web1_note, web2_note, 
-				other1, other2, other1_note, other2_note, note, login_id) 
+				other1, other2, other1_note, other2_note, note, contact_type_id, login_id) 
 			VALUES 
 				(#creator#, now(), #modifier#, now(), 'no', #name#, #pinyin#, #englishName#, #nickName#, #sex#, #age#, #birthday#, 
 				#marriage#, #nativePlace#, #clCountry#, #clProvince#, #clCity#, #clSubcity#, #address#, #zip#, #school#, #schoolAddress#, 
@@ -92,7 +93,7 @@
 				#familyPhone1City#, #familyPhone2City#, #workPhone1#, #workPhone2#, #workPhone1City#, #workPhone2City#, #email1#, #email2#, 
 				#email1Note#, #email2Note#, #qq1#, #qq2#, #qq1Note#, #qq2Note#, #msn1#, #msn2#, #msn1Note#, #msn2Note#, #yahoo1#, #yahoo2#, 
 				#yahoo1Note#, #yahoo2Note#, #aliwang1#, #aliwang2#, #aliwang1Note#, #aliwang2Note#, #web1#, #web2#, #web1Note#, #web2Note#, 
-				#other1#, #other2#, #other1Note#, #other2Note#, #note#, #loginId#)
+				#other1#, #other2#, #other1Note#, #other2Note#, #note#, #contactTypeId#, #loginId#)
 		]]>
 	</insert>
 	
@@ -182,6 +183,7 @@
 					other2			= #other2#,
 					other1_note		= #other1Note#,
 					other2_note		= #other2Note#,
+					contact_type_id	= #contactTypeId#,
 					note			= #note#
 			where	is_deleted = 'no' and contact_item_id = #contactItemId#
 		]]>
