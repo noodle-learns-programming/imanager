@@ -5,5 +5,9 @@
 	<bean id="contactTypeDao" class="com.imanager.contact.dao.impl.ContactTypeDaoImpl">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
+	
+	<bean id="contactItemDao" class="com.imanager.contact.dao.impl.ContactItemDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
 
 </beans>
