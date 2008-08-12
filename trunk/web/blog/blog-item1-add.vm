@@ -22,12 +22,12 @@
                     		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
                     			cellpadding="0" cellspacing="0" align="center" >
                     			<tr>
-                					<td align="left" width="150px">一级类型中文名:</td>
-                					<td align="left"><input type="text" id="blogItem1.itemChn" name="blogItem1.itemChn" value="$esc.html($!blogItem1.itemChn)" size="100" maxlength="100" /></td>
+                					<td align="left" width="20%">一级类型中文名:</td>
+                					<td align="left"><input type="text" id="blogItem1.itemChn" name="blogItem1.itemChn" value="$esc.html($!blogItem1.itemChn)" size="90" maxlength="90" /></td>
                     			</tr>
                     			<tr>
                 					<td align="left">一级类型拼音:</td>
-                					<td align="left"><input type="text" id="blogItem1.itemEng" name="blogItem1.itemEng" value="$esc.html($!blogItem1.itemEng)" size="100" maxlength="100" /></td>
+                					<td align="left"><input type="text" id="blogItem1.itemEng" name="blogItem1.itemEng" value="$esc.html($!blogItem1.itemEng)" size="90" maxlength="90" /></td>
                     			</tr>
                     			<tr>
                 					<td align="left">登录ID:</td>
