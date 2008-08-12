@@ -35,7 +35,7 @@
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
                     	<h2>添加联系人详细</h2>
-                    	<form id="contactItemForm" action="contactTypeAction!addContactType.action" method="post">
+                    	<form id="contactItemForm" action="contactItemAction!addContactItem.action" method="post">
 							<input type="hidden" id="area" name="area" value="" />
                     		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
                     			cellpadding="0" cellspacing="0" align="center" >
@@ -205,7 +205,7 @@
                     				<td align="right">旺旺1:</td>
 									<td align="left">
 										<input type="text" id="contactItem.aliwang1" name="contactItem.aliwang1" value="$esc.html($!contactItem.aliwang1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.yahoo1Note" name="contactItem.yahoo1Note" value="$esc.html($!contactItem.yahoo1Note)" size="10" maxlength="10">
+										备注:<input type="text" id="contactItem.aliwang1Note" name="contactItem.aliwang1Note" value="$esc.html($!contactItem.aliwang1Note)" size="10" maxlength="10">
 									</td>
                     				<td align="right">旺旺2:</td>
 									<td align="left">
@@ -219,7 +219,7 @@
 										<input type="text" id="contactItem.web1" name="contactItem.web1" value="$esc.html($!contactItem.web1)" size="25" maxlength="25">
 										备注:<input type="text" id="contactItem.web1Note" name="contactItem.web1Note" value="$esc.html($!contactItem.web1Note)" size="10" maxlength="10">
 									</td>
-                    				<td align="right">个人主页:</td>
+                    				<td align="right">个人主页2:</td>
 									<td align="left">
 										<input type="text" id="contactItem.web2" name="contactItem.web2" value="$esc.html($!contactItem.web2)" size="25" maxlength="25">
 										备注:<input type="text" id="contactItem.web2Note" name="contactItem.web2Note" value="$esc.html($!contactItem.web2Note)" size="10" maxlength="10">
@@ -250,7 +250,7 @@
 									</td>
                     			</tr>
                     		</table>
-                    		<input type="button" value="添加" onclick="checkContactTypeForm();" />&nbsp;&nbsp;
+                    		<input type="button" value="添加" onclick="checkContactItemForm();" />&nbsp;&nbsp;
                     		<input type="reset" value="取消" />
                     	</form>
 					</td>
