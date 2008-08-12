@@ -42,5 +42,36 @@
 			
 			<interceptor-ref name="modelParamsStack" />
 		</action>
+		
+		<action name="contactItemAction" class="com.imanager.contact.action.ContactItemAction">
+			<result name="error" type="velocity">/framework/error.vm</result>
+			<result name="success" type="velocity">/framework/success.vm</result>
+						
+			<result name="initAddContactItem" type="velocity">contact-item-add.vm</result>
+			
+			<result name="addContactType" type="redirect-action">
+				<param name="namespace">/contact</param>
+				<param name="actionName">contactTypeAction</param>
+				<param name="method">getContactTypeListByLoginId</param>
+			</result>
+			
+			<result name="getContactTypeListByLoginId" type="velocity">contact-type-list.vm</result>
+			
+			<result name="getContactTypeById" type="velocity">contact-type-update.vm</result>
+			
+			<result name="updateContactType" type="redirect-action">
+				<param name="namespace">/contact</param>
+				<param name="actionName">contactTypeAction</param>
+				<param name="method">getContactTypeListByLoginId</param>
+			</result>
+			
+			<result name="logicDeleteContactType" type="redirect-action">
+				<param name="namespace">/contact</param>
+				<param name="actionName">contactTypeAction</param>
+				<param name="method">getContactTypeListByLoginId</param>
+			</result>
+			
+			<interceptor-ref name="modelParamsStack" />
+		</action>
 	</package>
 </xwork>
