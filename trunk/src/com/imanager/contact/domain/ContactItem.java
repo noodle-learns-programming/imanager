@@ -67,7 +67,11 @@ public class ContactItem extends Basement{
 	private String other1Note;
 	private String other2Note;
 	private String note;
+	private String contactTypeId;
 	private String loginId;
+	
+	private String area;
+	
 	public int getContactItemId() {
 		return contactItemId;
 	}
@@ -439,6 +443,18 @@ public class ContactItem extends Basement{
 	}
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public String getContactTypeId() {
+		return contactTypeId;
+	}
+	public void setContactTypeId(String contactTypeId) {
+		this.contactTypeId = contactTypeId;
 	}
 
 }
