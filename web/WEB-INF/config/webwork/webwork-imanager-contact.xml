@@ -49,7 +49,9 @@
 						
 			<result name="initAddContactItem" type="velocity">contact-item-add.vm</result>
 			
-			<result name="addContactType" type="redirect-action">
+			<result name="addContactItem" type="velocity">/framework/success.vm</result>
+			<!--
+			<result name="addContactItem" type="redirect-action">
 				<param name="namespace">/contact</param>
 				<param name="actionName">contactTypeAction</param>
 				<param name="method">getContactTypeListByLoginId</param>
@@ -70,6 +72,7 @@
 				<param name="actionName">contactTypeAction</param>
 				<param name="method">getContactTypeListByLoginId</param>
 			</result>
+			-->
 			
 			<interceptor-ref name="modelParamsStack" />
 		</action>
