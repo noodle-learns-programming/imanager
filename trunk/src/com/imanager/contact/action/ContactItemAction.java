@@ -57,22 +57,22 @@ private static final long serialVersionUID = 1L;
 	 * @return
 	 * @throws Exception
 	 */
-	public String addContactType() throws Exception {
+	public String addContactItem() throws Exception {
 		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
 		currentLoginId = "yangqiang";
 		
 		try{
-			contactType.setCreator(currentLoginId);
-			contactType.setModifier(currentLoginId);
+			contactItem.setCreator(currentLoginId);
+			contactItem.setModifier(currentLoginId);
 			
-			contactTypeDao.insertContactType(contactType);
+			contactItemDao.insertContactItem(contactItem);
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", addContactType()");
+			log.error("Error: " + ContactItemAction.class + ", addContactItem()");
 			e.printStackTrace();
 			return ERROR;
 		}
 		
-		return "addContactType";
+		return "addContactItem";
 	}
 	
 	/**
