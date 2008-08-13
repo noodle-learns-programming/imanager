@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.imanager.common.DateUtil;
 import com.imanager.common.LoginUtil;
 import com.imanager.contact.dao.IContactItemDao;
 import com.imanager.contact.dao.IContactTypeDao;
@@ -66,6 +67,7 @@ private static final long serialVersionUID = 1L;
 		try{
 			contactItem.setCreator(currentLoginId);
 			contactItem.setModifier(currentLoginId);
+			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
 			
 			contactItemDao.insertContactItem(contactItem);
 		}catch (Exception e){
@@ -163,6 +165,7 @@ private static final long serialVersionUID = 1L;
 		
 		try{
 			contactItem.setModifier(currentLoginId);
+			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
 			
 			if(contactItemDao.updateContactItem(contactItem)){
 				return "updateContactItem";
