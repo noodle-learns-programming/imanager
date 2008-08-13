@@ -349,4 +349,23 @@ public class DateUtil {
 		return (int)quot; 
 	}
 	
+	/**
+	 * »ñµÃÄêÁä
+	 * @param birthday
+	 * @return
+	 */
+	public static int getQuotAge(Date birthday){
+		int age = 0;
+		
+		Calendar today = Calendar.getInstance();
+		today.setTime(new Date());
+		
+		Calendar birth = Calendar.getInstance();
+		birth.setTime(birthday);
+		
+		age = Math.abs(today.get(Calendar.YEAR) - birth.get(Calendar.YEAR));
+		
+		return age;
+	}
+	
 }
