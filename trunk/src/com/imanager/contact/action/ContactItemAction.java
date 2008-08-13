@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.imanager.common.LoginUtil;
 import com.imanager.contact.dao.IContactItemDao;
 import com.imanager.contact.dao.IContactTypeDao;
 import com.imanager.contact.domain.ContactItem;
@@ -36,8 +37,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String initAddContactItem() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		contactItem.setBirthday(new Date());
 		contactItem.setLoginId(currentLoginId);
@@ -59,8 +60,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String addContactItem() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactItem.setCreator(currentLoginId);
@@ -82,8 +83,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String initGetContactItemListBySearch() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactSearchObj.setLoginId(currentLoginId);
@@ -107,8 +108,9 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String getContactItemListBySearch() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
+		
 		String nameTrim = contactSearchObj.getName().trim();
 		String pinyinTrim = contactSearchObj.getPinyin().trim();
 		
@@ -135,8 +137,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String getContactItemById() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
@@ -156,8 +158,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String updateContactItem() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactItem.setModifier(currentLoginId);
@@ -176,8 +178,8 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	public String logicDeleteContactItem() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactItem.setModifier(currentLoginId);
