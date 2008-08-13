@@ -38,19 +38,19 @@ public class DwrService {
 	}
 	
 
-	public Map<Integer, String> getBlogItem1List(String blogItem1Id) throws Exception {
+	public Map<String, String> getBlogItem1List(String blogItem1Id) throws Exception {
 		
 		currentLoginId = new LoginUtil().getCurrentLogin();
 		//TODO currentLoginId = "yangqiang";
 		
-		Map<Integer, String> result = new HashMap<Integer, String>();
+		Map<String, String> result = new HashMap<String, String>();
 		
 		List<BlogItem2> blogItem2List = blogItemDao.getBlogItem2ByItem1IdNLoginId(blogItem1Id, currentLoginId);
 		if(blogItem2List.size() == 0){
-			result.put(0, "«Î—°‘Ò");
+			result.put("", "«Î—°‘Ò");
 		}else{
 			for(BlogItem2 item2 : blogItem2List){
-				result.put(item2.getBlogItem2Id(), item2.getItemChn());
+				result.put(String.valueOf(item2.getBlogItem2Id()), item2.getItemChn());
 			}
 		}
 		return result;
