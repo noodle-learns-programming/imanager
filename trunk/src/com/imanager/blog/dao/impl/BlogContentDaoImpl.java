@@ -30,8 +30,8 @@ public class BlogContentDaoImpl implements IBlogContentDao{
 	  * @return
 	  */
 	 @SuppressWarnings("unchecked")
-	public List<BlogContentOutput> getBlogContentListBySearch(BlogContentSearchObj searchObj){
-		 List blogContentList = sqlMapClientTemplate.queryForList("BlogContent.getBlogContentListBySearch", searchObj);
+	public List<BlogContentOutput> getBlogContentListBySearch(BlogContentSearchObj blogSearchObj){
+		 List blogContentList = sqlMapClientTemplate.queryForList("BlogContent.getBlogContentListBySearch", blogSearchObj);
 		 if(blogContentList != null){
 			 return blogContentList;
 		 }else{

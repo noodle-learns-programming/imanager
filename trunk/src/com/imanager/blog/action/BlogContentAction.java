@@ -29,7 +29,7 @@ public class BlogContentAction extends ActionSupport {
 	
 	private BlogContent blogContent = new BlogContent();
 	
-	private BlogContentSearchObj searchObj = new BlogContentSearchObj();
+	private BlogContentSearchObj blogSearchObj = new BlogContentSearchObj();
 	
 	private String currentLoginId;
 	
@@ -54,12 +54,12 @@ public class BlogContentAction extends ActionSupport {
 		Date startDate = DateUtil.getMinDate();
 		Date endDate = DateUtil.getMaxDate();
 		
-		searchObj.setStartBlogDate(DateUtil.dateOnlyExt(startDate));
-		searchObj.setEngBlogDate(DateUtil.dateLastTime(endDate));
-		searchObj.setLoginId(currentLoginId);
+		blogSearchObj.setStartBlogDate(DateUtil.dateOnlyExt(startDate));
+		blogSearchObj.setEngBlogDate(DateUtil.dateLastTime(endDate));
+		blogSearchObj.setLoginId(currentLoginId);
 		
 		try{
-			blogContentOutputList = blogContentDao.getBlogContentListBySearch(searchObj);
+			blogContentOutputList = blogContentDao.getBlogContentListBySearch(blogSearchObj);
 			blogItem1List = blogItemDao.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error("Error: " + BlogContentAction.class + ", initGetBlogContentListBySearch()");
@@ -79,13 +79,13 @@ public class BlogContentAction extends ActionSupport {
 		currentLoginId = new LoginUtil().getCurrentLogin();
 		//TODO currentLoginId = "yangqiang";
 		
-		String titleTrim = searchObj.getTitle().trim();
-		searchObj.setTitle(titleTrim);
-		searchObj.setLoginId(currentLoginId);
+		String titleTrim = blogSearchObj.getTitle().trim();
+		blogSearchObj.setTitle(titleTrim);
+		blogSearchObj.setLoginId(currentLoginId);
 		
 		
 		try{
-			blogContentOutputList = blogContentDao.getBlogContentListBySearch(searchObj);
+			blogContentOutputList = blogContentDao.getBlogContentListBySearch(blogSearchObj);
 			blogItem1List = blogItemDao.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error("Error: " + BlogContentAction.class + ", getBlogContentListBySearch()");
@@ -268,12 +268,12 @@ public class BlogContentAction extends ActionSupport {
 		this.blogItem1List = blogItem1List;
 	}
 
-	public BlogContentSearchObj getSearchObj() {
-		return searchObj;
+	public BlogContentSearchObj getBlogSearchObj() {
+		return blogSearchObj;
 	}
 
-	public void setSearchObj(BlogContentSearchObj searchObj) {
-		this.searchObj = searchObj;
+	public void setBlogSearchObj(BlogContentSearchObj blogSearchObj) {
+		this.blogSearchObj = blogSearchObj;
 	}
 
 	public List<BlogContentOutput> getBlogContentOutputList() {

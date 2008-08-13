@@ -3,6 +3,7 @@ package com.imanager.contact.dao;
 import java.util.List;
 
 import com.imanager.contact.domain.ContactItem;
+import com.imanager.contact.domain.input.ContactItemSearchObj;
 
 public interface IContactItemDao {
 	
@@ -14,11 +15,11 @@ public interface IContactItemDao {
 	
 	
 	/**
-	 * 根据LoginId获得联系人列表
+	 * 根据查找条件和LoginId获得联系人列表
 	 * @param loginId
 	 * @return
 	 */
-	public List<ContactItem> getContactItemListByLoginId(String loginId);
+	public List<ContactItem> getContactItemListBySearch(ContactItemSearchObj contactSearchObj);
 	
 	/**
 	 * 根据ID获得一个联系类型

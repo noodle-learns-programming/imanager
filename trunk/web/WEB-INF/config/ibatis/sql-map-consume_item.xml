@@ -35,7 +35,8 @@
 					login_id			as loginId,
 					in_out				as inOrOut
 			from consume_item
-			where login_id = #loginId# and is_deleted='no' and fee_date >= #startDate# AND fee_date <= #endDate# order by fee_date asc
+			where login_id = #loginId# and is_deleted='no' and fee_date >= #startDate# AND fee_date <= #endDate#
+			order by fee_date asc
 		]]>
 	</select>
 	

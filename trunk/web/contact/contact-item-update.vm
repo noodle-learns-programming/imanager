@@ -34,9 +34,10 @@
         			</td>
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
-                    	<h2>添加联系人详细</h2>
-                    	<form id="contactItemForm" action="contactItemAction!addContactItem.action" method="post">
+                    	<h2>更新联系人详细</h2>
+                    	<form id="contactItemForm" action="contactItemAction!updateContactItem.action" method="post">
 							<input type="hidden" id="area" name="area" value="" />
+							<input type="hidden" name="contactItem.contactItemId" value="$contactItem.contactItemId" />
                     		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
                     			cellpadding="0" cellspacing="0" align="center" >
 								<tr><th colspan="4" align="left">基本信息</th></tr>
@@ -55,13 +56,23 @@
 								<tr>
                     				<td align="right">性别:</td>
                     				<td align="left">
-										<input type="radio" name="contactItem.sex" value="M" checked>男&nbsp;
-										<input type="radio" name="contactItem.sex" value="F">女
+										#if($contactItem.sex == "M")
+											<input type="radio" name="contactItem.sex" value="M" checked>男&nbsp;
+											<input type="radio" name="contactItem.sex" value="F">女
+										#else
+											<input type="radio" name="contactItem.sex" value="M">男&nbsp;
+											<input type="radio" name="contactItem.sex" value="F" checked>女
+										#end
 									</td>
 									<td align="right">婚姻状况:</td>
                     				<td align="left">
-										<input type="radio" name="contactItem.marriage" value="yes" checked>已婚&nbsp;
-										<input type="radio" name="contactItem.marriage" value="no">未婚
+										#if($contactItem.marriage == "yes")
+											<input type="radio" name="contactItem.marriage" value="yes" checked>已婚&nbsp;
+											<input type="radio" name="contactItem.marriage" value="no">未婚
+										#else
+											<input type="radio" name="contactItem.marriage" value="yes">已婚&nbsp;
+											<input type="radio" name="contactItem.marriage" value="no" checked>未婚
+										#end
 									</td>
 								</tr>
 								<tr>
@@ -80,7 +91,7 @@
 										<select id="contactItem.contactType.contactTypeId" name="contactItem.contactType.contactTypeId">
 											<option value="0">请选择</option>
 											#foreach($contactType in $contactTypeList)
-												<option value="$contactType.contactTypeId">$contactType.contactType</option>
+												<option value="$contactType.contactTypeId" #if($contactType.contactTypeId == $contactItem.contactType.contactTypeId) selected #end>$contactType.contactType</option>
 											#end
 										</select>
 									</td>
@@ -88,13 +99,13 @@
 								<tr>
 									<td width="10%" align="right">现居住地:</td>
                     				<td align="left" colspan="3">
-            		                	<select id="country" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clCountry" onchange="javascript:changeArea(this);">
+            		                	<select id="country" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clCountry" value="$contactItem.clCountry" onchange="javascript:changeArea(this);">
             		                	</select>
-            		                	<select id="province" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clProvince" onchange="javascript:changeArea(this);">
+            		                	<select id="province" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clProvince" value="$contactItem.clProvince" onchange="javascript:changeArea(this);">
             		                	</select>
-            		                	<select id="city" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clCity" onchange="javascript:changeArea(this);">
+            		                	<select id="city" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clCity" value="$contactItem.clCity" onchange="javascript:changeArea(this);">
             		                	</select>
-            		                	<select id="subcity" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clSubcity">
+            		                	<select id="subcity" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clSubcity" value="$contactItem.clSubcity">
             		                	</select>
 									</td>
 								</tr>
@@ -240,7 +251,7 @@
 								<tr>
                 					<td align="right">备注:</td>
                 					<td align="left" colspan="3">
-										<textarea id="contactItem.note" name="contactItem.note" value="$esc.html($!contactItem.note)" cols="101" rows="10"></textarea>
+										<textarea id="contactItem.note" name="contactItem.note" cols="101" rows="10">$esc.html($!contactItem.note)</textarea>
 									</td>
                     			</tr>
                     			<tr>
@@ -250,7 +261,7 @@
 									</td>
                     			</tr>
                     		</table>
-                    		<input type="button" value="添加" onclick="checkContactItemForm();" />&nbsp;&nbsp;
+                    		<input type="button" value="更新" onclick="checkContactItemForm();" />&nbsp;&nbsp;
                     		<input type="reset" value="取消" />
                     	</form>
 					</td>
@@ -259,8 +270,24 @@
     	</center>
     <script type="text/javascript">
 		//设置地区的初始值
-    	document.forms['contactItemForm'].elements['area'].value = "0";
-    	initCat(document.forms['contactItemForm'].elements['area'].value);
+		var subCity="$!contactItem.clSubcity";
+		var city="$!contactItem.clCity";
+		var province="$!contactItem.clProvince";
+		var country="$!contactItem.clCountry";
+		
+		if(subCity != ""){
+			document.forms['contactItemForm'].elements['area'].value = subCity;
+		}else if(city != ""){
+			document.forms['contactItemForm'].elements['area'].value = city;
+		}else if(province != ""){
+			document.forms['contactItemForm'].elements['area'].value = province;
+		}else if(country != ""){
+			document.forms['contactItemForm'].elements['area'].value = country;
+		}else{
+			document.forms['contactItemForm'].elements['area'].value = "0";	
+    	}
+		
+		initCat(document.forms['contactItemForm'].elements['area'].value);
     </script>
     </body>
 </html>

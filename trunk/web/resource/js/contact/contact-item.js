@@ -13,7 +13,7 @@ function checkContactItemForm(){
 	}
 	
 	if(!checkContactType()){
-		document.getElementById("contactItem.contactTypeId").focus();
+		document.getElementById("contactItem.contactType.contactTypeId").focus();
 		return;
 	}
 	
@@ -29,15 +29,6 @@ function checkContactName(){
 	return true;
 }
 
-function checkContactType(){
-	var o = document.getElementById("contactType.contactType");
-	if(Trim(o.value)==""){
-		alert("联系类型不能为空!");
-		return false;
-	}
-	return true;
-}
-
 function checkContactPinyin(){
 	var o = document.getElementById("contactItem.pinyin");
 	if(Trim(o.value)==""){
@@ -47,7 +38,7 @@ function checkContactPinyin(){
 	return true;
 }
 function checkContactType(){
-	var o = document.getElementById("contactItem.contactTypeId");
+	var o = document.getElementById("contactItem.contactType.contactTypeId");
 	if(o.value=="0"){
 		alert("请选择联系类型!");
 		return false;
@@ -56,8 +47,8 @@ function checkContactType(){
 }
 
 //删除ContactType
-function deleteContactType(contactTypeId){
-	if (confirm("你确定要删除联系类型吗？")){ 
-		window.location="contactTypeAction!logicDeleteContactType.action?contactTypeId="+contactTypeId;
+function deleteContactItem(contactItemId){
+	if (confirm("你确定要删除联系人详细吗？")){ 
+		window.location="contactItemAction!logicDeleteContactItem.action?contactItemId="+contactItemId;
 	}
 }

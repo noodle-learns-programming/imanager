@@ -31,35 +31,35 @@
                 			<table border="0" width="100%" height="60" cellpadding="0" cellspacing="0" align="center" >
                 				<tr>
 									<td align="left">标题:</td>
-									<td align="left"><input type="text" name="searchObj.title" value="$esc.html($!searchObj.title)" size="20" maxlength="20"/></td>
+									<td align="left"><input type="text" name="blogSearchObj.title" value="$esc.html($!blogSearchObj.title)" size="20" maxlength="20"/></td>
                 				</tr>
                 				<tr>
 									<td align="left">开始日期:</td>
 									<td align="left">
-										<input type="text" id="searchObj.startBlogDate" name="searchObj.startBlogDate" readonly="true" value="$!dateUtil.date($!searchObj.startBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.startBlogDate', '%Y-%m-%d');">
+										<input type="text" id="blogSearchObj.startBlogDate" name="blogSearchObj.startBlogDate" readonly="true" value="$!dateUtil.date($!blogSearchObj.startBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('blogSearchObj.startBlogDate', '%Y-%m-%d');">
 									</td>
 								</tr>
 								<tr>
 									<td align="left">结束日期:</td>
 									<td align="left">
-										<input type="text" id="searchObj.engBlogDate" name="searchObj.engBlogDate" readonly="true" value="$!dateUtil.date($!searchObj.engBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.engBlogDate', '%Y-%m-%d');">
+										<input type="text" id="blogSearchObj.engBlogDate" name="blogSearchObj.engBlogDate" readonly="true" value="$!dateUtil.date($!blogSearchObj.engBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('blogSearchObj.engBlogDate', '%Y-%m-%d');">
 									</td>
                 				</tr>
                 				<tr>
                 					<td align="left">类型:</td>
                 					<td align="left">
-                						<select name="searchObj.blogType">
+                						<select name="blogSearchObj.blogType">
                 							<option value="">请选择</option>
-                							<option value="y">原创</option>
-                							<option value="z">转载</option>
+                							<option value="yc">原创</option>
+                							<option value="zz">转载</option>
                 						</select>&nbsp;&nbsp;
-                						明细1：<select id="blogContent.blogItem1Id" name="searchObj.blogItem1Id" onchange="getBlogItem2List();">
+                						明细1：<select id="blogContent.blogItem1Id" name="blogSearchObj.blogItem1Id" onchange="getBlogItem2List();">
                 							<option value="">请选择</option>
 											#foreach($blogItem1 in $blogItem1List)
                 								<option value="$blogItem1.blogItem1Id">$blogItem1.itemChn</option>
 											#end
 										</select>&nbsp;&nbsp;
-                						明细2：<select id="blogContent.blogItem2Id" name="searchObj.blogItem2Id">
+                						明细2：<select id="blogContent.blogItem2Id" name="blogSearchObj.blogItem2Id">
                 							<option value="">请选择</option>
                 						</select>
                 					</td>
