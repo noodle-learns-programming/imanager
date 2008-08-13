@@ -9,6 +9,7 @@ import org.springframework.orm.ibatis.SqlMapClientOperations;
 
 import com.imanager.contact.dao.IContactItemDao;
 import com.imanager.contact.domain.ContactItem;
+import com.imanager.contact.domain.input.ContactItemSearchObj;
 
 public class ContactItemDaoImpl implements IContactItemDao {
 	
@@ -19,8 +20,8 @@ public class ContactItemDaoImpl implements IContactItemDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ContactItem> getContactItemListByLoginId(String loginId) {
-		List contactItemList = sqlMapClientTemplate.queryForList("ContactItem.getContactItemListByLoginId", loginId);
+	public List<ContactItem> getContactItemListBySearch(ContactItemSearchObj contactSearchObj) {
+		List contactItemList = sqlMapClientTemplate.queryForList("ContactItem.getContactItemListBySearch", contactSearchObj);
 		 if(contactItemList != null){
 			 return contactItemList;
 		 }else{
@@ -41,6 +42,7 @@ public class ContactItemDaoImpl implements IContactItemDao {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("contactItemId", contactItemId);
 		map.put("modifier", currentLoginId);
+		
 		Integer result = sqlMapClientTemplate.update("ContactItem.logicDeleteContactItem", map);
 		return result == 1;
 	}

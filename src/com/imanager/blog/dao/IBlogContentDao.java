@@ -19,7 +19,7 @@ public interface IBlogContentDao {
 	  * @param searchObj
 	  * @return
 	  */
-	 public List<BlogContentOutput> getBlogContentListBySearch(BlogContentSearchObj searchObj);
+	 public List<BlogContentOutput> getBlogContentListBySearch(BlogContentSearchObj blogSearchObj);
 	 
 	 /**
 	  * 根据Id获得一个Blog

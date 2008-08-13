@@ -183,6 +183,7 @@
 			where	blog_item1.login_id = blog_item2.login_id and blog_item2.login_id = #loginId# 
 					and blog_item1.is_deleted = blog_item2.is_deleted and blog_item2.is_deleted='no' 
 					and blog_item1.blog_item1_id = blog_item2.blog_item1_id and blog_item2.blog_item1_id = #blogItem1Id#
+			order by blog_item2.gmt_created asc
 		]]>
 	</select>
 	

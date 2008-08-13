@@ -6,11 +6,11 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.imanager.common.DateUtil;
 import com.imanager.contact.dao.IContactItemDao;
 import com.imanager.contact.dao.IContactTypeDao;
 import com.imanager.contact.domain.ContactItem;
 import com.imanager.contact.domain.ContactType;
+import com.imanager.contact.domain.input.ContactItemSearchObj;
 import com.opensymphony.xwork.ActionSupport;
 
 public class ContactItemAction extends ActionSupport {
@@ -25,12 +25,13 @@ private static final long serialVersionUID = 1L;
 	private String contactItemId;
 	
 	private ContactItem contactItem = new ContactItem();
+	private ContactItemSearchObj contactSearchObj = new ContactItemSearchObj();
 	private List<ContactItem> contactItemList;
 	private List<ContactType> contactTypeList;
 	
 	
 	/**
-	 * 初始化添加联系人类型
+	 * 初始化添加联系人详细
 	 * @return
 	 * @throws Exception
 	 */
@@ -53,7 +54,7 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	/**
-	 * 添加联系人类型
+	 * 添加联系人详细
 	 * @return
 	 * @throws Exception
 	 */
@@ -76,23 +77,56 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	/**
-	 * 根据LoginId获得联系类型列表
+	 * 初始化获得联系人详细列表
 	 * @return
 	 * @throws Exception
 	 */
-	public String getContactTypeListByLoginId() throws Exception {
+	public String initGetContactItemListBySearch() throws Exception {
 		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
 		currentLoginId = "yangqiang";
 		
 		try{
+			contactSearchObj.setLoginId(currentLoginId);
 			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
+			if (contactTypeList.size() != 0) {
+				contactSearchObj.setContactTypeId(String.valueOf(contactTypeList.get(0).getContactTypeId()));
+			}
+			contactItemList = contactItemDao.getContactItemListBySearch(contactSearchObj);
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", getContactTypeListByLoginId()");
+			log.error("Error: " + ContactItemAction.class + ", initGetContactItemListBySearch()");
 			e.printStackTrace();
 			return ERROR;
 		}
 		
-		return "getContactTypeListByLoginId";
+		return "initGetContactItemListBySearch";
+	}
+	
+	/**
+	 * 根据查询获得联系人详细列表
+	 * @return
+	 * @throws Exception
+	 */
+	public String getContactItemListBySearch() throws Exception {
+		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
+		currentLoginId = "yangqiang";
+		String nameTrim = contactSearchObj.getName().trim();
+		String pinyinTrim = contactSearchObj.getPinyin().trim();
+		
+		try{
+			contactSearchObj.setName(nameTrim);
+			contactSearchObj.setPinyin(pinyinTrim);
+			contactSearchObj.setLoginId(currentLoginId);
+			
+			contactItemList = contactItemDao.getContactItemListBySearch(contactSearchObj);
+			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
+			
+		}catch (Exception e){
+			log.error("Error: " + ContactItemAction.class + ", getContactItemListBySearch()");
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+		return "getContactItemListBySearch";
 	}
 	
 	/**
@@ -100,19 +134,20 @@ private static final long serialVersionUID = 1L;
 	 * @return
 	 * @throws Exception
 	 */
-	public String getContactTypeById() throws Exception {
+	public String getContactItemById() throws Exception {
 		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
 		currentLoginId = "yangqiang";
 		
 		try{
-			contactType = contactTypeDao.getContactTypeById(contactTypeId);
-			}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", getContactTypeById()");
+			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
+			contactItem = contactItemDao.getContactItemById(contactItemId);
+		}catch (Exception e){
+			log.error("Error: " + ContactItemAction.class + ", getContactItemById()");
 			e.printStackTrace();
 			return ERROR;
 		}
 		
-		return "getContactTypeById";
+		return "getContactItemById";
 	}
 	
 	/**
@@ -120,41 +155,41 @@ private static final long serialVersionUID = 1L;
 	 * @return
 	 * @throws Exception
 	 */
-	public String updateContactType() throws Exception {
+	public String updateContactItem() throws Exception {
 		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
 		currentLoginId = "yangqiang";
 		
 		try{
-			contactType.setModifier(currentLoginId);
+			contactItem.setModifier(currentLoginId);
 			
-			if(contactTypeDao.updateContactType(contactType)){
-				return "updateContactType";
+			if(contactItemDao.updateContactItem(contactItem)){
+				return "updateContactItem";
 			}else{
 				return ERROR;
 			}
 			
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", updateContactType()");
+			log.error("Error: " + ContactItemAction.class + ", updateContactItem()");
 			e.printStackTrace();
 			return ERROR;
 		}
 	}
 	
-	public String logicDeleteContactType() throws Exception {
+	public String logicDeleteContactItem() throws Exception {
 		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
 		currentLoginId = "yangqiang";
 		
 		try{
-			contactType.setModifier(currentLoginId);
+			contactItem.setModifier(currentLoginId);
 			
-			if(contactTypeDao.logicDeleteContactType(contactTypeId, currentLoginId)){
-				return "logicDeleteContactType";
+			if(contactItemDao.logicDeleteContactItem(contactItemId, currentLoginId)){
+				return "logicDeleteContactItem";
 			}else{
 				return ERROR;
 			}
 			
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", updateContactType()");
+			log.error("Error: " + ContactItemAction.class + ", logicDeleteContactItem()");
 			e.printStackTrace();
 			return ERROR;
 		}
@@ -209,5 +244,12 @@ private static final long serialVersionUID = 1L;
 		this.contactTypeList = contactTypeList;
 	}
 
+	public ContactItemSearchObj getContactSearchObj() {
+		return contactSearchObj;
+	}
+
+	public void setContactSearchObj(ContactItemSearchObj contactSearchObj) {
+		this.contactSearchObj = contactSearchObj;
+	}
 
 }

@@ -3,6 +3,7 @@
 <sqlMap namespace="ContactItem">
 
 	<typeAlias alias="contactItem" type="com.imanager.contact.domain.ContactItem" />
+	<typeAlias alias="contactSearchObj" type="com.imanager.contact.domain.input.ContactItemSearchObj" />
 	
 	<resultMap id="contact-item-result" class="contactItem">
 		<result property="creator" column="creator"/>
@@ -71,7 +72,7 @@
 		<result property="other1Note" column="other1_note"/>
 		<result property="other2Note" column="other2_note"/>
 		<result property="note" column="note"/>
-		<result property="contactTypeId" column="contact_type_id"/>
+		<result property="contactType" column="contact_type_id" select="ContactType.getContactTypeById"/>
 		<result property="loginId" column="login_id"/>
 	</resultMap>
 	
@@ -93,19 +94,28 @@
 				#familyPhone1City#, #familyPhone2City#, #workPhone1#, #workPhone2#, #workPhone1City#, #workPhone2City#, #email1#, #email2#, 
 				#email1Note#, #email2Note#, #qq1#, #qq2#, #qq1Note#, #qq2Note#, #msn1#, #msn2#, #msn1Note#, #msn2Note#, #yahoo1#, #yahoo2#, 
 				#yahoo1Note#, #yahoo2Note#, #aliwang1#, #aliwang2#, #aliwang1Note#, #aliwang2Note#, #web1#, #web2#, #web1Note#, #web2Note#, 
-				#other1#, #other2#, #other1Note#, #other2Note#, #note#, #contactTypeId#, #loginId#)
+				#other1#, #other2#, #other1Note#, #other2Note#, #note#, #contactType.contactTypeId#, #loginId#)
 		]]>
 	</insert>
 	
-	<select id="getContactItemListByLoginId"
-		parameterClass="java.lang.String"
+	<select id="getContactItemListBySearch"
+		parameterClass="contactSearchObj"
 		resultMap="contact-item-result">
 		<![CDATA[
 			select	* 
 			from	contact_item 
 			where	is_deleted = 'no' and login_id = #loginId#
-			order by gmt_created asc
 		]]>
+		<isNotEmpty prepend="AND" property="name">
+			<![CDATA[name like '%$name$%' ]]>
+		</isNotEmpty>		
+		<isNotEmpty  property="pinyin">
+			<![CDATA[ and pinyin = #pinyin# ]]>
+		</isNotEmpty>
+		<isNotEmpty  property="contactTypeId">
+			<![CDATA[ and contact_type_id = #contactTypeId# ]]>
+		</isNotEmpty>
+			<![CDATA[ order by gmt_created asc ]]>
 	</select>
 	
 	<select id="getContactItemById"
@@ -183,7 +193,7 @@
 					other2			= #other2#,
 					other1_note		= #other1Note#,
 					other2_note		= #other2Note#,
-					contact_type_id	= #contactTypeId#,
+					contact_type_id	= #contactType.contactTypeId#,
 					note			= #note#
 			where	is_deleted = 'no' and contact_item_id = #contactItemId#
 		]]>

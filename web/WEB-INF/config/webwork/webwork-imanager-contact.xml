@@ -49,30 +49,29 @@
 						
 			<result name="initAddContactItem" type="velocity">contact-item-add.vm</result>
 			
-			<result name="addContactItem" type="velocity">/framework/success.vm</result>
-			<!--
 			<result name="addContactItem" type="redirect-action">
 				<param name="namespace">/contact</param>
-				<param name="actionName">contactTypeAction</param>
-				<param name="method">getContactTypeListByLoginId</param>
+				<param name="actionName">contactItemAction</param>
+				<param name="method">initGetContactItemListBySearch</param>
 			</result>
 			
-			<result name="getContactTypeListByLoginId" type="velocity">contact-type-list.vm</result>
+			<result name="initGetContactItemListBySearch" type="velocity">contact-item-list.vm</result>
 			
-			<result name="getContactTypeById" type="velocity">contact-type-update.vm</result>
+			<result name="getContactItemListBySearch" type="velocity">contact-item-list.vm</result>
 			
-			<result name="updateContactType" type="redirect-action">
+			<result name="getContactItemById" type="velocity">contact-item-update.vm</result>
+			
+			<result name="updateContactItem" type="redirect-action">
 				<param name="namespace">/contact</param>
-				<param name="actionName">contactTypeAction</param>
-				<param name="method">getContactTypeListByLoginId</param>
+				<param name="actionName">contactItemAction</param>
+				<param name="method">initGetContactItemListBySearch</param>
 			</result>
 			
-			<result name="logicDeleteContactType" type="redirect-action">
+			<result name="logicDeleteContactItem" type="redirect-action">
 				<param name="namespace">/contact</param>
-				<param name="actionName">contactTypeAction</param>
-				<param name="method">getContactTypeListByLoginId</param>
+				<param name="actionName">contactItemAction</param>
+				<param name="method">initGetContactItemListBySearch</param>
 			</result>
-			-->
 			
 			<interceptor-ref name="modelParamsStack" />
 		</action>

@@ -3,7 +3,7 @@
 <sqlMap namespace="BlogContent">
 
 	<typeAlias alias="blogContent" type="com.imanager.blog.domain.BlogContent" />
-	<typeAlias alias="searchObj" type="com.imanager.blog.domain.input.BlogContentSearchObj" />
+	<typeAlias alias="blogSearchObj" type="com.imanager.blog.domain.input.BlogContentSearchObj" />
 	<typeAlias alias="blogContentOutput" type="com.imanager.blog.domain.output.BlogContentOutput"/>
 
 	<resultMap id="blogContent-list-result" class="blogContentOutput">
@@ -17,7 +17,7 @@
 	</resultMap>
 	
 	<select id="getBlogContentListBySearch"
-		parameterClass="searchObj"
+		parameterClass="blogSearchObj"
 		resultMap="blogContent-list-result">
 		<![CDATA[
 			select	*
@@ -55,8 +55,6 @@
 				  #loginId#)
 		]]>
 	</insert>
-
-	
 
 	<select id="getBlogContentById"
 		parameterClass="java.lang.String"
