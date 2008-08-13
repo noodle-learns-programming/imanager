@@ -14,6 +14,7 @@
 		<action name="loginAction" class="com.imanager.login.action.LoginAction">
 			<result name="error" type="velocity">/framework/error.vm</result>
 			<result name="success" type="velocity">/framework/success.vm</result>
+			<result name="input" type="velocity">login.vm</result>
 						
 			<result name="init" type="velocity">login.vm</result>
 
