@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.imanager.common.LoginUtil;
 import com.imanager.contact.dao.IContactTypeDao;
 import com.imanager.contact.domain.ContactType;
 import com.opensymphony.xwork.ActionSupport;
@@ -29,8 +30,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String initAddContactType() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		contactType.setLoginId(currentLoginId);
 		
@@ -43,8 +44,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String addContactType() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactType.setCreator(currentLoginId);
@@ -66,8 +67,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String getContactTypeListByLoginId() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
@@ -86,8 +87,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String getContactTypeById() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactType = contactTypeDao.getContactTypeById(contactTypeId);
@@ -106,8 +107,8 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String updateContactType() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactType.setModifier(currentLoginId);
@@ -126,8 +127,8 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	public String logicDeleteContactType() throws Exception {
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			contactType.setModifier(currentLoginId);
