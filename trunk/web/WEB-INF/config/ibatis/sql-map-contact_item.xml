@@ -109,10 +109,10 @@
 		<isNotEmpty prepend="AND" property="name">
 			<![CDATA[name like '%$name$%' ]]>
 		</isNotEmpty>		
-		<isNotEmpty  property="pinyin">
-			<![CDATA[ and pinyin = #pinyin# ]]>
+		<isNotEmpty prepend="AND" property="pinyin">
+			<![CDATA[pinyin like '%$pinyin$%' ]]>
 		</isNotEmpty>
-		<isNotEmpty  property="contactTypeId">
+		<isNotEmpty property="contactTypeId">
 			<![CDATA[ and contact_type_id = #contactTypeId# ]]>
 		</isNotEmpty>
 			<![CDATA[ order by gmt_created asc ]]>
