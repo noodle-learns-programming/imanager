@@ -9,5 +9,11 @@
 	<bean id="contactItemDao" class="com.imanager.contact.dao.impl.ContactItemDaoImpl">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
+	
+	<bean id="contactService" class="com.imanager.contact.service.impl.ContactServiceImpl">
+		<property name="transactionTemplate" ref="transactionTemplate" />
+		<property name="contactItemDao" ref="contactItemDao" />
+		<property name="contactTypeDao" ref="contactTypeDao" />
+	</bean>
 
 </beans>
