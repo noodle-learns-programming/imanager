@@ -124,7 +124,7 @@
 		<![CDATA[
 			select	* 
 			from	contact_item 
-			where	contact_item_id = #contactItemId#
+			where	is_deleted = 'no' and contact_item_id = #contactItemId#
 		]]>
 	</select>
 	

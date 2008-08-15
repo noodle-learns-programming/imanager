@@ -45,7 +45,7 @@
 					contact_type		as contactType,
 					login_id			as loginId
 			from	contact_type 
-			where	contact_type_id = #contactTypeId#
+			where	is_deleted = 'no' and contact_type_id = #contactTypeId#
 		]]>
 	</select>
 	
