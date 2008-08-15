@@ -145,6 +145,14 @@ private static final long serialVersionUID = 1L;
 		try{
 			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
 			contactItem = contactItemDao.getContactItemById(contactItemId);
+			
+			//若联系类型被删除，则联系类型置空
+			if(contactItem.getContactType().getContactType() == null){
+				ContactType contactType = new ContactType();
+				contactType.setContactTypeId(0);
+				contactType.setContactType("");
+				contactItem.setContactType(contactType);
+			}
 		}catch (Exception e){
 			log.error("Error: " + ContactItemAction.class + ", getContactItemById()");
 			e.printStackTrace();
