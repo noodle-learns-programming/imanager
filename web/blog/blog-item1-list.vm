@@ -39,7 +39,7 @@
                 					<td align = "center"> $esc.html($blogItem1.itemChn) &nbsp; </td>
                 					<td align = "center"> $esc.html($blogItem1.itemEng) &nbsp; </td>
                 					<td align = "center">
-										#if($!stringUtil.isEmpty("$!blogItem1.item2Count"))
+										#if($!stringUtil.isBlank("$!blogItem1.item2Count"))
                 							0
                 						#else
                 							&nbsp; $!blogItem1.item2Count &nbsp;
