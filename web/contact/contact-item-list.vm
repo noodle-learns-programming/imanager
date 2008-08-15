@@ -61,7 +61,9 @@
 							#foreach($contactItem in $contactItemList)
                 				<tr>
                 					<td align = "center">$esc.html($contactItem.name) &nbsp;</td>
-                					<td align = "center">$esc.html($contactItem.contactType.contactType) &nbsp;</td>
+                					<td align = "center">
+										#if($!stringUtil.isBlank("$!contactItem.contactType.contactType")) 无联系类型 #else $esc.html($contactItem.contactType.contactType) #end
+									</td>
 									<td align = "center">$esc.html($contactItem.mobile1) &nbsp;</td>
 									<td align = "center">$esc.html($contactItem.qq1) &nbsp;</td>
 									<td align = "center">$esc.html($contactItem.msn1) &nbsp;</td>
