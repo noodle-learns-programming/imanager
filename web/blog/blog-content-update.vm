@@ -36,7 +36,7 @@
                     			<tr>
 									<td align="left">ÄÚÈÝ:</td>
                 					<td align="left">
-										<textarea id="blogContent.content" name="blogContent.content" onkeydown="KeyDown(event)" cols="99" rows="20">$esc.html($!blogContent.content)</textarea>
+										<textarea id="blogContent.content" name="blogContent.content" cols="99" rows="20">$esc.html($!blogContent.content)</textarea>
 									</td>
                     			</tr>
                     			<tr>
