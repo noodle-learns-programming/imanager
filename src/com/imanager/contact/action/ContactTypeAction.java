@@ -47,9 +47,12 @@ private static final long serialVersionUID = 1L;
 		currentLoginId = new LoginUtil().getCurrentLogin();
 		//TODO currentLoginId = "yangqiang";
 		
+		String contactTypeTrim = contactType.getContactType().trim();
+		
 		try{
 			contactType.setCreator(currentLoginId);
 			contactType.setModifier(currentLoginId);
+			contactType.setContactType(contactTypeTrim);
 			
 			contactTypeDao.insertContactType(contactType);
 		}catch (Exception e){
@@ -109,9 +112,11 @@ private static final long serialVersionUID = 1L;
 	public String updateContactType() throws Exception {
 		currentLoginId = new LoginUtil().getCurrentLogin();
 		//TODO currentLoginId = "yangqiang";
+		String contactTypeTrim = contactType.getContactType().trim();
 		
 		try{
 			contactType.setModifier(currentLoginId);
+			contactType.setContactType(contactTypeTrim);
 			
 			if(contactTypeDao.updateContactType(contactType)){
 				return "updateContactType";

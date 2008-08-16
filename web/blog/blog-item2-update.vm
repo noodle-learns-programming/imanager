@@ -37,13 +37,13 @@
                     			<tr>
                     				<td align="left">二级类型中文名:</td>
                     				<td align="left">
-                    					<input type="text" id="blogItem2.itemChn" name="blogItem2.itemChn" value="$esc.html($blogItem2.itemChn)" size="90" maxlength="90" />
+                    					<input type="text" id="blogItem2.itemChn" name="blogItem2.itemChn" onkeydown="KeyDown2(event)" value="$esc.html($blogItem2.itemChn)" size="90" maxlength="90" />
                     				</td>
                     			</tr>
                     			<tr>
                     				<td align="left">二级类型拼音:</td>
                     				<td align="left">
-                    					<input type="text" id="blogItem2.itemEng" name="blogItem2.itemEng" value="$esc.html($blogItem2.itemEng)" size="90" maxlength="90" />
+                    					<input type="text" id="blogItem2.itemEng" name="blogItem2.itemEng" onkeydown="KeyDown2(event)" value="$esc.html($blogItem2.itemEng)" size="90" maxlength="90" />
                     				</td>
                     			</tr>
                     			<tr>
@@ -53,7 +53,7 @@
                     				</td>
                     			</tr>
                     		</table>
-                    		<input type="submit" name="submit" value="更新" />&nbsp;&nbsp;
+                    		<input type="button" value="更新" onclick="checkBlogItem2Form();"/>&nbsp;&nbsp;
                     		<input type="reset" name="reset" value="取消" />
                     	</form>
 					</td>

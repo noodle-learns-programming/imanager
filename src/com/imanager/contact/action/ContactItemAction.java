@@ -64,10 +64,15 @@ private static final long serialVersionUID = 1L;
 		currentLoginId = new LoginUtil().getCurrentLogin();
 		//TODO currentLoginId = "yangqiang";
 		
+		String nameTrim = contactItem.getName().trim();
+		String pinyinTrim = contactItem.getPinyin().trim();
+		
 		try{
 			contactItem.setCreator(currentLoginId);
 			contactItem.setModifier(currentLoginId);
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
+			contactItem.setName(nameTrim);
+			contactItem.setPinyin(pinyinTrim);
 			
 			contactItemDao.insertContactItem(contactItem);
 		}catch (Exception e){
@@ -171,9 +176,14 @@ private static final long serialVersionUID = 1L;
 		currentLoginId = new LoginUtil().getCurrentLogin();
 		//TODO currentLoginId = "yangqiang";
 		
+		String nameTrim = contactItem.getName().trim();
+		String pinyinTrim = contactItem.getPinyin().trim();
+		
 		try{
 			contactItem.setModifier(currentLoginId);
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
+			contactItem.setName(nameTrim);
+			contactItem.setPinyin(pinyinTrim);
 			
 			if(contactItemDao.updateContactItem(contactItem)){
 				return "updateContactItem";
