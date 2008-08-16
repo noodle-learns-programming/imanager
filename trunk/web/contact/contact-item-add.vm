@@ -42,15 +42,15 @@
 								<tr><th colspan="4" align="left">基本信息</th></tr>
                     			<tr>
                     				<td width="10%" align="right">姓名:</td>
-                    				<td width="40%" align="left"><input type="text" id="contactItem.name" name="contactItem.name" value="$esc.html($!contactItem.name)" size="43" maxlength="43"></td>
+                    				<td width="40%" align="left"><input type="text" id="contactItem.name" name="contactItem.name" value="$esc.html($!contactItem.name)" size="43" maxlength="20"></td>
 									<td width="10%" align="right">拼音:</td>
-                    				<td width="40%" align="left"><input type="text" id="contactItem.pinyin" name="contactItem.pinyin" value="$esc.html($!contactItem.pinyin)" size="43" maxlength="43"></td>
+                    				<td width="40%" align="left"><input type="text" id="contactItem.pinyin" name="contactItem.pinyin" value="$esc.html($!contactItem.pinyin)" size="43" maxlength="20"></td>
                     			</tr>
 								<tr>
                     				<td align="right">英文名:</td>
-                    				<td align="left"><input type="text" id="contactItem.englishName" name="contactItem.englishName" value="$esc.html($!contactItem.englishName)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.englishName" name="contactItem.englishName" value="$esc.html($!contactItem.englishName)" size="43" maxlength="20"></td>
 									<td align="right">昵称:</td>
-                    				<td align="left"><input type="text" id="contactItem.nickName" name="contactItem.nickName" value="$esc.html($!contactItem.nickName)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.nickName" name="contactItem.nickName" value="$esc.html($!contactItem.nickName)" size="43" maxlength="20"></td>
                     			</tr>
 								<tr>
                     				<td align="right">性别:</td>
@@ -74,7 +74,7 @@
                     			</tr>
 								<tr>
                     				<td align="right">籍贯:</td>
-                    				<td align="left"><input type="text" id="contactItem.nativePlace" name="contactItem.nativePlace" value="$esc.html($!contactItem.nativePlace)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.nativePlace" name="contactItem.nativePlace" value="$esc.html($!contactItem.nativePlace)" size="43" maxlength="100"></td>
 									<td align="right">联系类型:</td>
 									<td align="left">
 										<select id="contactItem.contactType.contactTypeId" name="contactItem.contactType.contactTypeId">
@@ -101,140 +101,140 @@
 								<tr><th colspan="4" align="left">联系信息</th></tr>
 								<tr>
                     				<td align="right">联系地址:</td>
-                    				<td align="left"><input type="text" id="contactItem.address" name="contactItem.address" value="$esc.html($!contactItem.address)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.address" name="contactItem.address" value="$esc.html($!contactItem.address)" size="43" maxlength="100"></td>
 									<td align="right">邮编:</td>
-                    				<td align="left"><input type="text" id="contactItem.zip" name="contactItem.zip" value="$esc.html($!contactItem.zip)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.zip" name="contactItem.zip" value="$esc.html($!contactItem.zip)" size="43" maxlength="10"></td>
                     			</tr>
 								<tr>
                     				<td align="right">就读学校:</td>
-                    				<td align="left"><input type="text" id="contactItem.school" name="contactItem.school" value="$esc.html($!contactItem.school)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.school" name="contactItem.school" value="$esc.html($!contactItem.school)" size="43" maxlength="100"></td>
 									<td align="right">学校地址:</td>
-                    				<td align="left"><input type="text" id="contactItem.schoolAddress" name="contactItem.schoolAddress" value="$esc.html($!contactItem.schoolAddress)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.schoolAddress" name="contactItem.schoolAddress" value="$esc.html($!contactItem.schoolAddress)" size="43" maxlength="100"></td>
                     			</tr>
 								<tr>
                     				<td align="right">工作单位:</td>
-                    				<td align="left"><input type="text" id="contactItem.company" name="contactItem.company" value="$esc.html($!contactItem.company)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.company" name="contactItem.company" value="$esc.html($!contactItem.company)" size="43" maxlength="100"></td>
 									<td align="right">单位地址:</td>
-                    				<td align="left"><input type="text" id="contactItem.companyAddress" name="contactItem.companyAddress" value="$esc.html($!contactItem.companyAddress)" size="43" maxlength="43"></td>
+                    				<td align="left"><input type="text" id="contactItem.companyAddress" name="contactItem.companyAddress" value="$esc.html($!contactItem.companyAddress)" size="43" maxlength="100"></td>
                     			</tr>
 								<tr>
                     				<td align="right">手机1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.mobile1" name="contactItem.mobile1" value="$esc.html($!contactItem.mobile1)" size="25" maxlength="25">
-										城市:<input type="text" id="contactItem.mobile1City" name="contactItem.mobile1City" value="$esc.html($!contactItem.mobile1City)" size="10" maxlength="10">
+										<input type="text" id="contactItem.mobile1" name="contactItem.mobile1" value="$esc.html($!contactItem.mobile1)" size="25" maxlength="20">
+										城市:<input type="text" id="contactItem.mobile1City" name="contactItem.mobile1City" value="$esc.html($!contactItem.mobile1City)" size="10" maxlength="20">
 									</td>
 									<td align="right">手机2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.mobile2" name="contactItem.mobile2" value="$esc.html($!contactItem.mobile2)" size="25" maxlength="25">
-										城市:<input type="text" id="contactItem.mobile2City" name="contactItem.mobile2City" value="$esc.html($!contactItem.mobile2City)" size="10" maxlength="10">
+										<input type="text" id="contactItem.mobile2" name="contactItem.mobile2" value="$esc.html($!contactItem.mobile2)" size="25" maxlength="20">
+										城市:<input type="text" id="contactItem.mobile2City" name="contactItem.mobile2City" value="$esc.html($!contactItem.mobile2City)" size="10" maxlength="20">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">家庭电话1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.familyPhone1" name="contactItem.familyPhone1" value="$esc.html($!contactItem.familyPhone1)" size="25" maxlength="25">
-										城市:<input type="text" id="contactItem.familyPhone1City" name="contactItem.familyPhone1City" value="$esc.html($!contactItem.familyPhone1City)" size="10" maxlength="10">
+										<input type="text" id="contactItem.familyPhone1" name="contactItem.familyPhone1" value="$esc.html($!contactItem.familyPhone1)" size="25" maxlength="20">
+										城市:<input type="text" id="contactItem.familyPhone1City" name="contactItem.familyPhone1City" value="$esc.html($!contactItem.familyPhone1City)" size="10" maxlength="20">
 									</td>
 									<td align="right">家庭电话2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.familyPhone2" name="contactItem.familyPhone2" value="$esc.html($!contactItem.familyPhone2)" size="25" maxlength="25">
-										城市:<input type="text" id="contactItem.familyPhone2City" name="contactItem.familyPhone2City" value="$esc.html($!contactItem.familyPhone2City)" size="10" maxlength="10">
+										<input type="text" id="contactItem.familyPhone2" name="contactItem.familyPhone2" value="$esc.html($!contactItem.familyPhone2)" size="25" maxlength="20">
+										城市:<input type="text" id="contactItem.familyPhone2City" name="contactItem.familyPhone2City" value="$esc.html($!contactItem.familyPhone2City)" size="10" maxlength="20">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">工作电话1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.workPhone1" name="contactItem.workPhone1" value="$esc.html($!contactItem.workPhone1)" size="25" maxlength="25">
-										城市:<input type="text" id="contactItem.workPhone1City" name="contactItem.workPhone1City" value="$esc.html($!contactItem.workPhone1City)" size="10" maxlength="10">
+										<input type="text" id="contactItem.workPhone1" name="contactItem.workPhone1" value="$esc.html($!contactItem.workPhone1)" size="25" maxlength="20">
+										城市:<input type="text" id="contactItem.workPhone1City" name="contactItem.workPhone1City" value="$esc.html($!contactItem.workPhone1City)" size="10" maxlength="20">
 									</td>
                     				<td align="right">工作电话2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.workPhone2" name="contactItem.workPhone2" value="$esc.html($!contactItem.workPhone2)" size="25" maxlength="25">
-										城市:<input type="text" id="contactItem.workPhone2City" name="contactItem.workPhone2City" value="$esc.html($!contactItem.workPhone2City)" size="10" maxlength="10">
+										<input type="text" id="contactItem.workPhone2" name="contactItem.workPhone2" value="$esc.html($!contactItem.workPhone2)" size="25" maxlength="20">
+										城市:<input type="text" id="contactItem.workPhone2City" name="contactItem.workPhone2City" value="$esc.html($!contactItem.workPhone2City)" size="10" maxlength="20">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">Email1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.email1" name="contactItem.email1" value="$esc.html($!contactItem.email1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.email1Note" name="contactItem.email1Note" value="$esc.html($!contactItem.email1Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.email1" name="contactItem.email1" value="$esc.html($!contactItem.email1)" size="25" maxlength="30">
+										备注:<input type="text" id="contactItem.email1Note" name="contactItem.email1Note" value="$esc.html($!contactItem.email1Note)" size="10" maxlength="30">
 									</td>
                     				<td align="right">Email2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.email2" name="contactItem.email2" value="$esc.html($!contactItem.email2)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.email2Note" name="contactItem.email2Note" value="$esc.html($!contactItem.email2Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.email2" name="contactItem.email2" value="$esc.html($!contactItem.email2)" size="25" maxlength="30">
+										备注:<input type="text" id="contactItem.email2Note" name="contactItem.email2Note" value="$esc.html($!contactItem.email2Note)" size="10" maxlength="30">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">QQ1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.qq1" name="contactItem.qq1" value="$esc.html($!contactItem.qq1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.qq1Note" name="contactItem.qq1Note" value="$esc.html($!contactItem.qq1Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.qq1" name="contactItem.qq1" value="$esc.html($!contactItem.qq1)" size="25" maxlength="15">
+										备注:<input type="text" id="contactItem.qq1Note" name="contactItem.qq1Note" value="$esc.html($!contactItem.qq1Note)" size="10" maxlength="30">
 									</td>
                     				<td align="right">QQ2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.qq2" name="contactItem.qq2" value="$esc.html($!contactItem.qq2)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.qq2Note" name="contactItem.qq2Note" value="$esc.html($!contactItem.qq2Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.qq2" name="contactItem.qq2" value="$esc.html($!contactItem.qq2)" size="25" maxlength="15">
+										备注:<input type="text" id="contactItem.qq2Note" name="contactItem.qq2Note" value="$esc.html($!contactItem.qq2Note)" size="10" maxlength="30">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">Msn1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.msn1" name="contactItem.msn1" value="$esc.html($!contactItem.msn1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.msn1Note" name="contactItem.msn1Note" value="$esc.html($!contactItem.msn1Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.msn1" name="contactItem.msn1" value="$esc.html($!contactItem.msn1)" size="25" maxlength="30">
+										备注:<input type="text" id="contactItem.msn1Note" name="contactItem.msn1Note" value="$esc.html($!contactItem.msn1Note)" size="10" maxlength="30">
 									</td>
                     				<td align="right">Msn2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.msn2" name="contactItem.msn2" value="$esc.html($!contactItem.msn2)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.msn2Note" name="contactItem.msn2Note" value="$esc.html($!contactItem.msn2Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.msn2" name="contactItem.msn2" value="$esc.html($!contactItem.msn2)" size="25" maxlength="30">
+										备注:<input type="text" id="contactItem.msn2Note" name="contactItem.msn2Note" value="$esc.html($!contactItem.msn2Note)" size="10" maxlength="30">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">雅虎通1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.yahoo1" name="contactItem.yahoo1" value="$esc.html($!contactItem.yahoo1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.yahoo1Note" name="contactItem.yahoo1Note" value="$esc.html($!contactItem.yahoo1Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.yahoo1" name="contactItem.yahoo1" value="$esc.html($!contactItem.yahoo1)" size="25" maxlength="30">
+										备注:<input type="text" id="contactItem.yahoo1Note" name="contactItem.yahoo1Note" value="$esc.html($!contactItem.yahoo1Note)" size="10" maxlength="30">
 									</td>
                     				<td align="right">雅虎通2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.yahoo2" name="contactItem.yahoo2" value="$esc.html($!contactItem.yahoo2)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.yahoo2Note" name="contactItem.yahoo2Note" value="$esc.html($!contactItem.yahoo2Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.yahoo2" name="contactItem.yahoo2" value="$esc.html($!contactItem.yahoo2)" size="25" maxlength="30">
+										备注:<input type="text" id="contactItem.yahoo2Note" name="contactItem.yahoo2Note" value="$esc.html($!contactItem.yahoo2Note)" size="10" maxlength="30">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">旺旺1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.aliwang1" name="contactItem.aliwang1" value="$esc.html($!contactItem.aliwang1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.aliwang1Note" name="contactItem.aliwang1Note" value="$esc.html($!contactItem.aliwang1Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.aliwang1" name="contactItem.aliwang1" value="$esc.html($!contactItem.aliwang1)" size="25" maxlength="20">
+										备注:<input type="text" id="contactItem.aliwang1Note" name="contactItem.aliwang1Note" value="$esc.html($!contactItem.aliwang1Note)" size="10" maxlength="30">
 									</td>
                     				<td align="right">旺旺2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.aliwang2" name="contactItem.aliwang2" value="$esc.html($!contactItem.aliwang2)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.aliwang2Note" name="contactItem.aliwang2Note" value="$esc.html($!contactItem.aliwang2Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.aliwang2" name="contactItem.aliwang2" value="$esc.html($!contactItem.aliwang2)" size="25" maxlength="20">
+										备注:<input type="text" id="contactItem.aliwang2Note" name="contactItem.aliwang2Note" value="$esc.html($!contactItem.aliwang2Note)" size="10" maxlength="30">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">个人主页1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.web1" name="contactItem.web1" value="$esc.html($!contactItem.web1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.web1Note" name="contactItem.web1Note" value="$esc.html($!contactItem.web1Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.web1" name="contactItem.web1" value="$esc.html($!contactItem.web1)" size="25" maxlength="100">
+										备注:<input type="text" id="contactItem.web1Note" name="contactItem.web1Note" value="$esc.html($!contactItem.web1Note)" size="10" maxlength="30">
 									</td>
                     				<td align="right">个人主页2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.web2" name="contactItem.web2" value="$esc.html($!contactItem.web2)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.web2Note" name="contactItem.web2Note" value="$esc.html($!contactItem.web2Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.web2" name="contactItem.web2" value="$esc.html($!contactItem.web2)" size="25" maxlength="100">
+										备注:<input type="text" id="contactItem.web2Note" name="contactItem.web2Note" value="$esc.html($!contactItem.web2Note)" size="10" maxlength="30">
 									</td>
                     			</tr>
 								<tr>
                     				<td align="right">其他1:</td>
 									<td align="left">
-										<input type="text" id="contactItem.other1" name="contactItem.other1" value="$esc.html($!contactItem.other1)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.other1Note" name="contactItem.other1Note" value="$esc.html($!contactItem.other1Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.other1" name="contactItem.other1" value="$esc.html($!contactItem.other1)" size="25" maxlength="100">
+										备注:<input type="text" id="contactItem.other1Note" name="contactItem.other1Note" value="$esc.html($!contactItem.other1Note)" size="10" maxlength="30">
 									</td>
                     				<td align="right">其他2:</td>
 									<td align="left">
-										<input type="text" id="contactItem.other2" name="contactItem.other2" value="$esc.html($!contactItem.other2)" size="25" maxlength="25">
-										备注:<input type="text" id="contactItem.other2Note" name="contactItem.other2Note" value="$esc.html($!contactItem.other2Note)" size="10" maxlength="10">
+										<input type="text" id="contactItem.other2" name="contactItem.other2" value="$esc.html($!contactItem.other2)" size="25" maxlength="100">
+										备注:<input type="text" id="contactItem.other2Note" name="contactItem.other2Note" value="$esc.html($!contactItem.other2Note)" size="10" maxlength="30">
 									</td>
                     			</tr>
 								<tr>

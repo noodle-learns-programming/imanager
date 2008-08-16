@@ -28,19 +28,19 @@
                     			cellpadding="0" cellspacing="0" align="center" >
                     			<tr>
                     				<td align="right">消费项目:</td>
-                    				<td align="left"><input type="text" id="consumeItem.itemName" name="consumeItem.itemName" value="$esc.html($!consumeItem.itemName)" size="100" maxlength="100"></td>
+                    				<td align="left"><input type="text" id="consumeItem.itemName" name="consumeItem.itemName" onkeydown="KeyDown(event)" value="$esc.html($!consumeItem.itemName)" size="100" maxlength="100"></td>
                     			</tr>
                     			<tr>
                     				<td align="right">消费地点:</td>
-                    				<td align="left"><input type="text" id="consumeItem.address" name="consumeItem.address" value="$esc.html($!consumeItem.address)" size="100" maxlength="100"></td>
+                    				<td align="left"><input type="text" id="consumeItem.address" name="consumeItem.address" onkeydown="KeyDown(event)" value="$esc.html($!consumeItem.address)" size="100" maxlength="100"></td>
                     			</tr>
                     			<tr>
                     				<td align="right">单价:</td>
-                    				<td align="left"><input type="text" id="consumeItem.price" name="consumeItem.price" value="$!consumeItem.price" size="100" maxlength="100"></td>
+                    				<td align="left"><input type="text" id="consumeItem.price" name="consumeItem.price" onkeydown="KeyDown(event)" value="$!consumeItem.price" size="100" maxlength="100"></td>
                     			</tr>
                     			<tr>
                     				<td align="right">数量:</td>
-                    				<td align="left"><input type="text" id="consumeItem.quantity" name="consumeItem.quantity" value="$!consumeItem.quantity" size="100" maxlength="100"></td>
+                    				<td align="left"><input type="text" id="consumeItem.quantity" name="consumeItem.quantity" onkeydown="KeyDown(event)" value="$!consumeItem.quantity" size="100" maxlength="100"></td>
                     			</tr>
                     			<tr>
                     				<td align="right">消费时间:</td>
@@ -62,7 +62,7 @@
 									</td>
                     			</tr>
                     		</table>
-                    		<input type="button" value="添加" onclick="checkSubmit();" />&nbsp;&nbsp;
+                    		<input type="button" value="添加" onclick="checkConsumeItemForm();" />&nbsp;&nbsp;
                     		<input type="reset" value="取消" />
                     	</form>
 					</td>

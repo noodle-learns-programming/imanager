@@ -74,10 +74,10 @@ function checkEmailsBak(emailStr) {
 		return false;
 	}
 	return true;
-	}
+}
 
    
-function checkByteLength(str,minlen,maxlen) {
+function checkByteLength(str, minlen, maxlen) {
 	if (str == null) return false;
 	var l = str.length;
 	var blen = 0;
@@ -91,4 +91,23 @@ function checkByteLength(str,minlen,maxlen) {
 		return false;
 	}
 	return true;
+}
+
+function checkInputLength(str, maxlen) {
+	var len = str.match(/[^ -~]/g) == null ? str.length : str.length + str.match(/[^ -~]/g).length ;
+	
+	if (len < maxlen || len == maxlen) {
+		return true;
+	}
+	return false;
+}
+
+function getInputLen(str) {
+	var len = str.match(/[^ -~]/g) == null ? str.length : str.length + str.match(/[^ -~]/g).length ;
+	return len;
+}
+
+function getInputLenWithoutRN(str) {
+	var len = str.match(/[^\r|\n| -~]/g) == null ? str.replace(/[\r|\n]/g,"").length : str.replace(/[\r|\n]/g,"").length + str.match(/[^\r|\n| -~]/g).length ;
+	return len;
 }

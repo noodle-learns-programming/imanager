@@ -1,6 +1,21 @@
+function KeyDown1(evt){
+	evt = evt || window.event;
+	var kc = evt.keyCode;
+	if(kc==13){
+		checkBlogItem1Form();
+	}
+}
+
+function KeyDown2(evt){
+	evt = evt || window.event;
+	var kc = evt.keyCode;
+	if(kc==13){
+		checkBlogItem2Form();
+	}
+}
 
 //检查BlogItem1的提交
-function checkBlogItem1Submit(){
+function checkBlogItem1Form(){
 	var theForm = document.getElementById("blogItem1Form");
 	
 	if(!checkBlogItem1Chn()){
@@ -22,6 +37,10 @@ function checkBlogItem1Chn(){
 		alert("中文名不能为空!");
 		return false;
 	}
+	if(!checkInputLength(Trim(o.value), 50)){
+		alert("中文名的长度不能大于50!");
+		return false;
+	}
 	return true;
 }
 
@@ -29,6 +48,10 @@ function checkBlogItem1Eng(){
 	var o = document.getElementById("blogItem1.itemEng");
 	if(Trim(o.value)==""){
 		alert("拼音不能为空!");
+		return false;
+	}
+	if(!checkInputLength(Trim(o.value), 50)){
+		alert("拼音的长度不能大于50!");
 		return false;
 	}
 	return true;
@@ -56,7 +79,7 @@ function callback(flag){
 }
 
 //检查BlogItem2的提交
-function checkBlogItem2Submit(){
+function checkBlogItem2Form(){
 	var theForm = document.getElementById("blogItem2Form");
 	
 	if(!checkBlogItem2IdSelect()){
@@ -73,6 +96,8 @@ function checkBlogItem2Submit(){
 		document.getElementById("blogItem2.itemEng").focus();
 		return false;
 	}
+	
+	theForm.submit();
 }
 
 function checkBlogItem2IdSelect(){
@@ -90,6 +115,10 @@ function checkBlogItem2Chn(){
 		alert("中文名不能为空!");
 		return false;
 	}
+	if(!checkInputLength(Trim(o.value), 50)){
+		alert("中文名的长度不能大于50!");
+		return false;
+	}
 	return true;
 }
 
@@ -97,6 +126,10 @@ function checkBlogItem2Eng(){
 	var o = document.getElementById("blogItem2.itemEng");
 	if(Trim(o.value)==""){
 		alert("拼音不能为空!");
+		return false;
+	}
+	if(!checkInputLength(Trim(o.value), 50)){
+		alert("拼音的长度不能大于50!");
 		return false;
 	}
 	return true;

@@ -1,3 +1,11 @@
+function KeyDown(evt){
+	evt = evt || window.event;
+	var kc = evt.keyCode;
+	if(kc==13){
+		checkContactTypeForm();
+	}
+}
+
 //检查ContactType的提交
 function checkContactTypeForm(){
 	var theForm = document.getElementById("contactTypeForm");
@@ -14,6 +22,10 @@ function checkContactType(){
 	var o = document.getElementById("contactType.contactType");
 	if(Trim(o.value)==""){
 		alert("联系类型不能为空!");
+		return false;
+	}
+	if(!checkInputLength(Trim(o.value), 50)){
+		alert("联系类型的长度不能大于50!");
 		return false;
 	}
 	return true;

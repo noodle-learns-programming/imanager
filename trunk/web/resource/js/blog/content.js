@@ -1,3 +1,11 @@
+function KeyDown(evt){
+	evt = evt || window.event;
+	var kc = evt.keyCode;
+	if(kc==13){
+		checkBlogContentForm();
+	}
+}
+
 function getBlogItem2List(){
 	var blogItem1Id = document.getElementById("blogContent.blogItem1Id").value;
 	BlogItem.getBlogItem1List(blogItem1Id, callback);
@@ -9,7 +17,7 @@ function callback(str){
 }
 
 //检查BlogContent的提交
-function checkBlogContentSubmit(){
+function checkBlogContentForm(){
 	var theForm = document.getElementById("blogContentForm");
 	
 	if(!checkBlogContentTitle()){
@@ -46,6 +54,10 @@ function checkBlogContentTitle(){
 		alert("标题不能为空!");
 		return false;
 	}
+	if(!checkInputLength(Trim(o.value), 100)){
+		alert("标题的长度不能大于100!");
+		return false;
+	}
 	return true;
 }
 
@@ -55,6 +67,10 @@ function checkBlogContentCon(){
 		alert("内容不能为空!");
 		return false;
 	}
+	if(!checkInputLength(Trim(o.value), 20000)){
+		alert("内容的长度不能大于20000!");
+		return false;
+	}
 	return true;
 }
 
@@ -62,6 +78,10 @@ function checkBlogContentWeather(){
 	var o = document.getElementById("blogContent.weather");
 	if(Trim(o.value)==""){
 		alert("天气不能为空!");
+		return false;
+	}
+	if(!checkInputLength(Trim(o.value), 50)){
+		alert("天气的长度不能大于50!");
 		return false;
 	}
 	return true;

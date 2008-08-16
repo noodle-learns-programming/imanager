@@ -30,6 +30,12 @@ function checkLoginId(){
 		alert("用户名不能为空!");
 		return false;
 	}
+	
+	if(!checkByteLength(Trim(o.value), 6, 20)){
+		alert("用户名的长度必须在6 - 20位之间!");
+		return false;
+	}
+	
 	return true;
 }
 
@@ -39,5 +45,11 @@ function checkLoginPwd(){
 		alert("密码不能为空!");
 		return false;
 	}
+	
+	if(!checkByteLength(Trim(o.value), 6, 20)){
+		alert("密码的长度必须在6 - 20位之间!");
+		return false;
+	}
+	
 	return true;
 }

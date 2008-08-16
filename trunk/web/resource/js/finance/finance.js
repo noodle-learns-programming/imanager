@@ -1,3 +1,11 @@
+function KeyDown(evt){
+	evt = evt || window.event;
+	var kc = evt.keyCode;
+	if(kc==13){
+		checkConsumeItemForm();
+	}
+}
+
 //delete consume item
 function deleteConsumeItem(consumeItemId){
 	if (confirm("你确定要删除消费记录吗？")){ 
@@ -6,7 +14,7 @@ function deleteConsumeItem(consumeItemId){
 }
 
 //表单验证
-function checkSubmit(){
+function checkConsumeItemForm(){
 	var theForm = document.getElementById("consumeItemForm");
 	
 	if(!checkConsumeItemName()){
@@ -39,6 +47,11 @@ function checkConsumeItemName(){
 		alert("消费项目不能为空!");
 		return false;
 	}
+	
+	if(!checkInputLength(Trim(o.value), 100)){
+		alert("消费项目的长度不能大于100!");
+		return false;
+	}
 	return true;
 }
 
@@ -46,6 +59,11 @@ function checkConsumeItemAddress(){
 	var o = document.getElementById("consumeItem.address");
 	if(Trim(o.value)==""){
 		alert("消费地点不能为空!");
+		return false;
+	}
+	
+	if(!checkInputLength(Trim(o.value), 100)){
+		alert("消费项地点长度不能大于100!");
 		return false;
 	}
 	return true;
