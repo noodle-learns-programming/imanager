@@ -240,7 +240,7 @@
 								<tr>
                 					<td align="right">±¸×¢:</td>
                 					<td align="left" colspan="3">
-										<textarea id="contactItem.note" name="contactItem.note" value="$esc.html($!contactItem.note)" cols="101" rows="10"></textarea>
+										<textarea id="contactItem.note" name="contactItem.note" cols="101" rows="10">$esc.html($!contactItem.note)</textarea>
 									</td>
                     			</tr>
                     			<tr>
