@@ -24,7 +24,7 @@
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
                 		<h2>消费列表</h2>
-                		<form action="consumeAction!doGetConsumeItemList.action" method="post">
+                		<form action="consumeItemAction!doGetConsumeItemList.action" method="post">
 							开始日期:<input type="text" id="searchObj.startDate" name="searchObj.startDate" readonly="true" value="$!dateUtil.date($!searchObj.startDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.startDate', '%Y-%m-%d');">
                 			&nbsp;&nbsp;
 							结束日期:<input type="text" id="searchObj.endDate" name="searchObj.endDate" readonly="true" value="$!dateUtil.date($!searchObj.endDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.endDate', '%Y-%m-%d');">
@@ -64,7 +64,7 @@
                 					</td>
                 					<td align = "center"> $!consumeItem.loginId &nbsp; </td>
                 					<td align = "center">
-                						<a href="consumeAction!doGetConsumItem.action?consumeItemId=$!consumeItem.consumeItemId">更新</a>&nbsp;|&nbsp;
+                						<a href="consumeItemAction!doGetConsumItem.action?consumeItemId=$!consumeItem.consumeItemId">更新</a>&nbsp;|&nbsp;
                 						<a href="#" onclick=deleteConsumeItem($!consumeItem.consumeItemId)>删除</a>
                 					</td>
                 				</tr>
