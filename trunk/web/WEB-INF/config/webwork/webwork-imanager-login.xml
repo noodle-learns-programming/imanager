@@ -19,8 +19,8 @@
 			<result name="init" type="velocity">login.vm</result>
 
 			<result name="success" type="redirect-action">
-				<param name="namespace">/finance</param>
-				<param name="actionName">financeAction</param>
+				<param name="namespace">/consume</param>
+				<param name="actionName">consumeAction</param>
 				<param name="method">doInitGetConsumeItemList</param>
 			</result>
 			
