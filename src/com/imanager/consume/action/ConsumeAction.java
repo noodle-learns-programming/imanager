@@ -26,7 +26,7 @@ public class ConsumeAction extends ActionSupport {
 	
 	private static final Log log = LogFactory.getLog(ConsumeAction.class);
 	
-	private IConsumeDao financeDao;
+	private IConsumeDao consumeDao;
 	
 	private ConsumeSearchObj searchObj = new ConsumeSearchObj();	//≤È—Ø∂‘œÛ
 	
@@ -59,9 +59,9 @@ public class ConsumeAction extends ActionSupport {
 			searchObj.setStartDate(DateUtil.dateOnlyExt(startDate));
 			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
 			
-			consumeItemList = financeDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
+			consumeItemList = consumeDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
 			
-			consumeItemListSum = financeDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
+			consumeItemListSum = consumeDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
 			
 			return "doInitGetConsumeItemList";
 			
@@ -86,9 +86,9 @@ public class ConsumeAction extends ActionSupport {
 			Date endDate = searchObj.getEndDate();
 			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
 			
-			consumeItemList = financeDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
+			consumeItemList = consumeDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
 			
-			consumeItemListSum = financeDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
+			consumeItemListSum = consumeDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
 			
 			return "doGetConsumeItemList";
 			
@@ -143,7 +143,7 @@ public class ConsumeAction extends ActionSupport {
 				consumeItem.setTotalPrice(totalPrice);
 			}
 			
-			financeDao.insertConsumeItem(consumeItem);
+			consumeDao.insertConsumeItem(consumeItem);
 			
 			return "doAddConsumItem";
 			
@@ -162,7 +162,7 @@ public class ConsumeAction extends ActionSupport {
 	public String doGetConsumItem() throws Exception {
 		
 		try{
-			consumeItem = financeDao.getConsumeItemByItemId(consumeItemId);
+			consumeItem = consumeDao.getConsumeItemByItemId(consumeItemId);
 			
 			if("in".equalsIgnoreCase(consumeItem.getInOrOut())){
 				consumeItem.setPrice(-consumeItem.getPrice());
@@ -205,7 +205,7 @@ public class ConsumeAction extends ActionSupport {
 				consumeItem.setTotalPrice(totalPrice);
 			}
 			
-			if(financeDao.updateConsumeItem(consumeItem)){
+			if(consumeDao.updateConsumeItem(consumeItem)){
 				return "doUpdateConsumItem";
 			}else{
 				return ERROR;
@@ -229,7 +229,7 @@ public class ConsumeAction extends ActionSupport {
 		//TODO currentLoginId = "yangqiang";
 		
 		try{
-			if(financeDao.logicDeleteConsumeItemByItemId(consumeItemId, currentLoginId)){
+			if(consumeDao.logicDeleteConsumeItemByItemId(consumeItemId, currentLoginId)){
 				return "doLogicDeleteConsumItem";
 			}else{
 				return ERROR;
@@ -266,12 +266,12 @@ public class ConsumeAction extends ActionSupport {
 		this.consumeItemListSum = consumeItemListSum;
 	}
 
-	public IConsumeDao getFinanceDao() {
-		return financeDao;
+	public IConsumeDao getConsumeDao() {
+		return consumeDao;
 	}
 
-	public void setFinanceDao(IConsumeDao financeDao) {
-		this.financeDao = financeDao;
+	public void setConsumeDao(IConsumeDao consumeDao) {
+		this.consumeDao = consumeDao;
 	}
 
 	public ConsumeItem getConsumeItem() {
