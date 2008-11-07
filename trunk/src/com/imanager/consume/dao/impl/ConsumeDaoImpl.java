@@ -1,4 +1,4 @@
-package com.imanager.finance.dao.impl;
+package com.imanager.consume.dao.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.SqlMapClientOperations;
 
-import com.imanager.finance.dao.IFinanceDao;
-import com.imanager.finance.domain.ConsumeItem;
-import com.imanager.finance.domain.input.FinanceSearchObj;
+import com.imanager.consume.dao.IConsumeDao;
+import com.imanager.consume.domain.ConsumeItem;
+import com.imanager.consume.domain.input.ConsumeSearchObj;
 
-public class FinanceDaoImpl implements IFinanceDao {
+public class ConsumeDaoImpl implements IConsumeDao {
 
 	private SqlMapClientOperations sqlMapClientTemplate;
 	
@@ -30,7 +30,7 @@ public class FinanceDaoImpl implements IFinanceDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, FinanceSearchObj searchObj) {
+	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, ConsumeSearchObj searchObj) {
 		Map map = new HashMap();
 		map.put("loginId", loginId);
 		map.put("startDate", searchObj.getStartDate());
@@ -49,7 +49,7 @@ public class FinanceDaoImpl implements IFinanceDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public double getConsumeItemListSumByIdNDate(String loginId, FinanceSearchObj searchObj) {
+	public double getConsumeItemListSumByIdNDate(String loginId, ConsumeSearchObj searchObj) {
 		Map map = new HashMap();
 		map.put("loginId", loginId);
 		map.put("startDate", searchObj.getStartDate());

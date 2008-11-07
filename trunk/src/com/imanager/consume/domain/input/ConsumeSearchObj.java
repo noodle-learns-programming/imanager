@@ -1,8 +1,8 @@
-package com.imanager.finance.domain.input;
+package com.imanager.consume.domain.input;
 
 import java.util.Date;
 
-public class FinanceSearchObj {
+public class ConsumeSearchObj {
 	
 	private Date startDate;
 	
