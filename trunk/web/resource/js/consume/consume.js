@@ -9,7 +9,7 @@ function KeyDown(evt){
 //delete consume item
 function deleteConsumeItem(consumeItemId){
 	if (confirm("你确定要删除消费记录吗？")){ 
-		window.location="consumeAction!doLogicDeleteConsumItem.action?consumeItemId="+consumeItemId;
+		window.location="consumeItemAction!doLogicDeleteConsumItem.action?consumeItemId="+consumeItemId;
 	}
 }
 
