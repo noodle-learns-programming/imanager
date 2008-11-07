@@ -15,11 +15,11 @@
 			<result name="error" type="velocity">/framework/error.vm</result>
 			<result name="success" type="velocity">/framework/success.vm</result>
 		
-			<result name="doInitGetConsumeItemList" type="velocity">consume-consumeitem-list.vm</result>
+			<result name="doInitGetConsumeItemList" type="velocity">consume-item-add.vm</result>
 			
-			<result name="doGetConsumeItemList" type="velocity">consume-consumeitem-list.vm</result>
+			<result name="doGetConsumeItemList" type="velocity">consume-item-add.vm</result>
 			
-			<result name="doGetConsumItem" type="velocity">consume-consumeitem-update.vm</result>
+			<result name="doGetConsumItem" type="velocity">consume-item-update.vm</result>
 			
 			<result name="doUpdateConsumItem" type="redirect-action">
 				<param name="namespace">/consume</param>
@@ -27,7 +27,7 @@
 				<param name="method">doInitGetConsumeItemList</param>
 			</result>
 			
-			<result name="doInitAddConsumItem" type="velocity">consume-add-consumeitem.vm</result>
+			<result name="doInitAddConsumItem" type="velocity">consume-item-add.vm</result>
 			
 			<result name="doAddConsumItem" type="redirect-action">
 				<param name="namespace">/consume</param>
