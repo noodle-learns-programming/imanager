@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
 <xwork>
-	<package name="imanager-finance" extends="webwork-default" namespace="/finance">
+	<package name="imanager-consume" extends="webwork-default" namespace="/consume">
 		
 		<interceptors>
 			<interceptor-stack name="modelParamsStack">
@@ -11,33 +11,33 @@
 			</interceptor-stack>
 		</interceptors>
 		
-		<action name="financeAction" class="com.imanager.finance.action.FinanceAction">
+		<action name="consumeAction" class="com.imanager.consume.action.ConsumeAction">
 			<result name="error" type="velocity">/framework/error.vm</result>
 			<result name="success" type="velocity">/framework/success.vm</result>
 		
-			<result name="doInitGetConsumeItemList" type="velocity">finance-consumeitem-list.vm</result>
+			<result name="doInitGetConsumeItemList" type="velocity">consume-consumeitem-list.vm</result>
 			
-			<result name="doGetConsumeItemList" type="velocity">finance-consumeitem-list.vm</result>
+			<result name="doGetConsumeItemList" type="velocity">consume-consumeitem-list.vm</result>
 			
-			<result name="doGetConsumItem" type="velocity">finance-consumeitem-update.vm</result>
+			<result name="doGetConsumItem" type="velocity">consume-consumeitem-update.vm</result>
 			
 			<result name="doUpdateConsumItem" type="redirect-action">
-				<param name="namespace">/finance</param>
-				<param name="actionName">financeAction</param>
+				<param name="namespace">/consume</param>
+				<param name="actionName">consumeAction</param>
 				<param name="method">doInitGetConsumeItemList</param>
 			</result>
 			
-			<result name="doInitAddConsumItem" type="velocity">finance-add-consumeitem.vm</result>
+			<result name="doInitAddConsumItem" type="velocity">consume-add-consumeitem.vm</result>
 			
 			<result name="doAddConsumItem" type="redirect-action">
-				<param name="namespace">/finance</param>
-				<param name="actionName">financeAction</param>
+				<param name="namespace">/consume</param>
+				<param name="actionName">consumeAction</param>
 				<param name="method">doInitGetConsumeItemList</param>
 			</result>
 			
 			<result name="doLogicDeleteConsumItem" type="redirect-action">
-				<param name="namespace">/finance</param>
-				<param name="actionName">financeAction</param>
+				<param name="namespace">/consume</param>
+				<param name="actionName">consumeAction</param>
 				<param name="method">doInitGetConsumeItemList</param>
 			</result>
 		
