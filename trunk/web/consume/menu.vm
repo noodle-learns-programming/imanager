@@ -1,0 +1,9 @@
+	<table bgcolor="#E1E1E1" border="1" bordercolor="blue" width="150" height="60"
+			cellpadding="0" cellspacing="0">
+		<tr valign="middle">
+			<td align="center"><a href="consumeAction!doInitGetConsumeItemList.action">财务状态列表</a></td>
+		</tr>
+		<tr valign="middle">
+			<td align="center"><a href="consumeAction!doInitAddConsumItem.action">添加消费记录</a></td>
+		</tr>
+	</table>
