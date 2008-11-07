@@ -11,8 +11,6 @@ public class BlogItem1 extends Basement{
 	private String itemEng;
 	
 	private String item2Count;
-	
-	private String loginId;
 
 	public int getBlogItem1Id() {
 		return blogItem1Id;
@@ -36,14 +34,6 @@ public class BlogItem1 extends Basement{
 
 	public void setItemEng(String itemEng) {
 		this.itemEng = itemEng;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
 	}
 
 	public String getItem2Count() {

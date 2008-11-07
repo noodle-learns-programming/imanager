@@ -8,8 +8,6 @@ public class User extends Basement {
 	
 	private int userId;
 	
-	private String loginId;
-	
 	private String userName;
 	
 	private String password;
@@ -33,14 +31,6 @@ public class User extends Basement {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
 	}
 
 	public String getUserName() {

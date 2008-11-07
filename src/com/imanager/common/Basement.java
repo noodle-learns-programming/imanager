@@ -13,6 +13,8 @@ public class Basement {
 	private Date gmtModified;
 	
 	private String isDeleted;
+	
+	private String loginId;
 
 	public Date getGmtCreated() {
 		return gmtCreated;
@@ -52,6 +54,14 @@ public class Basement {
 
 	public void setIsDeleted(String isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 }

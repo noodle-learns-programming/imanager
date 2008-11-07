@@ -15,8 +15,6 @@ public class BlogItem2 extends Basement{
 	private String item1Eng;
 	
 	private int blogItem1Id;
-	
-	private String loginId;
 
 	public String getItemChn() {
 		return itemChn;
@@ -33,15 +31,7 @@ public class BlogItem2 extends Basement{
 	public void setItemEng(String itemEng) {
 		this.itemEng = itemEng;
 	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
-
+	
 	public int getBlogItem2Id() {
 		return blogItem2Id;
 	}

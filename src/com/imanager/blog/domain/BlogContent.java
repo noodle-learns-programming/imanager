@@ -27,8 +27,6 @@ public class BlogContent extends Basement{
 	String weekday;
 	
 	String weather;
-	
-	String loginId;
 
 	public int getBlogContentId() {
 		return blogContentId;
@@ -116,13 +114,5 @@ public class BlogContent extends Basement{
 
 	public void setWeather(String weather) {
 		this.weather = weather;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
 	}
 }
