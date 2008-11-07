@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+			<title>iManager Finance</title>
+			<link rel="stylesheet" type="text/css" media="all" href="../resource/js/jscalendar/skins/aqua/theme.css" title="Aqua" />
+			<script type="text/javascript" src="../resource/js/jscalendar/calendar.js"></script>
+			<script type="text/javascript" src="../resource/js/jscalendar/showCalendar.js"></script>
+			<script type="text/javascript" src="../resource/js/jscalendar/lang/cn_utf8.js"></script>
+			<script type="text/javascript" src="../resource/js/util.js"></script>
+			<script type="text/javascript" src="../resource/js/finance/finance.js"></script>
+	</head>
+	
+    <body  topmargin="10" bgcolor="#99CCFF">
+    	<center>
+			#parse("/framework/header.vm")
+			<br/><br/><br/>
+				
+			<table border="0" width="80%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150">
+        				#parse("/finance/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+                    	<h2>添加消费记录</h2>
+                    	<form id="consumeItemForm" action="consumeAction!doAddConsumItem.action" method="post">
+                    		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
+                    			cellpadding="0" cellspacing="0" align="center" >
+                    			<tr>
+                    				<td align="right">消费项目:</td>
+                    				<td align="left"><input type="text" id="consumeItem.itemName" name="consumeItem.itemName" onkeydown="KeyDown(event)" value="$esc.html($!consumeItem.itemName)" size="100" maxlength="100"></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="right">消费地点:</td>
+                    				<td align="left"><input type="text" id="consumeItem.address" name="consumeItem.address" onkeydown="KeyDown(event)" value="$esc.html($!consumeItem.address)" size="100" maxlength="100"></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="right">单价:</td>
+                    				<td align="left"><input type="text" id="consumeItem.price" name="consumeItem.price" onkeydown="KeyDown(event)" value="$!consumeItem.price" size="100" maxlength="100"></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="right">数量:</td>
+                    				<td align="left"><input type="text" id="consumeItem.quantity" name="consumeItem.quantity" onkeydown="KeyDown(event)" value="$!consumeItem.quantity" size="100" maxlength="100"></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="right">消费时间:</td>
+                    				<td align="left">
+                						<input type="text" id="consumeItem.feeDate" name="consumeItem.feeDate" readonly="true" value="$!dateUtil.date($!consumeItem.feeDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('consumeItem.feeDate', '%Y-%m-%d');">
+                					</td>
+                    			</tr>
+                    			<tr>
+                    				<td align="right">收支方向:</td>
+                    				<td align="left">
+                    					<input type="radio" name="consumeItem.inOrOut" value="in">收入
+                    					<input type="radio" name="consumeItem.inOrOut" value="out" checked="true">支出
+                    				</td>
+                    			</tr>
+                    			<tr>
+									<td align="right">登录ID:</td>
+                    				<td align="left">
+											<input type="text" id="consumeItem.loginId" name="consumeItem.loginId" readonly="true"  value="$!consumeItem.loginId" size="20" maxlength="20">
+									</td>
+                    			</tr>
+                    		</table>
+                    		<input type="button" value="添加" onclick="checkConsumeItemForm();" />&nbsp;&nbsp;
+                    		<input type="reset" value="取消" />
+                    	</form>
+					</td>
+				</tr>
+			</table>
+    	</center>
+    </body>
+</html>
