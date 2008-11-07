@@ -20,11 +20,11 @@ import com.opensymphony.xwork.ActionSupport;
  * @since 2008-08-03
  *
  */
-public class ConsumeAction extends ActionSupport {
+public class ConsumeItemAction extends ActionSupport {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final Log log = LogFactory.getLog(ConsumeAction.class);
+	private static final Log log = LogFactory.getLog(ConsumeItemAction.class);
 	
 	private IConsumeDao consumeDao;
 	
@@ -66,7 +66,7 @@ public class ConsumeAction extends ActionSupport {
 			return "doInitGetConsumeItemList";
 			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeAction.class + ", doInitGetConsumeItemList()", e);
+			log.error("Error: " + ConsumeItemAction.class + ", doInitGetConsumeItemList()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -93,7 +93,7 @@ public class ConsumeAction extends ActionSupport {
 			return "doGetConsumeItemList";
 			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeAction.class + ", doGetConsumeItemList()", e);
+			log.error("Error: " + ConsumeItemAction.class + ", doGetConsumeItemList()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -148,7 +148,7 @@ public class ConsumeAction extends ActionSupport {
 			return "doAddConsumItem";
 			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeAction.class + ", doAddConsumItem()", e);
+			log.error("Error: " + ConsumeItemAction.class + ", doAddConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -171,7 +171,7 @@ public class ConsumeAction extends ActionSupport {
 			return "doGetConsumItem";
 			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeAction.class + ", doGetConsumItem()", e);
+			log.error("Error: " + ConsumeItemAction.class + ", doGetConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -211,7 +211,7 @@ public class ConsumeAction extends ActionSupport {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + ConsumeAction.class + ", doUpdateConsumItem()", e);
+			log.error("Error: " + ConsumeItemAction.class + ", doUpdateConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -235,7 +235,7 @@ public class ConsumeAction extends ActionSupport {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + ConsumeAction.class + ", doLogicDeleteConsumItem()", e);
+			log.error("Error: " + ConsumeItemAction.class + ", doLogicDeleteConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
