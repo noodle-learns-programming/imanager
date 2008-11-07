@@ -21,8 +21,6 @@ public class ConsumeItem extends Basement{
 	private Date feeDate;
 	
 	private String inOrOut;
-	
-	private String loginId;
 
 	public int getConsumeItemId() {
 		return consumeItemId;
@@ -78,14 +76,6 @@ public class ConsumeItem extends Basement{
 
 	public void setFeeDate(Date feeDate) {
 		this.feeDate = feeDate;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
 	}
 
 	public String getInOrOut() {

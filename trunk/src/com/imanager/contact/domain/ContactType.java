@@ -7,16 +7,6 @@ public class ContactType extends Basement{
 	private int contactTypeId;
 	
 	private String contactType;
-	
-	private String loginId;
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
 
 	public String getContactType() {
 		return contactType;
