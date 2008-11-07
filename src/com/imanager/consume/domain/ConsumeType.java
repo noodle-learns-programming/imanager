@@ -1,4 +1,4 @@
-package com.imanager.finance.domain;
+package com.imanager.consume.domain;
 
 import com.imanager.common.Basement;
 

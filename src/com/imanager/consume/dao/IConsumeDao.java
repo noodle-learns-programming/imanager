@@ -1,11 +1,11 @@
-package com.imanager.finance.dao;
+package com.imanager.consume.dao;
 
 import java.util.List;
 
-import com.imanager.finance.domain.ConsumeItem;
-import com.imanager.finance.domain.input.FinanceSearchObj;
+import com.imanager.consume.domain.ConsumeItem;
+import com.imanager.consume.domain.input.ConsumeSearchObj;
 
-public interface IFinanceDao {
+public interface IConsumeDao {
 
 	/**
 	 * 添加一条消费记录
@@ -19,7 +19,7 @@ public interface IFinanceDao {
 	 * @param searchObj
 	 * @return
 	 */
-	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, FinanceSearchObj searchObj);
+	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, ConsumeSearchObj searchObj);
 	
 	/**
 	 * 根据LoginId和查询条件获得消费列表消费总额
@@ -27,7 +27,7 @@ public interface IFinanceDao {
 	 * @param searchObj
 	 * @return
 	 */
-	public double getConsumeItemListSumByIdNDate(String loginId, FinanceSearchObj searchObj);
+	public double getConsumeItemListSumByIdNDate(String loginId, ConsumeSearchObj searchObj);
 
 	/**
 	 * 根据ItemId获得消费记录

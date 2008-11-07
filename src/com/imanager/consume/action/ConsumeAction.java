@@ -1,4 +1,4 @@
-package com.imanager.finance.action;
+package com.imanager.consume.action;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,9 +9,9 @@ import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.DateUtil;
 import com.imanager.common.LoginUtil;
-import com.imanager.finance.dao.IFinanceDao;
-import com.imanager.finance.domain.ConsumeItem;
-import com.imanager.finance.domain.input.FinanceSearchObj;
+import com.imanager.consume.dao.IConsumeDao;
+import com.imanager.consume.domain.ConsumeItem;
+import com.imanager.consume.domain.input.ConsumeSearchObj;
 import com.opensymphony.xwork.ActionSupport;
 
 /**
@@ -20,15 +20,15 @@ import com.opensymphony.xwork.ActionSupport;
  * @since 2008-08-03
  *
  */
-public class FinanceAction extends ActionSupport {
+public class ConsumeAction extends ActionSupport {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final Log log = LogFactory.getLog(FinanceAction.class);
+	private static final Log log = LogFactory.getLog(ConsumeAction.class);
 	
-	private IFinanceDao financeDao;
+	private IConsumeDao financeDao;
 	
-	private FinanceSearchObj searchObj = new FinanceSearchObj();	//查询对象
+	private ConsumeSearchObj searchObj = new ConsumeSearchObj();	//查询对象
 	
 	private List<ConsumeItem> consumeItemList;	//消费列表
 	
@@ -66,7 +66,7 @@ public class FinanceAction extends ActionSupport {
 			return "doInitGetConsumeItemList";
 			
 		}catch (Exception e){
-			log.error("Error: " + FinanceAction.class + ", doInitGetConsumeItemList()", e);
+			log.error("Error: " + ConsumeAction.class + ", doInitGetConsumeItemList()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -93,7 +93,7 @@ public class FinanceAction extends ActionSupport {
 			return "doGetConsumeItemList";
 			
 		}catch (Exception e){
-			log.error("Error: " + FinanceAction.class + ", doGetConsumeItemList()", e);
+			log.error("Error: " + ConsumeAction.class + ", doGetConsumeItemList()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -148,7 +148,7 @@ public class FinanceAction extends ActionSupport {
 			return "doAddConsumItem";
 			
 		}catch (Exception e){
-			log.error("Error: " + FinanceAction.class + ", doAddConsumItem()", e);
+			log.error("Error: " + ConsumeAction.class + ", doAddConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -171,7 +171,7 @@ public class FinanceAction extends ActionSupport {
 			return "doGetConsumItem";
 			
 		}catch (Exception e){
-			log.error("Error: " + FinanceAction.class + ", doGetConsumItem()", e);
+			log.error("Error: " + ConsumeAction.class + ", doGetConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -211,7 +211,7 @@ public class FinanceAction extends ActionSupport {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + FinanceAction.class + ", doUpdateConsumItem()", e);
+			log.error("Error: " + ConsumeAction.class + ", doUpdateConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
@@ -235,18 +235,18 @@ public class FinanceAction extends ActionSupport {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + FinanceAction.class + ", doLogicDeleteConsumItem()", e);
+			log.error("Error: " + ConsumeAction.class + ", doLogicDeleteConsumItem()", e);
 			//e.printStackTrace();
 			return ERROR;
 		}
 	}
 	
 	
-	public FinanceSearchObj getSearchObj() {
+	public ConsumeSearchObj getSearchObj() {
 		return searchObj;
 	}
 
-	public void setSearchObj(FinanceSearchObj searchObj) {
+	public void setSearchObj(ConsumeSearchObj searchObj) {
 		this.searchObj = searchObj;
 	}
 
@@ -266,11 +266,11 @@ public class FinanceAction extends ActionSupport {
 		this.consumeItemListSum = consumeItemListSum;
 	}
 
-	public IFinanceDao getFinanceDao() {
+	public IConsumeDao getFinanceDao() {
 		return financeDao;
 	}
 
-	public void setFinanceDao(IFinanceDao financeDao) {
+	public void setFinanceDao(IConsumeDao financeDao) {
 		this.financeDao = financeDao;
 	}
 
