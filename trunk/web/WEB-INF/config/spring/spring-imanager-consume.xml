@@ -2,7 +2,11 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
 <beans>
 
-	<bean id="consumeDao" class="com.imanager.consume.dao.impl.ConsumeDaoImpl">
+	<bean id="consumeItemDao" class="com.imanager.consume.dao.impl.ConsumeItemDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+	<bean id="consumeTypeDao" class="com.imanager.consume.dao.impl.ConsumeTypeDaoImpl">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
 
