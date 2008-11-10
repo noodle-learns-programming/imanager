@@ -17,7 +17,7 @@
 		
 			<result name="doInitGetConsumeItemList" type="velocity">consume-item-list.vm</result>
 			
-			<result name="doGetConsumeItemList" type="velocity">consume-item-add.vm</result>
+			<result name="doGetConsumeItemList" type="velocity">consume-item-list.vm</result>
 			
 			<result name="doGetConsumItem" type="velocity">consume-item-update.vm</result>
 			
@@ -39,6 +39,37 @@
 				<param name="namespace">/consume</param>
 				<param name="actionName">consumeItemAction</param>
 				<param name="method">doInitGetConsumeItemList</param>
+			</result>
+		
+			<interceptor-ref name="modelParamsStack" />
+		</action>
+		
+		<action name="consumeTypeAction" class="com.imanager.consume.action.ConsumeTypeAction">
+			<result name="error" type="velocity">/framework/error.vm</result>
+			<result name="success" type="velocity">/framework/success.vm</result>
+		
+			<result name="getConsumeTypeListByLoginId" type="velocity">consume-type-list.vm</result>
+			
+			<result name="getConsumTypeById" type="velocity">consume-type-update.vm</result>
+			
+			<result name="updateConsumType" type="redirect-action">
+				<param name="namespace">/consume</param>
+				<param name="actionName">consumeTypeAction</param>
+				<param name="method">getConsumeTypeListByLoginId</param>
+			</result>
+			
+			<result name="initAddConsumType" type="velocity">consume-type-add.vm</result>
+			
+			<result name="addConsumType" type="redirect-action">
+				<param name="namespace">/consume</param>
+				<param name="actionName">consumeTypeAction</param>
+				<param name="method">getConsumeTypeListByLoginId</param>
+			</result>
+			
+			<result name="logicDeleteConsumType" type="redirect-action">
+				<param name="namespace">/consume</param>
+				<param name="actionName">consumeTypeAction</param>
+				<param name="method">getConsumeTypeListByLoginId</param>
 			</result>
 		
 			<interceptor-ref name="modelParamsStack" />
