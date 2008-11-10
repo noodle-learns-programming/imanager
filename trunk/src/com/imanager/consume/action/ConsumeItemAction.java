@@ -162,7 +162,7 @@ public class ConsumeItemAction extends ActionSupport {
 	public String doGetConsumItem() throws Exception {
 		
 		try{
-			consumeItem = consumeItemDao.getConsumeItemByItemId(consumeItemId);
+			consumeItem = consumeItemDao.getConsumeItemById(consumeItemId);
 			
 			if("in".equalsIgnoreCase(consumeItem.getInOrOut())){
 				consumeItem.setPrice(-consumeItem.getPrice());
@@ -229,7 +229,7 @@ public class ConsumeItemAction extends ActionSupport {
 		//TODO currentLoginId = "yangqiang";
 		
 		try{
-			if(consumeItemDao.logicDeleteConsumeItemByItemId(consumeItemId, currentLoginId)){
+			if(consumeItemDao.logicDeleteConsumeItemById(consumeItemId, currentLoginId)){
 				return "doLogicDeleteConsumItem";
 			}else{
 				return ERROR;

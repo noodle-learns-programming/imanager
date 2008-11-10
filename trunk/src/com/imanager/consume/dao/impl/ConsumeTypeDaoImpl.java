@@ -7,93 +7,58 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.SqlMapClientOperations;
 
-import com.imanager.consume.dao.IConsumeItemDao;
-import com.imanager.consume.domain.ConsumeItem;
-import com.imanager.consume.domain.input.ConsumeSearchObj;
+import com.imanager.consume.dao.IConsumeTypeDao;
+import com.imanager.consume.domain.ConsumeType;
 
-public class ConsumeTypeDaoImpl implements IConsumeItemDao {
+public class ConsumeTypeDaoImpl implements IConsumeTypeDao {
 
 	private SqlMapClientOperations sqlMapClientTemplate;
 	
-	/**
-	 * 添加一条消费记录
-	 * @param consumeItem
+	/* (non-Javadoc)
+	 * @see com.imanager.consume.dao.IConsumeTypeDao#insertConsumeType(com.imanager.consume.domain.ConsumeType)
 	 */
-	public void insertConsumeItem(ConsumeItem consumeItem) {
-		sqlMapClientTemplate.insert("ConsumeItem.insertConsumeItem", consumeItem);		
+	public void insertConsumeType(ConsumeType consumeType) {
+		sqlMapClientTemplate.insert("ConsumeType.insertConsumeType", consumeType);
 	}
 	
-	/**
-	 * 根据LoginId和查询条件获得消费列表
-	 * @param loginId
-	 * @param searchObj
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.imanager.consume.dao.IConsumeTypeDao#getConsumeTypeListByLoginId(java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
-	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, ConsumeSearchObj searchObj) {
-		Map map = new HashMap();
-		map.put("loginId", loginId);
-		map.put("startDate", searchObj.getStartDate());
-		map.put("endDate", searchObj.getEndDate());
-		List consumeItemList = sqlMapClientTemplate.queryForList("ConsumeItem.getConsumeItemListByLoginIdNDate", map);
-		if(consumeItemList != null)
-			return consumeItemList;
+	public List<ConsumeType> getConsumeTypeListByLoginId(String loginId) {
+		List consumeTypeList = sqlMapClientTemplate.queryForList("ConsumeType.getConsumeTypeListByLoginId", loginId);
+		if(consumeTypeList != null)
+			return consumeTypeList;
 		else
-			return new ArrayList<ConsumeItem>();
+			return new ArrayList<ConsumeType>();
 	}
 
-	/**
-	 * 根据LoginId和查询条件获得消费列表消费总额
-	 * @param loginId
-	 * @param searchObj
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public double getConsumeItemListSumByIdNDate(String loginId, ConsumeSearchObj searchObj) {
-		Map map = new HashMap();
-		map.put("loginId", loginId);
-		map.put("startDate", searchObj.getStartDate());
-		map.put("endDate", searchObj.getEndDate());
-		Object obj = sqlMapClientTemplate.queryForObject("ConsumeItem.getConsumeItemListSumByIdNDate", map);
-		if(obj != null)
-			return ((Double)obj).doubleValue();
-		else
-			return 0;
-	}
 
-	/**
-	 * 根据ItemId获得消费记录
-	 * @param itemId
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.imanager.consume.dao.IConsumeTypeDao#getConsumeTypeByTypeId(java.lang.String)
 	 */
-	public ConsumeItem getConsumeItemByItemId(String consumeItemId){
-		return (ConsumeItem)sqlMapClientTemplate.queryForObject("ConsumeItem.getConsumeItemByItemId", consumeItemId);
+	public ConsumeType getConsumeTypeById(String consumeTypeId) {
+		return (ConsumeType)sqlMapClientTemplate.queryForObject("ConsumeType.getConsumeTypeById", consumeTypeId);
 	}
 	
-	/**
-	 * 更新一条消费记录
-	 * @param consumeItem
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.imanager.consume.dao.IConsumeTypeDao#updateConsumeType(com.imanager.consume.domain.ConsumeType)
 	 */
-	public boolean updateConsumeItem(ConsumeItem consumeItem){
-		Integer result = sqlMapClientTemplate.update("ConsumeItem.updateConsumeItem", consumeItem);
+	public boolean updateConsumeType(ConsumeType consumeType) {
+		Integer result = sqlMapClientTemplate.update("ConsumeType.updateConsumeType", consumeType);
 		return result == 1;
 	}
 	
-	/**
-	 * 逻辑删除消费记录
-	 * @param consumeItemId
-	 * @param loginId
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.imanager.consume.dao.IConsumeTypeDao#logicDeleteConsumeTypeByTypeId(java.lang.String, java.lang.String)
 	 */
-	public boolean logicDeleteConsumeItemByItemId(String consumeItemId, String loginId){
+	public boolean logicDeleteConsumeTypeById(String consumeTypeId, String loginId) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("consumeItemId", consumeItemId);
+		map.put("consumeTypeId", consumeTypeId);
 		map.put("modifier", loginId);
-		Integer result = sqlMapClientTemplate.update("ConsumeItem.logicDeleteConsumeItemByItemId", map);
+		Integer result = sqlMapClientTemplate.update("ConsumeType.logicDeleteConsumeTypeById", map);
 		return result == 1;
 	}
-	
 	
 	public SqlMapClientOperations getSqlMapClientTemplate() {
 		return sqlMapClientTemplate;
@@ -102,5 +67,4 @@ public class ConsumeTypeDaoImpl implements IConsumeItemDao {
 	public void setSqlMapClientTemplate(SqlMapClientOperations sqlMapClientTemplate) {
 		this.sqlMapClientTemplate = sqlMapClientTemplate;
 	}
-
 }
