@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-//import com.imanager.common.LoginUtil;
+import com.imanager.common.LoginUtil;
 import com.imanager.consume.dao.IConsumeTypeDao;
 import com.imanager.consume.domain.ConsumeType;
 import com.opensymphony.xwork.ActionSupport;
@@ -41,8 +41,8 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String getConsumeTypeListByLoginId() throws Exception {
 		
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{			
 			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
@@ -64,8 +64,8 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String initAddConsumType() throws Exception {
 		
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		consumeType.setLoginId(currentLoginId);
 		
@@ -79,8 +79,9 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String addConsumType() throws Exception {
 		
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
+		
 		String consumeTypeTrim = consumeType.getConsumeType().trim();
 		
 		try{
@@ -127,8 +128,8 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String updateConsumType() throws Exception {
 		
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		String consumeTypeTrim = consumeType.getConsumeType().trim();
 	
@@ -157,8 +158,8 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String logicDeleteConsumType() throws Exception {
 		
-		//TODO currentLoginId = new LoginUtil().getCurrentLogin();
-		currentLoginId = "yangqiang";
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
 			if(consumeTypeDao.logicDeleteConsumeTypeById(consumeTypeId, currentLoginId)){
