@@ -9,7 +9,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.DateUtil;
 import com.imanager.common.LoginUtil;
-import com.imanager.consume.dao.IConsumeDao;
+import com.imanager.consume.dao.IConsumeItemDao;
 import com.imanager.consume.domain.ConsumeItem;
 import com.imanager.consume.domain.input.ConsumeSearchObj;
 import com.opensymphony.xwork.ActionSupport;
@@ -26,7 +26,7 @@ public class ConsumeTypeAction extends ActionSupport {
 	
 	private static final Log log = LogFactory.getLog(ConsumeTypeAction.class);
 	
-	private IConsumeDao consumeDao;
+	private IConsumeItemDao consumeItemDao;
 	
 	private ConsumeSearchObj searchObj = new ConsumeSearchObj();	//≤È—Ø∂‘œÛ
 	
@@ -59,9 +59,9 @@ public class ConsumeTypeAction extends ActionSupport {
 			searchObj.setStartDate(DateUtil.dateOnlyExt(startDate));
 			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
 			
-			consumeItemList = consumeDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
+			consumeItemList = consumeItemDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
 			
-			consumeItemListSum = consumeDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
+			consumeItemListSum = consumeItemDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
 			
 			return "doInitGetConsumeItemList";
 			
@@ -86,9 +86,9 @@ public class ConsumeTypeAction extends ActionSupport {
 			Date endDate = searchObj.getEndDate();
 			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
 			
-			consumeItemList = consumeDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
+			consumeItemList = consumeItemDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
 			
-			consumeItemListSum = consumeDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
+			consumeItemListSum = consumeItemDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
 			
 			return "doGetConsumeItemList";
 			
@@ -143,7 +143,7 @@ public class ConsumeTypeAction extends ActionSupport {
 				consumeItem.setTotalPrice(totalPrice);
 			}
 			
-			consumeDao.insertConsumeItem(consumeItem);
+			consumeItemDao.insertConsumeItem(consumeItem);
 			
 			return "doAddConsumItem";
 			
@@ -162,7 +162,7 @@ public class ConsumeTypeAction extends ActionSupport {
 	public String doGetConsumItem() throws Exception {
 		
 		try{
-			consumeItem = consumeDao.getConsumeItemByItemId(consumeItemId);
+			consumeItem = consumeItemDao.getConsumeItemByItemId(consumeItemId);
 			
 			if("in".equalsIgnoreCase(consumeItem.getInOrOut())){
 				consumeItem.setPrice(-consumeItem.getPrice());
@@ -205,7 +205,7 @@ public class ConsumeTypeAction extends ActionSupport {
 				consumeItem.setTotalPrice(totalPrice);
 			}
 			
-			if(consumeDao.updateConsumeItem(consumeItem)){
+			if(consumeItemDao.updateConsumeItem(consumeItem)){
 				return "doUpdateConsumItem";
 			}else{
 				return ERROR;
@@ -229,7 +229,7 @@ public class ConsumeTypeAction extends ActionSupport {
 		//TODO currentLoginId = "yangqiang";
 		
 		try{
-			if(consumeDao.logicDeleteConsumeItemByItemId(consumeItemId, currentLoginId)){
+			if(consumeItemDao.logicDeleteConsumeItemByItemId(consumeItemId, currentLoginId)){
 				return "doLogicDeleteConsumItem";
 			}else{
 				return ERROR;
@@ -266,12 +266,12 @@ public class ConsumeTypeAction extends ActionSupport {
 		this.consumeItemListSum = consumeItemListSum;
 	}
 
-	public IConsumeDao getConsumeDao() {
-		return consumeDao;
+	public IConsumeItemDao getConsumeItemDao() {
+		return consumeItemDao;
 	}
 
-	public void setConsumeDao(IConsumeDao consumeDao) {
-		this.consumeDao = consumeDao;
+	public void setConsumeItemDao(IConsumeItemDao consumeItemDao) {
+		this.consumeItemDao = consumeItemDao;
 	}
 
 	public ConsumeItem getConsumeItem() {
