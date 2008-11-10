@@ -34,7 +34,7 @@ public interface IConsumeItemDao {
 	 * @param itemId
 	 * @return
 	 */
-	public ConsumeItem getConsumeItemByItemId(String consumeItemId);
+	public ConsumeItem getConsumeItemById(String consumeItemId);
 	
 	/**
 	 * 更新一条消费记录
@@ -49,5 +49,5 @@ public interface IConsumeItemDao {
 	 * @param loginId
 	 * @return
 	 */
-	public boolean logicDeleteConsumeItemByItemId(String consumeItemId, String loginId);
+	public boolean logicDeleteConsumeItemById(String consumeItemId, String loginId);
 }
