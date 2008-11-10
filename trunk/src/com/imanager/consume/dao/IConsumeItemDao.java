@@ -5,7 +5,7 @@ import java.util.List;
 import com.imanager.consume.domain.ConsumeItem;
 import com.imanager.consume.domain.input.ConsumeSearchObj;
 
-public interface IConsumeDao {
+public interface IConsumeItemDao {
 
 	/**
 	 * 添加一条消费记录

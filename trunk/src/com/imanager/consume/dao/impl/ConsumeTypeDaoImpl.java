@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.SqlMapClientOperations;
 
-import com.imanager.consume.dao.IConsumeDao;
+import com.imanager.consume.dao.IConsumeItemDao;
 import com.imanager.consume.domain.ConsumeItem;
 import com.imanager.consume.domain.input.ConsumeSearchObj;
 
-public class ConsumeDaoImpl implements IConsumeDao {
+public class ConsumeTypeDaoImpl implements IConsumeItemDao {
 
 	private SqlMapClientOperations sqlMapClientTemplate;
 	
