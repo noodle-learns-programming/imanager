@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="../resource/js/jscalendar/showCalendar.js"></script>
 		<script type="text/javascript" src="../resource/js/jscalendar/lang/cn_utf8.js"></script>
 		<script type="text/javascript" src="../resource/js/util.js"></script>
-		<script type="text/javascript" src="../resource/js/consume/consume.js"></script>
+		<script type="text/javascript" src="../resource/js/consume/consume-item.js"></script>
 	</head>
 	
 	<body topmargin="10" bgcolor="#99CCFF">
@@ -23,7 +23,7 @@
         			</td>
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
-                		<h2>消费列表</h2>
+                		<h2>消费明细列表</h2>
                 		<form action="consumeItemAction!doGetConsumeItemList.action" method="post">
 							开始日期:<input type="text" id="searchObj.startDate" name="searchObj.startDate" readonly="true" value="$!dateUtil.date($!searchObj.startDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.startDate', '%Y-%m-%d');">
                 			&nbsp;&nbsp;

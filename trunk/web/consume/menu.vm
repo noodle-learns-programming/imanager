@@ -6,4 +6,7 @@
 		<tr valign="middle">
 			<td align="center"><a href="consumeItemAction!doInitAddConsumItem.action">添加消费记录</a></td>
 		</tr>
+		<tr valign="middle">
+			<td align="center"><a href="consumeTypeAction!getConsumeTypeListByLoginId.action">管理消费类型</a></td>
+		</tr>
 	</table>
