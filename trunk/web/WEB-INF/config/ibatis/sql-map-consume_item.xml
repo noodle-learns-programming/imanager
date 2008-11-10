@@ -50,7 +50,7 @@
 		]]>
 	</select>
 	
-	<select id="getConsumeItemByItemId"
+	<select id="getConsumeItemById"
 		parameterClass="java.lang.String"
 		resultClass="consumeItem">
 		<![CDATA[
@@ -90,7 +90,7 @@
 		]]>
 	</update>
 	
-	<update id="logicDeleteConsumeItemByItemId" 
+	<update id="logicDeleteConsumeItemById" 
 		parameterClass="java.util.Map">
 		<![CDATA[
 			update consume_item set is_deleted = 'yes', modifier = #modifier#, gmt_modified = now()
