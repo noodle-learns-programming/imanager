@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>iManager Consume</title>
+		<script type="text/javascript" src="../resource/js/util.js"></script>
+		<script type="text/javascript" src="../resource/js/consume/consume-type.js"></script>
+	</head>
+	
+    <body  topmargin="10" bgcolor="#99CCFF">
+    	<center>
+			#parse("/framework/header.vm")
+			<br/><br/><br/>
+				
+			<table border="0" width="80%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150">
+        				#parse("/consume/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+                    	<h2>添加消费类型</h2>
+                    	<form id="consumeTypeForm" action="consumeTypeAction!addConsumType.action" method="post">
+                    		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
+                    			cellpadding="0" cellspacing="0" align="center" >
+                    			<tr>
+                    				<td align="right">消费类型:</td>
+                    				<td align="left"><input type="text" id="consumeType.consumeType" name="consumeType.consumeType" onkeydown="KeyDown(event)" value="$esc.html($!consumeType.consumeType)" size="100" maxlength="100"></td>
+                    			</tr>
+                    			<tr>
+									<td align="right">登录ID:</td>
+                    				<td align="left">
+											<input type="text" id="consumeType.loginId" name="consumeType.loginId" readonly="true"  value="$!consumeType.loginId" size="20" maxlength="20">
+									</td>
+                    			</tr>
+                    		</table>
+                    		<input type="button" value="添加" onclick="checkConsumeTypeForm();" />&nbsp;&nbsp;
+                    		<input type="reset" value="取消" />
+                    	</form>
+					</td>
+				</tr>
+			</table>
+    	</center>
+    </body>
+</html>
