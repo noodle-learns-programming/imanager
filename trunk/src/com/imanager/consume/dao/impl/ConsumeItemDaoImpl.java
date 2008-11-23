@@ -30,12 +30,15 @@ public class ConsumeItemDaoImpl implements IConsumeItemDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, ConsumeSearchObj searchObj) {
-		Map map = new HashMap();
-		map.put("loginId", loginId);
+	public List<ConsumeItem> getConsumeItemListBySearch(ConsumeSearchObj searchObj) {
+		/*Map map = new HashMap();
+		map.put("itemName", searchObj.getItemName());
+		map.put("address", searchObj.getAddress());
 		map.put("startDate", searchObj.getStartDate());
 		map.put("endDate", searchObj.getEndDate());
-		List consumeItemList = sqlMapClientTemplate.queryForList("ConsumeItem.getConsumeItemListByLoginIdNDate", map);
+		map.put("consumeType", searchObj.getConsumeType());
+		map.put("loginId", loginId);*/
+		List consumeItemList = sqlMapClientTemplate.queryForList("ConsumeItem.getConsumeItemListBySearch", searchObj);
 		if(consumeItemList != null)
 			return consumeItemList;
 		else
@@ -49,12 +52,15 @@ public class ConsumeItemDaoImpl implements IConsumeItemDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public double getConsumeItemListSumByIdNDate(String loginId, ConsumeSearchObj searchObj) {
-		Map map = new HashMap();
-		map.put("loginId", loginId);
+	public double getConsumeItemListSumBySearch(ConsumeSearchObj searchObj) {
+		/*Map map = new HashMap();
+		map.put("itemName", searchObj.getItemName());
+		map.put("address", searchObj.getAddress());
 		map.put("startDate", searchObj.getStartDate());
 		map.put("endDate", searchObj.getEndDate());
-		Object obj = sqlMapClientTemplate.queryForObject("ConsumeItem.getConsumeItemListSumByIdNDate", map);
+		map.put("consumeType", searchObj.getConsumeType());
+		map.put("loginId", loginId);*/
+		Object obj = sqlMapClientTemplate.queryForObject("ConsumeItem.getConsumeItemListSumBySearch", searchObj);
 		if(obj != null)
 			return ((Double)obj).doubleValue();
 		else
