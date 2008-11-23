@@ -55,6 +55,17 @@
                     					<input type="radio" name="consumeItem.inOrOut" value="out" checked="true">支出
                     				</td>
                     			</tr>
+								<tr>
+                    				<td align="right">消费类型:</td>
+                    				<td align="left">
+										<select id="consumeItem.consumeType.consumeTypeId" name="consumeItem.consumeType.consumeTypeId">
+											<option value="0">请选择</option>
+											#foreach($consumeType in $consumeTypeList)
+												<option value="$consumeType.consumeTypeId">$esc.html($consumeType.consumeType)</option>
+											#end
+										</select>
+                    				</td>
+                    			</tr>
                     			<tr>
 									<td align="right">登录ID:</td>
                     				<td align="left">
