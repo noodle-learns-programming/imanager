@@ -56,7 +56,7 @@
                 						明细1：<select id="blogContent.blogItem1Id" name="blogSearchObj.blogItem1Id" onchange="getBlogItem2List();">
                 							<option value="">请选择</option>
 											#foreach($blogItem1 in $blogItem1List)
-                								<option value="$blogItem1.blogItem1Id">$blogItem1.itemChn</option>
+                								<option value="$blogItem1.blogItem1Id">$esc.html($blogItem1.itemChn)</option>
 											#end
 										</select>&nbsp;&nbsp;
                 						明细2：<select id="blogContent.blogItem2Id" name="blogSearchObj.blogItem2Id">
@@ -84,21 +84,21 @@
                 			</tr>
 							#foreach($blogContentOutput in $blogContentOutputList)
                 				<tr>
-                					<td align = "center"> $blogContentOutput.blogContentId &nbsp; </td>
-                					<td align = "center"> $esc.html($blogContentOutput.title) &nbsp; </td>
+                					<td align = "center">$blogContentOutput.blogContentId</td>
+                					<td align = "center">$esc.html($blogContentOutput.title)</td>
                 					<td align = "center">
 										#if($blogContentOutput.blogType == 'yc')
-											原创 &nbsp;
+											原创
 										#elseif($blogContentOutput.blogType == 'zz')
-                							转载 &nbsp;
+											转载
                 						#else
-                							$blogContentOutput.blogType &nbsp;
+											$blogContentOutput.blogType
                 						#end
                 					</td>
-                					<td align = "center"> $esc.html($blogContentOutput.item1Chn) &nbsp; </td>
-                					<td align = "center"> $esc.html($blogContentOutput.item2Chn) &nbsp; </td>
-                					<td align = "center"> $!dateUtil.date($blogContentOutput.blogDate, 'yyyy-MM-dd') &nbsp; </td>
-                					<td align = "center"> $blogContentOutput.loginId &nbsp; </td>
+                					<td align = "center">$esc.html($blogContentOutput.item1Chn)</td>
+                					<td align = "center">$esc.html($blogContentOutput.item2Chn)</td>
+                					<td align = "center">$!dateUtil.date($blogContentOutput.blogDate, 'yyyy-MM-dd')</td>
+                					<td align = "center">$blogContentOutput.loginId</td>
                 					<td align = "center">
                 						<a href="blogContentAction!initUpdateBlogContent.action?blogContentId=$blogContentOutput.blogContentId">更新</a>&nbsp;|&nbsp;
                 						<a href="#" onclick=deleteBlogContent("$blogContentOutput.blogContentId")>删除</a>

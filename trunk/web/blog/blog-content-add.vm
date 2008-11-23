@@ -56,7 +56,7 @@
                     					Ã÷Ï¸1£º<select id="blogContent.blogItem1Id" name="blogContent.blogItem1Id" onchange="getBlogItem2List();">
                     						<option value="0">ÇëÑ¡Ôñ</option>
                 							#foreach($blogItem1 in $blogItem1List)
-                								<option value="$blogItem1.blogItem1Id">$blogItem1.itemChn</option>
+                								<option value="$blogItem1.blogItem1Id">$esc.html($blogItem1.itemChn)</option>
                 							#end
                     					</select>&nbsp;&nbsp;
                     					Ã÷Ï¸2£º<select id="blogContent.blogItem2Id" name="blogContent.blogItem2Id">

@@ -29,7 +29,7 @@
                     					<select id="blogItem2.blogItem1Id" name="blogItem2.blogItem1Id">
                     						<option value="0">«Î—°‘Ò</option>
                     						#foreach($blogItem1 in $blogItem1List)
-                    							<option value="$blogItem1.blogItem1Id" #if($blogItem2.blogItem1Id == $blogItem1.blogItem1Id) selected #end>$blogItem1.itemChn</option>
+                    							<option value="$blogItem1.blogItem1Id" #if($blogItem2.blogItem1Id == $blogItem1.blogItem1Id) selected #end>$esc.html($blogItem1.itemChn)</option>
                     						#end
                     					</select>
                     				</td>
