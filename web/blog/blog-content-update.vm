@@ -65,13 +65,13 @@
                     					明细1：<select id="blogContent.blogItem1Id" name="blogContent.blogItem1Id" onchange="getBlogItem2List();">
                     						<option value="0">请选择</option>
                     						#foreach($blogItem1 in $blogItem1List)
-                								<option value="$blogItem1.blogItem1Id" #if($blogContent.blogItem1Id == $blogItem1.blogItem1Id) selected #end>$blogItem1.itemChn</option>
+                								<option value="$blogItem1.blogItem1Id" #if($blogContent.blogItem1Id == $blogItem1.blogItem1Id) selected #end>$esc.html($blogItem1.itemChn)</option>
                 							#end
                     					</select>&nbsp;&nbsp;
                     					明细2：<select id="blogContent.blogItem2Id" name="blogContent.blogItem2Id">
                     						<option value="0">请选择</option>
 											#foreach($blogItem2 in $blogItem2List)
-                								<option value="$blogItem2.blogItem2Id" #if($blogContent.blogItem2Id == $blogItem2.blogItem2Id) selected #end>$blogItem2.itemChn</option>
+                								<option value="$blogItem2.blogItem2Id" #if($blogContent.blogItem2Id == $blogItem2.blogItem2Id) selected #end>$esc.html($blogItem2.itemChn)</option>
                 							#end
                     					</select>
                     				</td>
