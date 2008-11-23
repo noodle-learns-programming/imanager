@@ -3,22 +3,41 @@
 <sqlMap namespace="ConsumeItem">
 
 	<typeAlias alias="consumeItem" type="com.imanager.consume.domain.ConsumeItem" />
+	<typeAlias alias="searchObj" type="com.imanager.consume.domain.input.ConsumeSearchObj" />
+	
+	<resultMap id="consume-item-result" class="consumeItem">
+		<result property="consumeItemId" column="consumeItemId"/>
+		<result property="creator" column="creator"/>
+		<result property="gmtCreated" column="gmtCreated"/>
+		<result property="modifier" column="modifier"/>
+		<result property="gmtModified" column="gmtModified"/>
+		<result property="isDeleted" column="isDeleted"/>
+		<result property="itemName" column="itemName"/>
+		<result property="address" column="address"/>
+		<result property="price" column="price"/>
+		<result property="quantity" column="quantity"/>
+		<result property="totalPrice" column="totalPrice"/>
+		<result property="feeDate" column="feeDate"/>
+		<result property="loginId" column="loginId"/>
+		<result property="inOrOut" column="inOrOut"/>
+		<result property="consumeType" column="consumeType" select="ConsumeType.getConsumeTypeById"/>
+	</resultMap>
 
 	<insert id="insertConsumeItem"
 		parameterClass="consumeItem">
 		<![CDATA[
 			INSERT INTO consume_item 
 				(creator, gmt_created, modifier, gmt_modified, is_deleted, item_name, address, 
-				price, quantity, total_price, fee_date, in_out, login_id) 
+				price, quantity, total_price, fee_date, in_out, login_id, consume_type_id) 
 			VALUES 
 				(#creator#, now(), #modifier#, now(), 'no', #itemName#, #address#, 
-				#price#, #quantity#, #totalPrice#, #feeDate#, #inOrOut#, #loginId#)
+				#price#, #quantity#, #totalPrice#, #feeDate#, #inOrOut#, #loginId#, #consumeType.consumeTypeId#)
 		]]>
 	</insert>
 	
-	<select id="getConsumeItemListByLoginIdNDate"
-		parameterClass="java.util.Map"
-		resultClass="consumeItem">
+	<select id="getConsumeItemListBySearch"
+		parameterClass="searchObj"
+		resultMap="consume-item-result">
 		<![CDATA[
 			select 	consume_item_id		as consumeItemId,
 					creator				as creator,
@@ -33,26 +52,47 @@
 					total_price			as totalPrice,
 					fee_date			as feeDate,
 					login_id			as loginId,
-					in_out				as inOrOut
+					in_out				as inOrOut,
+					consume_type_id		as consumeType
 			from consume_item
-			where login_id = #loginId# and is_deleted='no' and fee_date >= #startDate# AND fee_date <= #endDate#
-			order by fee_date asc
+			where login_id = #loginId# 
+				and is_deleted='no' 
+				and fee_date >= #startDate# and fee_date <= #endDate# 
 		]]>
+		<isNotEmpty prepend="AND" property="itemName">
+			<![CDATA[ item_name like '%$itemName$%' ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="address">
+			<![CDATA[ address like '%$address$%' ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="consumeType">
+			<![CDATA[ consume_type_id = #consumeType# ]]>
+		</isNotEmpty>
+		<![CDATA[ order by fee_date asc,  gmt_created asc]]>
 	</select>
 	
-	<select id="getConsumeItemListSumByIdNDate"
-		parameterClass="java.util.Map"
+	<select id="getConsumeItemListSumBySearch"
+		parameterClass="searchObj"
 		resultClass="double">
 		<![CDATA[
 			select 	sum(total_price)
 			from consume_item
 			where login_id = #loginId# and is_deleted='no' and fee_date >= #startDate# AND fee_date <= #endDate#
 		]]>
+		<isNotEmpty prepend="AND" property="itemName">
+			<![CDATA[ item_name like '%$itemName$%' ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="address">
+			<![CDATA[ address like '%$address$%' ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="consumeType">
+			<![CDATA[ consume_type_id = #consumeType# ]]>
+		</isNotEmpty>
 	</select>
 	
 	<select id="getConsumeItemById"
 		parameterClass="java.lang.String"
-		resultClass="consumeItem">
+		resultMap="consume-item-result">
 		<![CDATA[
 			select 	consume_item_id		as consumeItemId,
 					creator				as creator,
@@ -67,7 +107,8 @@
 					total_price			as totalPrice,
 					fee_date			as feeDate,
 					login_id			as loginId,
-					in_out				as inOrOut
+					in_out				as inOrOut,
+					consume_type_id		as consumeType
 			from consume_item
 			where consume_item_id = #consumeItemId# and is_deleted='no'
 		]]>
@@ -85,7 +126,8 @@
 				quantity		= #quantity#,
 				total_price		= #totalPrice#,
 				fee_date		= #feeDate#,
-				in_out			= #inOrOut#
+				in_out			= #inOrOut#,
+				consume_type_id	= #consumeType.consumeTypeId#
 			where	consume_item_id = #consumeItemId# and is_deleted = 'no'
 		]]>
 	</update>

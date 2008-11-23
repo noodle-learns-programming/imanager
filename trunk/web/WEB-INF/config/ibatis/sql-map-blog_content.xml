@@ -39,7 +39,7 @@
 		<isNotEmpty  property="blogItem2Id">
 			<![CDATA[ and bc.blog_item2_id = #blogItem2Id# ]]>
 		</isNotEmpty>
-			<![CDATA[ order by bc.blog_date asc ]]>
+			<![CDATA[ order by bc.blog_date asc, bc.gmt_created asc ]]>
 	</select>
 	
 	<insert id="insertBlogContent"
