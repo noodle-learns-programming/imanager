@@ -10,7 +10,9 @@ import org.apache.commons.logging.LogFactory;
 import com.imanager.common.DateUtil;
 import com.imanager.common.LoginUtil;
 import com.imanager.consume.dao.IConsumeItemDao;
+import com.imanager.consume.dao.IConsumeTypeDao;
 import com.imanager.consume.domain.ConsumeItem;
+import com.imanager.consume.domain.ConsumeType;
 import com.imanager.consume.domain.input.ConsumeSearchObj;
 import com.opensymphony.xwork.ActionSupport;
 
@@ -28,9 +30,13 @@ public class ConsumeItemAction extends ActionSupport {
 	
 	private IConsumeItemDao consumeItemDao;
 	
+	private IConsumeTypeDao consumeTypeDao;
+	
 	private ConsumeSearchObj searchObj = new ConsumeSearchObj();	//查询对象
 	
-	private List<ConsumeItem> consumeItemList;	//消费列表
+	private List<ConsumeItem> consumeItemList;	//消费明细列表
+	
+	private List<ConsumeType> consumeTypeList;	//消费类型列表
 	
 	private double consumeItemListSum;	//消费总和
 	
@@ -58,10 +64,13 @@ public class ConsumeItemAction extends ActionSupport {
 			
 			searchObj.setStartDate(DateUtil.dateOnlyExt(startDate));
 			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
+			searchObj.setLoginId(currentLoginId);
 			
-			consumeItemList = consumeItemDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
+			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
 			
-			consumeItemListSum = consumeItemDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
+			consumeItemList = consumeItemDao.getConsumeItemListBySearch(searchObj);
+			
+			consumeItemListSum = consumeItemDao.getConsumeItemListSumBySearch(searchObj);
 			
 			return "doInitGetConsumeItemList";
 			
@@ -82,13 +91,21 @@ public class ConsumeItemAction extends ActionSupport {
 		currentLoginId = new LoginUtil().getCurrentLogin();
 		//TODO currentLoginId = "yangqiang";
 		
+		String itemNameTrim = searchObj.getItemName().trim();
+		String addressTrim = searchObj.getAddress().trim();
+		
+		searchObj.setItemName(itemNameTrim);
+		searchObj.setAddress(addressTrim);
+		Date endDate = searchObj.getEndDate();
+		searchObj.setEndDate(DateUtil.dateLastTime(endDate));
+		searchObj.setLoginId(currentLoginId);
+		
 		try{
-			Date endDate = searchObj.getEndDate();
-			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
+			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
 			
-			consumeItemList = consumeItemDao.getConsumeItemListByLoginIdNDate(currentLoginId, searchObj);
+			consumeItemList = consumeItemDao.getConsumeItemListBySearch(searchObj);
 			
-			consumeItemListSum = consumeItemDao.getConsumeItemListSumByIdNDate(currentLoginId, searchObj);
+			consumeItemListSum = consumeItemDao.getConsumeItemListSumBySearch(searchObj);
 			
 			return "doGetConsumeItemList";
 			
@@ -111,6 +128,7 @@ public class ConsumeItemAction extends ActionSupport {
 		
 		consumeItem.setFeeDate(new Date());
 		consumeItem.setLoginId(currentLoginId);
+		consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
 		
 		return "doInitAddConsumItem";
 	}
@@ -160,12 +178,24 @@ public class ConsumeItemAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String doGetConsumItem() throws Exception {
+
+		currentLoginId = new LoginUtil().getCurrentLogin();
+		//TODO currentLoginId = "yangqiang";
 		
 		try{
+			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
 			consumeItem = consumeItemDao.getConsumeItemById(consumeItemId);
 			
 			if("in".equalsIgnoreCase(consumeItem.getInOrOut())){
 				consumeItem.setPrice(-consumeItem.getPrice());
+			}
+			
+			//若消费类型不存在或者被删除，则消费类型置空
+			if (consumeItem.getConsumeType().getConsumeType() == null) {
+				ConsumeType consumeType = new ConsumeType();
+				consumeType.setConsumeTypeId(0);
+				consumeType.setConsumeType("");
+				consumeItem.setConsumeType(consumeType);
 			}
 			
 			return "doGetConsumItem";
@@ -288,6 +318,22 @@ public class ConsumeItemAction extends ActionSupport {
 
 	public void setConsumeItemId(String consumeItemId) {
 		this.consumeItemId = consumeItemId;
+	}
+
+	public List<ConsumeType> getConsumeTypeList() {
+		return consumeTypeList;
+	}
+
+	public void setConsumeTypeList(List<ConsumeType> consumeTypeList) {
+		this.consumeTypeList = consumeTypeList;
+	}
+
+	public IConsumeTypeDao getConsumeTypeDao() {
+		return consumeTypeDao;
+	}
+
+	public void setConsumeTypeDao(IConsumeTypeDao consumeTypeDao) {
+		this.consumeTypeDao = consumeTypeDao;
 	}
 
 }
