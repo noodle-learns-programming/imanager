@@ -19,7 +19,7 @@ public interface IConsumeItemDao {
 	 * @param searchObj
 	 * @return
 	 */
-	public List<ConsumeItem> getConsumeItemListByLoginIdNDate(String loginId, ConsumeSearchObj searchObj);
+	public List<ConsumeItem> getConsumeItemListBySearch(ConsumeSearchObj searchObj);
 	
 	/**
 	 * 根据LoginId和查询条件获得消费列表消费总额
@@ -27,7 +27,7 @@ public interface IConsumeItemDao {
 	 * @param searchObj
 	 * @return
 	 */
-	public double getConsumeItemListSumByIdNDate(String loginId, ConsumeSearchObj searchObj);
+	public double getConsumeItemListSumBySearch(ConsumeSearchObj searchObj);
 
 	/**
 	 * 根据ItemId获得消费记录
