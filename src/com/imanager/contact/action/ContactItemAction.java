@@ -120,12 +120,11 @@ private static final long serialVersionUID = 1L;
 		
 		String nameTrim = contactSearchObj.getName().trim();
 		String pinyinTrim = contactSearchObj.getPinyin().trim();
+		contactSearchObj.setName(nameTrim);
+		contactSearchObj.setPinyin(pinyinTrim);
+		contactSearchObj.setLoginId(currentLoginId);
 		
 		try{
-			contactSearchObj.setName(nameTrim);
-			contactSearchObj.setPinyin(pinyinTrim);
-			contactSearchObj.setLoginId(currentLoginId);
-			
 			contactItemList = contactItemDao.getContactItemListBySearch(contactSearchObj);
 			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
 			
@@ -151,7 +150,7 @@ private static final long serialVersionUID = 1L;
 			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
 			contactItem = contactItemDao.getContactItemById(contactItemId);
 			
-			//若联系类型被删除，则联系类型置空
+			//若联系类型不存在或者被删除，则联系类型置空
 			if(contactItem.getContactType().getContactType() == null){
 				ContactType contactType = new ContactType();
 				contactType.setContactTypeId(0);
