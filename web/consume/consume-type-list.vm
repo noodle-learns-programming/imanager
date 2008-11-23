@@ -30,8 +30,8 @@
                 			</tr>
                 			#foreach ($consumeType in $consumeTypeList)
                 				<tr>
-                					<td align = "center"> $!consumeType.consumeTypeId &nbsp; </td>
-									<td align = "center"> $esc.html($!consumeType.consumeType) &nbsp; </td>
+                					<td align = "center">$!consumeType.consumeTypeId</td>
+									<td align = "center">$esc.html($!consumeType.consumeType)</td>
                 					<td align = "center">
                 						<a href="consumeTypeAction!getConsumTypeById.action?consumeTypeId=$!consumeType.consumeTypeId">¸üÐÂ</a>&nbsp;|&nbsp;
                 						<a href="#" onclick=deleteConsumeType($!consumeType.consumeTypeId)>É¾³ý</a>

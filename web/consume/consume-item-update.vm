@@ -50,6 +50,17 @@
                 						<input type="text" id="consumeItem.feeDate" name="consumeItem.feeDate" readonly="true" value="$!dateUtil.date($!consumeItem.feeDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('consumeItem.feeDate', '%Y-%m-%d');">
                 					</td>
                     			</tr>
+								<tr>
+                    				<td align="right">消费类型:</td>
+                    				<td align="left">
+										<select id="consumeItem.consumeType.consumeTypeId" name="consumeItem.consumeType.consumeTypeId">
+											<option value="0">请选择</option>
+											#foreach($consumeType in $consumeTypeList)
+												<option value="$consumeType.consumeTypeId" #if($consumeItem.consumeType.consumeTypeId == $consumeType.consumeTypeId) selected #end>$esc.html($consumeType.consumeType)</option>
+											#end
+										</select>
+                    				</td>
+                    			</tr>
                     			<tr>
                     				<td align="right">收支方向:</td>
                     				<td align="left">
