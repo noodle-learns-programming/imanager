@@ -91,7 +91,7 @@
 										<select id="contactItem.contactType.contactTypeId" name="contactItem.contactType.contactTypeId">
 											<option value="0">«Î—°‘Ò</option>
 											#foreach($contactType in $contactTypeList)
-												<option value="$contactType.contactTypeId" #if($contactType.contactTypeId == $contactItem.contactType.contactTypeId) selected #end>$contactType.contactType</option>
+												<option value="$contactType.contactTypeId" #if($contactType.contactTypeId == $contactItem.contactType.contactTypeId) selected #end>$esc.html($contactType.contactType)</option>
 											#end
 										</select>
 									</td>
