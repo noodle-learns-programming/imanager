@@ -46,7 +46,7 @@
 					<td colspan="2" align="center">
 						#if($actionErrors && $actionErrors.size() > 0)
 							#foreach($err in $actionErrors)
-								<font color="red">$err</font>
+								<font color="red">$esc.html($err)</font>
 							#end
 						#end
 					</td>
