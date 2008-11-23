@@ -37,6 +37,11 @@ function checkConsumeItemForm(){
 		return;
 	}
 	
+	if(!checkConsumeItemType()){
+		document.getElementById("consumeItem.consumeType.consumeTypeId").focus();
+		return;
+	}
+	
 	theForm.submit();
 }
 
@@ -104,6 +109,17 @@ function checkConsumeItemQuantity(){
 	}
 	if(parseFloat(Trim(o.value)) < parseFloat(0) || parseFloat(Trim(o.value)) == parseFloat(0)){
 		alert("数量不能小于或等于0!");
+		return false;
+	}
+	
+	return true;
+}
+
+function checkConsumeItemType(){
+	var o = document.getElementById("consumeItem.consumeType.consumeTypeId");
+	
+	if(o.value == "0"){
+		alert("请选择消费类型!");
 		return false;
 	}
 	
