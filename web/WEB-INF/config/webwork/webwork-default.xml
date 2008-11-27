@@ -193,7 +193,7 @@
         <default-interceptor-ref name="defaultStack"/>
         
         <global-results>
-			<result name="checkcookies" type="redirect">/login/loginAction!init.action</result>
+			<result name="nocookies" type="redirect">/login/loginAction!init.action</result>
 			<result name="nosessions" type="redirect">/login/loginAction!init.action</result>
 		</global-results>
     </package>
