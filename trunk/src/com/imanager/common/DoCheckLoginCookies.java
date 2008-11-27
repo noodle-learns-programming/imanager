@@ -38,7 +38,7 @@ public class DoCheckLoginCookies implements Interceptor {
 		    for (i = 0; i < len; i++) 
 		    {
 		       Cookie c = cookies[i];     
-		       if(c.getName().equalsIgnoreCase("loginID"))
+		       if(c.getName().equalsIgnoreCase("loginId"))
 		       {
 		    	   String name = c.getValue();
 		    	   log.info("The login id is: " + name);
@@ -46,15 +46,15 @@ public class DoCheckLoginCookies implements Interceptor {
 		        }
 		    }
 		    
-		    if(i  == len){
+		    if(i == len){
 		    	log.info("There are no cookies here !");
-		    	return "checkcookies";
+		    	return "nocookies";
 		    }
 		    
 		    return invocation.invoke();
 		}else{
 			log.info("There are no cookies here !");
-			return "checkcookies";
+			return "nocookies";
 		}
 	}
 	
