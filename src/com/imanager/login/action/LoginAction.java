@@ -2,12 +2,16 @@ package com.imanager.login.action;
 
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.Md5Encode;
 import com.imanager.login.dao.ILoginDao;
 import com.imanager.login.domain.User;
+import com.opensymphony.webwork.ServletActionContext;
 import com.opensymphony.xwork.ActionContext;
 import com.opensymphony.xwork.ActionSupport;
 
@@ -61,7 +65,14 @@ public class LoginAction extends ActionSupport {
 			ActionContext ctx = ActionContext.getContext();
 			Map<String, String> session = ctx.getSession();
 			session.put("loginId", user.getLoginId());
-
+			
+			HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
+			Cookie cookie = new Cookie("loginId", user.getLoginId());
+			//cookie.setDomain("localhost");
+			cookie.setPath("/");
+			cookie.setMaxAge(-1);
+			response.addCookie(cookie);
+			
 		}catch (Exception e){
 			log.error("Error: " + LoginAction.class + ", validateUser()",e);
 			//e.printStackTrace();
