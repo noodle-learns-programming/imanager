@@ -1,19 +1,13 @@
 package com.imanager.login.action;
 
-import java.util.Map;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.Md5Encode;
-import com.imanager.login.dao.ILoginDao;
-import com.imanager.login.domain.User;
-import com.opensymphony.webwork.ServletActionContext;
-import com.opensymphony.xwork.ActionContext;
-import com.opensymphony.xwork.ActionSupport;
+import com.imanager.framework.action.BaseAction;
+import com.imanager.login.service.ILoginService;
+import com.imanager.user.domain.User;
+import com.imanager.user.service.IUserService;
 
 /**
  * 登录
@@ -21,12 +15,15 @@ import com.opensymphony.xwork.ActionSupport;
  * @since 2008-08-03
  */
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static final Log log = LogFactory.getLog(LoginAction.class);
 	
-	private ILoginDao loginDao;
+	// Service
+	private ILoginService loginService;
+	private IUserService userService;
 	
+	// Domain or Var
 	private String loginId;
 	private String password;
 
@@ -49,7 +46,11 @@ public class LoginAction extends ActionSupport {
 	public String validateUser() throws Exception {
 		try {
 			//根据用户名和密码获取用户
-			User user = loginDao.getUserByLoginId(loginId.trim(), Md5Encode.MD5(password.trim()));
+			User user = userService.getUserByLoginIdNPassword(loginId.trim(), Md5Encode.MD5(password.trim()));
+			
+			String str = env.get("recordType").toString();
+			log.info(str);
+			
 			
 			if(user == null){
 				addActionError("用户名或密码错误！");
@@ -57,21 +58,10 @@ public class LoginAction extends ActionSupport {
 			}
 			
 			//更新上次登录时间
-			if (!loginDao.updateLastLoginDate(user.getLoginId())) {
+			if (!loginService.updateLastLoginDate(user.getLoginId())) {
 				addActionError("系统错误：更新上次登录时间出错！");
 				return ERROR;
 			}
-			
-			ActionContext ctx = ActionContext.getContext();
-			Map<String, String> session = ctx.getSession();
-			session.put("loginId", user.getLoginId());
-			
-			HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
-			Cookie cookie = new Cookie("loginId", user.getLoginId());
-			//cookie.setDomain("localhost");
-			cookie.setPath("/");
-			cookie.setMaxAge(-1);
-			response.addCookie(cookie);
 			
 		}catch (Exception e){
 			log.error("Error: " + LoginAction.class + ", validateUser()",e);
@@ -102,11 +92,19 @@ public class LoginAction extends ActionSupport {
 		this.password = password;
 	}
 
-	public ILoginDao getLoginDao() {
-		return loginDao;
+	public IUserService getUserService() {
+		return userService;
 	}
 
-	public void setLoginDao(ILoginDao loginDao) {
-		this.loginDao = loginDao;
+	public void setUserService(IUserService userService) {
+		this.userService = userService;
+	}
+
+	public ILoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(ILoginService loginService) {
+		this.loginService = loginService;
 	}
 }
