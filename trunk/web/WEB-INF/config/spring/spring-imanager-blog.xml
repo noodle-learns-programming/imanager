@@ -9,5 +9,10 @@
 	<bean id="blogContentDao" class="com.imanager.blog.dao.impl.BlogContentDaoImpl">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
+	
+	<bean id="blogService" class="com.imanager.blog.service.impl.BlogServiceImpl">
+		<property name="blogItemDao" ref="blogItemDao" />
+		<property name="blogContentDao" ref="blogContentDao" />
+	</bean>
 
 </beans>

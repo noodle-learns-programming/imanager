@@ -59,6 +59,7 @@
             <!-- Ken Yang -->
             <interceptor name="checkLoginSessions" class="com.imanager.common.DoCheckLoginSessions" />
             <interceptor name="checkLoginCookies" class="com.imanager.common.DoCheckLoginCookies" />
+            <interceptor name="checkLogin" class="com.imanager.common.DoCheckLogin" />
             <!-- Ken Yang -->
 
             <!-- Basic stack -->
@@ -193,6 +194,7 @@
         <default-interceptor-ref name="defaultStack"/>
         
         <global-results>
+       		<result name="checklogin" type="redirect">/login/loginAction!init.action</result>
 			<result name="nocookies" type="redirect">/login/loginAction!init.action</result>
 			<result name="nosessions" type="redirect">/login/loginAction!init.action</result>
 		</global-results>
