@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.Md5Encode;
 import com.imanager.framework.action.BaseAction;
+import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 import com.imanager.user.domain.User;
 import com.imanager.user.service.IUserService;
@@ -48,10 +49,6 @@ public class LoginAction extends BaseAction {
 			//根据用户名和密码获取用户
 			User user = userService.getUserByLoginIdNPassword(loginId.trim(), Md5Encode.MD5(password.trim()));
 			
-			String str = env.get("recordType").toString();
-			log.info(str);
-			
-			
 			if(user == null){
 				addActionError("用户名或密码错误！");
 				return INPUT;
@@ -62,6 +59,9 @@ public class LoginAction extends BaseAction {
 				addActionError("系统错误：更新上次登录时间出错！");
 				return ERROR;
 			}
+			
+			//记录当前登录用户的loginId
+			loginService.recordCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString(), loginId);
 			
 		}catch (Exception e){
 			log.error("Error: " + LoginAction.class + ", validateUser()",e);

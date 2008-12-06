@@ -8,5 +8,18 @@ public interface ILoginService {
 	 * @return
 	 */
 	public boolean updateLastLoginDate(String loginId);
+	
+	/**
+	 * 获得当前登录用户的longId
+	 * @return
+	 */
+	public String getCurrentLoginId(String recordType);
+	
+	/**
+	 * 记录当前登录用户的longId
+	 * @param recordType
+	 * @return
+	 */
+	public boolean recordCurrentLoginId(String recordType, String loginId);
 
 }
