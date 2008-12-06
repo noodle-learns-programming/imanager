@@ -8,13 +8,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.DateUtil;
-import com.imanager.common.LoginUtil;
-import com.imanager.consume.dao.IConsumeItemDao;
-import com.imanager.consume.dao.IConsumeTypeDao;
 import com.imanager.consume.domain.ConsumeItem;
 import com.imanager.consume.domain.ConsumeType;
 import com.imanager.consume.domain.input.ConsumeSearchObj;
-import com.opensymphony.xwork.ActionSupport;
+import com.imanager.consume.service.IConsumeService;
+import com.imanager.framework.action.BaseAction;
+import com.imanager.framework.service.EnvService;
+import com.imanager.login.service.ILoginService;
 
 /**
  * 消费记录
@@ -22,30 +22,23 @@ import com.opensymphony.xwork.ActionSupport;
  * @since 2008-08-03
  *
  */
-public class ConsumeItemAction extends ActionSupport {
+public class ConsumeItemAction extends BaseAction {
 	
 	private static final long serialVersionUID = 1L;
-	
 	private static final Log log = LogFactory.getLog(ConsumeItemAction.class);
 	
-	private IConsumeItemDao consumeItemDao;
+	// Service
+	private IConsumeService consumeService;
+	private ILoginService loginService;
 	
-	private IConsumeTypeDao consumeTypeDao;
-	
+	// Domain or Var
 	private ConsumeSearchObj searchObj = new ConsumeSearchObj();	//查询对象
-	
 	private List<ConsumeItem> consumeItemList;	//消费明细列表
-	
 	private List<ConsumeType> consumeTypeList;	//消费类型列表
-	
 	private double consumeItemListSum;	//消费总和
-	
 	private ConsumeItem consumeItem = new ConsumeItem();	//消费记录
-	
 	private String consumeItemId;	//消费记录ID
-	
 	String currentLoginId;
-
 	
 
 	/**
@@ -55,8 +48,7 @@ public class ConsumeItemAction extends ActionSupport {
 	 */
 	public String doInitGetConsumeItemList() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
 			Date startDate = DateUtil.getMinDate();
@@ -66,11 +58,11 @@ public class ConsumeItemAction extends ActionSupport {
 			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
 			searchObj.setLoginId(currentLoginId);
 			
-			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
+			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			
-			consumeItemList = consumeItemDao.getConsumeItemListBySearch(searchObj);
+			consumeItemList = consumeService.getConsumeItemListBySearch(searchObj);
 			
-			consumeItemListSum = consumeItemDao.getConsumeItemListSumBySearch(searchObj);
+			consumeItemListSum = consumeService.getConsumeItemListSumBySearch(searchObj);
 			
 			return "doInitGetConsumeItemList";
 			
@@ -88,8 +80,7 @@ public class ConsumeItemAction extends ActionSupport {
 	 */
 	public String doGetConsumeItemList() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String itemNameTrim = searchObj.getItemName().trim();
 		String addressTrim = searchObj.getAddress().trim();
@@ -101,11 +92,11 @@ public class ConsumeItemAction extends ActionSupport {
 		searchObj.setLoginId(currentLoginId);
 		
 		try{
-			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
+			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			
-			consumeItemList = consumeItemDao.getConsumeItemListBySearch(searchObj);
+			consumeItemList = consumeService.getConsumeItemListBySearch(searchObj);
 			
-			consumeItemListSum = consumeItemDao.getConsumeItemListSumBySearch(searchObj);
+			consumeItemListSum = consumeService.getConsumeItemListSumBySearch(searchObj);
 			
 			return "doGetConsumeItemList";
 			
@@ -123,12 +114,11 @@ public class ConsumeItemAction extends ActionSupport {
 	 */
 	public String doInitAddConsumItem() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		consumeItem.setFeeDate(new Date());
 		consumeItem.setLoginId(currentLoginId);
-		consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
+		consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 		
 		return "doInitAddConsumItem";
 	}
@@ -140,8 +130,7 @@ public class ConsumeItemAction extends ActionSupport {
 	 */
 	public String doAddConsumItem() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		String itemNameTrim = consumeItem.getItemName().trim();
 		String addressTrim = consumeItem.getAddress().trim();
 		
@@ -161,7 +150,7 @@ public class ConsumeItemAction extends ActionSupport {
 				consumeItem.setTotalPrice(totalPrice);
 			}
 			
-			consumeItemDao.insertConsumeItem(consumeItem);
+			consumeService.insertConsumeItem(consumeItem);
 			
 			return "doAddConsumItem";
 			
@@ -179,12 +168,11 @@ public class ConsumeItemAction extends ActionSupport {
 	 */
 	public String doGetConsumItem() throws Exception {
 
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
-			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
-			consumeItem = consumeItemDao.getConsumeItemById(consumeItemId);
+			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
+			consumeItem = consumeService.getConsumeItemById(consumeItemId);
 			
 			if("in".equalsIgnoreCase(consumeItem.getInOrOut())){
 				consumeItem.setPrice(-consumeItem.getPrice());
@@ -214,8 +202,7 @@ public class ConsumeItemAction extends ActionSupport {
 	 */
 	public String doUpdateConsumItem() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String itemNameTrim = consumeItem.getItemName().trim();
 		String addressTrim = consumeItem.getAddress().trim();
@@ -235,7 +222,7 @@ public class ConsumeItemAction extends ActionSupport {
 				consumeItem.setTotalPrice(totalPrice);
 			}
 			
-			if(consumeItemDao.updateConsumeItem(consumeItem)){
+			if(consumeService.updateConsumeItem(consumeItem)){
 				return "doUpdateConsumItem";
 			}else{
 				return ERROR;
@@ -255,11 +242,10 @@ public class ConsumeItemAction extends ActionSupport {
 	 */
 	public String doLogicDeleteConsumItem() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
-			if(consumeItemDao.logicDeleteConsumeItemById(consumeItemId, currentLoginId)){
+			if(consumeService.logicDeleteConsumeItemById(consumeItemId, currentLoginId)){
 				return "doLogicDeleteConsumItem";
 			}else{
 				return ERROR;
@@ -296,14 +282,6 @@ public class ConsumeItemAction extends ActionSupport {
 		this.consumeItemListSum = consumeItemListSum;
 	}
 
-	public IConsumeItemDao getConsumeItemDao() {
-		return consumeItemDao;
-	}
-
-	public void setConsumeItemDao(IConsumeItemDao consumeItemDao) {
-		this.consumeItemDao = consumeItemDao;
-	}
-
 	public ConsumeItem getConsumeItem() {
 		return consumeItem;
 	}
@@ -328,12 +306,20 @@ public class ConsumeItemAction extends ActionSupport {
 		this.consumeTypeList = consumeTypeList;
 	}
 
-	public IConsumeTypeDao getConsumeTypeDao() {
-		return consumeTypeDao;
+	public ILoginService getLoginService() {
+		return loginService;
 	}
 
-	public void setConsumeTypeDao(IConsumeTypeDao consumeTypeDao) {
-		this.consumeTypeDao = consumeTypeDao;
+	public void setLoginService(ILoginService loginService) {
+		this.loginService = loginService;
+	}
+
+	public IConsumeService getConsumeService() {
+		return consumeService;
+	}
+
+	public void setConsumeService(IConsumeService consumeService) {
+		this.consumeService = consumeService;
 	}
 
 }
