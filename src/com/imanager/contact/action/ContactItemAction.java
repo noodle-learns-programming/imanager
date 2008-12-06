@@ -7,25 +7,26 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.DateUtil;
-import com.imanager.common.LoginUtil;
-import com.imanager.contact.dao.IContactItemDao;
-import com.imanager.contact.dao.IContactTypeDao;
 import com.imanager.contact.domain.ContactItem;
 import com.imanager.contact.domain.ContactType;
 import com.imanager.contact.domain.input.ContactItemSearchObj;
-import com.opensymphony.xwork.ActionSupport;
+import com.imanager.contact.service.IContactService;
+import com.imanager.framework.action.BaseAction;
+import com.imanager.framework.service.EnvService;
+import com.imanager.login.service.ILoginService;
 
-public class ContactItemAction extends ActionSupport {
+public class ContactItemAction extends BaseAction {
 	
-private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;
 	private static final Log log = LogFactory.getLog(ContactItemAction.class);
 	
-	private IContactItemDao contactItemDao;
-	private IContactTypeDao contactTypeDao;
+	// Service
+	private IContactService contactService;
+	private ILoginService loginService;
+	
+	// Domain or Var
 	private String currentLoginId;
 	private String contactItemId;
-	
 	private ContactItem contactItem = new ContactItem();
 	private ContactItemSearchObj contactSearchObj = new ContactItemSearchObj();
 	private List<ContactItem> contactItemList;
@@ -38,14 +39,13 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String initAddContactItem() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		contactItem.setBirthday(new Date());
 		contactItem.setLoginId(currentLoginId);
 		
 		try{
-			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
+			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error("Error: " + ContactItemAction.class + ", initAddContactItem()");
 			e.printStackTrace();
@@ -61,8 +61,7 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String addContactItem() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String nameTrim = contactItem.getName().trim();
 		String pinyinTrim = contactItem.getPinyin().trim();
@@ -74,7 +73,7 @@ private static final long serialVersionUID = 1L;
 			contactItem.setName(nameTrim);
 			contactItem.setPinyin(pinyinTrim);
 			
-			contactItemDao.insertContactItem(contactItem);
+			contactService.insertContactItem(contactItem);
 		}catch (Exception e){
 			log.error("Error: " + ContactItemAction.class + ", addContactItem()");
 			e.printStackTrace();
@@ -90,16 +89,15 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String initGetContactItemListBySearch() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
 			contactSearchObj.setLoginId(currentLoginId);
-			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
+			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 			if (contactTypeList.size() != 0) {
 				contactSearchObj.setContactTypeId(String.valueOf(contactTypeList.get(0).getContactTypeId()));
 			}
-			contactItemList = contactItemDao.getContactItemListBySearch(contactSearchObj);
+			contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
 		}catch (Exception e){
 			log.error("Error: " + ContactItemAction.class + ", initGetContactItemListBySearch()");
 			e.printStackTrace();
@@ -115,8 +113,7 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String getContactItemListBySearch() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String nameTrim = contactSearchObj.getName().trim();
 		String pinyinTrim = contactSearchObj.getPinyin().trim();
@@ -125,8 +122,8 @@ private static final long serialVersionUID = 1L;
 		contactSearchObj.setLoginId(currentLoginId);
 		
 		try{
-			contactItemList = contactItemDao.getContactItemListBySearch(contactSearchObj);
-			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
+			contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
+			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 			
 		}catch (Exception e){
 			log.error("Error: " + ContactItemAction.class + ", getContactItemListBySearch()");
@@ -143,12 +140,11 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String getContactItemById() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
-			contactTypeList = contactTypeDao.getContactTypeListByLoginId(currentLoginId);
-			contactItem = contactItemDao.getContactItemById(contactItemId);
+			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
+			contactItem = contactService.getContactItemById(contactItemId);
 			
 			//若联系类型不存在或者被删除，则联系类型置空
 			if(contactItem.getContactType().getContactType() == null){
@@ -172,8 +168,7 @@ private static final long serialVersionUID = 1L;
 	 * @throws Exception
 	 */
 	public String updateContactItem() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String nameTrim = contactItem.getName().trim();
 		String pinyinTrim = contactItem.getPinyin().trim();
@@ -184,7 +179,7 @@ private static final long serialVersionUID = 1L;
 			contactItem.setName(nameTrim);
 			contactItem.setPinyin(pinyinTrim);
 			
-			if(contactItemDao.updateContactItem(contactItem)){
+			if(contactService.updateContactItem(contactItem)){
 				return "updateContactItem";
 			}else{
 				return ERROR;
@@ -198,13 +193,12 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	public String logicDeleteContactItem() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
 			contactItem.setModifier(currentLoginId);
 			
-			if(contactItemDao.logicDeleteContactItem(contactItemId, currentLoginId)){
+			if(contactService.logicDeleteContactItem(contactItemId, currentLoginId)){
 				return "logicDeleteContactItem";
 			}else{
 				return ERROR;
@@ -242,22 +236,6 @@ private static final long serialVersionUID = 1L;
 		this.contactItemList = contactItemList;
 	}
 
-	public IContactItemDao getContactItemDao() {
-		return contactItemDao;
-	}
-
-	public void setContactItemDao(IContactItemDao contactItemDao) {
-		this.contactItemDao = contactItemDao;
-	}
-
-	public IContactTypeDao getContactTypeDao() {
-		return contactTypeDao;
-	}
-
-	public void setContactTypeDao(IContactTypeDao contactTypeDao) {
-		this.contactTypeDao = contactTypeDao;
-	}
-
 	public List<ContactType> getContactTypeList() {
 		return contactTypeList;
 	}
@@ -272,6 +250,22 @@ private static final long serialVersionUID = 1L;
 
 	public void setContactSearchObj(ContactItemSearchObj contactSearchObj) {
 		this.contactSearchObj = contactSearchObj;
+	}
+
+	public IContactService getContactService() {
+		return contactService;
+	}
+
+	public void setContactService(IContactService contactService) {
+		this.contactService = contactService;
+	}
+
+	public ILoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(ILoginService loginService) {
+		this.loginService = loginService;
 	}
 
 }
