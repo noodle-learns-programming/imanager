@@ -1,6 +1,6 @@
-package com.imanager.login.dao;
+package com.imanager.login.service;
 
-public interface ILoginDao {
+public interface ILoginService {
 	
 	/**
 	 * 更新上次登录时间
@@ -8,5 +8,5 @@ public interface ILoginDao {
 	 * @return
 	 */
 	public boolean updateLastLoginDate(String loginId);
-	
+
 }
