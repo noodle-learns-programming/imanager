@@ -9,5 +9,10 @@
 	<bean id="consumeTypeDao" class="com.imanager.consume.dao.impl.ConsumeTypeDaoImpl">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
+	
+	<bean id="consumeService" class="com.imanager.consume.service.impl.ConsumeServiceImpl">
+		<property name="consumeItemDao" ref="consumeItemDao" />
+		<property name="consumeTypeDao" ref="consumeTypeDao" />
+	</bean>
 
 </beans>

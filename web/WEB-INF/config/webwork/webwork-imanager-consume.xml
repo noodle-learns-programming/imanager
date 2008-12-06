@@ -7,8 +7,9 @@
 			<interceptor-stack name="modelParamsStack">
 				<interceptor-ref name="params" />
 				<interceptor-ref name="model-driven" />
-				<!-- <interceptor-ref name="checkLoginSessions" /> -->
-				<interceptor-ref name="checkLoginCookies" />
+				<!-- <interceptor-ref name="checkLoginSessions" />
+				<interceptor-ref name="checkLoginCookies" /> -->
+				<interceptor-ref name="checkLogin" />
 			</interceptor-stack>
 		</interceptors>
 		
