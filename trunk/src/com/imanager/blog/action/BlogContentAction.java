@@ -6,39 +6,33 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.imanager.blog.dao.IBlogContentDao;
-import com.imanager.blog.dao.IBlogItemDao;
 import com.imanager.blog.domain.BlogContent;
 import com.imanager.blog.domain.BlogItem1;
 import com.imanager.blog.domain.BlogItem2;
 import com.imanager.blog.domain.input.BlogContentSearchObj;
 import com.imanager.blog.domain.output.BlogContentOutput;
+import com.imanager.blog.service.IBlogService;
 import com.imanager.common.DateUtil;
-import com.imanager.common.LoginUtil;
-import com.opensymphony.xwork.ActionSupport;
+import com.imanager.framework.action.BaseAction;
+import com.imanager.framework.service.EnvService;
+import com.imanager.login.service.ILoginService;
 
-public class BlogContentAction extends ActionSupport {
+public class BlogContentAction extends BaseAction {
 	
 	private static final long serialVersionUID = 1L;
-	
 	private static final Log log = LogFactory.getLog(BlogContentAction.class);
 	
-	private IBlogContentDao blogContentDao;
+	// Service
+	private IBlogService blogService;
+	private ILoginService loginService;
 	
-	private IBlogItemDao blogItemDao;
-	
+	// Domain or Var	
 	private BlogContent blogContent = new BlogContent();
-	
 	private BlogContentSearchObj blogSearchObj = new BlogContentSearchObj();
-	
 	private String currentLoginId;
-	
 	private String blogContentId;
-	
 	private List<BlogItem1> blogItem1List;
-	
 	private List<BlogItem2> blogItem2List;
-	
 	private List<BlogContentOutput> blogContentOutputList;
 	
 	
@@ -48,8 +42,7 @@ public class BlogContentAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String initGetBlogContentListBySearch() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		Date startDate = DateUtil.getMinDate();
 		Date endDate = DateUtil.getMaxDate();
@@ -59,8 +52,8 @@ public class BlogContentAction extends ActionSupport {
 		blogSearchObj.setLoginId(currentLoginId);
 		
 		try{
-			blogContentOutputList = blogContentDao.getBlogContentListBySearch(blogSearchObj);
-			blogItem1List = blogItemDao.getBlogItem1ListByLoginId(currentLoginId);
+			blogContentOutputList = blogService.getBlogContentListBySearch(blogSearchObj);
+			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error("Error: " + BlogContentAction.class + ", initGetBlogContentListBySearch()");
 			e.printStackTrace();
@@ -76,8 +69,7 @@ public class BlogContentAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String getBlogContentListBySearch() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String titleTrim = blogSearchObj.getTitle().trim();
 		blogSearchObj.setTitle(titleTrim);
@@ -85,8 +77,8 @@ public class BlogContentAction extends ActionSupport {
 		
 		
 		try{
-			blogContentOutputList = blogContentDao.getBlogContentListBySearch(blogSearchObj);
-			blogItem1List = blogItemDao.getBlogItem1ListByLoginId(currentLoginId);
+			blogContentOutputList = blogService.getBlogContentListBySearch(blogSearchObj);
+			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error("Error: " + BlogContentAction.class + ", getBlogContentListBySearch()");
 			e.printStackTrace();
@@ -102,13 +94,12 @@ public class BlogContentAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String initAddBlogContent() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
 			blogContent.setBlogDate(new Date());
 			blogContent.setLoginId(currentLoginId);
-			blogItem1List = blogItemDao.getBlogItem1ListByLoginId(currentLoginId);
+			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			
 		}catch (Exception e){
 			log.error("Error: " + BlogContentAction.class + ", initAddBlogContent()");
@@ -127,8 +118,7 @@ public class BlogContentAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String addBlogContent() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String titleTrim = blogContent.getTitle().trim();
 		String contentTrim = blogContent.getContent().trim();
@@ -147,7 +137,7 @@ public class BlogContentAction extends ActionSupport {
 			blogContent.setWeekday("weekday");
 			//---暂时不用的字段
 			
-			blogContentDao.insertBlogContent(blogContent);
+			blogService.insertBlogContent(blogContent);
 		}catch (Exception e){
 			log.error("Error: " + BlogContentAction.class + ", addBlogContent()");
 			e.printStackTrace();
@@ -163,13 +153,12 @@ public class BlogContentAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String initUpdateBlogContent() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
-			blogContent = blogContentDao.getBlogContentById(blogContentId);
-			blogItem1List = blogItemDao.getBlogItem1ListByLoginId(currentLoginId);
-			blogItem2List = blogItemDao.getBlogItem2ByItem1IdNLoginId(String.valueOf(blogContent.getBlogItem1Id()), currentLoginId);
+			blogContent = blogService.getBlogContentById(blogContentId);
+			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
+			blogItem2List = blogService.getBlogItem2ByItem1IdNLoginId(String.valueOf(blogContent.getBlogItem1Id()), currentLoginId);
 			
 		}catch (Exception e){
 			log.error("Error: " + BlogContentAction.class + ", initUpdateBlogContent()");
@@ -186,8 +175,7 @@ public class BlogContentAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String updateBlogContent() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String titleTrim = blogContent.getTitle().trim();
 		String contentTrim = blogContent.getContent().trim();
@@ -199,7 +187,7 @@ public class BlogContentAction extends ActionSupport {
 			blogContent.setWeather(weatherTrim);
 			blogContent.setModifier(currentLoginId);
 			
-			if(blogContentDao.updateBlogContent(blogContent)){
+			if(blogService.updateBlogContent(blogContent)){
 				return "updateBlogContent";
 			}else{
 				return ERROR;
@@ -218,11 +206,10 @@ public class BlogContentAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String logicDeleteBlogContent() throws Exception {
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
-			if(blogContentDao.logicDeleteBlogContent(blogContentId, currentLoginId)){
+			if(blogService.logicDeleteBlogContent(blogContentId, currentLoginId)){
 				return "logicDeleteBlogContent";
 			}else{
 				return ERROR;
@@ -235,23 +222,6 @@ public class BlogContentAction extends ActionSupport {
 	}
 	
 	
-
-	public IBlogContentDao getBlogContentDao() {
-		return blogContentDao;
-	}
-
-	public void setBlogContentDao(IBlogContentDao blogContentDao) {
-		this.blogContentDao = blogContentDao;
-	}
-
-	public IBlogItemDao getBlogItemDao() {
-		return blogItemDao;
-	}
-
-	public void setBlogItemDao(IBlogItemDao blogItemDao) {
-		this.blogItemDao = blogItemDao;
-	}
-
 	public BlogContent getBlogContent() {
 		return blogContent;
 	}
@@ -299,6 +269,22 @@ public class BlogContentAction extends ActionSupport {
 
 	public void setBlogItem2List(List<BlogItem2> blogItem2List) {
 		this.blogItem2List = blogItem2List;
+	}
+
+	public IBlogService getBlogService() {
+		return blogService;
+	}
+
+	public void setBlogService(IBlogService blogService) {
+		this.blogService = blogService;
+	}
+
+	public ILoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(ILoginService loginService) {
+		this.loginService = loginService;
 	}
 
 }
