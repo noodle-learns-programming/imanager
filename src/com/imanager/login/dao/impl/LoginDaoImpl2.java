@@ -9,7 +9,7 @@ import com.imanager.login.dao.ILoginDao;
 import com.imanager.user.domain.User;
 
 
-public class loginDaoImpl implements ILoginDao {
+public class LoginDaoImpl2 implements ILoginDao {
 	
 	private SqlMapClientOperations sqlMapClientTemplate;
 	
