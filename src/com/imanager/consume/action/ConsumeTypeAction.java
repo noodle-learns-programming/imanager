@@ -5,10 +5,11 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.imanager.common.LoginUtil;
-import com.imanager.consume.dao.IConsumeTypeDao;
 import com.imanager.consume.domain.ConsumeType;
-import com.opensymphony.xwork.ActionSupport;
+import com.imanager.consume.service.IConsumeService;
+import com.imanager.framework.action.BaseAction;
+import com.imanager.framework.service.EnvService;
+import com.imanager.login.service.ILoginService;
 
 /**
  * 消费记录
@@ -16,20 +17,19 @@ import com.opensymphony.xwork.ActionSupport;
  * @since 2008-11-10
  *
  */
-public class ConsumeTypeAction extends ActionSupport {
+public class ConsumeTypeAction extends BaseAction {
 	
 	private static final long serialVersionUID = 1L;
-	
 	private static final Log log = LogFactory.getLog(ConsumeTypeAction.class);
 	
-	private IConsumeTypeDao consumeTypeDao;
+	// Service
+	private IConsumeService consumeService;
+	private ILoginService loginService;
 	
+	// Domain or Var
 	private List<ConsumeType> consumeTypeList;	//消费列表
-	
 	private ConsumeType consumeType = new ConsumeType();	//消费记录
-	
 	private String consumeTypeId;	//消费记录ID
-	
 	String currentLoginId;
 
 	
@@ -41,11 +41,10 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String getConsumeTypeListByLoginId() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{			
-			consumeTypeList = consumeTypeDao.getConsumeTypeListByLoginId(currentLoginId);
+			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			
 			return "getConsumeTypeListByLoginId";
 			
@@ -64,8 +63,7 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String initAddConsumType() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		consumeType.setLoginId(currentLoginId);
 		
@@ -79,8 +77,7 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String addConsumType() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String consumeTypeTrim = consumeType.getConsumeType().trim();
 		
@@ -89,7 +86,7 @@ public class ConsumeTypeAction extends ActionSupport {
 			consumeType.setCreator(currentLoginId);
 			consumeType.setModifier(currentLoginId);
 			
-			consumeTypeDao.insertConsumeType(consumeType);
+			consumeService.insertConsumeType(consumeType);
 			
 			return "addConsumType";
 			
@@ -109,7 +106,7 @@ public class ConsumeTypeAction extends ActionSupport {
 	public String getConsumTypeById() throws Exception {
 		
 		try{
-			consumeType = consumeTypeDao.getConsumeTypeById(consumeTypeId);
+			consumeType = consumeService.getConsumeTypeById(consumeTypeId);
 			
 			return "getConsumTypeById";
 			
@@ -128,8 +125,7 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String updateConsumType() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		String consumeTypeTrim = consumeType.getConsumeType().trim();
 	
@@ -137,7 +133,7 @@ public class ConsumeTypeAction extends ActionSupport {
 			consumeType.setModifier(currentLoginId);
 			consumeType.setConsumeType(consumeTypeTrim);
 			
-			if(consumeTypeDao.updateConsumeType(consumeType)){
+			if(consumeService.updateConsumeType(consumeType)){
 				return "updateConsumType";
 			}else{
 				return ERROR;
@@ -158,11 +154,10 @@ public class ConsumeTypeAction extends ActionSupport {
 	 */
 	public String logicDeleteConsumType() throws Exception {
 		
-		currentLoginId = new LoginUtil().getCurrentLogin();
-		//TODO currentLoginId = "yangqiang";
+		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 		
 		try{
-			if(consumeTypeDao.logicDeleteConsumeTypeById(consumeTypeId, currentLoginId)){
+			if(consumeService.logicDeleteConsumeTypeById(consumeTypeId, currentLoginId)){
 				return "logicDeleteConsumType";
 			}else{
 				return ERROR;
@@ -173,14 +168,6 @@ public class ConsumeTypeAction extends ActionSupport {
 			addActionError("系统错误：逻辑删除消费类型出错！");
 			return ERROR;
 		}
-	}
-
-	public IConsumeTypeDao getConsumeTypeDao() {
-		return consumeTypeDao;
-	}
-
-	public void setConsumeTypeDao(IConsumeTypeDao consumeTypeDao) {
-		this.consumeTypeDao = consumeTypeDao;
 	}
 
 	public List<ConsumeType> getConsumeTypeList() {
@@ -217,5 +204,21 @@ public class ConsumeTypeAction extends ActionSupport {
 
 	public static Log getLog() {
 		return log;
+	}
+
+	public IConsumeService getConsumeService() {
+		return consumeService;
+	}
+
+	public void setConsumeService(IConsumeService consumeService) {
+		this.consumeService = consumeService;
+	}
+
+	public ILoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(ILoginService loginService) {
+		this.loginService = loginService;
 	}
 }
