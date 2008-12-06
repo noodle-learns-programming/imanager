@@ -53,9 +53,9 @@
                 			<tr>
                 				<th align="center">姓名</th>
                 				<th align="center">联系类型</th>
-								<th align="center">手机1</th>
-								<th align="center">QQ1</th>
-								<th align="center">Msn1</th>
+								<th align="center">手机</th>
+								<th align="center">QQ</th>
+								<th align="center">Msn</th>
                 				<th align="center">操作</th>
                 			</tr>
 							#foreach($contactItem in $contactItemList)
