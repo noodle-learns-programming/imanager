@@ -129,7 +129,7 @@
                     				<td align="left"><input type="text" id="contactItem.companyAddress" name="contactItem.companyAddress" value="$esc.html($!contactItem.companyAddress)" size="43" maxlength="100"></td>
                     			</tr>
 								<tr>
-                    				<td align="right">手机1:</td>
+                    				<td align="right">手机:</td>
 									<td align="left">
 										<input type="text" id="contactItem.mobile1" name="contactItem.mobile1" value="$esc.html($!contactItem.mobile1)" size="25" maxlength="20">
 										城市:<input type="text" id="contactItem.mobile1City" name="contactItem.mobile1City" value="$esc.html($!contactItem.mobile1City)" size="10" maxlength="20">
@@ -141,7 +141,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">家庭电话1:</td>
+                    				<td align="right">家庭电话:</td>
 									<td align="left">
 										<input type="text" id="contactItem.familyPhone1" name="contactItem.familyPhone1" value="$esc.html($!contactItem.familyPhone1)" size="25" maxlength="20">
 										城市:<input type="text" id="contactItem.familyPhone1City" name="contactItem.familyPhone1City" value="$esc.html($!contactItem.familyPhone1City)" size="10" maxlength="20">
@@ -153,7 +153,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">工作电话1:</td>
+                    				<td align="right">工作电话:</td>
 									<td align="left">
 										<input type="text" id="contactItem.workPhone1" name="contactItem.workPhone1" value="$esc.html($!contactItem.workPhone1)" size="25" maxlength="20">
 										城市:<input type="text" id="contactItem.workPhone1City" name="contactItem.workPhone1City" value="$esc.html($!contactItem.workPhone1City)" size="10" maxlength="20">
@@ -165,7 +165,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">Email1:</td>
+                    				<td align="right">Email:</td>
 									<td align="left">
 										<input type="text" id="contactItem.email1" name="contactItem.email1" value="$esc.html($!contactItem.email1)" size="25" maxlength="30">
 										备注:<input type="text" id="contactItem.email1Note" name="contactItem.email1Note" value="$esc.html($!contactItem.email1Note)" size="10" maxlength="30">
@@ -177,7 +177,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">QQ1:</td>
+                    				<td align="right">QQ:</td>
 									<td align="left">
 										<input type="text" id="contactItem.qq1" name="contactItem.qq1" value="$esc.html($!contactItem.qq1)" size="25" maxlength="15">
 										备注:<input type="text" id="contactItem.qq1Note" name="contactItem.qq1Note" value="$esc.html($!contactItem.qq1Note)" size="10" maxlength="30">
@@ -189,7 +189,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">Msn1:</td>
+                    				<td align="right">Msn:</td>
 									<td align="left">
 										<input type="text" id="contactItem.msn1" name="contactItem.msn1" value="$esc.html($!contactItem.msn1)" size="25" maxlength="30">
 										备注:<input type="text" id="contactItem.msn1Note" name="contactItem.msn1Note" value="$esc.html($!contactItem.msn1Note)" size="10" maxlength="30">
@@ -201,7 +201,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">雅虎通1:</td>
+                    				<td align="right">雅虎通:</td>
 									<td align="left">
 										<input type="text" id="contactItem.yahoo1" name="contactItem.yahoo1" value="$esc.html($!contactItem.yahoo1)" size="25" maxlength="30">
 										备注:<input type="text" id="contactItem.yahoo1Note" name="contactItem.yahoo1Note" value="$esc.html($!contactItem.yahoo1Note)" size="10" maxlength="30">
@@ -213,7 +213,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">旺旺1:</td>
+                    				<td align="right">旺旺:</td>
 									<td align="left">
 										<input type="text" id="contactItem.aliwang1" name="contactItem.aliwang1" value="$esc.html($!contactItem.aliwang1)" size="25" maxlength="20">
 										备注:<input type="text" id="contactItem.aliwang1Note" name="contactItem.aliwang1Note" value="$esc.html($!contactItem.aliwang1Note)" size="10" maxlength="30">
@@ -225,7 +225,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">个人主页1:</td>
+                    				<td align="right">个人主页:</td>
 									<td align="left">
 										<input type="text" id="contactItem.web1" name="contactItem.web1" value="$esc.html($!contactItem.web1)" size="25" maxlength="100">
 										备注:<input type="text" id="contactItem.web1Note" name="contactItem.web1Note" value="$esc.html($!contactItem.web1Note)" size="10" maxlength="30">
@@ -237,7 +237,7 @@
 									</td>
                     			</tr>
 								<tr>
-                    				<td align="right">其他1:</td>
+                    				<td align="right">其他:</td>
 									<td align="left">
 										<input type="text" id="contactItem.other1" name="contactItem.other1" value="$esc.html($!contactItem.other1)" size="25" maxlength="100">
 										备注:<input type="text" id="contactItem.other1Note" name="contactItem.other1Note" value="$esc.html($!contactItem.other1Note)" size="10" maxlength="30">
