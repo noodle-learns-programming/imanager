@@ -2,13 +2,12 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
 <beans>
 	
-	<bean id="loginDao" class="com.imanager.login.dao.impl.LoginDaoImpl">
+	<bean id="userDao" class="com.imanager.user.dao.impl.UserDaoImpl">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
 	
-	<bean id="loginService" class="com.imanager.login.service.impl.LoginServiceImpl">
-		<property name="loginDao" ref="loginDao" />
+	<bean id="userService" class="com.imanager.user.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
 	</bean>
-	
 
 </beans>

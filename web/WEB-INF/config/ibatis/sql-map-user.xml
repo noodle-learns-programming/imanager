@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+
+	<typeAlias alias="user" type="com.imanager.user.domain.User" />
+	
+	<resultMap id="userMap" class="com.imanager.user.domain.User" extends="Basement.basementMap">
+		<result property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="regDate" column="reg_date" />
+		<result property="gmtLastLogin" column="gmt_last_login" />
+	</resultMap>
+	
+	<select id="getUserByLoginIdNPassword"
+		parameterClass="java.util.Map"
+		resultMap="userMap">
+		<![CDATA[
+			select 	user_id,
+					creator,
+					gmt_created,
+					modifier,
+					gmt_modified,
+					is_deleted,
+					login_id,
+					user_name,
+					password,
+					reg_date,
+					gmt_last_login
+			from user
+			where login_id = #loginId# and password = #password#
+		]]>
+	</select>
+	
+	<select id="getUserByUserId"
+		parameterClass="java.lang.String"
+		resultMap="userMap">
+		<![CDATA[
+			select 	user_id,
+					creator,
+					gmt_created,
+					modifier,
+					gmt_modified,
+					is_deleted,
+					login_id,
+					user_name,
+					password,
+					reg_date,
+					gmt_last_login
+			from user
+			where user_id = #userId#
+		]]>
+	</select>
+	
+	<select id="getUserByLoginId"
+		parameterClass="java.lang.String"
+		resultMap="userMap">
+		<![CDATA[
+			select 	user_id,
+					creator,
+					gmt_created,
+					modifier,
+					gmt_modified,
+					is_deleted,
+					login_id,
+					user_name,
+					password,
+					reg_date,
+					gmt_last_login
+			from user
+			where login_id = #loginId#
+		]]>
+	</select>
+	
+	<!--
+	<insert id="registerUser"
+		parameterClass="user">
+		<![CDATA[
+			insert into user 
+				(creator, gmt_create, modifier, gmt_modified, is_deleted, login_id, user_name, reg_date) 
+			VALUES 
+				(#creator#, now(), #modifier#, now(), #isDeleted#, #loginId#, #userName#, now())
+		]]>
+	</insert>
+	
+	<insert id="setupCorporation"
+		parameterClass="corporation">
+		<![CDATA[
+			INSERT INTO DEMO_CORPORATION 
+				(CHINESE_NAME, ENGLISH_NAME, NUMBER, COMMENTS, CREATOR, GMT_CREATE, AEP_INSTANCEID) 
+			VALUES 
+				(#chineseName#, #englishName#, #number#, #comments#, #creator#, now(), #aepInstanceId#)
+		]]>
+	</insert>
+	
+	<update id="updateCorporation"
+		parameterClass="corporation">
+		<![CDATA[
+			update	DEMO_CORPORATION
+			set		CHINESE_NAME	= #chineseName#,
+					ENGLISH_NAME	= #englishName#,
+					NUMBER			= #number#,
+					COMMENTS		= #comments#,
+					CREATOR			= #creator#
+			where	CORPORATION_ID = #corporationId#
+		]]>
+	</update>
+	-->
+
+</sqlMap>

@@ -4,6 +4,8 @@
 
 	<settings useStatementNamespaces="true" />
 	
+	<sqlMap resource="sql-map-basement.xml" />
+	<sqlMap resource="sql-map-user.xml" />
 	<sqlMap resource="sql-map-login.xml" />
 	<sqlMap resource="sql-map-consume_item.xml" />
 	<sqlMap resource="sql-map-consume_type.xml" />
