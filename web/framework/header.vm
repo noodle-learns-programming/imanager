@@ -4,7 +4,7 @@
 			<td align="center"><a href="../consume/consumeItemAction!doInitGetConsumeItemList.action">财务系统管理</a></td>
 			<td align="center"><a href="../blog/blogContentAction!initGetBlogContentListBySearch.action">日志系统管理</a></td>
 			<td align="center"><a href="../contact/contactItemAction!initGetContactItemListBySearch.action">联系人管理</a></td>
-			<td align="center">提成管理</td>
+			<td align="center"><a href="../user/userAction!initUpdateUserInfo.action">我的信息</a></td>
 			<td align="center">业务员管理</td>
 			<td align="center">业务员管理</td>
 			<td align="center">业务员管理</td>
