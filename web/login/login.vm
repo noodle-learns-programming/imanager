@@ -21,7 +21,7 @@
 			<table>
 				<tr>
 					<td align="right">
-						用户名：
+						用户ID：
 					</td>
 					<td align="left">
 						<input type="text" id="loginId" name="loginId" onkeydown="KeyDown(event)" value="$!loginId" size="20" maxlength="20">
@@ -40,6 +40,11 @@
 						<input type="button" value="登录" onclick="checkLoginForm();">
 						&nbsp;&nbsp;&nbsp;
 						<input type="reset" value="取消">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						还没有帐号？<a href="../user/userAction!initRegisterUser.action">点此</a>注册！
 					</td>
 				</tr>
 				<tr>
