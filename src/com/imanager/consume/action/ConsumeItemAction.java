@@ -38,7 +38,7 @@ public class ConsumeItemAction extends BaseAction {
 	private double consumeItemListSum;	//消费总和
 	private ConsumeItem consumeItem = new ConsumeItem();	//消费记录
 	private String consumeItemId;	//消费记录ID
-	String currentLoginId;
+	private String currentLoginId;
 	
 
 	/**
