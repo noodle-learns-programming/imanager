@@ -27,12 +27,12 @@ function checkLoginForm(){
 function checkLoginId(){
 	var o = document.getElementById("loginId");
 	if(Trim(o.value)==""){
-		alert("用户名不能为空!");
+		alert("用户ID不能为空!");
 		return false;
 	}
 	
 	if(!checkByteLength(Trim(o.value), 6, 20)){
-		alert("用户名的长度必须在6 - 20位之间!");
+		alert("用户ID的长度必须在6 - 20位之间!");
 		return false;
 	}
 	
