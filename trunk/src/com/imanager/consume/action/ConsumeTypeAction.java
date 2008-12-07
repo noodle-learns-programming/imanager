@@ -30,7 +30,7 @@ public class ConsumeTypeAction extends BaseAction {
 	private List<ConsumeType> consumeTypeList;	//消费列表
 	private ConsumeType consumeType = new ConsumeType();	//消费记录
 	private String consumeTypeId;	//消费记录ID
-	String currentLoginId;
+	private String currentLoginId;
 
 	
 
