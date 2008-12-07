@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="imanager-user" extends="webwork-default" namespace="/user">
+	
+		<interceptors>
+			<interceptor-stack name="modelParamsStack">
+				<interceptor-ref name="params" />
+				<interceptor-ref name="model-driven" />
+				<interceptor-ref name="chain" />
+			</interceptor-stack>
+		</interceptors>
+		
+		
+		<action name="userAction" class="com.imanager.user.action.UserAction">
+			<result name="error" type="velocity">/framework/error.vm</result>
+			<result name="success" type="velocity">/framework/success.vm</result>
+						
+			<result name="initRegisterUser" type="velocity">user-register.vm</result>
+			
+			<result name="registerUserInput" type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">userAction</param>
+				<param name="method">initRegisterUser</param>
+			</result>
+
+			<result name="registerUser" type="redirect-action">
+				<param name="namespace">/user</param>
+				<param name="actionName">userAction</param>
+				<param name="method">initUpdateUserInfo</param>
+			</result>
+			
+			<result name="initUpdateUserInfo" type="velocity">user-info-update.vm</result>
+			
+			<result name="updateUserInfo" type="redirect-action">
+				<param name="namespace">/user</param>
+				<param name="actionName">userAction</param>
+				<param name="method">initUpdateUserInfo</param>
+			</result>
+			
+			<result name="initUpdateUserPassword" type="velocity">user-password-update.vm</result>
+			
+			<result name="updateUserPassword" type="redirect-action">
+				<param name="namespace">/user</param>
+				<param name="actionName">userAction</param>
+				<param name="method">initUpdateUserInfo</param>
+			</result>
+			
+			<interceptor-ref name="modelParamsStack" />
+		</action>
+	</package>
+</xwork>
