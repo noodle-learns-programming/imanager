@@ -14,8 +14,8 @@
 		</interceptors>
 		
 		<action name="blogContentAction" class="com.imanager.blog.action.BlogContentAction" >
-			<result name="error">../error.jsp</result>
-			<result name="success">blog-item1-list.jsp</result>
+			<result name="error" type="velocity">/framework/error.vm</result>
+			<result name="success" type="velocity">/framework/success.vm</result>
 			
 			<result name="initGetBlogContentListBySearch" type="velocity">blog-content-list.vm</result>
 			
@@ -48,7 +48,8 @@
 
 		<!-- Get Blog Item1 List -->
 		<action name="blogItemAction" class="com.imanager.blog.action.BlogItemAction" >
-			<result name="error">../error.jsp</result>
+			<result name="error" type="velocity">/framework/error.vm</result>
+			<result name="success" type="velocity">/framework/success.vm</result>
 			
 			<result name="getBlogItem1ListByLoginId" type="velocity">blog-item1-list.vm</result>
 			

@@ -4,6 +4,7 @@
 	<include file="webwork-default.xml"></include>
 	<package name="default" extends="webwork-default"></package>
 	<include file="webwork-imanager-login.xml" />
+	<include file="webwork-imanager-user.xml" />
 	<include file="webwork-imanager-consume.xml" />
 	<include file="webwork-imanager-blog.xml" />
 	<include file="webwork-imanager-contact.xml" />
