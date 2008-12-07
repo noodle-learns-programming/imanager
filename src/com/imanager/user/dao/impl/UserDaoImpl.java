@@ -35,6 +35,30 @@ public class UserDaoImpl implements IUserDao {
 		return (User)sqlMapClientTemplate.queryForObject("User.getUserByLoginId", loginId);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.imanager.user.dao.IUserDao#insertUser(com.imanager.user.domain.User)
+	 */
+	public void insertUser(User user){
+		sqlMapClientTemplate.insert("User.insertUser", user);
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.imanager.user.dao.IUserDao#updateUserInfo(com.imanager.user.domain.User)
+	 */
+	public boolean updateUserInfo(User user){
+		Integer result = sqlMapClientTemplate.update("User.updateUserInfo", user);
+		return result == 1;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.imanager.user.dao.IUserDao#updateUserPassword(com.imanager.user.domain.User)
+	 */
+	public boolean updateUserPassword(User user){
+		Integer result = sqlMapClientTemplate.update("User.updateUserPassword", user);
+		return result == 1;
+	}
+	
+	
 	public SqlMapClientOperations getSqlMapClientTemplate() {
 		return sqlMapClientTemplate;
 	}
