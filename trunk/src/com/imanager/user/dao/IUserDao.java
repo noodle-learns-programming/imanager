@@ -24,5 +24,25 @@ public interface IUserDao {
 	 * @return
 	 */
 	public User getUserByLoginId(String loginId);
+	
+	/**
+	 * 添加一个用户
+	 * @param user
+	 */
+	public void insertUser(User user);
+	
+	/**
+	 * 更新用户信息
+	 * @param user
+	 * @return
+	 */
+	public boolean updateUserInfo(User user);
+	
+	/**
+	 * 更新用户密码
+	 * @param user
+	 * @return
+	 */
+	public boolean updateUserPassword(User user);
 
 }
