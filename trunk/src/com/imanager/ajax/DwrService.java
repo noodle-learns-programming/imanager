@@ -61,7 +61,7 @@ public class DwrService {
 		
 		List<BlogItem2> blogItem2List = blogService.getBlogItem2ByItem1IdNLoginId(blogItem1Id, currentLoginId);
 		if(blogItem2List.size() == 0){
-			result.put("0", "«Î—°‘Ò");
+			result.put("", "«Î—°‘Ò");
 		}else{
 			for(BlogItem2 item2 : blogItem2List){
 				result.put(String.valueOf(item2.getBlogItem2Id()), EncodeUtil.html(item2.getItemChn()));
