@@ -29,12 +29,18 @@ public class UserAction extends BaseAction{
 	
 	
 	/**
-	 * 初始化
+	 * 初始化用户注册
 	 * @return
 	 * @throws Exception
 	 */
 	public String initRegisterUser() throws Exception {
-		return "initRegisterUser";
+		try {
+			return "initRegisterUser";
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化用户注册出错！");
+			return ERROR;
+		}
 	}
 	
 	/**
@@ -114,8 +120,13 @@ public class UserAction extends BaseAction{
 	 * @throws Exception
 	 */
 	public String initUpdateUserPassword() throws Exception {
-		
-		return "initUpdateUserPassword";
+		try {
+			return "initUpdateUserPassword";
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化修改用户密码出错！");
+			return ERROR;
+		}
 	}
 	
 	/**

@@ -33,9 +33,14 @@ public class ContactTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initAddContactType() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		contactType.setLoginId(currentLoginId);
+		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			contactType.setLoginId(currentLoginId);
+		}catch (Exception e){
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化添加联系人类型出错！");
+			return ERROR;
+		}
 		
 		return "initAddContactType";
 	}
@@ -46,19 +51,18 @@ public class ContactTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String addContactType() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String contactTypeTrim = contactType.getContactType().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			String contactTypeTrim = contactType.getContactType().trim();
+		
 			contactType.setCreator(currentLoginId);
 			contactType.setModifier(currentLoginId);
 			contactType.setContactType(contactTypeTrim);
 			
 			contactService.insertContactType(contactType);
 		}catch (Exception e){
-			log.error("Error: " + ContactTypeAction.class + ", addContactType()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：添加联系人类型出错！");
 			return ERROR;
 		}
 		
@@ -71,13 +75,12 @@ public class ContactTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getContactTypeListByLoginId() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + ContactTypeAction.class + ", getContactTypeListByLoginId()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：获得联系类型列表出错！");
 			return ERROR;
 		}
 		
@@ -90,13 +93,12 @@ public class ContactTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getContactTypeById() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			contactType = contactService.getContactTypeById(contactTypeId);
-			}catch (Exception e){
-			log.error("Error: " + ContactTypeAction.class + ", getContactTypeById()");
-			e.printStackTrace();
+		}catch (Exception e){
+			log.error(e.getMessage());
+			addActionError("系统错误：查看联系类型详细出错！");
 			return ERROR;
 		}
 		
@@ -109,41 +111,46 @@ public class ContactTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String updateContactType() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		String contactTypeTrim = contactType.getContactType().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			String contactTypeTrim = contactType.getContactType().trim();
+		
 			contactType.setModifier(currentLoginId);
 			contactType.setContactType(contactTypeTrim);
 			
 			if(contactService.updateContactType(contactType)){
 				return "updateContactType";
 			}else{
+				addActionError("系统错误：更新联系类型详细出错！");
 				return ERROR;
 			}
-			
 		}catch (Exception e){
-			log.error("Error: " + ContactTypeAction.class + ", updateContactType()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：更新联系类型详细出错！");
 			return ERROR;
 		}
 	}
 	
+	/**
+	 * 逻辑删除联系类型详细
+	 * @return
+	 * @throws Exception
+	 */
 	public String logicDeleteContactType() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			contactType.setModifier(currentLoginId);
 			
 			if(contactService.logicDeleteContactType(contactTypeId, currentLoginId)){
 				return "logicDeleteContactType";
 			}else{
+				addActionError("系统错误：删除联系类型详细出错！");
 				return ERROR;
 			}
-			
 		}catch (Exception e){
-			log.error("Error: " + ContactTypeAction.class + ", updateContactType()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：删除联系类型详细出错！");
 			return ERROR;
 		}
 	}

@@ -64,8 +64,8 @@ public class LoginAction extends BaseAction {
 			loginService.recordCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString(), loginId);
 			
 		}catch (Exception e){
-			log.error("Error: " + LoginAction.class + ", validateUser()",e);
-			//e.printStackTrace();
+			//log.error("Error: " + LoginAction.class + ", validateUser()",e);
+			log.error(e.getMessage());
 			addActionError("系统错误：验证是否合法用户出错！");
 			return ERROR;
 		}
