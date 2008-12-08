@@ -71,13 +71,13 @@
 											<option value="zz" #if($blogSearchObj.blogType == 'zz') selected #end>转载</option> 
                 						</select>&nbsp;&nbsp;
                 						明细1：<select id="blogContent.blogItem1Id" name="blogSearchObj.blogItem1Id" onchange="getBlogItem2List();">
-                							<option value="">请选择</option>
+                							<option value="0">请选择</option>
 											#foreach($blogItem1 in $blogItem1List)
                 								<option value="$blogItem1.blogItem1Id" #if("$blogItem1.blogItem1Id" == $blogSearchObj.blogItem1Id) selected #end>$esc.html($blogItem1.itemChn)</option>
 											#end
 										</select>&nbsp;&nbsp;
                 						明细2：<select id="blogContent.blogItem2Id" name="blogSearchObj.blogItem2Id">
-                							<option value="">请选择</option>
+                							<option value="0">请选择</option>
 											#if($stringUtil.isNotBlank($!blogSearchObj.blogItem1Id))
     											#foreach($blogItem2 in $blogItem2List)
                     								<option value="$blogItem2.blogItem2Id" #if("$blogItem2.blogItem2Id" == $blogSearchObj.blogItem2Id) selected #end>$esc.html($blogItem2.itemChn)</option>
