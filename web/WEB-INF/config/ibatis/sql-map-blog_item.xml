@@ -116,7 +116,7 @@
 					blog_item2.blog_item1_id = blog_item1.blog_item1_id
 			where	blog_item2.is_deleted = 'no' and
 					blog_item2.login_id = #loginId#
-					order by blog_item2.gmt_created asc
+					order by blog_item2.blog_item1_id asc, blog_item2.gmt_created asc
 		]]>
 	</select>
 	
