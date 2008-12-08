@@ -40,20 +40,15 @@ public class ConsumeTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getConsumeTypeListByLoginId() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		try{			
+		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
-			
-			return "getConsumeTypeListByLoginId";
-			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeTypeAction.class + ", getConsumeTypeListByLoginId()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
 			addActionError("系统错误：获得消费类型列表出错！");
 			return ERROR;
 		}
+		return "getConsumeTypeListByLoginId";
 	}
 	
 	/**
@@ -62,10 +57,14 @@ public class ConsumeTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initAddConsumType() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		consumeType.setLoginId(currentLoginId);
+		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			consumeType.setLoginId(currentLoginId);
+		}catch (Exception e){
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化添加消费类型出错！");
+			return ERROR;
+		}
 		
 		return "initAddConsumType";
 	}
@@ -76,26 +75,22 @@ public class ConsumeTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String addConsumType() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String consumeTypeTrim = consumeType.getConsumeType().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			String consumeTypeTrim = consumeType.getConsumeType().trim();
+		
 			consumeType.setConsumeType(consumeTypeTrim);
 			consumeType.setCreator(currentLoginId);
 			consumeType.setModifier(currentLoginId);
 			
 			consumeService.insertConsumeType(consumeType);
-			
-			return "addConsumType";
-			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeTypeAction.class + ", addConsumType()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
 			addActionError("系统错误：添加消费类型出错！");
 			return ERROR;
 		}
+		
+		return "addConsumType";
 	}
 
 	/**
@@ -104,7 +99,6 @@ public class ConsumeTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getConsumTypeById() throws Exception {
-		
 		try{
 			consumeType = consumeService.getConsumeTypeById(consumeTypeId);
 			
@@ -119,32 +113,30 @@ public class ConsumeTypeAction extends BaseAction {
 	}
 	
 	/**
-	 * 更新一个消费类型
+	 * 更新消费类型详细
 	 * @return
 	 * @throws Exception
 	 */
 	public String updateConsumType() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String consumeTypeTrim = consumeType.getConsumeType().trim();
-	
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			String consumeTypeTrim = consumeType.getConsumeType().trim();
+		
 			consumeType.setModifier(currentLoginId);
 			consumeType.setConsumeType(consumeTypeTrim);
 			
 			if(consumeService.updateConsumeType(consumeType)){
 				return "updateConsumType";
 			}else{
+				addActionError("系统错误：更新消费类型详细出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + ConsumeTypeAction.class + ", updateConsumType()", e);
-			//e.printStackTrace();
-			addActionError("系统错误：更新一个消费类型出错！");
+			log.error(e.getMessage());
+			addActionError("系统错误：更新消费类型详细出错！");
 			return ERROR;
 		}
-		
 	}
 	
 	/**
@@ -153,19 +145,18 @@ public class ConsumeTypeAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String logicDeleteConsumType() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			if(consumeService.logicDeleteConsumeTypeById(consumeTypeId, currentLoginId)){
 				return "logicDeleteConsumType";
 			}else{
+				addActionError("系统错误：删除消费类型详细出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + ConsumeTypeAction.class + ", logicDeleteConsumType()", e);
-			//e.printStackTrace();
-			addActionError("系统错误：逻辑删除消费类型出错！");
+			log.error(e.getMessage());
+			addActionError("系统错误：删除消费类型详细出错！");
 			return ERROR;
 		}
 	}

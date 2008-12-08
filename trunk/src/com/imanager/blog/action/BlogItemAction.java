@@ -36,10 +36,15 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initAddBlogItem1() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		blogItem1.setLoginId(currentLoginId);
-		return "initAddBlogItem1";
+		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			blogItem1.setLoginId(currentLoginId);
+			return "initAddBlogItem1";
+		}catch (Exception e){
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化添加一级类型出错！");
+			return ERROR;
+		}
 	}
 	
 	/**
@@ -48,20 +53,21 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String addBlogItem1() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String itemChnTrim = blogItem1.getItemChn().trim();
-		String itemEngTrim = blogItem1.getItemEng().trim();
-		
-		blogItem1.setItemChn(itemChnTrim);
-		blogItem1.setItemEng(itemEngTrim);
-		blogItem1.setCreator(currentLoginId);
-		blogItem1.setModifier(currentLoginId);
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			String itemChnTrim = blogItem1.getItemChn().trim();
+			String itemEngTrim = blogItem1.getItemEng().trim();
+			
+			blogItem1.setItemChn(itemChnTrim);
+			blogItem1.setItemEng(itemEngTrim);
+			blogItem1.setCreator(currentLoginId);
+			blogItem1.setModifier(currentLoginId);
+		
 			blogService.insertBlogItem1(blogItem1);
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", addBlogItem1()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：添加一级类型出错！");
 			return ERROR;
 		}
 		
@@ -74,13 +80,12 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getBlogItem1ListByLoginId() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", getBlogItem1ListByLoginId()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：获得一级类型列表出错！");
 			return ERROR;
 		}
 		
@@ -93,13 +98,12 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initUpdateItem1() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			blogItem1 = blogService.getBlogItem1ByItemId(blogItem1Id);
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", initUpdateItem1()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查看一级类型详细出错！");
 			return ERROR;
 		}
 		
@@ -112,24 +116,25 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String updateBlogItem1() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String itemChnTrim = blogItem1.getItemChn().trim();
-		String itemEngTrim = blogItem1.getItemEng().trim();
-		
-		blogItem1.setItemChn(itemChnTrim);
-		blogItem1.setItemEng(itemEngTrim);
-		blogItem1.setModifier(currentLoginId);
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			String itemChnTrim = blogItem1.getItemChn().trim();
+			String itemEngTrim = blogItem1.getItemEng().trim();
+			
+			blogItem1.setItemChn(itemChnTrim);
+			blogItem1.setItemEng(itemEngTrim);
+			blogItem1.setModifier(currentLoginId);
+		
 			if(blogService.updateBlogItem1(blogItem1)){
 				return "updateBlogItem1";
 			}else{
+				addActionError("系统错误：更新一级类型详细出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", updateBlogItem1()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：更新一级类型详细出错！");
 			return ERROR;
 		}
 		
@@ -141,17 +146,18 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String logicDeleteBlogItem1() throws Exception{
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			if(blogService.logicDeleteBlogItem1(blogItem1Id, currentLoginId)){
 				return "logicDeleteBlogItem1";
 			}else{
+				addActionError("系统错误：删除一级类型详细出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", logicDeleteBlogItem1()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：删除一级类型详细出错！");
 			return ERROR;
 		}
 	}
@@ -162,13 +168,12 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getBlogItem2ListByLoginId() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			blogItem2List = blogService.getBlogItem2ListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", getBlogItem2ListByLoginId()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：获得二级类型列表出错！");
 			return ERROR;
 		}
 		
@@ -181,17 +186,16 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initAddBlogItem2() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
+			blogItem2.setLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", initAddBlogItem2()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化添加二级类型出错！");
 			return ERROR;
 		}
 		
-		blogItem2.setLoginId(currentLoginId);
 		return "initAddBlogItem2";
 	}
 	
@@ -201,20 +205,21 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String addBlogItem2() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String itemChnTrim = blogItem2.getItemChn().trim();
-		String itemEngTrim = blogItem2.getItemEng().trim();
-		
-		blogItem2.setItemChn(itemChnTrim);
-		blogItem2.setItemEng(itemEngTrim);
-		blogItem2.setCreator(currentLoginId);
-		blogItem2.setModifier(currentLoginId);
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			String itemChnTrim = blogItem2.getItemChn().trim();
+			String itemEngTrim = blogItem2.getItemEng().trim();
+			
+			blogItem2.setItemChn(itemChnTrim);
+			blogItem2.setItemEng(itemEngTrim);
+			blogItem2.setCreator(currentLoginId);
+			blogItem2.setModifier(currentLoginId);
+		
 			blogService.insertBlogItem2(blogItem2);
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", addBlogItem2()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：添加二级类型出错！");
 			return ERROR;
 		}
 		
@@ -227,14 +232,14 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initUpdateItem2() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2 = blogService.getBlogItem2ByItemId(blogItem2Id);
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", initUpdateItem2()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查看二级类型详细出错！");
 			return ERROR;
 		}
 		
@@ -247,24 +252,25 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String updateBlogItem2() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String itemChnTrim = blogItem2.getItemChn().trim();
-		String itemEngTrim = blogItem2.getItemEng().trim();
-		
-		blogItem2.setItemChn(itemChnTrim);
-		blogItem2.setItemEng(itemEngTrim);
-		blogItem2.setModifier(currentLoginId);
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			String itemChnTrim = blogItem2.getItemChn().trim();
+			String itemEngTrim = blogItem2.getItemEng().trim();
+			
+			blogItem2.setItemChn(itemChnTrim);
+			blogItem2.setItemEng(itemEngTrim);
+			blogItem2.setModifier(currentLoginId);
+		
 			if(blogService.updateBlogItem2(blogItem2)){
 				return "updateBlogItem2";
 			}else{
+				addActionError("系统错误：更新二级类型详细出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", updateBlogItem2()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：更新二级类型详细出错！");
 			return ERROR;
 		}
 		
@@ -276,17 +282,18 @@ public class BlogItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String logicDeleteBlogItem2() throws Exception{
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			if(blogService.logicDeleteBlogItem2(blogItem2Id, currentLoginId)){
 				return "logicDeleteBlogItem2";
 			}else{
+				addActionError("系统错误：删除二级类型详细出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + BlogItemAction.class + ", logicDeleteBlogItem2()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：删除二级类型详细出错！");
 			return ERROR;
 		}
 	}

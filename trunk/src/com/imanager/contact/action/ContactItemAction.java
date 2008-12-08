@@ -39,16 +39,16 @@ public class ContactItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initAddContactItem() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		contactItem.setBirthday(new Date());
-		contactItem.setLoginId(currentLoginId);
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			contactItem.setBirthday(new Date());
+			contactItem.setLoginId(currentLoginId);
+		
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", initAddContactItem()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化添加联系人详细出错！");
 			return ERROR;
 		}
 		
@@ -61,12 +61,12 @@ public class ContactItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String addContactItem() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String nameTrim = contactItem.getName().trim();
-		String pinyinTrim = contactItem.getPinyin().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			String nameTrim = contactItem.getName().trim();
+			String pinyinTrim = contactItem.getPinyin().trim();
+		
 			contactItem.setCreator(currentLoginId);
 			contactItem.setModifier(currentLoginId);
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
@@ -75,8 +75,8 @@ public class ContactItemAction extends BaseAction {
 			
 			contactService.insertContactItem(contactItem);
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", addContactItem()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：添加联系人详细出错！");
 			return ERROR;
 		}
 		
@@ -88,10 +88,10 @@ public class ContactItemAction extends BaseAction {
 	 * @return
 	 * @throws Exception
 	 */
-	public String initGetContactItemListBySearch() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
+	public String initGetContactItemList() throws Exception {
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			contactSearchObj.setLoginId(currentLoginId);
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 			if (contactTypeList.size() != 0) {
@@ -99,12 +99,12 @@ public class ContactItemAction extends BaseAction {
 			}
 			contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", initGetContactItemListBySearch()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：获得联系人详细列表出错！");
 			return ERROR;
 		}
 		
-		return "initGetContactItemListBySearch";
+		return "initGetContactItemList";
 	}
 	
 	/**
@@ -113,21 +113,20 @@ public class ContactItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getContactItemListBySearch() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String nameTrim = contactSearchObj.getName().trim();
-		String pinyinTrim = contactSearchObj.getPinyin().trim();
-		contactSearchObj.setName(nameTrim);
-		contactSearchObj.setPinyin(pinyinTrim);
-		contactSearchObj.setLoginId(currentLoginId);
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			String nameTrim = contactSearchObj.getName().trim();
+			String pinyinTrim = contactSearchObj.getPinyin().trim();
+			contactSearchObj.setName(nameTrim);
+			contactSearchObj.setPinyin(pinyinTrim);
+			contactSearchObj.setLoginId(currentLoginId);
+		
 			contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
-			
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", getContactItemListBySearch()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查询联系人详细列表出错！");
 			return ERROR;
 		}
 		
@@ -135,14 +134,14 @@ public class ContactItemAction extends BaseAction {
 	}
 	
 	/**
-	 * 根据ID获得一个联系类型
+	 * 查看联系人详细
 	 * @return
 	 * @throws Exception
 	 */
 	public String getContactItemById() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 			contactItem = contactService.getContactItemById(contactItemId);
 			
@@ -154,8 +153,8 @@ public class ContactItemAction extends BaseAction {
 				contactItem.setContactType(contactType);
 			}
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", getContactItemById()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查询联系人详细出错！");
 			return ERROR;
 		}
 		
@@ -163,17 +162,17 @@ public class ContactItemAction extends BaseAction {
 	}
 	
 	/**
-	 * 更新一个联系类型
+	 * 更新联系人详细
 	 * @return
 	 * @throws Exception
 	 */
 	public String updateContactItem() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String nameTrim = contactItem.getName().trim();
-		String pinyinTrim = contactItem.getPinyin().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			String nameTrim = contactItem.getName().trim();
+			String pinyinTrim = contactItem.getPinyin().trim();
+		
 			contactItem.setModifier(currentLoginId);
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
 			contactItem.setName(nameTrim);
@@ -182,31 +181,36 @@ public class ContactItemAction extends BaseAction {
 			if(contactService.updateContactItem(contactItem)){
 				return "updateContactItem";
 			}else{
+				addActionError("系统错误：更新联系人详细出错！");
 				return ERROR;
 			}
-			
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", updateContactItem()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：更新联系人详细出错！");
 			return ERROR;
 		}
 	}
 	
+	/**
+	 * 逻辑删除联系人详细
+	 * @return
+	 * @throws Exception
+	 */
 	public String logicDeleteContactItem() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			contactItem.setModifier(currentLoginId);
 			
 			if(contactService.logicDeleteContactItem(contactItemId, currentLoginId)){
 				return "logicDeleteContactItem";
 			}else{
+				addActionError("系统错误：删除联系人详细出错！");
 				return ERROR;
 			}
-			
 		}catch (Exception e){
-			log.error("Error: " + ContactItemAction.class + ", logicDeleteContactItem()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：删除联系人详细出错！");
 			return ERROR;
 		}
 	}
