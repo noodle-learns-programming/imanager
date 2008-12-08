@@ -9,6 +9,7 @@ import com.imanager.blog.domain.BlogItem2;
 import com.imanager.blog.service.IBlogService;
 import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
+import com.imanager.util.EncodeUtil;
 
 public class DwrService {
 	
@@ -58,10 +59,10 @@ public class DwrService {
 		
 		List<BlogItem2> blogItem2List = blogService.getBlogItem2ByItem1IdNLoginId(blogItem1Id, currentLoginId);
 		if(blogItem2List.size() == 0){
-			result.put("", "«Î—°‘Ò");
+			result.put("0", "«Î—°‘Ò");
 		}else{
 			for(BlogItem2 item2 : blogItem2List){
-				result.put(String.valueOf(item2.getBlogItem2Id()), item2.getItemChn());
+				result.put(String.valueOf(item2.getBlogItem2Id()), EncodeUtil.html(item2.getItemChn()));
 			}
 		}
 		return result;
