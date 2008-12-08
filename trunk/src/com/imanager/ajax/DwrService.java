@@ -15,9 +15,11 @@ public class DwrService {
 	
 	private static final Log log = LogFactory.getLog(DwrService.class);
 	
+	// Service
 	private IBlogService blogService;
 	private ILoginService loginService;
 	
+	// Domain or Var
 	private String currentLoginId;
 	
 	/**
@@ -27,17 +29,17 @@ public class DwrService {
 	 * @throws Exception
 	 */
 	public String isItem1HasItem2(String blogItem1Id) throws Exception {
-		String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
-		currentLoginId = loginService.getCurrentLoginId(recordType);
-
 		try{
+			String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
+			currentLoginId = loginService.getCurrentLoginId(recordType);
+		
 			if(blogService.isItem1HasItem2(blogItem1Id, currentLoginId)){
 				return "true";
 			}else{
 				return "false";
 			}
 		}catch (Exception e){
-			log.error("Error: " + DwrService.class + ", isItem1HasItem2()");
+			log.error(e.getMessage());
 			e.printStackTrace();
 			return "error";
 		}
