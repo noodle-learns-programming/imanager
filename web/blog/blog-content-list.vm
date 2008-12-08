@@ -11,6 +11,22 @@
     <script type="text/javascript" src="../dwr/util.js"></script>
     <script type="text/javascript" src="../resource/js/util.js"></script>
     <script type="text/javascript" src="../resource/js/blog/content.js"></script>
+	<script type="text/javascript">
+    		function doSubmitSearchForm(){
+            	var theForm = document.getElementById("blogContentSearchForm");
+            	var submitUrl = "$env.appUrl/blog/blogContentAction!getBlogContentListBySearch.action";
+            	theForm.action = submitUrl;
+            	theForm.submit();
+            }
+			
+			function doGetBlogContentById(blogContentId){
+            	var theForm = document.getElementById("blogContentSearchForm");
+            	document.getElementById("blogContentId").value = blogContentId;
+				var submitUrl = "$env.appUrl/blog/blogContentAction!initUpdateBlogContent.action";
+            	theForm.action = submitUrl;
+            	theForm.submit();
+            }
+    	</script>
 </head>
 	
 	<body topmargin="10" bgcolor="#99CCFF">
@@ -27,7 +43,8 @@
         			<td align="center">
 		
                 		<h2>Blog列表</h2>
-                		<form action="blogContentAction!getBlogContentListBySearch.action" method="post">
+                		<form id="blogContentSearchForm" action="" method="post">
+							<input type="hidden" id="blogContentId" name="blogContentId" value="" />
                 			<table border="0" width="100%" height="60" cellpadding="0" cellspacing="0" align="center" >
                 				<tr>
 									<td align="left">标题:</td>
@@ -50,22 +67,27 @@
                 					<td align="left">
                 						<select name="blogSearchObj.blogType">
                 							<option value="">请选择</option>
-                							<option value="yc">原创</option>
-                							<option value="zz">转载</option>
+											<option value="yc" #if($blogSearchObj.blogType == 'yc') selected #end>原创</option>
+											<option value="zz" #if($blogSearchObj.blogType == 'zz') selected #end>转载</option> 
                 						</select>&nbsp;&nbsp;
                 						明细1：<select id="blogContent.blogItem1Id" name="blogSearchObj.blogItem1Id" onchange="getBlogItem2List();">
                 							<option value="">请选择</option>
 											#foreach($blogItem1 in $blogItem1List)
-                								<option value="$blogItem1.blogItem1Id">$esc.html($blogItem1.itemChn)</option>
+                								<option value="$blogItem1.blogItem1Id" #if("$blogItem1.blogItem1Id" == $blogSearchObj.blogItem1Id) selected #end>$esc.html($blogItem1.itemChn)</option>
 											#end
 										</select>&nbsp;&nbsp;
                 						明细2：<select id="blogContent.blogItem2Id" name="blogSearchObj.blogItem2Id">
                 							<option value="">请选择</option>
+											#if($stringUtil.isNotBlank($!blogSearchObj.blogItem1Id))
+    											#foreach($blogItem2 in $blogItem2List)
+                    								<option value="$blogItem2.blogItem2Id" #if("$blogItem2.blogItem2Id" == $blogSearchObj.blogItem2Id) selected #end>$esc.html($blogItem2.itemChn)</option>
+												#end
+											#end
                 						</select>
                 					</td>
                 				</tr>
                 				<tr>
-                					<td align="left" colspan="2"><input type="submit" name="submit" value="查询" /></td>
+                					<td align="left" colspan="2"><input type="button" name="button" onclick="doSubmitSearchForm();" value="查询" /></td>
                 				</tr>
                 			</table>
                 		</form>
@@ -100,8 +122,8 @@
                 					<td align = "center">$!dateUtil.date($blogContentOutput.blogDate, 'yyyy-MM-dd')</td>
                 					<td align = "center">$blogContentOutput.loginId</td>
                 					<td align = "center">
-                						<a href="blogContentAction!initUpdateBlogContent.action?blogContentId=$blogContentOutput.blogContentId">更新</a>&nbsp;|&nbsp;
-                						<a href="#" onclick=deleteBlogContent("$blogContentOutput.blogContentId")>删除</a>
+                						<a href="#" onclick="doGetBlogContentById('$blogContentOutput.blogContentId');">更新</a>&nbsp;|
+                						<a href="#" onclick="deleteBlogContent('$blogContentOutput.blogContentId');">删除</a>
                 					</td>
                 				</tr>
 							#end
