@@ -41,26 +41,26 @@ public class BlogContentAction extends BaseAction {
 	 * @return
 	 * @throws Exception
 	 */
-	public String initGetBlogContentListBySearch() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		Date startDate = DateUtil.getMinDate();
-		Date endDate = DateUtil.getMaxDate();
-		
-		blogSearchObj.setStartBlogDate(DateUtil.dateOnlyExt(startDate));
-		blogSearchObj.setEngBlogDate(DateUtil.dateLastTime(endDate));
-		blogSearchObj.setLoginId(currentLoginId);
-		
+	public String initGetBlogContentList() throws Exception {
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			Date startDate = DateUtil.getMinDate();
+			Date endDate = DateUtil.getMaxDate();
+			
+			blogSearchObj.setStartBlogDate(DateUtil.dateOnlyExt(startDate));
+			blogSearchObj.setEngBlogDate(DateUtil.dateLastTime(endDate));
+			blogSearchObj.setLoginId(currentLoginId);
+		
 			blogContentOutputList = blogService.getBlogContentListBySearch(blogSearchObj);
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + BlogContentAction.class + ", initGetBlogContentListBySearch()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：获得本月Blog列表出错！");
 			return ERROR;
 		}
 		
-		return "initGetBlogContentListBySearch";
+		return "initGetBlogContentList";
 	}
 
 	/**
@@ -69,19 +69,19 @@ public class BlogContentAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String getBlogContentListBySearch() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String titleTrim = blogSearchObj.getTitle().trim();
-		blogSearchObj.setTitle(titleTrim);
-		blogSearchObj.setLoginId(currentLoginId);
-		
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			String titleTrim = blogSearchObj.getTitle().trim();
+			blogSearchObj.setTitle(titleTrim);
+			blogSearchObj.setLoginId(currentLoginId);
+		
 			blogContentOutputList = blogService.getBlogContentListBySearch(blogSearchObj);
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
+			blogItem2List = blogService.getBlogItem2ByItem1IdNLoginId(blogSearchObj.getBlogItem1Id(), currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + BlogContentAction.class + ", getBlogContentListBySearch()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查找Blog列表出错！");
 			return ERROR;
 		}
 		
@@ -94,20 +94,18 @@ public class BlogContentAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initAddBlogContent() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			blogContent.setBlogDate(new Date());
 			blogContent.setLoginId(currentLoginId);
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
-			
+			blogContent.setLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error("Error: " + BlogContentAction.class + ", initAddBlogContent()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化添加Blog出错！");
 			return ERROR;
 		}
-		
-		blogContent.setLoginId(currentLoginId);
 		
 		return "initAddBlogContent";
 	}
@@ -118,13 +116,13 @@ public class BlogContentAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String addBlogContent() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String titleTrim = blogContent.getTitle().trim();
-		String contentTrim = blogContent.getContent().trim();
-		String weatherTrim = blogContent.getWeather().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			String titleTrim = blogContent.getTitle().trim();
+			String contentTrim = blogContent.getContent().trim();
+			String weatherTrim = blogContent.getWeather().trim();
+		
 			blogContent.setTitle(titleTrim);
 			blogContent.setContent(contentTrim);
 			blogContent.setWeather(weatherTrim);
@@ -139,8 +137,8 @@ public class BlogContentAction extends BaseAction {
 			
 			blogService.insertBlogContent(blogContent);
 		}catch (Exception e){
-			log.error("Error: " + BlogContentAction.class + ", addBlogContent()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：添加Blog出错！");
 			return ERROR;
 		}
 		
@@ -153,16 +151,15 @@ public class BlogContentAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String initUpdateBlogContent() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			blogContent = blogService.getBlogContentById(blogContentId);
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2List = blogService.getBlogItem2ByItem1IdNLoginId(String.valueOf(blogContent.getBlogItem1Id()), currentLoginId);
-			
 		}catch (Exception e){
-			log.error("Error: " + BlogContentAction.class + ", initUpdateBlogContent()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查看Blog出错！");
 			return ERROR;
 		}
 
@@ -175,13 +172,13 @@ public class BlogContentAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String updateBlogContent() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String titleTrim = blogContent.getTitle().trim();
-		String contentTrim = blogContent.getContent().trim();
-		String weatherTrim = blogContent.getWeather().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
+			String titleTrim = blogContent.getTitle().trim();
+			String contentTrim = blogContent.getContent().trim();
+			String weatherTrim = blogContent.getWeather().trim();
+		
 			blogContent.setTitle(titleTrim);
 			blogContent.setContent(contentTrim);
 			blogContent.setWeather(weatherTrim);
@@ -190,12 +187,12 @@ public class BlogContentAction extends BaseAction {
 			if(blogService.updateBlogContent(blogContent)){
 				return "updateBlogContent";
 			}else{
+				addActionError("系统错误：查看Blog出错！");
 				return ERROR;
 			}
-			
 		}catch (Exception e){
-			log.error("Error: " + BlogContentAction.class + ", updateBlogContent()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：更新Blog出错！");
 			return ERROR;
 		}
 	}
@@ -206,17 +203,18 @@ public class BlogContentAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String logicDeleteBlogContent() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			if(blogService.logicDeleteBlogContent(blogContentId, currentLoginId)){
 				return "logicDeleteBlogContent";
 			}else{
+				addActionError("系统错误：删除Blog出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + BlogContentAction.class + ", logicDeleteBlogContent()");
-			e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：删除Blog出错！");
 			return ERROR;
 		}
 	}

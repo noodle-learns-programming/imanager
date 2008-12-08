@@ -43,20 +43,21 @@ public class UserAction extends BaseAction{
 	 * @throws Exception
 	 */
 	public String registerUser() throws Exception {
-		String loginId = user.getLoginId();
-		user.setCreator(loginId);
-		user.setModifier(loginId);
-		String password = Md5Encode.MD5(user.getPassword().trim());
-		user.setPassword(password);
 		try {
+			String loginId = user.getLoginId();
+			user.setCreator(loginId);
+			user.setModifier(loginId);
+			String password = Md5Encode.MD5(user.getPassword().trim());
+			user.setPassword(password);
+		
 			userService.registerUser(user);
 			loginService.recordCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString(), user.getLoginId());
 		} catch (UserServiceException e) {
-			addActionError(e.toString());
+			addActionError(e.getMessage());
 			return "registerUserInput";
 		} catch (Exception e) {
-			log.error(e.toString());
-			addActionError(e.toString());
+			log.error(e.getMessage());
+			addActionError("系统错误：注册用户出错！");
 			return ERROR;
 		}
 		
@@ -69,14 +70,12 @@ public class UserAction extends BaseAction{
 	 * @throws Exception
 	 */
 	public String initUpdateUserInfo() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try {
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
 			user = userService.getUserByLoginId(currentLoginId);
 		} catch (Exception e) {
-			log.error(e.toString());
-			addActionError(e.toString());
+			log.error(e.getMessage());
+			addActionError("系统错误：查看当前登录用户的信息出错！");
 			return ERROR;
 		}
 		
@@ -89,22 +88,22 @@ public class UserAction extends BaseAction{
 	 * @throws Exception
 	 */
 	public String updateUserInfo() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		String userNameTrim = user.getUserName().trim();
-		user.setUserName(userNameTrim);
-		user.setModifier(currentLoginId);
-		user.setLoginId(currentLoginId);
-		
 		try {
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			String userNameTrim = user.getUserName().trim();
+			user.setUserName(userNameTrim);
+			user.setModifier(currentLoginId);
+			user.setLoginId(currentLoginId);
+		
 			if (userService.updateUserInfo(user)) {
 				return "updateUserInfo";
 			} else {
-				addActionError("系统错误：更新用户信息出错!");
+				addActionError("系统错误：更新用户信息出错！");
 				return ERROR;
 			}
 		} catch (Exception e) {
-			log.error(e.toString());
-			addActionError(e.toString());
+			log.error(e.getMessage());
+			addActionError("系统错误：更新用户信息出错！");
 			return ERROR;
 		}
 	}
@@ -125,18 +124,18 @@ public class UserAction extends BaseAction{
 	 * @throws Exception
 	 */
 	public String updateUserPassword() throws Exception {
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try {
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			String pwd = userService.getUserByLoginId(currentLoginId).getPassword();
 			if (StringUtils.isBlank(pwd)) {
-				addActionError("原密码不存在！");
-				return ERROR;
+				addActionError("原始密码不存在！");
+				return "updateUserPasswordInput";
 			}
 			
 			if (!pwd.equals(Md5Encode.MD5(oldPassword.trim()))) {
-				addActionError("原密码错误！");
-				return ERROR;
+				addActionError("原始密码错误！");
+				return "updateUserPasswordInput";
 			}
 			
 			String newPasswrodTrim = Md5Encode.MD5(newPassword.trim());
@@ -151,8 +150,8 @@ public class UserAction extends BaseAction{
 				return ERROR;
 			}
 		} catch (Exception e) {
-			log.error(e.toString());
-			addActionError(e.toString());
+			log.error(e.getMessage());
+			addActionError("系统错误：更新密码出错！");
 			return ERROR;
 		}
 	}

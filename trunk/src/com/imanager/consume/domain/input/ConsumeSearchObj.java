@@ -12,7 +12,7 @@ public class ConsumeSearchObj {
 	
 	private Date endDate;
 	
-	private String consumeType;
+	private String consumeTypeId;
 	
 	private String loginId;
 
@@ -22,14 +22,6 @@ public class ConsumeSearchObj {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getConsumeType() {
-		return consumeType;
-	}
-
-	public void setConsumeType(String consumeType) {
-		this.consumeType = consumeType;
 	}
 
 	public Date getStartDate() {
@@ -63,7 +55,13 @@ public class ConsumeSearchObj {
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
-	
-	
+
+	public String getConsumeTypeId() {
+		return consumeTypeId;
+	}
+
+	public void setConsumeTypeId(String consumeTypeId) {
+		this.consumeTypeId = consumeTypeId;
+	}
 
 }

@@ -47,10 +47,9 @@ public class ConsumeItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String doInitGetConsumeItemList() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			Date startDate = DateUtil.getMinDate();
 			Date endDate = DateUtil.getMaxDate();
 			
@@ -65,10 +64,9 @@ public class ConsumeItemAction extends BaseAction {
 			consumeItemListSum = consumeService.getConsumeItemListSumBySearch(searchObj);
 			
 			return "doInitGetConsumeItemList";
-			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeItemAction.class + ", doInitGetConsumeItemList()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：获得本月消费列表出错！");
 			return ERROR;
 		}
 	}
@@ -78,31 +76,29 @@ public class ConsumeItemAction extends BaseAction {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doGetConsumeItemList() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String itemNameTrim = searchObj.getItemName().trim();
-		String addressTrim = searchObj.getAddress().trim();
-		
-		searchObj.setItemName(itemNameTrim);
-		searchObj.setAddress(addressTrim);
-		Date endDate = searchObj.getEndDate();
-		searchObj.setEndDate(DateUtil.dateLastTime(endDate));
-		searchObj.setLoginId(currentLoginId);
-		
+	public String doGetConsumeItemListBySearch() throws Exception {
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			String itemNameTrim = searchObj.getItemName().trim();
+			String addressTrim = searchObj.getAddress().trim();
+			
+			searchObj.setItemName(itemNameTrim);
+			searchObj.setAddress(addressTrim);
+			Date endDate = searchObj.getEndDate();
+			searchObj.setEndDate(DateUtil.dateLastTime(endDate));
+			searchObj.setLoginId(currentLoginId);
+		
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			
 			consumeItemList = consumeService.getConsumeItemListBySearch(searchObj);
 			
 			consumeItemListSum = consumeService.getConsumeItemListSumBySearch(searchObj);
 			
-			return "doGetConsumeItemList";
-			
+			return "doGetConsumeItemListBySearch";
 		}catch (Exception e){
-			log.error("Error: " + ConsumeItemAction.class + ", doGetConsumeItemList()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查询消费列表出错！");
 			return ERROR;
 		}
 	}
@@ -113,14 +109,19 @@ public class ConsumeItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String doInitAddConsumItem() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		consumeItem.setFeeDate(new Date());
-		consumeItem.setLoginId(currentLoginId);
-		consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
-		
-		return "doInitAddConsumItem";
+		try {
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			consumeItem.setFeeDate(new Date());
+			consumeItem.setLoginId(currentLoginId);
+			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
+			
+			return "doInitAddConsumItem";
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			addActionError("系统错误：初始化添加消费列表出错！");
+			return ERROR;
+		}
 	}
 	
 	/**
@@ -129,12 +130,11 @@ public class ConsumeItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String doAddConsumItem() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		String itemNameTrim = consumeItem.getItemName().trim();
-		String addressTrim = consumeItem.getAddress().trim();
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			String itemNameTrim = consumeItem.getItemName().trim();
+			String addressTrim = consumeItem.getAddress().trim();
+			
 			consumeItem.setItemName(itemNameTrim);
 			consumeItem.setAddress(addressTrim);
 			consumeItem.setCreator(currentLoginId);
@@ -153,10 +153,9 @@ public class ConsumeItemAction extends BaseAction {
 			consumeService.insertConsumeItem(consumeItem);
 			
 			return "doAddConsumItem";
-			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeItemAction.class + ", doAddConsumItem()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：添加消费记录出错！");
 			return ERROR;
 		}
 	}
@@ -167,10 +166,9 @@ public class ConsumeItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String doGetConsumItem() throws Exception {
-
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			consumeItem = consumeService.getConsumeItemById(consumeItemId);
 			
@@ -187,10 +185,9 @@ public class ConsumeItemAction extends BaseAction {
 			}
 			
 			return "doGetConsumItem";
-			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeItemAction.class + ", doGetConsumItem()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：查看该消费记录出错！");
 			return ERROR;
 		}
 	}
@@ -201,13 +198,12 @@ public class ConsumeItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String doUpdateConsumItem() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
-		String itemNameTrim = consumeItem.getItemName().trim();
-		String addressTrim = consumeItem.getAddress().trim();
-	
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			
+			String itemNameTrim = consumeItem.getItemName().trim();
+			String addressTrim = consumeItem.getAddress().trim();
+	
 			consumeItem.setModifier(currentLoginId);
 			consumeItem.setItemName(itemNameTrim);
 			consumeItem.setAddress(addressTrim);
@@ -228,8 +224,8 @@ public class ConsumeItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + ConsumeItemAction.class + ", doUpdateConsumItem()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：更新该消费记录出错！");
 			return ERROR;
 		}
 		
@@ -241,18 +237,18 @@ public class ConsumeItemAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String doLogicDeleteConsumItem() throws Exception {
-		
-		currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
-		
 		try{
+			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+		
 			if(consumeService.logicDeleteConsumeItemById(consumeItemId, currentLoginId)){
 				return "doLogicDeleteConsumItem";
 			}else{
+				addActionError("系统错误：删除该消费记录出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error("Error: " + ConsumeItemAction.class + ", doLogicDeleteConsumItem()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage());
+			addActionError("系统错误：删除该消费记录出错！");
 			return ERROR;
 		}
 	}
