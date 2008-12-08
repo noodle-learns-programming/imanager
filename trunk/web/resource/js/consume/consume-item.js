@@ -6,13 +6,6 @@ function KeyDown(evt){
 	}
 }
 
-//delete consume item
-function deleteConsumeItem(consumeItemId){
-	if (confirm("你确定要删除消费记录吗？")){ 
-		window.location="consumeItemAction!doLogicDeleteConsumItem.action?consumeItemId="+consumeItemId;
-	}
-}
-
 //表单验证
 function checkConsumeItemForm(){
 	var theForm = document.getElementById("consumeItemForm");
@@ -124,4 +117,11 @@ function checkConsumeItemType(){
 	}
 	
 	return true;
+}
+
+//delete consume item
+function deleteConsumeItem(consumeItemId){
+	if (confirm("你确定要删除消费记录吗？")){ 
+		window.location="consumeItemAction!doLogicDeleteConsumItem.action?consumeItemId="+consumeItemId;
+	}
 }
