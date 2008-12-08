@@ -65,8 +65,8 @@
 		<isNotEmpty prepend="AND" property="address">
 			<![CDATA[ address like '%$address$%' ]]>
 		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="consumeType">
-			<![CDATA[ consume_type_id = #consumeType# ]]>
+		<isNotEmpty prepend="AND" property="consumeTypeId">
+			<![CDATA[ consume_type_id = #consumeTypeId# ]]>
 		</isNotEmpty>
 		<![CDATA[ order by fee_date asc,  gmt_created asc]]>
 	</select>
@@ -85,8 +85,8 @@
 		<isNotEmpty prepend="AND" property="address">
 			<![CDATA[ address like '%$address$%' ]]>
 		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="consumeType">
-			<![CDATA[ consume_type_id = #consumeType# ]]>
+		<isNotEmpty prepend="AND" property="consumeTypeId">
+			<![CDATA[ consume_type_id = #consumeTypeId# ]]>
 		</isNotEmpty>
 	</select>
 	

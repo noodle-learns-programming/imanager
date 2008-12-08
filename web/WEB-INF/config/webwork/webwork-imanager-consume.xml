@@ -7,8 +7,7 @@
 			<interceptor-stack name="modelParamsStack">
 				<interceptor-ref name="params" />
 				<interceptor-ref name="model-driven" />
-				<!-- <interceptor-ref name="checkLoginSessions" />
-				<interceptor-ref name="checkLoginCookies" /> -->
+				<interceptor-ref name="chain" />
 				<interceptor-ref name="checkLogin" />
 			</interceptor-stack>
 		</interceptors>
@@ -19,14 +18,14 @@
 		
 			<result name="doInitGetConsumeItemList" type="velocity">consume-item-list.vm</result>
 			
-			<result name="doGetConsumeItemList" type="velocity">consume-item-list.vm</result>
+			<result name="doGetConsumeItemListBySearch" type="velocity">consume-item-list.vm</result>
 			
 			<result name="doGetConsumItem" type="velocity">consume-item-update.vm</result>
 			
-			<result name="doUpdateConsumItem" type="redirect-action">
+			<result name="doUpdateConsumItem" type="chain">
 				<param name="namespace">/consume</param>
 				<param name="actionName">consumeItemAction</param>
-				<param name="method">doInitGetConsumeItemList</param>
+				<param name="method">doGetConsumeItemListBySearch</param>
 			</result>
 			
 			<result name="doInitAddConsumItem" type="velocity">consume-item-add.vm</result>

@@ -38,12 +38,24 @@
 				<param name="method">initUpdateUserInfo</param>
 			</result>
 			
+			<result name="updateUserInfoInput" type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">userAction</param>
+				<param name="method">initUpdateUserInfo</param>
+			</result>
+			
 			<result name="initUpdateUserPassword" type="velocity">user-password-update.vm</result>
 			
 			<result name="updateUserPassword" type="redirect-action">
 				<param name="namespace">/user</param>
 				<param name="actionName">userAction</param>
 				<param name="method">initUpdateUserInfo</param>
+			</result>
+			
+			<result name="updateUserPasswordInput" type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">userAction</param>
+				<param name="method">initUpdateUserPassword</param>
 			</result>
 			
 			<interceptor-ref name="modelParamsStack" />

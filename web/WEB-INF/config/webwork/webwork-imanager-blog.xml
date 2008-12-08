@@ -7,8 +7,7 @@
 			<interceptor-stack name="modelParamsStack">
 				<interceptor-ref name="params" />
 				<interceptor-ref name="model-driven" />
-				<!-- <interceptor-ref name="checkLoginSessions" />
-				<interceptor-ref name="checkLoginCookies" /> -->
+				<interceptor-ref name="chain" />
 				<interceptor-ref name="checkLogin" />
 			</interceptor-stack>
 		</interceptors>
@@ -17,7 +16,7 @@
 			<result name="error" type="velocity">/framework/error.vm</result>
 			<result name="success" type="velocity">/framework/success.vm</result>
 			
-			<result name="initGetBlogContentListBySearch" type="velocity">blog-content-list.vm</result>
+			<result name="initGetBlogContentList" type="velocity">blog-content-list.vm</result>
 			
 			<result name="getBlogContentListBySearch" type="velocity">blog-content-list.vm</result>
 			
@@ -26,21 +25,21 @@
 			<result name="addBlogContent" type="redirect-action">
 				<param name="namespace">/blog</param>
 				<param name="actionName">blogContentAction</param>
-				<param name="method">initGetBlogContentListBySearch</param>
+				<param name="method">initGetBlogContentList</param>
 			</result>
 			
 			<result name="initUpdateBlogContent" type="velocity">blog-content-update.vm</result>
 			
-			<result name="updateBlogContent" type="redirect-action">
+			<result name="updateBlogContent" type="chain">
 				<param name="namespace">/blog</param>
 				<param name="actionName">blogContentAction</param>
-				<param name="method">initGetBlogContentListBySearch</param>
+				<param name="method">getBlogContentListBySearch</param>
 			</result>
 			
 			<result name="logicDeleteBlogContent" type="redirect-action">
 				<param name="namespace">/blog</param>
 				<param name="actionName">blogContentAction</param>
-				<param name="method">initGetBlogContentListBySearch</param>
+				<param name="method">initGetBlogContentList</param>
 			</result>
 			
 			<interceptor-ref name="modelParamsStack" />
