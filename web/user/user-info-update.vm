@@ -24,31 +24,33 @@
         			<td align="center">
                     	<h2>我的信息</h2>
                     	<form id="userInfoForm" action="userAction!updateUserInfo.action" method="post">
-                    		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
+                    		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="60%" height="60"
                     			cellpadding="0" cellspacing="0" align="center" >
                     			<tr>
-                    				<td align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户ID:</td>
-                    				<td align="left"><input type="text" id="user.loginId" name="user.loginId" onkeydown="KeyDownI(event)" value="$esc.html($!user.loginId)" readonly="true" size="100" maxlength="100"></td>
+                    				<td align="right">用户ID:</td>
+                    				<td align="left">$esc.html($!user.loginId)</td>
                     			</tr>
                     			<tr>
                     				<td align="right">用户姓名:</td>
-                    				<td align="left"><input type="text" id="user.userName" name="user.userName" onkeydown="KeyDownI(event)" value="$esc.html($!user.userName)" size="100" maxlength="100"></td>
+                    				<td align="left"><input type="text" id="user.userName" name="user.userName" onkeydown="KeyDownI(event)" value="$esc.html($!user.userName)" size="20" maxlength="20"></td>
                     			</tr>
 								<tr>
                     				<td align="right">注册时间:</td>
-                    				<td align="left">
-                						<input type="text" id="user.regDate" name="user.regDate" readonly="true" value="$!dateUtil.date($!user.regDate, 'yyyy-MM-dd hh:mm:ss')" size="20">
-                					</td>
+                    				<td align="left">$!dateUtil.date($!user.regDate, 'yyyy-MM-dd hh:mm:ss')</td>
                     			</tr>
 								<tr>
-                    				<td align="right">上次登录时间:</td>
-                    				<td align="left">
-                						<input type="text" id="user.gmtLastLogin" name="user.gmtLastLogin" readonly="true" value="$!dateUtil.date($!user.gmtLastLogin, 'yyyy-MM-dd hh:mm:ss')" size="20">
-                					</td>
+                    				<td align="right">登录时间:</td>
+                    				<td align="left">$!dateUtil.date($!user.gmtLastLogin, 'yyyy-MM-dd hh:mm:ss')</td>
                     			</tr>
                     		</table>
                     		<input type="button" value="更新" onclick="checkUserInfoForm();" />&nbsp;&nbsp;
                     		<input type="reset" value="取消" />
+							<br/>
+							#if($actionErrors && $actionErrors.size() > 0)
+    							#foreach($err in $actionErrors)
+    								<font color="red">$esc.html($err)</font>
+    							#end
+    						#end
                     	</form>
 					</td>
 				</tr>
