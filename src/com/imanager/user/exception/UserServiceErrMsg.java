@@ -5,12 +5,12 @@ public enum UserServiceErrMsg {
 	/**
 	 * 用户名已存在
 	 */
-	User_name_already_exist("用户名已存在！"),
+	User_name_already_exist("用户姓名已存在！"),
 	
 	/**
 	 * 登录ID已存在
 	 */
-	Login_id_already_exist("登录ID已存在！");
+	Login_id_already_exist("用户ID已存在！");
 	
 	private final String description;
 	
