@@ -7,6 +7,7 @@
 			<interceptor-stack name="modelParamsStack">
 				<interceptor-ref name="params" />
 				<interceptor-ref name="model-driven" />
+				<interceptor-ref name="chain" />
 				<interceptor-ref name="checkLogin" />
 			</interceptor-stack>
 		</interceptors>
@@ -28,7 +29,7 @@
 			
 			<result name="getContactTypeById" type="velocity">contact-type-update.vm</result>
 			
-			<result name="updateContactType" type="redirect-action">
+			<result name="updateContactType" type="chain">
 				<param name="namespace">/contact</param>
 				<param name="actionName">contactTypeAction</param>
 				<param name="method">getContactTypeListByLoginId</param>
@@ -52,25 +53,25 @@
 			<result name="addContactItem" type="redirect-action">
 				<param name="namespace">/contact</param>
 				<param name="actionName">contactItemAction</param>
-				<param name="method">initGetContactItemListBySearch</param>
+				<param name="method">initGetContactItemList</param>
 			</result>
 			
-			<result name="initGetContactItemListBySearch" type="velocity">contact-item-list.vm</result>
+			<result name="initGetContactItemList" type="velocity">contact-item-list.vm</result>
 			
 			<result name="getContactItemListBySearch" type="velocity">contact-item-list.vm</result>
 			
 			<result name="getContactItemById" type="velocity">contact-item-update.vm</result>
 			
-			<result name="updateContactItem" type="redirect-action">
+			<result name="updateContactItem" type="chain">
 				<param name="namespace">/contact</param>
 				<param name="actionName">contactItemAction</param>
-				<param name="method">initGetContactItemListBySearch</param>
+				<param name="method">getContactItemListBySearch</param>
 			</result>
 			
 			<result name="logicDeleteContactItem" type="redirect-action">
 				<param name="namespace">/contact</param>
 				<param name="actionName">contactItemAction</param>
-				<param name="method">initGetContactItemListBySearch</param>
+				<param name="method">initGetContactItemList</param>
 			</result>
 			
 			<interceptor-ref name="modelParamsStack" />
