@@ -52,7 +52,7 @@
 						login_id = #loginId#
 						group by blog_item1_id) b on a.blog_item1_id = b.blog_item1_id
 			where a.is_deleted = 'no' and a.login_id = #loginId# 
-				order by a.blog_item1_id asc
+				order by a.gmt_created asc
 		]]>
 	</select>
 
@@ -116,7 +116,7 @@
 					blog_item2.blog_item1_id = blog_item1.blog_item1_id
 			where	blog_item2.is_deleted = 'no' and
 					blog_item2.login_id = #loginId#
-					order by blog_item2.blog_item1_id asc
+					order by blog_item2.gmt_created asc
 		]]>
 	</select>
 	
