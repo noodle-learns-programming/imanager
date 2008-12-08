@@ -4,6 +4,22 @@
     	<title>iManager Blog</title>
     	<script type="text/javascript" src="../resource/js/util.js"></script>
 		<script type="text/javascript" src="../resource/js/contact/contact-type.js"></script>
+		<script type="text/javascript">
+    		function doSubmitSearchForm(){
+            	var theForm = document.getElementById("contactItemSearchForm");
+            	var submitUrl = "$env.appUrl/contact/contactItemAction!getContactItemListBySearch.action";
+            	theForm.action = submitUrl;
+            	theForm.submit();
+            }
+			
+			function doGetContactItemById(contactItemId){
+            	var theForm = document.getElementById("contactItemSearchForm");
+            	document.getElementById("contactItemId").value = contactItemId;
+				var submitUrl = "$env.appUrl/contact/contactItemAction!getContactItemById.action";
+            	theForm.action = submitUrl;
+            	theForm.submit();
+            }
+    	</script>
     </head>
 	
 	<body topmargin="10" bgcolor="#99CCFF">
@@ -21,8 +37,9 @@
 		
                 		<h2>联系人详细列表</h2>
 						
-						<form action="contactItemAction!getContactItemListBySearch.action" method="post">
+						<form id="contactItemSearchForm" action="" method="post">
                 			<table border="0" width="100%" height="60" cellpadding="0" cellspacing="0" align="center" >
+								<input type="hidden" id="contactItemId" name="contactItemId" value="" />
                 				<tr>
 									<td width="15%" align="left">姓名:</td>
 									<td width="85%" align="left"><input type="text" name="contactSearchObj.name" value="$esc.html($!contactSearchObj.name)" size="20" maxlength="20"/></td>
@@ -37,13 +54,13 @@
                 						<select name="contactSearchObj.contactTypeId">
                 							<option value="">请选择</option>
 											#foreach($contactType in $contactTypeList)
-                								<option value="$contactType.contactTypeId">$esc.html($contactType.contactType)</option>
+                								<option value="$contactType.contactTypeId" #if("$contactType.contactTypeId" == $contactSearchObj.contactTypeId) selected #end>$esc.html($contactType.contactType)</option>
 											#end
 										</select>
                 					</td>
                 				</tr>
                 				<tr>
-                					<td align="left" colspan="2"><input type="submit" name="submit" value="查询" /></td>
+                					<td align="left" colspan="2"><input type="button" name="button" onclick="doSubmitSearchForm();" value="查询" /></td>
                 				</tr>
                 			</table>
                 		</form>
@@ -62,14 +79,14 @@
                 				<tr>
                 					<td align = "center">$esc.html($contactItem.name)</td>
                 					<td align = "center">
-										#if($!stringUtil.isBlank("$!contactItem.contactType.contactType")) 无联系类型 #else $esc.html($contactItem.contactType.contactType) #end
+										#if($!stringUtil.isBlank($!contactItem.contactType.contactType))无联系类型#else$esc.html($contactItem.contactType.contactType)#end
 									</td>
-									<td align = "center">$esc.html($contactItem.mobile1)&nbsp;</td>
-									<td align = "center">$esc.html($contactItem.qq1)&nbsp;</td>
-									<td align = "center">$esc.html($contactItem.msn1)&nbsp;</td>
+									<td align = "center">#if($!stringUtil.isBlank($contactItem.mobile1))&nbsp;#else$esc.html($contactItem.mobile1)#end</td>
+									<td align = "center">#if($!stringUtil.isBlank($contactItem.qq1))&nbsp;#else$esc.html($contactItem.qq1)#end</td>
+									<td align = "center">#if($!stringUtil.isBlank($contactItem.msn1))&nbsp;#else$esc.html($contactItem.msn1)#end</td>
                 					<td align = "center">
-                						<a href="contactItemAction!getContactItemById.action?contactItemId=$!contactItem.contactItemId">更新</a>&nbsp;|&nbsp;
-                						<a href="#" onclick=deleteContactItem($!contactItem.contactItemId)>删除</a>
+                						<a href="#" onclick="doGetContactItemById('$!contactItem.contactItemId');">更新</a>&nbsp;|
+                						<a href="#" onclick="deleteContactItem('$!contactItem.contactItemId');">删除</a>
                 					</td>
                 				</tr>
 							#end

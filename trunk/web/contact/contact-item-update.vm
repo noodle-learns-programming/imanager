@@ -38,6 +38,9 @@
                     	<form id="contactItemForm" action="contactItemAction!updateContactItem.action" method="post">
 							<input type="hidden" id="area" name="area" value="" />
 							<input type="hidden" name="contactItem.contactItemId" value="$contactItem.contactItemId" />
+							<input type="hidden" name="contactSearchObj.name" value="$esc.html($!contactSearchObj.name)" />
+							<input type="hidden" name="contactSearchObj.pinyin" value="$esc.html($!contactSearchObj.pinyin)" />
+							<input type="hidden" name="contactSearchObj.contactTypeId" value="$!contactSearchObj.contactTypeId" />
                     		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
                     			cellpadding="0" cellspacing="0" align="center" >
 								<tr><th colspan="4" align="left">基本信息</th></tr>
