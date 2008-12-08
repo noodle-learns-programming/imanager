@@ -79,7 +79,11 @@
                 				<tr>
                 					<td align = "center">$esc.html($contactItem.name)</td>
                 					<td align = "center">
-										#if($!stringUtil.isBlank($!contactItem.contactType.contactType))无联系类型#else$esc.html($contactItem.contactType.contactType)#end
+										#if($!stringUtil.isBlank($!contactItem.contactType.contactType))
+											无联系类型
+										#else
+											$esc.html($contactItem.contactType.contactType)
+										#end
 									</td>
 									<td align = "center">#if($!stringUtil.isBlank($contactItem.mobile1))&nbsp;#else$esc.html($contactItem.mobile1)#end</td>
 									<td align = "center">#if($!stringUtil.isBlank($contactItem.qq1))&nbsp;#else$esc.html($contactItem.qq1)#end</td>
