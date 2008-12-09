@@ -53,6 +53,7 @@
                     				<td align="right">消费时间:</td>
                     				<td align="left">
                 						<input type="text" id="consumeItem.feeDate" name="consumeItem.feeDate" readonly="true" value="$!dateUtil.date($!consumeItem.feeDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('consumeItem.feeDate', '%Y-%m-%d');">
+												&nbsp;&nbsp;$!consumeItem.weekday
                 					</td>
                     			</tr>
 								<tr>

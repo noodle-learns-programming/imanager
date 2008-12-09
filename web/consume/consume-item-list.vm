@@ -97,7 +97,7 @@
                 					<td align = "center">$!consumeItem.price</td>
                 					<td align = "center">$!consumeItem.quantity</td>
                 					<td align = "center">$!consumeItem.totalPrice</td>
-                					<td align = "center">$!dateUtil.date($!consumeItem.feeDate, 'yyyy-MM-dd')</td>
+                					<td align = "center">$!dateUtil.date($!consumeItem.feeDate, 'yyyy-MM-dd')&nbsp;&nbsp;$!consumeItem.weekday</td>
                 					<td align = "center">
                 						#if($!consumeItem.inOrOut == 'in')
 											 ’»Î
