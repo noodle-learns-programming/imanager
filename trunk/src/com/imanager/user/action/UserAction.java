@@ -56,8 +56,8 @@ public class UserAction extends BaseAction{
 			user.setPassword(Md5Encode.MD5(passwordTrim));
 			//注册用户
 			userService.registerUser(user);
-			//记录当前用户
-			loginService.recordCurrentLoginId(loginIdTrim);
+			//登入当前用户
+			loginService.loginCurrentUser(loginIdTrim);
 		} catch (UserServiceException e) {
 			addActionError(e.getMessage());
 			return "registerUserInput";

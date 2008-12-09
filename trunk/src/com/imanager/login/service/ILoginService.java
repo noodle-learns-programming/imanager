@@ -18,10 +18,17 @@ public interface ILoginService {
 	
 	
 	/**
-	 * 记录当前登录用户的longId
+	 * 登入当前用户，记录当前登录用户的longId
 	 * @param loginId
 	 * @return
 	 */
-	public boolean recordCurrentLoginId(String loginId);
+	public boolean loginCurrentUser(String loginId);
+	
+	/**
+	 * 登出当前用户
+	 * @param loginid
+	 * @return
+	 */
+	public boolean logoutCurrentUser();
 
 }
