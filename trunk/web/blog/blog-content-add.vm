@@ -46,20 +46,23 @@
                     			</tr>
                     			<tr>
                 					<td align="left">天气:</td>
-                					<td align="left"><input type="text" id="blogContent.weather" name="blogContent.weather" onkeydown="KeyDown(event)" value="$esc.html($!blogContent.weather)" size="100" maxlength="50"></td>
+                					<td align="left">
+										<input type="text" id="blogContent.weather" name="blogContent.weather" onkeydown="KeyDown(event)" value="$esc.html($!blogContent.weather)" size="40" maxlength="40">
+											城市：<input type="text" id="blogContent.city" name="blogContent.city" onkeydown="KeyDown(event)" value="$esc.html($!blogContent.city)" size="40" maxlength="40">
+									</td>
                     			</tr>
                     			<tr>
                     				<td align="left">类型：</td>
                     				<td align="left">
                     					<input type="radio" name="blogContent.blogType" value="yc" checked="true">原创
                     					<input type="radio" name="blogContent.blogType" value="zz">转载&nbsp;&nbsp;
-                    					明细1：<select id="blogContent.blogItem1Id" name="blogContent.blogItem1Id" onchange="getBlogItem2List();">
+                    					明细一：<select id="blogContent.blogItem1Id" name="blogContent.blogItem1Id" onchange="getBlogItem2List();">
                     						<option value="0">请选择</option>
                 							#foreach($blogItem1 in $blogItem1List)
                 								<option value="$blogItem1.blogItem1Id">$esc.html($blogItem1.itemChn)</option>
                 							#end
                     					</select>&nbsp;&nbsp;
-                    					明细2：<select id="blogContent.blogItem2Id" name="blogContent.blogItem2Id">
+                    					明细二：<select id="blogContent.blogItem2Id" name="blogContent.blogItem2Id">
                     						<option value="0">请选择</option>
                     					</select>
                     				</td>
