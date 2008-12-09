@@ -15,6 +15,7 @@ import com.imanager.blog.service.IBlogService;
 import com.imanager.common.DateUtil;
 import com.imanager.framework.action.BaseAction;
 import com.imanager.login.service.ILoginService;
+import com.imanager.util.VeDate;
 
 public class BlogContentAction extends BaseAction {
 	
@@ -127,11 +128,11 @@ public class BlogContentAction extends BaseAction {
 			blogContent.setWeather(weatherTrim);
 			blogContent.setCreator(currentLoginId);
 			blogContent.setModifier(currentLoginId);
+			blogContent.setWeekday(VeDate.getWeekStr(DateUtil.date(blogContent.getBlogDate(), DateUtil.DEFAULT_DATE_FORMAT)));
 			
 			//暂时不用的字段
 			blogContent.setFullFileName("fullFileName");
 			blogContent.setFullFilePath("fullFilePath");
-			blogContent.setWeekday("weekday");
 			//---暂时不用的字段
 			
 			blogService.insertBlogContent(blogContent);
@@ -182,11 +183,12 @@ public class BlogContentAction extends BaseAction {
 			blogContent.setContent(contentTrim);
 			blogContent.setWeather(weatherTrim);
 			blogContent.setModifier(currentLoginId);
+			blogContent.setWeekday(VeDate.getWeekStr(DateUtil.date(blogContent.getBlogDate(), DateUtil.DEFAULT_DATE_FORMAT)));
 			
 			if(blogService.updateBlogContent(blogContent)){
 				return "updateBlogContent";
 			}else{
-				addActionError("系统错误：查看Blog出错！");
+				addActionError("系统错误：更新Blog出错！");
 				return ERROR;
 			}
 		}catch (Exception e){

@@ -14,6 +14,7 @@ import com.imanager.consume.domain.input.ConsumeSearchObj;
 import com.imanager.consume.service.IConsumeService;
 import com.imanager.framework.action.BaseAction;
 import com.imanager.login.service.ILoginService;
+import com.imanager.util.VeDate;
 
 /**
  * Ïû·Ñ¼ÇÂ¼
@@ -148,6 +149,7 @@ public class ConsumeItemAction extends BaseAction {
 			}else if("out".equals(consumeItem.getInOrOut())){
 				consumeItem.setTotalPrice(totalPrice);
 			}
+			consumeItem.setWeekday(VeDate.getWeekStr(DateUtil.date(consumeItem.getFeeDate(), DateUtil.DEFAULT_DATE_FORMAT)));
 			
 			consumeService.insertConsumeItem(consumeItem);
 			
@@ -216,6 +218,7 @@ public class ConsumeItemAction extends BaseAction {
 			}else if("out".equals(consumeItem.getInOrOut())){
 				consumeItem.setTotalPrice(totalPrice);
 			}
+			consumeItem.setWeekday(VeDate.getWeekStr(DateUtil.date(consumeItem.getFeeDate(), DateUtil.DEFAULT_DATE_FORMAT)));
 			
 			if(consumeService.updateConsumeItem(consumeItem)){
 				return "doUpdateConsumItem";

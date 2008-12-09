@@ -23,6 +23,8 @@ public class ConsumeItem extends Basement{
 	private String inOrOut;
 	
 	private ConsumeType consumeType;
+	
+	private String weekday;
 
 	public int getConsumeItemId() {
 		return consumeItemId;
@@ -94,6 +96,14 @@ public class ConsumeItem extends Basement{
 
 	public void setConsumeType(ConsumeType consumeType) {
 		this.consumeType = consumeType;
+	}
+
+	public String getWeekday() {
+		return weekday;
+	}
+
+	public void setWeekday(String weekday) {
+		this.weekday = weekday;
 	}
 
 }
