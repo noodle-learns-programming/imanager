@@ -25,6 +25,8 @@ public class LoginServiceImpl implements ILoginService {
 	// Dao
 	private ILoginDao loginDao;
 	
+	
+	
 	/* (non-Javadoc)
 	 * @see com.imanager.login.service.ILoginService#updateLastLoginDate(java.lang.String)
 	 */
@@ -76,9 +78,9 @@ public class LoginServiceImpl implements ILoginService {
 		    	return currentLoginId;
 		    } else {
 		    	if (log.isInfoEnabled()) {
-					log.info("Cannot get \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\"!");
+					log.info("Cannot get \"" + recordDomainLoginId + "\"!");
 				} else if (log.isErrorEnabled()) {
-					log.error("Cannot get \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\"!");
+					log.error("Cannot get \"" + recordDomainLoginId + "\"!");
 				}
 		    	return null;
 		    }
@@ -91,41 +93,12 @@ public class LoginServiceImpl implements ILoginService {
 			return null;
 		}
 	}
-
-	
-	/**
-	 * 根据cookie名称获得cookie的值
-	 * @param request
-	 * @param recordDomain
-	 * @return
-	 */
-	private String getValueFromCookie(HttpServletRequest request, String recordDomain) {
-		Cookie[] cookies = request.getCookies();
-		if (cookies == null) {
-			if (log.isInfoEnabled()) {
-				log.info("Cannot get cookies!");
-			} else if (log.isErrorEnabled()) {
-				log.error("Cannot get cookies!");
-			}
-			return null;
-		}
-		
-		int len = cookies.length;
-		int i = 0;
-		for (i = 0; i < len; i++) {
-		   Cookie c = cookies[i];     
-		   if(c.getName().equalsIgnoreCase(recordDomain)) {
-			   return c.getValue();
-		   }
-		}
-		return null;
-	}
 	
 	/* (non-Javadoc)
 	 * @see com.imanager.login.service.ILoginService#recordCurrentLoginId(java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
-	public boolean recordCurrentLoginId(String loginId){
+	public boolean loginCurrentUser(String loginId){
 		try {
 			//获取用户记录类型
 			String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
@@ -149,18 +122,19 @@ public class LoginServiceImpl implements ILoginService {
 				return false;
 			}
 			
-			//获取cookie有效时间
-			int effectiveTime = 0;
-			String effectiveTimeStr = EnvService.getValueByProperty(EnvService.COOKIE_EFFECTIVE_TIME);
-			if (StringUtils.isNotBlank(effectiveTimeStr)) {
-				effectiveTime = (int)(Integer.valueOf(effectiveTimeStr) * SECONDS_AN_HOUR);
-			}
-			
 			ActionContext ctx = ActionContext.getContext();
 			HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
 			
 			//记录当前用户loginId
 			if (EnvService.RECORD_TYPE_COOKIE.equals(recordType)) {
+				//获取cookie有效时间
+				int effectiveTime = 0;
+				String effectiveTimeStr = EnvService.getValueByProperty(EnvService.COOKIE_EFFECTIVE_TIME);
+				if (StringUtils.isNotBlank(effectiveTimeStr)) {
+					effectiveTime = (int)(Integer.valueOf(effectiveTimeStr) * SECONDS_AN_HOUR);
+				}
+				
+				//生成cookie
 				Cookie loginIdCookie = new Cookie(recordDomainLoginId, loginId);
 				//loginIdCookie.setDomain("localhost");
 				loginIdCookie.setPath("/");
@@ -169,8 +143,11 @@ public class LoginServiceImpl implements ILoginService {
 				} else {
 					loginIdCookie.setMaxAge(-1);
 				}
+				
+				//添加cookie
 				response.addCookie(loginIdCookie);
 			} else if (EnvService.RECORD_TYPE_SESSION.equals(recordType)) {
+				//记录session
 				Map<String, String> session = ctx.getSession();
 				session.put(recordDomainLoginId, loginId);
 			}
@@ -185,6 +162,115 @@ public class LoginServiceImpl implements ILoginService {
 			return false;
 		}
 	}
+	
+	
+	/* (non-Javadoc)
+	 * @see com.imanager.login.service.ILoginService#logoutCurrentUser(java.lang.String)
+	 */
+	@SuppressWarnings("unchecked")
+	public boolean logoutCurrentUser(){
+		try {
+			//获取用户记录类型
+			String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
+			if (StringUtils.isBlank(recordType)) {
+				if (log.isInfoEnabled()) {
+					log.info("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
+				} else if (log.isErrorEnabled()) {
+					log.error("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
+				}
+				return false;
+			}
+			
+			//获取用户记录值域
+			String recordDomainLoginId = EnvService.getValueByProperty(EnvService.RECORD_DOMAIN_LOGIN_ID);
+			if (StringUtils.isBlank(recordDomainLoginId)) {
+				if (log.isInfoEnabled()) {
+					log.info("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
+				} else if (log.isErrorEnabled()) {
+					log.error("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
+				}
+				return false;
+			}
+			
+			ActionContext ctx = ActionContext.getContext();
+			//HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
+			HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
+			
+			//使当前用户记录失效
+			if (EnvService.RECORD_TYPE_COOKIE.equals(recordType)) {
+				//生成cookie
+				Cookie loginIdCookie = new Cookie(recordDomainLoginId, null);
+				loginIdCookie.setPath("/");
+				loginIdCookie.setMaxAge(0);
+				response.addCookie(loginIdCookie);
+			} else if (EnvService.RECORD_TYPE_SESSION.equals(recordType)) {
+				//使session失效
+				Map<String, String> session = ctx.getSession();
+				session.remove(recordDomainLoginId);
+			}
+			return true;
+			
+		} catch (Exception e) {
+			if (log.isInfoEnabled()) {
+				log.info(e.getMessage());
+			} else if (log.isErrorEnabled()) {
+				log.error(e.getMessage());
+			}
+			return false;
+		}
+	}
+	
+	/**
+	 * 根据cookie名称获得cookie的值
+	 * @param request
+	 * @param recordDomain
+	 * @return
+	 */
+	private String getValueFromCookie(HttpServletRequest request, String recordDomain) {
+		Cookie[] cookies = request.getCookies();
+		if (cookies == null) {
+			if (log.isInfoEnabled()) {
+				log.info("Cannot get cookies!");
+			} else if (log.isErrorEnabled()) {
+				log.error("Cannot get cookies!");
+			}
+			return null;
+		}
+		
+		for (int i = 0; i < cookies.length; i++) {
+		   Cookie c = cookies[i];     
+		   if(c.getName().equalsIgnoreCase(recordDomain)) {
+			   return c.getValue();
+		   }
+		}
+		return null;
+	}
+	
+	/**
+	 * 根据cookie名称获得cookie
+	 * @param request
+	 * @param recordDomain
+	 * @return
+	 */
+	/*private Cookie getCookieByRecordDomain(HttpServletRequest request, String recordDomain) {
+		Cookie[] cookies = request.getCookies();
+		if (cookies == null) {
+			if (log.isInfoEnabled()) {
+				log.info("Cannot get cookies!");
+			} else if (log.isErrorEnabled()) {
+				log.error("Cannot get cookies!");
+			}
+			return null;
+		}
+		
+		for (int i = 0; i < cookies.length; i++) {
+		   Cookie c = cookies[i];     
+		   if(c.getName().equalsIgnoreCase(recordDomain)) {
+			   return c;
+		   }
+		}
+		return null;
+	}*/
 	
 
 	public ILoginDao getLoginDao() {

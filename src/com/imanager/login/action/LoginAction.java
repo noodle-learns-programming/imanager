@@ -52,11 +52,11 @@ public class LoginAction extends BaseAction {
 			
 			if(user == null){
 				addActionError("用户名或密码错误！");
-				return INPUT;
+				return "validateUserInput";
 			}
 			
-			//记录当前登录用户的loginId
-			if (!loginService.recordCurrentLoginId(loginIdTrim)) {
+			//登入当前用户，记录当前登录用户的loginId
+			if (!loginService.loginCurrentUser(loginIdTrim)) {
 				addActionError("系统错误：记录当前登录用户出错！");
 				return ERROR;
 			}
@@ -73,15 +73,18 @@ public class LoginAction extends BaseAction {
 			return ERROR;
 		}
 		
-		return SUCCESS;
+		return "validateUser";
 	}
 	
 	public String logoutUser() throws Exception {
 		try {
-			
+			if (!loginService.logoutCurrentUser()) {
+				addActionError("系统错误：登出当前用户出错！");
+				return ERROR;
+			}
 		}catch (Exception e){
 			log.error(e.getMessage());
-			addActionError("系统错误：验证是否合法用户出错！");
+			addActionError("系统错误：登出当前用户出错！");
 			return ERROR;
 		}
 		
