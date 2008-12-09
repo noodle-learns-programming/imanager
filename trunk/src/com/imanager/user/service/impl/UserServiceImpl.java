@@ -7,8 +7,10 @@ import com.imanager.user.exception.UserServiceException;
 import com.imanager.user.service.IUserService;
 
 public class UserServiceImpl implements IUserService {
+	
 	// Dao
 	private IUserDao userDao;
+	
 	// Daomain or Var
 	private static final Object MY_LOCK = new Object();
 	

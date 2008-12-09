@@ -9,7 +9,6 @@ import com.imanager.blog.domain.BlogItem1;
 import com.imanager.blog.domain.BlogItem2;
 import com.imanager.blog.service.IBlogService;
 import com.imanager.framework.action.BaseAction;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 
 public class BlogItemAction extends BaseAction {
@@ -37,7 +36,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String initAddBlogItem1() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			blogItem1.setLoginId(currentLoginId);
 			return "initAddBlogItem1";
 		}catch (Exception e){
@@ -54,7 +53,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String addBlogItem1() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			String itemChnTrim = blogItem1.getItemChn().trim();
 			String itemEngTrim = blogItem1.getItemEng().trim();
@@ -81,7 +80,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String getBlogItem1ListByLoginId() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -99,7 +98,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String initUpdateItem1() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			blogItem1 = blogService.getBlogItem1ByItemId(blogItem1Id);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -117,7 +116,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String updateBlogItem1() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			String itemChnTrim = blogItem1.getItemChn().trim();
 			String itemEngTrim = blogItem1.getItemEng().trim();
@@ -147,7 +146,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String logicDeleteBlogItem1() throws Exception{
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			if(blogService.logicDeleteBlogItem1(blogItem1Id, currentLoginId)){
 				return "logicDeleteBlogItem1";
@@ -169,7 +168,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String getBlogItem2ListByLoginId() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			blogItem2List = blogService.getBlogItem2ListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -187,7 +186,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String initAddBlogItem2() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2.setLoginId(currentLoginId);
 		}catch (Exception e){
@@ -206,7 +205,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String addBlogItem2() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String itemChnTrim = blogItem2.getItemChn().trim();
 			String itemEngTrim = blogItem2.getItemEng().trim();
@@ -233,7 +232,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String initUpdateItem2() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2 = blogService.getBlogItem2ByItemId(blogItem2Id);
@@ -253,7 +252,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String updateBlogItem2() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String itemChnTrim = blogItem2.getItemChn().trim();
 			String itemEngTrim = blogItem2.getItemEng().trim();
@@ -283,7 +282,7 @@ public class BlogItemAction extends BaseAction {
 	 */
 	public String logicDeleteBlogItem2() throws Exception{
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			if(blogService.logicDeleteBlogItem2(blogItem2Id, currentLoginId)){
 				return "logicDeleteBlogItem2";

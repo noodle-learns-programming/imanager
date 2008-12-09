@@ -3,11 +3,12 @@ package com.imanager.ajax;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 import com.imanager.blog.domain.BlogItem2;
 import com.imanager.blog.service.IBlogService;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 import com.imanager.util.EncodeUtil;
 
@@ -30,8 +31,7 @@ public class DwrService {
 	 */
 	public String isItem1HasItem2(String blogItem1Id) throws Exception {
 		try{
-			String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
-			currentLoginId = loginService.getCurrentLoginId(recordType);
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			if(blogService.isItem1HasItem2(blogItem1Id, currentLoginId)){
 				return "true";
@@ -54,8 +54,7 @@ public class DwrService {
 	 */
 	public Map<String, String> getBlogItem1List(String blogItem1Id) throws Exception {
 		
-		String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
-		currentLoginId = loginService.getCurrentLoginId(recordType);
+		currentLoginId = loginService.getCurrentLoginId();
 		
 		Map<String, String> result = new HashMap<String, String>();
 		

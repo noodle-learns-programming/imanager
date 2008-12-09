@@ -6,7 +6,6 @@ import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.Md5Encode;
 import com.imanager.framework.action.BaseAction;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 import com.imanager.user.domain.User;
 import com.imanager.user.exception.UserServiceException;
@@ -50,14 +49,15 @@ public class UserAction extends BaseAction{
 	 */
 	public String registerUser() throws Exception {
 		try {
-			String loginId = user.getLoginId();
-			user.setCreator(loginId);
-			user.setModifier(loginId);
-			String password = Md5Encode.MD5(user.getPassword().trim());
-			user.setPassword(password);
-		
+			String loginIdTrim = user.getLoginId().trim();
+			String passwordTrim = user.getPassword().trim();
+			user.setCreator(loginIdTrim);
+			user.setModifier(loginIdTrim);
+			user.setPassword(Md5Encode.MD5(passwordTrim));
+			//注册用户
 			userService.registerUser(user);
-			loginService.recordCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString(), user.getLoginId());
+			//记录当前用户
+			loginService.recordCurrentLoginId(loginIdTrim);
 		} catch (UserServiceException e) {
 			addActionError(e.getMessage());
 			return "registerUserInput";
@@ -77,7 +77,7 @@ public class UserAction extends BaseAction{
 	 */
 	public String initUpdateUserInfo() throws Exception {
 		try {
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			user = userService.getUserByLoginId(currentLoginId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
@@ -95,7 +95,7 @@ public class UserAction extends BaseAction{
 	 */
 	public String updateUserInfo() throws Exception {
 		try {
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			String userNameTrim = user.getUserName().trim();
 			user.setUserName(userNameTrim);
 			user.setModifier(currentLoginId);
@@ -136,7 +136,7 @@ public class UserAction extends BaseAction{
 	 */
 	public String updateUserPassword() throws Exception {
 		try {
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String pwd = userService.getUserByLoginId(currentLoginId).getPassword();
 			if (StringUtils.isBlank(pwd)) {

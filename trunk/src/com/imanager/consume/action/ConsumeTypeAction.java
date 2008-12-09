@@ -8,7 +8,6 @@ import org.apache.commons.logging.LogFactory;
 import com.imanager.consume.domain.ConsumeType;
 import com.imanager.consume.service.IConsumeService;
 import com.imanager.framework.action.BaseAction;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 
 /**
@@ -41,7 +40,7 @@ public class ConsumeTypeAction extends BaseAction {
 	 */
 	public String getConsumeTypeListByLoginId() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -58,7 +57,7 @@ public class ConsumeTypeAction extends BaseAction {
 	 */
 	public String initAddConsumType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			consumeType.setLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -76,7 +75,7 @@ public class ConsumeTypeAction extends BaseAction {
 	 */
 	public String addConsumType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			String consumeTypeTrim = consumeType.getConsumeType().trim();
 		
 			consumeType.setConsumeType(consumeTypeTrim);
@@ -119,7 +118,7 @@ public class ConsumeTypeAction extends BaseAction {
 	 */
 	public String updateConsumType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			String consumeTypeTrim = consumeType.getConsumeType().trim();
 		
@@ -146,7 +145,7 @@ public class ConsumeTypeAction extends BaseAction {
 	 */
 	public String logicDeleteConsumType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			if(consumeService.logicDeleteConsumeTypeById(consumeTypeId, currentLoginId)){
 				return "logicDeleteConsumType";
