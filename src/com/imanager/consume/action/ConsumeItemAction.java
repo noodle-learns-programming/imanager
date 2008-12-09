@@ -13,7 +13,6 @@ import com.imanager.consume.domain.ConsumeType;
 import com.imanager.consume.domain.input.ConsumeSearchObj;
 import com.imanager.consume.service.IConsumeService;
 import com.imanager.framework.action.BaseAction;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 
 /**
@@ -48,7 +47,7 @@ public class ConsumeItemAction extends BaseAction {
 	 */
 	public String doInitGetConsumeItemList() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			Date startDate = DateUtil.getMinDate();
 			Date endDate = DateUtil.getMaxDate();
@@ -78,7 +77,7 @@ public class ConsumeItemAction extends BaseAction {
 	 */
 	public String doGetConsumeItemListBySearch() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			String itemNameTrim = searchObj.getItemName().trim();
 			String addressTrim = searchObj.getAddress().trim();
@@ -110,7 +109,7 @@ public class ConsumeItemAction extends BaseAction {
 	 */
 	public String doInitAddConsumItem() throws Exception {
 		try {
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			consumeItem.setFeeDate(new Date());
 			consumeItem.setLoginId(currentLoginId);
@@ -131,7 +130,7 @@ public class ConsumeItemAction extends BaseAction {
 	 */
 	public String doAddConsumItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			String itemNameTrim = consumeItem.getItemName().trim();
 			String addressTrim = consumeItem.getAddress().trim();
 			
@@ -167,7 +166,7 @@ public class ConsumeItemAction extends BaseAction {
 	 */
 	public String doGetConsumItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			consumeItem = consumeService.getConsumeItemById(consumeItemId);
@@ -199,7 +198,7 @@ public class ConsumeItemAction extends BaseAction {
 	 */
 	public String doUpdateConsumItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			String itemNameTrim = consumeItem.getItemName().trim();
 			String addressTrim = consumeItem.getAddress().trim();
@@ -238,7 +237,7 @@ public class ConsumeItemAction extends BaseAction {
 	 */
 	public String doLogicDeleteConsumItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			if(consumeService.logicDeleteConsumeItemById(consumeItemId, currentLoginId)){
 				return "doLogicDeleteConsumItem";

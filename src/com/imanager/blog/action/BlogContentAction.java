@@ -14,7 +14,6 @@ import com.imanager.blog.domain.output.BlogContentOutput;
 import com.imanager.blog.service.IBlogService;
 import com.imanager.common.DateUtil;
 import com.imanager.framework.action.BaseAction;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 
 public class BlogContentAction extends BaseAction {
@@ -43,7 +42,7 @@ public class BlogContentAction extends BaseAction {
 	 */
 	public String initGetBlogContentList() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			Date startDate = DateUtil.getMinDate();
 			Date endDate = DateUtil.getMaxDate();
@@ -70,7 +69,7 @@ public class BlogContentAction extends BaseAction {
 	 */
 	public String getBlogContentListBySearch() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String titleTrim = blogSearchObj.getTitle().trim();
 			blogSearchObj.setTitle(titleTrim);
@@ -95,7 +94,7 @@ public class BlogContentAction extends BaseAction {
 	 */
 	public String initAddBlogContent() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			blogContent.setBlogDate(new Date());
 			blogContent.setLoginId(currentLoginId);
@@ -117,7 +116,7 @@ public class BlogContentAction extends BaseAction {
 	 */
 	public String addBlogContent() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String titleTrim = blogContent.getTitle().trim();
 			String contentTrim = blogContent.getContent().trim();
@@ -152,7 +151,7 @@ public class BlogContentAction extends BaseAction {
 	 */
 	public String initUpdateBlogContent() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			blogContent = blogService.getBlogContentById(blogContentId);
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
@@ -173,7 +172,7 @@ public class BlogContentAction extends BaseAction {
 	 */
 	public String updateBlogContent() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String titleTrim = blogContent.getTitle().trim();
 			String contentTrim = blogContent.getContent().trim();
@@ -204,7 +203,7 @@ public class BlogContentAction extends BaseAction {
 	 */
 	public String logicDeleteBlogContent() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			if(blogService.logicDeleteBlogContent(blogContentId, currentLoginId)){
 				return "logicDeleteBlogContent";

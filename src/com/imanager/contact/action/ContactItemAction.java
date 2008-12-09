@@ -12,7 +12,6 @@ import com.imanager.contact.domain.ContactType;
 import com.imanager.contact.domain.input.ContactItemSearchObj;
 import com.imanager.contact.service.IContactService;
 import com.imanager.framework.action.BaseAction;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 
 public class ContactItemAction extends BaseAction {
@@ -40,7 +39,7 @@ public class ContactItemAction extends BaseAction {
 	 */
 	public String initAddContactItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			contactItem.setBirthday(new Date());
 			contactItem.setLoginId(currentLoginId);
@@ -62,7 +61,7 @@ public class ContactItemAction extends BaseAction {
 	 */
 	public String addContactItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String nameTrim = contactItem.getName().trim();
 			String pinyinTrim = contactItem.getPinyin().trim();
@@ -90,7 +89,7 @@ public class ContactItemAction extends BaseAction {
 	 */
 	public String initGetContactItemList() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			contactSearchObj.setLoginId(currentLoginId);
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
@@ -114,7 +113,7 @@ public class ContactItemAction extends BaseAction {
 	 */
 	public String getContactItemListBySearch() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			String nameTrim = contactSearchObj.getName().trim();
 			String pinyinTrim = contactSearchObj.getPinyin().trim();
@@ -140,7 +139,7 @@ public class ContactItemAction extends BaseAction {
 	 */
 	public String getContactItemById() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 			contactItem = contactService.getContactItemById(contactItemId);
@@ -168,7 +167,7 @@ public class ContactItemAction extends BaseAction {
 	 */
 	public String updateContactItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			
 			String nameTrim = contactItem.getName().trim();
 			String pinyinTrim = contactItem.getPinyin().trim();
@@ -198,7 +197,7 @@ public class ContactItemAction extends BaseAction {
 	 */
 	public String logicDeleteContactItem() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			contactItem.setModifier(currentLoginId);
 			

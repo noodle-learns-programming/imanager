@@ -8,7 +8,6 @@ import org.apache.commons.logging.LogFactory;
 import com.imanager.contact.domain.ContactType;
 import com.imanager.contact.service.IContactService;
 import com.imanager.framework.action.BaseAction;
-import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 
 public class ContactTypeAction extends BaseAction {
@@ -34,7 +33,7 @@ public class ContactTypeAction extends BaseAction {
 	 */
 	public String initAddContactType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			contactType.setLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -52,7 +51,7 @@ public class ContactTypeAction extends BaseAction {
 	 */
 	public String addContactType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			String contactTypeTrim = contactType.getContactType().trim();
 		
 			contactType.setCreator(currentLoginId);
@@ -76,7 +75,7 @@ public class ContactTypeAction extends BaseAction {
 	 */
 	public String getContactTypeListByLoginId() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -94,7 +93,7 @@ public class ContactTypeAction extends BaseAction {
 	 */
 	public String getContactTypeById() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			contactType = contactService.getContactTypeById(contactTypeId);
 		}catch (Exception e){
 			log.error(e.getMessage());
@@ -112,7 +111,7 @@ public class ContactTypeAction extends BaseAction {
 	 */
 	public String updateContactType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 			String contactTypeTrim = contactType.getContactType().trim();
 		
 			contactType.setModifier(currentLoginId);
@@ -138,7 +137,7 @@ public class ContactTypeAction extends BaseAction {
 	 */
 	public String logicDeleteContactType() throws Exception {
 		try{
-			currentLoginId = loginService.getCurrentLoginId(env.get(EnvService.RECORD_TYPE).toString());
+			currentLoginId = loginService.getCurrentLoginId();
 		
 			contactType.setModifier(currentLoginId);
 			

@@ -9,17 +9,19 @@ public interface ILoginService {
 	 */
 	public boolean updateLastLoginDate(String loginId);
 	
+	
 	/**
 	 * 获得当前登录用户的longId
 	 * @return
 	 */
-	public String getCurrentLoginId(String recordType);
+	public String getCurrentLoginId();
+	
 	
 	/**
 	 * 记录当前登录用户的longId
-	 * @param recordType
+	 * @param loginId
 	 * @return
 	 */
-	public boolean recordCurrentLoginId(String recordType, String loginId);
+	public boolean recordCurrentLoginId(String loginId);
 
 }

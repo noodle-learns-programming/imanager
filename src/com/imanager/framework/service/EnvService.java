@@ -11,9 +11,12 @@ public class EnvService{
 	private static final long serialVersionUID = 1L;
 	private static final Log log = LogFactory.getLog(EnvService.class);
 	
-	public static final String RECORD_TYPE = "recordType";
-	public static final String RECORD_TYPE_COOKIE = "cookie";
-	public static final String RECORD_TYPE_SESSION = "session";
+	public static final String RECORD_TYPE = "recordType";	//用户登录后记录类型
+	public static final String RECORD_DOMAIN_LOGIN_ID = "loginId";	//记录用户的值域
+	public static final String RECORD_TYPE_COOKIE = "cookie";	//用cookie记录
+	public static final String RECORD_TYPE_SESSION = "session";	//用session记录
+	public static final String COOKIE_EFFECTIVE_TIME = "cookieEffectiveTime";	//cookie的有效时间
+	public static final String APP_URL = "appUrl";	//应用的url
 
 	/** 环境变量信息 */
     static Properties properties=new Properties();
