@@ -44,7 +44,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						还没有帐号？<a href="../user/userAction!initRegisterUser.action">点此</a>注册！
+						还没有帐号？<a href="$env.appUrl/user/userAction!initRegisterUser.action">点此</a>注册！
 					</td>
 				</tr>
 				<tr>
