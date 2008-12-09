@@ -1,12 +1,10 @@
 	<table bgcolor="#E1E1E1" border="1" bordercolor="blue" width="80%" height="40"
 			cellpadding="0" cellspacing="0" align="center" >
 		<tr valign="middle">
-			<td align="center"><a href="../consume/consumeItemAction!doInitGetConsumeItemList.action">财务系统管理</a></td>
-			<td align="center"><a href="../blog/blogContentAction!initGetBlogContentList.action">日志系统管理</a></td>
-			<td align="center"><a href="../contact/contactItemAction!initGetContactItemList.action">联系人管理</a></td>
-			<td align="center"><a href="../user/userAction!initUpdateUserInfo.action">我的信息</a></td>
-			<td align="center">业务员管理</td>
-			<td align="center">业务员管理</td>
-			<td align="center">业务员管理</td>
+			<td align="center"><a href="$env.appUrl/consume/consumeItemAction!doInitGetConsumeItemList.action">财务系统管理</a></td>
+			<td align="center"><a href="$env.appUrl/blog/blogContentAction!initGetBlogContentList.action">日志系统管理</a></td>
+			<td align="center"><a href="$env.appUrl/contact/contactItemAction!initGetContactItemList.action">联系人管理</a></td>
+			<td align="center"><a href="$env.appUrl/user/userAction!initUpdateUserInfo.action">我的信息</a></td>
+			<td align="center"><a href="$env.appUrl/login/loginAction!logoutUser.action">退出</a></td>
 		</tr>
 	</table>
