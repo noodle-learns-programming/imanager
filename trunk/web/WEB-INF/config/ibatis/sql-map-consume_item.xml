@@ -21,6 +21,7 @@
 		<result property="loginId" column="loginId"/>
 		<result property="inOrOut" column="inOrOut"/>
 		<result property="consumeType" column="consumeType" select="ConsumeType.getConsumeTypeById"/>
+		<result property="weekday" column="weekday"/>
 	</resultMap>
 
 	<insert id="insertConsumeItem"
@@ -28,10 +29,12 @@
 		<![CDATA[
 			INSERT INTO consume_item 
 				(creator, gmt_created, modifier, gmt_modified, is_deleted, item_name, address, 
-				price, quantity, total_price, fee_date, in_out, login_id, consume_type_id) 
+				price, quantity, total_price, fee_date, in_out, login_id, consume_type_id, 
+				weekday) 
 			VALUES 
 				(#creator#, now(), #modifier#, now(), 'no', #itemName#, #address#, 
-				#price#, #quantity#, #totalPrice#, #feeDate#, #inOrOut#, #loginId#, #consumeType.consumeTypeId#)
+				#price#, #quantity#, #totalPrice#, #feeDate#, #inOrOut#, #loginId#, #consumeType.consumeTypeId#, 
+				#weekday#)
 		]]>
 	</insert>
 	
@@ -53,7 +56,8 @@
 					fee_date			as feeDate,
 					login_id			as loginId,
 					in_out				as inOrOut,
-					consume_type_id		as consumeType
+					consume_type_id		as consumeType,
+					weekday				as weekday
 			from consume_item
 			where login_id = #loginId# 
 				and is_deleted='no' 
@@ -108,7 +112,8 @@
 					fee_date			as feeDate,
 					login_id			as loginId,
 					in_out				as inOrOut,
-					consume_type_id		as consumeType
+					consume_type_id		as consumeType,
+					weekday				as weekday
 			from consume_item
 			where consume_item_id = #consumeItemId# and is_deleted='no'
 		]]>
@@ -127,7 +132,8 @@
 				total_price		= #totalPrice#,
 				fee_date		= #feeDate#,
 				in_out			= #inOrOut#,
-				consume_type_id	= #consumeType.consumeTypeId#
+				consume_type_id	= #consumeType.consumeTypeId#,
+				weekday			= #weekday#
 			where	consume_item_id = #consumeItemId# and is_deleted = 'no'
 		]]>
 	</update>
