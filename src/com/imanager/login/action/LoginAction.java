@@ -55,18 +55,17 @@ public class LoginAction extends BaseAction {
 				return INPUT;
 			}
 			
-			//更新上次登录时间
-			if (!loginService.updateLastLoginDate(user.getLoginId())) {
-				addActionError("系统错误：更新上次登录时间出错！");
-				return ERROR;
-			}
-			
 			//记录当前登录用户的loginId
 			if (!loginService.recordCurrentLoginId(loginIdTrim)) {
 				addActionError("系统错误：记录当前登录用户出错！");
 				return ERROR;
 			}
 			
+			//更新上次登录时间
+			if (!loginService.updateLastLoginDate(user.getLoginId())) {
+				addActionError("系统错误：更新上次登录时间出错！");
+				return ERROR;
+			}
 		}catch (Exception e){
 			//log.error("Error: " + LoginAction.class + ", validateUser()",e);
 			log.error(e.getMessage());
