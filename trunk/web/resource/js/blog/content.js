@@ -85,8 +85,8 @@ function checkBlogContentWeather(){
 		alert("天气不能为空!");
 		return false;
 	}
-	if(!checkInputLength(Trim(o.value), 50)){
-		alert("天气的长度不能大于50!");
+	if(!checkInputLength(Trim(o.value), 40)){
+		alert("天气的长度不能大于40!");
 		return false;
 	}
 	return true;
@@ -98,8 +98,8 @@ function checkBlogContentCity(){
 		alert("城市不能为空!");
 		return false;
 	}
-	if(!checkInputLength(Trim(o.value), 50)){
-		alert("城市的长度不能大于50!");
+	if(!checkInputLength(Trim(o.value), 40)){
+		alert("城市的长度不能大于40!");
 		return false;
 	}
 	return true;
