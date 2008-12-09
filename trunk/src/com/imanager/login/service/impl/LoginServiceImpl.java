@@ -162,7 +162,7 @@ public class LoginServiceImpl implements ILoginService {
 			//记录当前用户loginId
 			if (EnvService.RECORD_TYPE_COOKIE.equals(recordType)) {
 				Cookie loginIdCookie = new Cookie(recordDomainLoginId, loginId);
-				loginIdCookie.setDomain("localhost");
+				//loginIdCookie.setDomain("localhost");
 				loginIdCookie.setPath("/");
 				if (effectiveTime >= 0) {
 					loginIdCookie.setMaxAge(effectiveTime);
