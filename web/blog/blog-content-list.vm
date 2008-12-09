@@ -70,13 +70,13 @@
 											<option value="yc" #if($blogSearchObj.blogType == 'yc') selected #end>原创</option>
 											<option value="zz" #if($blogSearchObj.blogType == 'zz') selected #end>转载</option> 
                 						</select>&nbsp;&nbsp;
-                						明细1：<select id="blogContent.blogItem1Id" name="blogSearchObj.blogItem1Id" onchange="getBlogItem2List();">
+                						明细一：<select id="blogContent.blogItem1Id" name="blogSearchObj.blogItem1Id" onchange="getBlogItem2List();">
                 							<option value="">请选择</option>
 											#foreach($blogItem1 in $blogItem1List)
                 								<option value="$blogItem1.blogItem1Id" #if("$blogItem1.blogItem1Id" == $blogSearchObj.blogItem1Id) selected #end>$esc.html($blogItem1.itemChn)</option>
 											#end
 										</select>&nbsp;&nbsp;
-                						明细2：<select id="blogContent.blogItem2Id" name="blogSearchObj.blogItem2Id">
+                						明细二：<select id="blogContent.blogItem2Id" name="blogSearchObj.blogItem2Id">
                 							<option value="">请选择</option>
 											#if($stringUtil.isNotBlank($!blogSearchObj.blogItem1Id))
     											#foreach($blogItem2 in $blogItem2List)
@@ -106,21 +106,21 @@
                 			</tr>
 							#foreach($blogContentOutput in $blogContentOutputList)
                 				<tr>
-                					<td align = "center">$blogContentOutput.blogContentId</td>
-                					<td align = "center">$esc.html($blogContentOutput.title)</td>
+                					<td align = "center">$!blogContentOutput.blogContentId</td>
+                					<td align = "center">$esc.html($!blogContentOutput.title)</td>
                 					<td align = "center">
-										#if($blogContentOutput.blogType == 'yc')
+										#if($!blogContentOutput.blogType == 'yc')
 											原创
-										#elseif($blogContentOutput.blogType == 'zz')
+										#elseif($!blogContentOutput.blogType == 'zz')
 											转载
                 						#else
-											$blogContentOutput.blogType
+											$!blogContentOutput.blogType
                 						#end
                 					</td>
-                					<td align = "center">$esc.html($blogContentOutput.item1Chn)</td>
-                					<td align = "center">$esc.html($blogContentOutput.item2Chn)</td>
-                					<td align = "center">$!dateUtil.date($blogContentOutput.blogDate, 'yyyy-MM-dd')</td>
-                					<td align = "center">$blogContentOutput.loginId</td>
+                					<td align = "center">$esc.html($!blogContentOutput.item1Chn)</td>
+                					<td align = "center">$esc.html($!blogContentOutput.item2Chn)</td>
+                					<td align = "center">$!dateUtil.date($!blogContentOutput.blogDate, 'yyyy-MM-dd')&nbsp;&nbsp;$!blogContentOutput.weekday</td>
+                					<td align = "center">$!blogContentOutput.loginId</td>
                 					<td align = "center">
                 						<a href="#" onclick="doGetBlogContentById('$blogContentOutput.blogContentId');">更新</a>&nbsp;|
                 						<a href="#" onclick="deleteBlogContent('$blogContentOutput.blogContentId');">删除</a>
