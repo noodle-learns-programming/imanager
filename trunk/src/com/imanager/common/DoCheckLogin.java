@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.interceptor.Interceptor;
@@ -31,9 +32,9 @@ public class DoCheckLogin implements Interceptor {
 			return invocation.invoke();
 	    } else {
 	    	if (log.isInfoEnabled()) {
-				log.info("Cannot get cookie!");
+				log.info("Cannot get \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\"!");
 			} else if (log.isErrorEnabled()) {
-				log.error("Cannot get cookie!");
+				log.error("Cannot get \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\"!");
 			}
 	    }
 		
