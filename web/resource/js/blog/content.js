@@ -34,6 +34,11 @@ function checkBlogContentForm(){
 		document.getElementById("blogContent.weather").focus();
 		return;
 	}
+	
+	if(!checkBlogContentCity()){
+		document.getElementById("blogContent.city").focus();
+		return;
+	}
 
 	if(!checkBlogContentItem1()){
 		document.getElementById("blogContent.blogItem1Id").focus();
@@ -82,6 +87,19 @@ function checkBlogContentWeather(){
 	}
 	if(!checkInputLength(Trim(o.value), 50)){
 		alert("天气的长度不能大于50!");
+		return false;
+	}
+	return true;
+}
+
+function checkBlogContentCity(){
+	var o = document.getElementById("blogContent.city");
+	if(Trim(o.value)==""){
+		alert("城市不能为空!");
+		return false;
+	}
+	if(!checkInputLength(Trim(o.value), 50)){
+		alert("城市的长度不能大于50!");
 		return false;
 	}
 	return true;
