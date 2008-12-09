@@ -60,6 +60,11 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
+						已有帐号？<a href="$env.appUrl/login/loginAction!init.action">点此</a>登录！
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
 						#if($actionErrors && $actionErrors.size() > 0)
 							#foreach($err in $actionErrors)
 								<font color="red">$esc.html($err)</font>
