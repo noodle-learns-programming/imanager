@@ -198,7 +198,7 @@ public class LoginServiceImpl implements ILoginService {
 			
 			//使当前用户记录失效
 			if (EnvService.RECORD_TYPE_COOKIE.equals(recordType)) {
-				//生成cookie
+				//使cookie失效
 				Cookie loginIdCookie = new Cookie(recordDomainLoginId, null);
 				loginIdCookie.setPath("/");
 				loginIdCookie.setMaxAge(0);
