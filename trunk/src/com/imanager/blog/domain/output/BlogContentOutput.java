@@ -19,6 +19,8 @@ public class BlogContentOutput extends Basement{
 	String item2Chn;
 	
 	String loginId;
+	
+	String weekday;
 
 	public int getBlogContentId() {
 		return blogContentId;
@@ -74,5 +76,13 @@ public class BlogContentOutput extends Basement{
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+
+	public String getWeekday() {
+		return weekday;
+	}
+
+	public void setWeekday(String weekday) {
+		this.weekday = weekday;
 	}
 }
