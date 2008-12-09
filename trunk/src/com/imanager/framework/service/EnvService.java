@@ -12,7 +12,7 @@ public class EnvService{
 	private static final Log log = LogFactory.getLog(EnvService.class);
 	
 	public static final String RECORD_TYPE = "recordType";	//用户登录后记录类型
-	public static final String RECORD_DOMAIN_LOGIN_ID = "loginId";	//记录用户的值域
+	public static final String RECORD_DOMAIN_LOGIN_ID = "recordDomainLoginId";	//记录用户的值域
 	public static final String RECORD_TYPE_COOKIE = "cookie";	//用cookie记录
 	public static final String RECORD_TYPE_SESSION = "session";	//用session记录
 	public static final String COOKIE_EFFECTIVE_TIME = "cookieEffectiveTime";	//cookie的有效时间
@@ -25,7 +25,7 @@ public class EnvService{
 		try {
 			properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
 		} catch (IOException e) {
-			if (log.isDebugEnabled()) {
+			if (log.isInfoEnabled()) {
 				log.info(e.toString());
 			} else if (log.isErrorEnabled()) {
 				log.error(e.toString());
