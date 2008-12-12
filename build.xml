@@ -61,7 +61,7 @@
 		
 		<!-- <mkdir dir="${build.deploy}"/> -->
 		
-		<war destfile="${build.deploy}/iManager.war" webxml="${build.dir}/web.xml">
+		<war destfile="${build.deploy}/imanager.war" webxml="${build.dir}/web.xml">
 			<!-- <classes dir="${build.dir}/classes" /> -->
 			<webinf dir="${build.dir}/lib" includes="*.tld,*.dtd" />
 			<fileset dir="web" excludes="WEB-INF/web.xml" />
