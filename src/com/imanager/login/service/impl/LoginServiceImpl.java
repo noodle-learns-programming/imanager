@@ -42,25 +42,9 @@ public class LoginServiceImpl implements ILoginService {
 		try {
 			//获取用户记录类型
 			String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
-			if (StringUtils.isBlank(recordType)) {
-				if (log.isInfoEnabled()) {
-					log.info("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
-				} else if (log.isErrorEnabled()) {
-					log.error("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
-				}
-				return null;
-			}
 			
 			//获取用户记录值域
 			String recordDomainLoginId = EnvService.getValueByProperty(EnvService.RECORD_DOMAIN_LOGIN_ID);
-			if (StringUtils.isBlank(recordDomainLoginId)) {
-				if (log.isInfoEnabled()) {
-					log.info("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
-				} else if (log.isErrorEnabled()) {
-					log.error("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
-				}
-				return null;
-			}
 			
 			ActionContext ctx = ActionContext.getContext();
 			HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
@@ -102,25 +86,9 @@ public class LoginServiceImpl implements ILoginService {
 		try {
 			//获取用户记录类型
 			String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
-			if (StringUtils.isBlank(recordType)) {
-				if (log.isInfoEnabled()) {
-					log.info("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
-				} else if (log.isErrorEnabled()) {
-					log.error("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
-				}
-				return false;
-			}
 			
 			//获取用户记录值域
 			String recordDomainLoginId = EnvService.getValueByProperty(EnvService.RECORD_DOMAIN_LOGIN_ID);
-			if (StringUtils.isBlank(recordDomainLoginId)) {
-				if (log.isInfoEnabled()) {
-					log.info("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
-				} else if (log.isErrorEnabled()) {
-					log.error("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
-				}
-				return false;
-			}
 			
 			ActionContext ctx = ActionContext.getContext();
 			HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
@@ -172,28 +140,11 @@ public class LoginServiceImpl implements ILoginService {
 		try {
 			//获取用户记录类型
 			String recordType = EnvService.getValueByProperty(EnvService.RECORD_TYPE);
-			if (StringUtils.isBlank(recordType)) {
-				if (log.isInfoEnabled()) {
-					log.info("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
-				} else if (log.isErrorEnabled()) {
-					log.error("The property of \"" + EnvService.RECORD_TYPE + "\" is null!");
-				}
-				return false;
-			}
 			
 			//获取用户记录值域
 			String recordDomainLoginId = EnvService.getValueByProperty(EnvService.RECORD_DOMAIN_LOGIN_ID);
-			if (StringUtils.isBlank(recordDomainLoginId)) {
-				if (log.isInfoEnabled()) {
-					log.info("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
-				} else if (log.isErrorEnabled()) {
-					log.error("The property of \"" + EnvService.RECORD_DOMAIN_LOGIN_ID + "\" is null!");
-				}
-				return false;
-			}
 			
 			ActionContext ctx = ActionContext.getContext();
-			//HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 			HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
 			
 			//使当前用户记录失效

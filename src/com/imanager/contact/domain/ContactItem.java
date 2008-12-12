@@ -68,6 +68,7 @@ public class ContactItem extends Basement{
 	private String other2Note;
 	private String note;
 	private ContactType contactType;
+	private String photo;
 	
 	private String area;
 	
@@ -448,6 +449,12 @@ public class ContactItem extends Basement{
 	}
 	public void setContactType(ContactType contactType) {
 		this.contactType = contactType;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 }
