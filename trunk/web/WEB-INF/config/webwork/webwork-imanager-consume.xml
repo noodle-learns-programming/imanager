@@ -5,10 +5,7 @@
 		
 		<interceptors>
 			<interceptor-stack name="modelParamsStack">
-				<interceptor-ref name="params" />
-				<interceptor-ref name="model-driven" />
-				<interceptor-ref name="chain" />
-				<interceptor-ref name="checkLogin" />
+				<interceptor-ref name="iManagerStack" />
 			</interceptor-stack>
 		</interceptors>
 		
