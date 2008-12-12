@@ -19,10 +19,10 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/ognl-2.6.7.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/oscore-2.2.5.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/rife-continuations.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/spring-2.0.1.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/webwork-2.2.5.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/spring-2.0.1.jar" sourcepath="web/WEB-INF/lib/spring-2.0.1-src.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/webwork-2.2.5.jar" sourcepath="web/WEB-INF/lib/webwork-2.2.5-src.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/xml-apis.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/xwork-1.2.1.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/xwork-1.2.1.jar" sourcepath="web/WEB-INF/lib/webwork-2.2.5-src.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/xwork-editor-1.0.5.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/xwork-tiger-1.2.1.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/velocity-1.4.jar"/>
@@ -48,5 +48,6 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/toolkit-common-lang-1.0-doc.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/toolkit-common-lang-1.0-src.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/ibatis-2.3.0.677-src.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/webwork-2.2.5-src.jar"/>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
 </classpath>
