@@ -1,10 +1,12 @@
 package com.imanager.contact.action;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.util.FileCopyUtils;
 
 import com.imanager.common.DateUtil;
 import com.imanager.contact.domain.ContactItem;
@@ -12,7 +14,9 @@ import com.imanager.contact.domain.ContactType;
 import com.imanager.contact.domain.input.ContactItemSearchObj;
 import com.imanager.contact.service.IContactService;
 import com.imanager.framework.action.BaseAction;
+import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
+import com.imanager.util.FileUtils;
 
 public class ContactItemAction extends BaseAction {
 	
@@ -30,8 +34,13 @@ public class ContactItemAction extends BaseAction {
 	private ContactItemSearchObj contactSearchObj = new ContactItemSearchObj();
 	private List<ContactItem> contactItemList;
 	private List<ContactType> contactTypeList;
+	private File picture;
+	private String pictureContentType;
+	private String pictureFileName;
 	
 	
+	
+
 	/**
 	 * 初始化添加联系人详细
 	 * @return
@@ -62,7 +71,7 @@ public class ContactItemAction extends BaseAction {
 	public String addContactItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
+			String picDir = env.get(EnvService.PIC_DIR).toString();
 			String nameTrim = contactItem.getName().trim();
 			String pinyinTrim = contactItem.getPinyin().trim();
 		
@@ -71,6 +80,17 @@ public class ContactItemAction extends BaseAction {
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
 			contactItem.setName(nameTrim);
 			contactItem.setPinyin(pinyinTrim);
+			
+			if (picture != null) {
+				StringBuffer absFileName = new StringBuffer();
+				absFileName.append(picDir).append(pinyinTrim).append(
+						FileUtils.getSuffixOfFile(pictureFileName));
+				FileCopyUtils.copy(picture, new File(absFileName.toString()));
+				contactItem.setPhoto(absFileName.toString());
+			}
+			
+			log.info("shit:--------- " + pictureFileName);
+			log.error("shit:--------- " + pictureContentType);
 			
 			contactService.insertContactItem(contactItem);
 		}catch (Exception e){
@@ -150,7 +170,7 @@ public class ContactItemAction extends BaseAction {
 				contactType.setContactTypeId(0);
 				contactType.setContactType("");
 				contactItem.setContactType(contactType);
-			}
+			}			
 		}catch (Exception e){
 			log.error(e.getMessage());
 			addActionError("系统错误：查询联系人详细出错！");
@@ -168,7 +188,7 @@ public class ContactItemAction extends BaseAction {
 	public String updateContactItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-			
+			String picDir = env.get(EnvService.PIC_DIR).toString();
 			String nameTrim = contactItem.getName().trim();
 			String pinyinTrim = contactItem.getPinyin().trim();
 		
@@ -176,6 +196,14 @@ public class ContactItemAction extends BaseAction {
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
 			contactItem.setName(nameTrim);
 			contactItem.setPinyin(pinyinTrim);
+			
+			if (picture != null) {
+				StringBuffer absFileName = new StringBuffer();
+				absFileName.append(picDir).append(pinyinTrim).append(
+						FileUtils.getSuffixOfFile(pictureFileName));
+				FileCopyUtils.copy(picture, new File(absFileName.toString()));
+				contactItem.setPhoto(absFileName.toString());
+			}
 			
 			if(contactService.updateContactItem(contactItem)){
 				return "updateContactItem";
@@ -269,6 +297,30 @@ public class ContactItemAction extends BaseAction {
 
 	public void setLoginService(ILoginService loginService) {
 		this.loginService = loginService;
+	}
+
+	public File getPicture() {
+		return picture;
+	}
+
+	public void setPicture(File picture) {
+		this.picture = picture;
+	}
+
+	public String getPictureContentType() {
+		return pictureContentType;
+	}
+
+	public void setPictureContentType(String pictureContentType) {
+		this.pictureContentType = pictureContentType;
+	}
+
+	public String getPictureFileName() {
+		return pictureFileName;
+	}
+
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
 	}
 
 }
