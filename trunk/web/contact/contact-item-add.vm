@@ -35,10 +35,16 @@
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
                     	<h2>添加联系人详细</h2>
-                    	<form id="contactItemForm" action="contactItemAction!addContactItem.action" method="post">
+                    	<form id="contactItemForm" action="contactItemAction!addContactItem.action" enctype="multipart/form-data" method="post">
 							<input type="hidden" id="area" name="area" value="" />
                     		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
                     			cellpadding="0" cellspacing="0" align="center" >
+								<tr>
+									<td align="right">picture:</td>
+                    				<td align="left" colspan="3">
+											<input type="file" id="picture" name="picture" >
+									</td>
+                    			</tr>
 								<tr><th colspan="4" align="left">基本信息</th></tr>
                     			<tr>
                     				<td width="10%" align="right">姓名:</td>
