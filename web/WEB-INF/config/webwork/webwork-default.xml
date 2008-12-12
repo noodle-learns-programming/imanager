@@ -56,11 +56,23 @@
             <interceptor name="flash" class="com.opensymphony.webwork.interceptor.FlashInterceptor" />
             <interceptor name="cookie" class="com.opensymphony.webwork.interceptor.CookieInterceptor" />
             
+            <!--=========================================================================-->
             <!-- Ken Yang -->
-            <interceptor name="checkLoginSessions" class="com.imanager.common.DoCheckLoginSessions" />
-            <interceptor name="checkLoginCookies" class="com.imanager.common.DoCheckLoginCookies" />
-            <interceptor name="checkLogin" class="com.imanager.common.DoCheckLogin" />
+            	<interceptor name="checkLoginSessions" class="com.imanager.common.DoCheckLoginSessions" />
+            	<interceptor name="checkLoginCookies" class="com.imanager.common.DoCheckLoginCookies" />
+            	<interceptor name="checkLogin" class="com.imanager.interceptor.CheckCurrentLogin" />
+            	<interceptor name="checkEnv" class="com.imanager.interceptor.CheckEnvProperty" />
+            	
+            <interceptor-stack name="iManagerStack">
+                <interceptor-ref name="params" />
+				<interceptor-ref name="model-driven" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="checkLogin" />
+				<interceptor-ref name="checkEnv" />
+            </interceptor-stack>
+            	
             <!-- Ken Yang -->
+            <!--=========================================================================-->
 
             <!-- Basic stack -->
             <interceptor-stack name="basicStack">
@@ -195,6 +207,7 @@
         
         <global-results>
        		<result name="checklogin" type="redirect">/login/loginAction!init.action</result>
+       		<result name="checkenv" type="velocity">/framework/error.vm</result>
 			<result name="nocookies" type="redirect">/login/loginAction!init.action</result>
 			<result name="nosessions" type="redirect">/login/loginAction!init.action</result>
 		</global-results>
