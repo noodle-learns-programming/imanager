@@ -6,6 +6,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.imanager.common.Md5Encode;
 import com.imanager.framework.action.BaseAction;
+import com.imanager.framework.service.EnvService;
 import com.imanager.login.service.ILoginService;
 import com.imanager.user.domain.User;
 import com.imanager.user.exception.UserServiceException;
@@ -54,10 +55,32 @@ public class UserAction extends BaseAction{
 			user.setCreator(loginIdTrim);
 			user.setModifier(loginIdTrim);
 			user.setPassword(Md5Encode.MD5(passwordTrim));
-			//注册用户
-			userService.registerUser(user);
+			
+			//将新用户写入数据库
+			if (!userService.registerUser(user)) {
+				if (log.isInfoEnabled()) {
+					log.info("Write user into database failure!");
+				} else if (log.isErrorEnabled()) {
+					log.info("Write user into database failure!");
+				}
+			}
+			//创建需要的文件夹
+			if (!userService.createFolders(env.get(EnvService.SRC_DIR).toString(), loginIdTrim, env.get(EnvService.FOLDERS).toString())) {
+				if (log.isInfoEnabled()) {
+					log.info("Create needed folders failure!");
+				} else if (log.isErrorEnabled()) {
+					log.info("Create needed folders failure!");
+				}
+			}
 			//登入当前用户
-			loginService.loginCurrentUser(loginIdTrim);
+			if (!loginService.loginCurrentUser(loginIdTrim)) {
+				if (log.isInfoEnabled()) {
+					log.info("Login current user failure!");
+				} else if (log.isErrorEnabled()) {
+					log.info("Login current user failure!");
+				}
+			}
+			
 		} catch (UserServiceException e) {
 			addActionError(e.getMessage());
 			return "registerUserInput";
