@@ -204,6 +204,12 @@ public class ContactItemAction extends BaseAction {
 			contactItem.setPinyin(pinyinTrim);
 			
 			if (picture != null) {
+				String checkFolderResult = checkPhotoFolder(srcDir, currentLoginId);
+				if (!"has".equals(checkFolderResult)) {
+					addActionError(checkFolderResult);
+					return ERROR;
+				}
+				
 				//É¾³ýÖ®Ç°µÄÕÕÆ¬
 				/*String deleteFilePath = srcDir + contactItem.getPhoto();
 				File file = new File(deleteFilePath);
