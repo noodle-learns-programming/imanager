@@ -22,6 +22,7 @@ public class ContactItemAction extends BaseAction {
 	
 	private static final long serialVersionUID = 1L;
 	private static final Log log = LogFactory.getLog(ContactItemAction.class);
+	private static final String CONTACT_PHOTO = "contact/photo";
 	
 	// Service
 	private IContactService contactService;
@@ -71,7 +72,7 @@ public class ContactItemAction extends BaseAction {
 	public String addContactItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-			String picDir = env.get(EnvService.PIC_DIR).toString();
+			String srcDir = env.get(EnvService.SRC_DIR).toString();
 			String nameTrim = contactItem.getName().trim();
 			String pinyinTrim = contactItem.getPinyin().trim();
 		
@@ -83,10 +84,20 @@ public class ContactItemAction extends BaseAction {
 			
 			if (picture != null) {
 				StringBuffer absFileName = new StringBuffer();
-				absFileName.append(picDir).append(pinyinTrim).append(
-						FileUtils.getSuffixOfFile(pictureFileName));
+				absFileName.append(srcDir).append("/").
+					append(loginService.getCurrentLoginId()).append("/").
+					append(CONTACT_PHOTO).append("/").
+					append(pinyinTrim).
+					append(FileUtils.getSuffixOfFile(pictureFileName));
 				FileCopyUtils.copy(picture, new File(absFileName.toString()));
-				contactItem.setPhoto(absFileName.toString());
+				
+				StringBuffer fileNamePath = new StringBuffer();
+				fileNamePath.append("/").
+					append(loginService.getCurrentLoginId()).append("/").
+					append(CONTACT_PHOTO).append("/").
+					append(pinyinTrim).
+					append(FileUtils.getSuffixOfFile(pictureFileName));
+				contactItem.setPhoto(fileNamePath.toString());
 			}
 			
 			log.info("shit:--------- " + pictureFileName);
@@ -170,7 +181,10 @@ public class ContactItemAction extends BaseAction {
 				contactType.setContactTypeId(0);
 				contactType.setContactType("");
 				contactItem.setContactType(contactType);
-			}			
+			}
+			StringBuffer fileNamePath = new StringBuffer(env.get(EnvService.SRC_URL).toString());
+			fileNamePath.append(contactItem.getPhoto());
+			contactItem.setPhoto(fileNamePath.toString());
 		}catch (Exception e){
 			log.error(e.getMessage());
 			addActionError("系统错误：查询联系人详细出错！");
@@ -188,7 +202,7 @@ public class ContactItemAction extends BaseAction {
 	public String updateContactItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-			String picDir = env.get(EnvService.PIC_DIR).toString();
+			String srcDir = env.get(EnvService.SRC_DIR).toString();
 			String nameTrim = contactItem.getName().trim();
 			String pinyinTrim = contactItem.getPinyin().trim();
 		
@@ -199,8 +213,11 @@ public class ContactItemAction extends BaseAction {
 			
 			if (picture != null) {
 				StringBuffer absFileName = new StringBuffer();
-				absFileName.append(picDir).append(pinyinTrim).append(
-						FileUtils.getSuffixOfFile(pictureFileName));
+				absFileName.append(srcDir).append("/").
+					append(loginService.getCurrentLoginId()).append("/").
+					append(CONTACT_PHOTO).append("/").
+					append(pinyinTrim).
+					append(FileUtils.getSuffixOfFile(pictureFileName));
 				FileCopyUtils.copy(picture, new File(absFileName.toString()));
 				contactItem.setPhoto(absFileName.toString());
 			}
