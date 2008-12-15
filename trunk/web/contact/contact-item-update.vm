@@ -3,6 +3,9 @@
 	<head>
 		<title>iManager Contact</title>
 		<link rel="stylesheet" type="text/css" media="all" href="../resource/js/jscalendar/skins/aqua/theme.css" title="Aqua" />
+		<style type="text/css">
+        </style>
+		
 		<script type="text/javascript" src="../resource/js/jscalendar/calendar.js"></script>
 		<script type="text/javascript" src="../resource/js/jscalendar/showCalendar.js"></script>
 		<script type="text/javascript" src="../resource/js/jscalendar/lang/cn_utf8.js"></script>
@@ -35,34 +38,33 @@
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
                     	<h2>更新联系人详细</h2>
-                    	<form id="contactItemForm" action="contactItemAction!updateContactItem.action" method="post">
+                    	<form id="contactItemForm" action="contactItemAction!updateContactItem.action" enctype="multipart/form-data" method="post">
 							<input type="hidden" id="area" name="area" value="" />
-							<input type="hidden" name="contactItem.contactItemId" value="$contactItem.contactItemId" />
 							<input type="hidden" name="contactSearchObj.name" value="$esc.html($!contactSearchObj.name)" />
 							<input type="hidden" name="contactSearchObj.pinyin" value="$esc.html($!contactSearchObj.pinyin)" />
 							<input type="hidden" name="contactSearchObj.contactTypeId" value="$!contactSearchObj.contactTypeId" />
+							<input type="hidden" name="contactItem.contactItemId" value="$contactItem.contactItemId" />
+							<input type="hidden" name="contactItem.photo" value="$!contactItem.photo" />
                     		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
                     			cellpadding="0" cellspacing="0" align="center" >
-								<tr>
-									<td align="right">picture:</td>
-                    				<td align="left" colspan="3">$contactItem.photo
-											<img  src="$contactItem.photo" />
-									</td>
-                    			</tr>
 								<tr><th colspan="4" align="left">基本信息</th></tr>
                     			<tr>
                     				<td width="10%" align="right">姓名:</td>
                     				<td width="40%" align="left"><input type="text" id="contactItem.name" name="contactItem.name" value="$esc.html($!contactItem.name)" size="43" maxlength="20"></td>
-									<td width="10%" align="right">拼音:</td>
-                    				<td width="40%" align="left"><input type="text" id="contactItem.pinyin" name="contactItem.pinyin" value="$esc.html($!contactItem.pinyin)" size="43" maxlength="20"></td>
+									<td width="50%" colspan="2" rowspan="10"><a href="$env.srcUrl$!contactItem.photo" target="_blank"><img src="$env.srcUrl$!contactItem.photo" width="400" height="250" border="0"/></a></td>
+								</tr>
+								<tr>
+									<td align="right">拼音:</td>
+                    				<td align="left"><input type="text" id="contactItem.pinyin" name="contactItem.pinyin" value="$esc.html($!contactItem.pinyin)" size="43" maxlength="20"></td>
                     			</tr>
 								<tr>
-                    				<td align="right">英文名:</td>
-                    				<td align="left"><input type="text" id="contactItem.englishName" name="contactItem.englishName" value="$esc.html($!contactItem.englishName)" size="43" maxlength="20"></td>
 									<td align="right">昵称:</td>
                     				<td align="left"><input type="text" id="contactItem.nickName" name="contactItem.nickName" value="$esc.html($!contactItem.nickName)" size="43" maxlength="20"></td>
                     			</tr>
 								<tr>
+                    				<td align="right">英文名:</td>
+                    				<td align="left"><input type="text" id="contactItem.englishName" name="contactItem.englishName" value="$esc.html($!contactItem.englishName)" size="43" maxlength="20"></td>
+								</tr><tr>
                     				<td align="right">性别:</td>
                     				<td align="left">
 										#if($contactItem.sex == "M")
@@ -73,6 +75,8 @@
 											<input type="radio" name="contactItem.sex" value="F" checked>女
 										#end
 									</td>
+								</tr>
+								<tr>
 									<td align="right">婚姻状况:</td>
                     				<td align="left">
 										#if($contactItem.marriage == "yes")
@@ -89,12 +93,16 @@
                     				<td align="left">
 										<input type="text" id="contactItem.birthday" name="contactItem.birthday" value="$!dateUtil.date($!contactItem.birthday, 'yyyy-MM-dd')" readonly="true" size="20"><input type="button" value="日历" onclick="return showCalendar('contactItem.birthday', '%Y-%m-%d');">
 									</td>
+								</tr>
+								<tr>
 									<td align="right">年龄:</td>
                     				<td align="left"><input type="text" id="contactItem.age" name="contactItem.age" value="$esc.html($!contactItem.age)" readonly="true" size="43" maxlength="43"></td>
                     			</tr>
 								<tr>
                     				<td align="right">籍贯:</td>
                     				<td align="left"><input type="text" id="contactItem.nativePlace" name="contactItem.nativePlace" value="$esc.html($!contactItem.nativePlace)" size="43" maxlength="100"></td>
+								</tr>
+								<tr>
 									<td align="right">联系类型:</td>
 									<td align="left">
 										<select id="contactItem.contactType.contactTypeId" name="contactItem.contactType.contactTypeId">
@@ -116,6 +124,7 @@
             		                	</select>
             		                	<select id="subcity" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clSubcity" value="$contactItem.clSubcity">
             		                	</select>
+										&nbsp;&nbsp;照片：<input type="file" id="picture" name="picture" >
 									</td>
 								</tr>
 								<tr><th colspan="4" align="left">联系信息</th></tr>
