@@ -211,12 +211,14 @@ public class ContactItemAction extends BaseAction {
 				}
 				
 				//删除之前的照片
-				/*String deleteFilePath = srcDir + contactItem.getPhoto();
+				String deleteFilePath = srcDir + contactItem.getPhoto();
 				File file = new File(deleteFilePath);
-				if (!file.delete()) {
-					addActionError("系统错误：删除联系人照片出错！");
-					return ERROR;
-				}*/
+				if (file.exists()) {
+					if (!file.delete()) {
+						addActionError("系统错误：删除联系人照片出错！");
+						return ERROR;
+					}
+				}
 				
 				//设置基本存储路径
 				StringBuffer baseFilePath = new StringBuffer();
