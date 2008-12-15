@@ -213,7 +213,7 @@ public class ContactItemAction extends BaseAction {
 				//删除之前的照片
 				String deleteFilePath = srcDir + contactItem.getPhoto();
 				File file = new File(deleteFilePath);
-				if (file.exists()) {
+				if (file != null && file.exists() && file.isFile()) {
 					if (!file.delete()) {
 						addActionError("系统错误：删除联系人照片出错！");
 						return ERROR;
