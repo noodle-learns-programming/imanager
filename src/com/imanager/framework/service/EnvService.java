@@ -17,7 +17,8 @@ public class EnvService{
 	public static final String RECORD_TYPE_SESSION = "session";	//用session记录
 	public static final String COOKIE_EFFECTIVE_TIME = "cookieEffectiveTime";	//cookie的有效时间
 	public static final String APP_URL = "appUrl";	//应用的url
-	public static final String PIC_DIR = "picDir";	//联系人照片存放目录
+	public static final String SRC_URL = "srcUrl";	//资源的url
+	public static final String SRC_DIR = "srcDir";	//资源的目录
 	public static final String PIC_TYPE = "picType";	//允许存放的照片类型
 	public static final String PIC_SIZE = "picSize";	//允许存放的照片大小
 	
