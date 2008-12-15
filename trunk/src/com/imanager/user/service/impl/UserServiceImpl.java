@@ -1,5 +1,9 @@
 package com.imanager.user.service.impl;
 
+import java.io.File;
+
+import org.apache.commons.lang.StringUtils;
+
 import com.imanager.user.dao.IUserDao;
 import com.imanager.user.domain.User;
 import com.imanager.user.exception.UserServiceErrMsg;
@@ -39,7 +43,7 @@ public class UserServiceImpl implements IUserService {
 	/* (non-Javadoc)
 	 * @see com.imanager.user.service.IUserService#registerUser(com.imanager.user.domain.User)
 	 */
-	public void registerUser(User user) throws UserServiceException {
+	public boolean registerUser(User user) throws UserServiceException {
 		//∑¿÷π≤¢∑¢
 		synchronized(MY_LOCK){
 			if (userDao.getUserByLoginId(user.getLoginId()) != null) {
@@ -47,6 +51,7 @@ public class UserServiceImpl implements IUserService {
 			}
 			userDao.insertUser(user);
 		}
+		return true;
 	}
 	
 	/* (non-Javadoc)
@@ -61,6 +66,41 @@ public class UserServiceImpl implements IUserService {
 	 */
 	public boolean updateUserPassword(User user){
 		return userDao.updateUserPassword(user);
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.imanager.user.service.IUserService#createFolders(java.lang.String)
+	 */
+	public boolean createFolders(String srcDir, String currentLoginId, String folders){
+		if (StringUtils.isBlank(srcDir) || StringUtils.isBlank(currentLoginId) ||StringUtils.isBlank(folders)) {
+			return false;
+		}
+		
+		String[] arrayFolders = folders.split(",");
+		File fold = new File(srcDir + "/" + currentLoginId);
+		boolean hasFold = false;
+		
+		if (fold.exists() || (!fold.exists() && fold.mkdir())) {
+			hasFold = true;
+		} else {
+			return false;
+		}
+		
+		if (hasFold) {
+			for (int i = 0; i < arrayFolders.length; i++) {
+				fold = new File(srcDir + "/" + currentLoginId + "/" + arrayFolders[i].trim());
+				if (fold.exists()) {
+					continue;
+				} else if (fold.mkdir()){
+					continue;
+				} else {
+					return false;
+				}
+			}
+			return true;
+		}
+		
+		return false;
 	}
 	
 

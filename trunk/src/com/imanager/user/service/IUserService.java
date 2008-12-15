@@ -31,7 +31,7 @@ public interface IUserService {
 	 * @return
 	 * @throws UserServiceException
 	 */
-	public void registerUser(User user) throws UserServiceException;
+	public boolean registerUser(User user) throws UserServiceException;
 	
 	/**
 	 * 更新用户信息
@@ -46,4 +46,11 @@ public interface IUserService {
 	 * @return
 	 */
 	public boolean updateUserPassword(User user);
+	
+	/**
+	 * 创建需要的文件夹
+	 * @param folders
+	 * @return
+	 */
+	public boolean createFolders(String srcDir, String currentLoginId, String folders);
 }
