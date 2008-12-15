@@ -22,7 +22,6 @@ public class ContactItemAction extends BaseAction {
 	
 	private static final long serialVersionUID = 1L;
 	private static final Log log = LogFactory.getLog(ContactItemAction.class);
-	private static final String CONTACT_PHOTO = "contact/photo";
 	
 	// Service
 	private IContactService contactService;
@@ -40,7 +39,6 @@ public class ContactItemAction extends BaseAction {
 	private String pictureFileName;
 	
 	
-	
 
 	/**
 	 * 初始化添加联系人详细
@@ -50,7 +48,6 @@ public class ContactItemAction extends BaseAction {
 	public String initAddContactItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
 			contactItem.setBirthday(new Date());
 			contactItem.setLoginId(currentLoginId);
 		
@@ -83,25 +80,26 @@ public class ContactItemAction extends BaseAction {
 			contactItem.setPinyin(pinyinTrim);
 			
 			if (picture != null) {
-				StringBuffer absFileName = new StringBuffer();
-				absFileName.append(srcDir).append("/").
-					append(loginService.getCurrentLoginId()).append("/").
-					append(CONTACT_PHOTO).append("/").
-					append(pinyinTrim).
-					append(FileUtils.getSuffixOfFile(pictureFileName));
-				FileCopyUtils.copy(picture, new File(absFileName.toString()));
+				String checkFolderResult = checkPhotoFolder(srcDir, currentLoginId);
+				if (!"has".equals(checkFolderResult)) {
+					addActionError(checkFolderResult);
+					return ERROR;
+				}
 				
-				StringBuffer fileNamePath = new StringBuffer();
-				fileNamePath.append("/").
-					append(loginService.getCurrentLoginId()).append("/").
-					append(CONTACT_PHOTO).append("/").
-					append(pinyinTrim).
+				//设置基本存储路径
+				StringBuffer baseFilePath = new StringBuffer();
+				baseFilePath.append("/").
+					append(loginService.getCurrentLoginId()).
+					append("/contact/photo/").
+					append(new Date().getTime()).
 					append(FileUtils.getSuffixOfFile(pictureFileName));
-				contactItem.setPhoto(fileNamePath.toString());
+				
+				//将照片保存到固定文件夹下
+				String absFilePath = srcDir + baseFilePath.toString();
+				FileCopyUtils.copy(picture, new File(absFilePath));
+				
+				contactItem.setPhoto(baseFilePath.toString());
 			}
-			
-			log.info("shit:--------- " + pictureFileName);
-			log.error("shit:--------- " + pictureContentType);
 			
 			contactService.insertContactItem(contactItem);
 		}catch (Exception e){
@@ -121,7 +119,6 @@ public class ContactItemAction extends BaseAction {
 	public String initGetContactItemList() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
 			contactSearchObj.setLoginId(currentLoginId);
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 			if (contactTypeList.size() != 0) {
@@ -145,7 +142,6 @@ public class ContactItemAction extends BaseAction {
 	public String getContactItemListBySearch() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
 			String nameTrim = contactSearchObj.getName().trim();
 			String pinyinTrim = contactSearchObj.getPinyin().trim();
 			contactSearchObj.setName(nameTrim);
@@ -171,7 +167,6 @@ public class ContactItemAction extends BaseAction {
 	public String getContactItemById() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 			contactItem = contactService.getContactItemById(contactItemId);
 			
@@ -182,9 +177,6 @@ public class ContactItemAction extends BaseAction {
 				contactType.setContactType("");
 				contactItem.setContactType(contactType);
 			}
-			StringBuffer fileNamePath = new StringBuffer(env.get(EnvService.SRC_URL).toString());
-			fileNamePath.append(contactItem.getPhoto());
-			contactItem.setPhoto(fileNamePath.toString());
 		}catch (Exception e){
 			log.error(e.getMessage());
 			addActionError("系统错误：查询联系人详细出错！");
@@ -212,16 +204,29 @@ public class ContactItemAction extends BaseAction {
 			contactItem.setPinyin(pinyinTrim);
 			
 			if (picture != null) {
-				StringBuffer absFileName = new StringBuffer();
-				absFileName.append(srcDir).append("/").
-					append(loginService.getCurrentLoginId()).append("/").
-					append(CONTACT_PHOTO).append("/").
-					append(pinyinTrim).
+				//删除之前的照片
+				/*String deleteFilePath = srcDir + contactItem.getPhoto();
+				File file = new File(deleteFilePath);
+				if (!file.delete()) {
+					addActionError("系统错误：删除联系人照片出错！");
+					return ERROR;
+				}*/
+				
+				//设置基本存储路径
+				StringBuffer baseFilePath = new StringBuffer();
+				baseFilePath.append("/").
+					append(loginService.getCurrentLoginId()).
+					append("/contact/photo/").
+					append(new Date().getTime()).
 					append(FileUtils.getSuffixOfFile(pictureFileName));
-				FileCopyUtils.copy(picture, new File(absFileName.toString()));
-				contactItem.setPhoto(absFileName.toString());
+				
+				//将照片保存到固定文件夹下
+				String absFilePath = srcDir + baseFilePath.toString();
+				FileCopyUtils.copy(picture, new File(absFilePath));
+				
+				contactItem.setPhoto(baseFilePath.toString());
 			}
-			
+		
 			if(contactService.updateContactItem(contactItem)){
 				return "updateContactItem";
 			}else{
@@ -243,7 +248,6 @@ public class ContactItemAction extends BaseAction {
 	public String logicDeleteContactItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
 			contactItem.setModifier(currentLoginId);
 			
 			if(contactService.logicDeleteContactItem(contactItemId, currentLoginId)){
@@ -259,6 +263,30 @@ public class ContactItemAction extends BaseAction {
 		}
 	}
 
+	/**
+	 * 检查文件夹是否创建
+	 * @param srcDir
+	 * @param currentLoginId
+	 * @return
+	 */
+	private String checkPhotoFolder(String srcDir, String currentLoginId) {
+		File file = new File(srcDir + "/" + currentLoginId);
+		if (!file.exists()) {	//登录用户文件夹未创建
+			return "系统错误：登录用户文件夹未创建！";
+		}
+		
+		file = new File(srcDir + "/" + currentLoginId + "/contact");
+		if (!file.exists()) {	//联系人文件夹未创建
+			return "系统错误：联系人文件夹未创建！";
+		}
+		
+		file = new File(srcDir + "/" + currentLoginId + "/contact/photo");
+		if (file.exists() || (!file.exists() && file.mkdir())) {	//联系人照片文件夹未创建
+			return "has";
+		} else {
+			return "系统错误：创建联系人照片文件夹出错！";
+		}
+	}
 
 	public String getContactItemId() {
 		return contactItemId;
