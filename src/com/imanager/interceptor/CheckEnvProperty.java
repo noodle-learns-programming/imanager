@@ -72,6 +72,13 @@ public class CheckEnvProperty implements Interceptor {
 			return "checkenv";
 		}
 		
+		//检查需要创建的文件夹：folders
+		String folders = EnvService.getValueByProperty(EnvService.FOLDERS);
+		if (StringUtils.isBlank(folders)) {
+			validation.addActionError("系统错误：环境变量\"" + EnvService.FOLDERS + "\"的值为空！");
+			return "checkenv";
+		}
+		
 		//检查图片类型：picType
 		String picType = EnvService.getValueByProperty(EnvService.PIC_TYPE);
 		if (StringUtils.isBlank(picType)) {
