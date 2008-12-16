@@ -11,6 +11,12 @@
     	<script type="text/javascript" src="../dwr/util.js"></script>
     	<script type="text/javascript" src="../resource/js/util.js"></script>
     	<script type="text/javascript" src="../resource/js/blog/content.js"></script>
+		<script type="text/javascript">
+			function copyFileName(){
+				var name = document.getElementById("fileName").innerHTML;
+				copyToClipboard(name);
+			}
+		</script>		
     </head>
     <body  topmargin="10" bgcolor="#99CCFF">
     	<center>
@@ -61,7 +67,10 @@
                 					<td align="left">附件:</td>
                 					<td align="left">
 										<input type="file" id="attach" name="attach" >
-											&nbsp;&nbsp;下载：<a href="$env.srcUrl$!blogContent.fullFilePath" target="_blank">$!blogContent.fullFileName</a>
+										#if($!stringUtil.isNotBlank("$!blogContent.fullFilePath"))
+											&nbsp;&nbsp;下载：<a href="$env.srcUrl$!blogContent.fullFilePath" target="_blank"><span id="fileName">$!blogContent.fullFileName</span></a>
+											<input type="button" name="Button" value="复制文件名" onClick="copyFileName();")>
+										#end
 									</td>
                     			</tr>
                     			<tr>
