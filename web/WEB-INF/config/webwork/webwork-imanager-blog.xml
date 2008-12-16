@@ -6,6 +6,7 @@
 		<interceptors>
 			<interceptor-stack name="modelParamsStack">
 				<interceptor-ref name="iManagerStack" />
+				<interceptor-ref name="fileUploadStack" />
 			</interceptor-stack>
 		</interceptors>
 		
