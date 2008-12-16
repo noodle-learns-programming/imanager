@@ -49,7 +49,6 @@ public class ConsumeItemAction extends BaseAction {
 	public String doInitGetConsumeItemList() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
 			Date startDate = DateUtil.getMinDate();
 			Date endDate = DateUtil.getMaxDate();
 			
@@ -58,9 +57,7 @@ public class ConsumeItemAction extends BaseAction {
 			searchObj.setLoginId(currentLoginId);
 			
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
-			
 			consumeItemList = consumeService.getConsumeItemListBySearch(searchObj);
-			
 			consumeItemListSum = consumeService.getConsumeItemListSumBySearch(searchObj);
 			
 			return "doInitGetConsumeItemList";
@@ -79,7 +76,6 @@ public class ConsumeItemAction extends BaseAction {
 	public String doGetConsumeItemListBySearch() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-			
 			String itemNameTrim = searchObj.getItemName().trim();
 			String addressTrim = searchObj.getAddress().trim();
 			
@@ -90,9 +86,7 @@ public class ConsumeItemAction extends BaseAction {
 			searchObj.setLoginId(currentLoginId);
 		
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
-			
 			consumeItemList = consumeService.getConsumeItemListBySearch(searchObj);
-			
 			consumeItemListSum = consumeService.getConsumeItemListSumBySearch(searchObj);
 			
 			return "doGetConsumeItemListBySearch";
@@ -111,9 +105,9 @@ public class ConsumeItemAction extends BaseAction {
 	public String doInitAddConsumItem() throws Exception {
 		try {
 			currentLoginId = loginService.getCurrentLoginId();
-			
 			consumeItem.setFeeDate(new Date());
 			consumeItem.setLoginId(currentLoginId);
+			consumeItem.setWeekday(VeDate.getWeekStr(DateUtil.date(new Date(), DateUtil.DEFAULT_DATE_FORMAT)));
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			
 			return "doInitAddConsumItem";
@@ -169,7 +163,6 @@ public class ConsumeItemAction extends BaseAction {
 	public String doGetConsumItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-		
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 			consumeItem = consumeService.getConsumeItemById(consumeItemId);
 			
@@ -201,7 +194,6 @@ public class ConsumeItemAction extends BaseAction {
 	public String doUpdateConsumItem() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-			
 			String itemNameTrim = consumeItem.getItemName().trim();
 			String addressTrim = consumeItem.getAddress().trim();
 	
