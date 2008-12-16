@@ -92,6 +92,8 @@
 					gmt_modified 	= now(),
 					title 			= #title#,
 					content			= #content#,
+					full_file_path	= #fullFilePath#,
+					full_file_name	= #fullFileName#,
 					blog_date		= #blogDate#,
 					blog_type		= #blogType#,
 					blog_item1_id	= #blogItem1Id#,
