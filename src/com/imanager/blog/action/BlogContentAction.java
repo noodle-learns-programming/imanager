@@ -1,6 +1,8 @@
 package com.imanager.blog.action;
 
 import java.io.File;
+//import java.net.URLDecoder;
+//import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 
@@ -149,6 +151,7 @@ public class BlogContentAction extends BaseAction {
 					append("/blog/attach/").
 					append(new Date().getTime()).
 					append(FileUtils.getSuffixOfFile(attachFileName));
+					//append(URLEncoder.encode(attachFileName, "gbk"));
 				
 				//将照片保存到固定文件夹下
 				String absFilePath = srcDir + baseFilePath.toString();
