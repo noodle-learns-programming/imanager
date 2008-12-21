@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
 		<title>iManager Blog</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
     	<link rel="stylesheet" type="text/css" media="all" href="../resource/js/jscalendar/skins/aqua/theme.css" title="Aqua" />
     	<script type="text/javascript" src="../resource/js/jscalendar/calendar.js"></script>
     	<script type="text/javascript" src="../resource/js/jscalendar/showCalendar.js"></script>
@@ -18,14 +19,12 @@
 			}
 		</script>		
     </head>
-    <body  topmargin="10" bgcolor="#99CCFF">
-    	<center>
-        	#parse("/framework/header.vm")
-			<br/><br/><br/>
-				
-			<table border="0" width="80%" cellpadding="0" cellspacing="0">
+    <body>
+    	#parse("/framework/header.vm")
+		<div align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
         		<tr valign="top">
-        			<td align="left" width="150">
+        			<td align="left" width="150px">
         				#parse("/blog/menu.vm")
         			</td>
         			<td>&nbsp;&nbsp;</td>
@@ -42,11 +41,10 @@
 							<input type="hidden" name="blogContent.blogContentId" value="$!blogContent.blogContentId" />
 							<input type="hidden" name="blogContent.fullFilePath" value="$!blogContent.fullFilePath" />
 							<input type="hidden" name="blogContent.fullFileName" value="$!blogContent.fullFileName" />
-							<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
-                    			cellpadding="0" cellspacing="0" align="center" >
+							<table bgcolor="#E1E1E1" border="1" bordercolor="#FE4FA8" width="75%" cellpadding="0" cellspacing="0">
                     			<tr>
-									<td align="left">标题:</td>
-                					<td align="left"><input type="text" id="blogContent.title" name="blogContent.title" onkeydown="KeyDown(event)" value="$esc.html($!blogContent.title)" size="100" maxlength="100"></td>
+									<td align="left" width="80">标题:</td>
+                					<td align="left" width="100"><input type="text" id="blogContent.title" name="blogContent.title" onkeydown="KeyDown(event)" value="$esc.html($!blogContent.title)" size="100" maxlength="100"></td>
                     			</tr>
                     			<tr>
 									<td align="left">内容:</td>
@@ -109,8 +107,10 @@
                     		<input type="reset" value="取消" />
                     	</form>
     				</td>
+					<td>&nbsp;&nbsp;</td>
 				</tr>
+				<tr><td colspan="4"></td></tr>
 			</table>
-    	</center>
-    </body>
+    	</div>
+	</body>
 </html>

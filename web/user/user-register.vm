@@ -3,6 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 		<title>iManager Register</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
 		<script type="text/javascript" src="../resource/js/util.js"></script>
 		<script type="text/javascript" src="../resource/js/user/user.js"></script>
 		
@@ -11,16 +12,16 @@
 				document.getElementById("user.loginId").focus();
 			}
 		 </script>
-</head>
+	</head>
 	
-	<body   topmargin="100" bgcolor="#99CCFF">
+	<body topmargin="100">
 		<center>
 		
 		<h2>用户注册</h2>
 		<form id="registerForm" action="userAction!registerUser.action" method="post">
 			<table>
 				<tr>
-					<td align="right">
+					<td align="left">
 						用户ID：
 					</td>
 					<td align="left">
@@ -28,7 +29,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="right">
+					<td align="left">
 						用户姓名：
 					</td>
 					<td align="left">
@@ -36,7 +37,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="right">
+					<td align="left">
 						密码：
 					</td>
 					<td align="left">
@@ -44,7 +45,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="right">
+					<td align="left">
 						确认密码：
 					</td>
 					<td align="left">
