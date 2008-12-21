@@ -43,12 +43,12 @@
 							<input type="hidden" name="contactSearchObj.contactTypeId" value="$!contactSearchObj.contactTypeId" />
 							<input type="hidden" name="contactItem.contactItemId" value="$contactItem.contactItemId" />
 							<input type="hidden" name="contactItem.photo" value="$!contactItem.photo" />
-                    		<table bgcolor="#E1E1E1" border="1" bordercolor="#FE4FA8" width="80%" cellpadding="0" cellspacing="0">
+                    		<table bgcolor="#E1E1E1" border="1" bordercolor="#FE4FA8" width="925px" cellpadding="0" cellspacing="0">
 								<tr><th align="left" colspan="4">基本信息</th></tr>
                     			<tr>
-                    				<td align="left" width="50">姓名:</td>
-                    				<td align="left" width="80"><input type="text" id="contactItem.name" name="contactItem.name" value="$esc.html($!contactItem.name)" size="50" maxlength="20"></td>
-									<td align="center" width="420" colspan="2" rowspan="10"><a href="$env.srcUrl$!contactItem.photo" target="_blank"><img src="$env.srcUrl$!contactItem.photo" width="400" height="250" border="0"/></a></td>
+                    				<td align="left" width="60">姓名:</td>
+                    				<td align="left" width="50"><input type="text" id="contactItem.name" name="contactItem.name" value="$esc.html($!contactItem.name)" size="50" maxlength="20"></td>
+									<td align="center" width="400" colspan="2" rowspan="10"><a href="$env.srcUrl$!contactItem.photo" target="_blank"><img src="$env.srcUrl$!contactItem.photo" width="400" height="250" border="0"/></a></td>
 								</tr>
 								<tr>
 									<td align="left">拼音:</td>
@@ -111,7 +111,7 @@
 									</td>
                     			</tr>
 								<tr>
-									<td align="left" width="10%">现居住地:</td>
+									<td align="left">现居住地:</td>
                     				<td align="left" colspan="3">
             		                	<select id="country" style="font-family: Verdana; font-size: 11px; width: 100px;" name="contactItem.clCountry" value="$contactItem.clCountry" onchange="javascript:changeArea(this);">
             		                	</select>
@@ -266,7 +266,7 @@
 								<tr>
                 					<td align="left">备注:</td>
                 					<td align="left" colspan="3">
-										<textarea id="contactItem.note" name="contactItem.note" cols="109" rows="10">$esc.html($!contactItem.note)</textarea>
+										<textarea id="contactItem.note" name="contactItem.note" cols="115" rows="10">$esc.html($!contactItem.note)</textarea>
 									</td>
                     			</tr>
                     			<tr>
