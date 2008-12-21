@@ -1,12 +1,17 @@
-	<table bgcolor="#E1E1E1" border="1" bordercolor="blue" width="150" height="60"
-			cellpadding="0" cellspacing="0">
-		<tr valign="middle">
-			<td align="center"><a href="consumeItemAction!doInitGetConsumeItemList.action">财务状态列表</a></td>
-		</tr>
-		<tr valign="middle">
-			<td align="center"><a href="consumeItemAction!doInitAddConsumItem.action">添加消费记录</a></td>
-		</tr>
-		<tr valign="middle">
-			<td align="center"><a href="consumeTypeAction!getConsumeTypeListByLoginId.action">管理消费类型</a></td>
-		</tr>
-	</table>
+#*<table bgcolor="#E1E1E1" border="1" bordercolor="blue" width="150" height="60"
+		cellpadding="0" cellspacing="0">
+	<tr valign="middle">
+		<td align="center"><a href="consumeItemAction!doInitGetConsumeItemList.action">财务状态列表</a></td>
+	</tr>
+	<tr valign="middle">
+		<td align="center"><a href="consumeItemAction!doInitAddConsumItem.action">添加消费记录</a></td>
+	</tr>
+	<tr valign="middle">
+		<td align="center"><a href="consumeTypeAction!getConsumeTypeListByLoginId.action">管理消费类型</a></td>
+	</tr>
+</table>*#
+<div class="div_left_menu">
+	<div><a href="consumeItemAction!doInitGetConsumeItemList.action">财务状态列表</a></div>
+	<div><a href="consumeItemAction!doInitAddConsumItem.action">添加消费记录</a></div>
+	<div><a href="consumeTypeAction!getConsumeTypeListByLoginId.action">管理消费类型</a></div>
+</div>

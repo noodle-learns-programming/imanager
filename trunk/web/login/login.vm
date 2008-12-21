@@ -3,6 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 		<title>iManager Login</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
 		<script type="text/javascript" src="../resource/js/util.js"></script>
 		<script type="text/javascript" src="../resource/js/login/login.js"></script>
 		
@@ -11,16 +12,16 @@
 				document.getElementById("loginId").focus();
 			}
 		 </script>
-</head>
+	</head>
 	
-	<body   topmargin="100" bgcolor="#99CCFF">
+	<body topmargin="100">
 		<center>
 		
 		<h2>登录</h2>
 		<form id="loginForm" action="loginAction!validateUser.action" method="post">
 			<table>
 				<tr>
-					<td align="right">
+					<td align="left">
 						用户ID：
 					</td>
 					<td align="left">
@@ -28,7 +29,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="right">
+					<td align="left">
 						密码：
 					</td>
 					<td align="left">

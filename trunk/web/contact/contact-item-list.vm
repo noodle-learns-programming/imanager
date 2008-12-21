@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     	<title>iManager Blog</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
     	<script type="text/javascript" src="../resource/js/util.js"></script>
 		<script type="text/javascript" src="../resource/js/contact/contact-type.js"></script>
 		<script type="text/javascript">
@@ -21,35 +22,28 @@
             }
     	</script>
     </head>
-	
-	<body topmargin="10" bgcolor="#99CCFF">
-		<center>
-    		#parse("/framework/header.vm")
-    		<br/><br/><br/>
-    			
-    		<table border="0" width="80%" cellpadding="0" cellspacing="0">
+	<body>
+    	#parse("/framework/header.vm")
+		<div align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
         		<tr valign="top">
-        			<td align="left" width="150">
+        			<td align="left" width="150px">
         				#parse("/contact/menu.vm")
         			</td>
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
-		
                 		<h2>联系人详细列表</h2>
-						
 						<form id="contactItemSearchForm" action="" method="post">
-                			<table border="0" width="100%" height="60" cellpadding="0" cellspacing="0" align="center" >
+                			<table border="0" width="80%" cellpadding="0" cellspacing="0">
 								<input type="hidden" id="contactItemId" name="contactItemId" value="" />
                 				<tr>
-									<td width="15%" align="left">姓名:</td>
-									<td width="85%" align="left"><input type="text" name="contactSearchObj.name" value="$esc.html($!contactSearchObj.name)" size="20" maxlength="20"/></td>
-                				</tr>
-                				<tr>
-									<td align="left">拼音:</td>
+									<td align="left">姓名:</td>
+									<td align="left"><input type="text" name="contactSearchObj.name" value="$esc.html($!contactSearchObj.name)" size="20" maxlength="20"/></td>
+                					<td align="left">拼音:</td>
 									<td align="left"><input type="text" name="contactSearchObj.pinyin" value="$esc.html($!contactSearchObj.pinyin)" size="20" maxlength="20"/></td>
-								</tr>
+                					</tr>
                 				<tr>
-                					<td align="left">联系类型:</td>
+									<td align="left">联系类型:</td>
                 					<td align="left">
                 						<select name="contactSearchObj.contactTypeId">
                 							<option value="">请选择</option>
@@ -58,15 +52,12 @@
 											#end
 										</select>
                 					</td>
-                				</tr>
-                				<tr>
-                					<td align="left" colspan="2"><input type="button" name="button" onclick="doSubmitSearchForm();" value="查询" /></td>
+									<td align="left" colspan="2"><input type="button" name="button" onclick="doSubmitSearchForm();" value="查询" /></td>
                 				</tr>
                 			</table>
                 		</form>
 						
-                		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
-                			cellpadding="0" cellspacing="0" align="center" >
+                		<table bgcolor="#E1E1E1" border="1" bordercolor="#FE4FA8" width="90%" cellpadding="0" cellspacing="0">
                 			<tr>
                 				<th align="center">姓名</th>
                 				<th align="center">联系类型</th>
@@ -96,8 +87,10 @@
 							#end
                 		</table>
 					</td>
+					<td>&nbsp;&nbsp;</td>
 				</tr>
+				<tr><td colspan="4"></td></tr>
 			</table>
-		</center>
+    	</div>
 	</body>
 </html>

@@ -3,6 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 		<title>iManager Consume</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
 		<link rel="stylesheet" type="text/css" media="all" href="../resource/js/jscalendar/skins/aqua/theme.css" title="Aqua" />
 		<script type="text/javascript" src="../resource/js/jscalendar/calendar.js"></script>
 		<script type="text/javascript" src="../resource/js/jscalendar/showCalendar.js"></script>
@@ -27,57 +28,48 @@
     	</script>
 	</head>
 	
-	<body topmargin="10" bgcolor="#99CCFF">
-		<center>
-			#parse("/framework/header.vm")
-			<br/><br/><br/>
-				
-			<table border="0" width="80%" cellpadding="0" cellspacing="0">
+	<body>
+		#parse("/framework/header.vm")
+		<div align="center">
+    		<table border="0" width="100%" cellpadding="0" cellspacing="0">
         		<tr valign="top">
-        			<td align="left" width="150">
+        			<td align="left" width="150px">
         				#parse("/consume/menu.vm")
         			</td>
         			<td>&nbsp;&nbsp;</td>
         			<td align="center">
                 		<h2>消费明细列表</h2>
                 		<form id="consumeItemSearchForm" action="" method="post">
-							<input type="hidden" id="consumeItemId" name="consumeItemId" value="" />
-							<table border="0" width="100%" height="60" cellpadding="0" cellspacing="0" align="center" >
+    						<input type="hidden" id="consumeItemId" name="consumeItemId" value="" />
+    						<table border="0" width="80%" cellpadding="0" cellspacing="0">
                 				<tr>
-									<td align="left">消费项目:</td>
-									<td align="left"><input type="text" name="searchObj.itemName" value="$esc.html($!searchObj.itemName)" size="50" maxlength="100"/></td>
+    								<td align="left">消费项目:</td>
+    								<td align="left"><input type="text" name="searchObj.itemName" value="$esc.html($!searchObj.itemName)" size="30" maxlength="100"/></td>
+    								<td align="left">开始日期:</td>
+    								<td align="left"><input type="text" id="searchObj.startDate" name="searchObj.startDate" readonly="true" value="$!dateUtil.date($!searchObj.startDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.startDate', '%Y-%m-%d');"></td>
                 				</tr>
-								<tr>
-									<td align="left">消费地点:</td>
-									<td align="left"><input type="text" name="searchObj.address" value="$esc.html($!searchObj.address)" size="50" maxlength="100"/></td>
+    							<tr>
+    								<td align="left">消费地点:</td>
+    								<td align="left"><input type="text" name="searchObj.address" value="$esc.html($!searchObj.address)" size="30" maxlength="100"/></td>
+    								<td align="left">结束日期:</td>
+    								<td align="left"><input type="text" id="searchObj.endDate" name="searchObj.endDate" readonly="true" value="$!dateUtil.date($!searchObj.endDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.endDate', '%Y-%m-%d');"></td>
                 				</tr>
-								<tr>
-									<td align="left">开始日期:</td>
-									<td align="left"><input type="text" id="searchObj.startDate" name="searchObj.startDate" readonly="true" value="$!dateUtil.date($!searchObj.startDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.startDate', '%Y-%m-%d');"></td>
-                				</tr>
-								<tr>
-									<td align="left">结束日期:</td>
-									<td align="left"><input type="text" id="searchObj.endDate" name="searchObj.endDate" readonly="true" value="$!dateUtil.date($!searchObj.endDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('searchObj.endDate', '%Y-%m-%d');"></td>
-                				</tr>
-								<tr>
-									<td align="left">消费类型:</td>
-									<td align="left">
-										<select id="searchObj.consumeTypeId" name="searchObj.consumeTypeId">
-											<option value="">请选择</option>
-											#foreach($consumeType in $consumeTypeList)
-												<option value="$consumeType.consumeTypeId" #if("$consumeType.consumeTypeId" == $searchObj.consumeTypeId) selected #end>$esc.html($consumeType.consumeType)</option>
-											#end
-										</select>
-									</td>
-                				</tr>
-								<tr>
+    							<tr>
+    								<td align="left">消费类型:</td>
+    								<td align="left">
+    									<select id="searchObj.consumeTypeId" name="searchObj.consumeTypeId">
+    										<option value="">请选择</option>
+    										#foreach($consumeType in $consumeTypeList)
+    											<option value="$consumeType.consumeTypeId" #if("$consumeType.consumeTypeId" == $searchObj.consumeTypeId) selected #end>$esc.html($consumeType.consumeType)</option>
+    										#end
+    									</select>
+    								</td>
                 					<td align="left" colspan="2"><input type="button" name="button" value="查询" onclick="doSubmitSearchForm();"/></td>
                 				</tr>
-							</table>
+    						</table>
                 		</form>
                 		
-                		<table bgcolor="#E1E1E1" border="1" bordercolor="blue"width="100%" height="60"
-                			cellpadding="0" cellspacing="0" align="center" >
+                		<table bgcolor="#E1E1E1" border="1" bordercolor="#FE4FA8" width="90%" cellpadding="0" cellspacing="0">
                 			<tr>
                 				<th align="center">消费项目</th>
                 				<th align="center">消费地点</th>
@@ -86,7 +78,7 @@
                 				<th align="center">总价</th>
                 				<th align="center">消费时间</th>
                 				<th align="center">收支方向</th>
-								<th align="center">消费类型</th>
+    							<th align="center">消费类型</th>
                 				<th align="center">消费者</th>
                 				<th align="center">操作</th>
                 			</tr>
@@ -100,20 +92,20 @@
                 					<td align = "center">$!dateUtil.date($!consumeItem.feeDate, 'yyyy-MM-dd')&nbsp;&nbsp;$!consumeItem.weekday</td>
                 					<td align = "center">
                 						#if($!consumeItem.inOrOut == 'in')
-											收入
-										#elseif($!consumeItem.inOrOut == 'out')
-											支出
-										#else
-											$!consumeItem.inOrOut
-										#end
+    										收入
+    									#elseif($!consumeItem.inOrOut == 'out')
+    										支出
+    									#else
+    										$!consumeItem.inOrOut
+    									#end
                 					</td>
-									<td align = "center">
-										#if($!stringUtil.isBlank("$!consumeItem.consumeType.consumeType"))
-											无消费类型
-										#else
-											$esc.html($!consumeItem.consumeType.consumeType)
-										#end
-									</td>
+    								<td align = "center">
+    									#if($!stringUtil.isBlank("$!consumeItem.consumeType.consumeType"))
+    										无消费类型
+    									#else
+    										$esc.html($!consumeItem.consumeType.consumeType)
+    									#end
+    								</td>
                 					<td align = "center">$!consumeItem.loginId</td>
                 					<td align = "center">
                 						<a href="#" onclick="doGetConsumeItemById('$!consumeItem.consumeItemId');">更新</a>&nbsp;|
@@ -126,10 +118,11 @@
                 				<th align = "left" colspan="9">$!consumeItemListSum</th>
                 			</tr>
                 		</table>
-					</td>
-				</tr>
-			</table>
-		</center>
-	
+    				</td>
+    				<td>&nbsp;&nbsp;</td>
+    			</tr>
+    			<tr><td colspan="4"></td></tr>
+    		</table>
+		</div>
 	</body>
 </html>
