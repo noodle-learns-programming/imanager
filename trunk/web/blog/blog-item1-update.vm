@@ -19,7 +19,7 @@
                     	<h2>更新一级类型</h2>
                     	<form id="blogItem1Form" action="blogItemAction!updateBlogItem1.action" method="post">
 							<input type="hidden" name="blogItem1.blogItem1Id" value="$!blogItem1.blogItem1Id" />
-                    		<table bgcolor="#E1E1E1" border="1" bordercolor="#FE4FA8" width="830" cellpadding="0" cellspacing="0">
+                    		<table bgcolor="#FFF5EE" border="1" bordercolor="#FE4FA8" width="830" cellpadding="0" cellspacing="0">
                     			<tr>
                 					<td align="left" width="130">一级类型中文名:</td>
                 					<td align="left" width="700"><input type="text" id="blogItem1.itemChn" name="blogItem1.itemChn" onkeydown="KeyDown1(event)" value="$esc.html($!blogItem1.itemChn)" size="100" maxlength="100" /></td>
