@@ -58,28 +58,25 @@ public class UserAction extends BaseAction{
 			
 			//将新用户写入数据库
 			if (!userService.registerUser(user)) {
-				if (log.isInfoEnabled()) {
-					log.info("Write user into database failure!");
-				} else if (log.isErrorEnabled()) {
+				if (log.isErrorEnabled()) {
 					log.info("Write user into database failure!");
 				}
 			}
+			
 			//创建需要的文件夹
 			if (!userService.createFolders(env.get(EnvService.SRC_DIR).toString(), loginIdTrim, env.get(EnvService.FOLDERS).toString())) {
-				if (log.isInfoEnabled()) {
-					log.info("Create needed folders failure!");
-				} else if (log.isErrorEnabled()) {
+				if (log.isErrorEnabled()) {
 					log.info("Create needed folders failure!");
 				}
 			}
 			//登入当前用户
 			if (!loginService.loginCurrentUser(loginIdTrim)) {
-				if (log.isInfoEnabled()) {
-					log.info("Login current user failure!");
-				} else if (log.isErrorEnabled()) {
+				if (log.isErrorEnabled()) {
 					log.info("Login current user failure!");
 				}
 			}
+			
+			return "registerUser";
 			
 		} catch (UserServiceException e) {
 			addActionError(e.getMessage());
@@ -89,8 +86,6 @@ public class UserAction extends BaseAction{
 			addActionError("系统错误：注册用户出错！");
 			return ERROR;
 		}
-		
-		return "registerUser";
 	}
 	
 	/**
