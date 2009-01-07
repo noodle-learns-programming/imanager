@@ -1,12 +1,17 @@
 package com.imanager.framework.service;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Map.Entry;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 
+@SuppressWarnings("unchecked")
 public class EnvService{
 	private static final long serialVersionUID = 1L;
 	private static final Log log = LogFactory.getLog(EnvService.class);
@@ -22,22 +27,48 @@ public class EnvService{
 	public static final String FOLDERS = "folders";	//需要创建的文件夹
 	public static final String PIC_TYPE = "picType";	//允许存放的照片类型
 	public static final String PIC_SIZE = "picSize";	//允许存放的照片大小
-	
-	
-	
-	
 
 	/** 环境变量信息 */
-    static Properties properties=new Properties();
-    /** 从配置文件中获得配置文件信息，静态初始化，每次只读一次配置文件 */
-	static {
+    static Properties properties = new Properties();
+
+    /**
+     * 初始化环境变量
+     */
+   static {
 		try {
-			properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
-		} catch (IOException e) {
-			if (log.isInfoEnabled()) {
-				log.info(e.toString());
-			} else if (log.isErrorEnabled()) {
-				log.error(e.toString());
+			FileInputStream fileIn = new FileInputStream("d:/env.properties");
+			if (fileIn.available() == 0) {
+				properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
+				FileOutputStream fileOut = new FileOutputStream("d:/env.properties");
+				for (Entry entry : properties.entrySet()) {
+					System.out.println(entry.toString());
+					fileOut.write(entry.toString().getBytes());
+					fileOut.write("\r\n".getBytes());
+				}
+			} else {
+				properties.load(fileIn);
+			}
+		} catch (FileNotFoundException e) {
+			try {
+				properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
+				FileOutputStream fileOut = new FileOutputStream("d:/env.properties");
+				for (Entry entry : properties.entrySet()) {
+					System.out.println(entry.toString());
+					fileOut.write(entry.toString().getBytes());
+					fileOut.write("\r\n".getBytes());
+				}
+			} catch (FileNotFoundException e1) {
+				if (log.isErrorEnabled()) {
+					log.error(e1.toString());
+				}
+			} catch (IOException e2) {
+				if (log.isErrorEnabled()) {
+					log.error(e2.toString());
+				}
+			}
+		} catch (IOException e3) {
+			if (log.isErrorEnabled()) {
+				log.error(e3.toString());
 			}
 		}
 	}
