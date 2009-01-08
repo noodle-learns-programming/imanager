@@ -9,7 +9,7 @@
 	</tr>
 </table>*#
 <div class="div_banner_groud">
-	<div class="div_banner_space"></div>
+	<div class="div_banner_space" align="right"><iframe src="http://weather.265.com/weather.htm" width="168" height="54" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
 	<div class="div_banner_menu_space"></div>
 	<div class="div_banner_menu"><a href="$env.appUrl/consume/consumeItemAction!doInitGetConsumeItemList.action">财务系统管理</a></div>
 	<div class="div_banner_menu"><a href="$env.appUrl/blog/blogContentAction!initGetBlogContentList.action">日志系统管理</a></div>
