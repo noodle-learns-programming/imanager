@@ -15,6 +15,7 @@
 			<result name="success" type="velocity">/framework/success.vm</result>
 						
 			<result name="weather" type="velocity">tools-weather.vm</result>
+			<result name="calendar" type="velocity">tools-calendar.vm</result>
 			<result name="googlemap" type="velocity">tools-google-map.vm</result>
 			
 			<interceptor-ref name="modelParamsStack" />
