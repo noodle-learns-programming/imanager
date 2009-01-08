@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="imanager-tools" extends="webwork-default" namespace="/tools">
+	
+		<interceptors>
+			<interceptor-stack name="modelParamsStack">
+				<interceptor-ref name="iManagerStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		
+		<action name="toolsAction" class="com.imanager.tools.action.ToolsAction">
+			<result name="error" type="velocity">/framework/error.vm</result>
+			<result name="success" type="velocity">/framework/success.vm</result>
+						
+			<result name="googlemap" type="velocity">tools-google-map.vm</result>
+			
+			<interceptor-ref name="modelParamsStack" />
+		</action>
+	</package>
+</xwork>

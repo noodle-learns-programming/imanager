@@ -15,6 +15,7 @@
 	<div class="div_banner_menu"><a href="$env.appUrl/blog/blogContentAction!initGetBlogContentList.action">日志系统管理</a></div>
 	<div class="div_banner_menu"><a href="$env.appUrl/contact/contactItemAction!initGetContactItemList.action">联系人管理</a></div>
 	<div class="div_banner_menu"><a href="$env.appUrl/user/userAction!initUpdateUserInfo.action">我的信息</a></div>
+	<div class="div_banner_menu"><a href="$env.appUrl/tools/toolsAction!googleMap.action">我的工具</a></div>
 	<div class="div_banner_menu"><a href="$env.appUrl/login/loginAction!logoutUser.action">退出</a></div>
 	<div class="div_banner_menu_space"></div>
 </div>
