@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=gbk"/>
+		<title>iManager MyTools</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
+	</head>
+	<body>
+		#parse("/framework/header.vm")
+		<div align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150px">
+        				#parse("/tools/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+                    	<h2>万年历</h2>
+                    	<EMBED align="center" src="../resource/flash/calendar.swf" width="650" height="450" type="application/x-shockwave-flash" wmode="transparent" quality="high" ></EMBED>
+					</td>
+					<td>&nbsp;&nbsp;</td>
+				</tr>
+				<tr><td colspan="4"></td></tr>
+			</table>
+    	</div>
+	</body> 
+</html>
