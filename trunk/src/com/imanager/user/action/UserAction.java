@@ -12,7 +12,7 @@ import com.imanager.user.domain.User;
 import com.imanager.user.exception.UserServiceException;
 import com.imanager.user.service.IUserService;
 
-public class UserAction extends BaseAction{
+public class UserAction extends BaseAction {
 
 	private static final long serialVersionUID = 13453454L;
 	private static final Log log = LogFactory.getLog(UserAction.class);
