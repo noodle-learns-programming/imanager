@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=gbk"/>
+		<title>iManager MyTools</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
+	</head>
+	<body>
+		#parse("/framework/header.vm")
+		<div align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150px">
+        				#parse("/tools/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+                    	<h2>天气预报</h2>
+                    	<iframe src="http://m.weather.com.cn/m/p5/weather1.htm" width="460" height="136" ALIGN='center' marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="No"></iframe>
+						<br><br><br>
+						<IFRAME SRC="http://weather.qq.com/24.htm" WIDTH='405' HEIGHT='332' ALIGN='center' MARGINWIDTH='0' MARGINHEIGHT='0' HSPACE='0' VSPACE='0' FRAMEBORDER='0' SCROLLING='NO'></IFRAME> 
+						<br><br><br>
+					</td>
+					<td>&nbsp;&nbsp;</td>
+				</tr>
+				<tr><td colspan="4"></td></tr>
+			</table>
+    	</div>
+	</body> 
+</html>

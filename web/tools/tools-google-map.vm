@@ -3,7 +3,6 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<title>iManager MyTools</title>
-		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
 		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAs2_oqBfHtsKduR_r6i2xYBQsBa3TtCkG90PqzjguKBhhwr2jMBQr53wK-cv5svtjvQJU9ybGrBJzHg"
           type="text/javascript">
 		</script>
@@ -45,28 +44,13 @@
 		</script>
 	</head>
 	<body onload="initialize()" onunload="GUnload()">
-		#parse("/framework/header.vm")
-		<div align="center">
-			<table border="0" width="100%" cellpadding="0" cellspacing="0">
-        		<tr valign="top">
-        			<td align="left" width="150px">
-        				#parse("/tools/menu.vm")
-        			</td>
-        			<td>&nbsp;&nbsp;</td>
-        			<td align="center">
-                    	<h2>Google Map</h2>
-                    	<form action="#" onsubmit="showAddress(this.address.value); return false">
-                			<p>
-                				<input type="text" size="40" name="address" value="" />
-                				<input type="submit" value="Search" />
-                			</p>
-                			<div id="map_canvas" style="width:620px;height:360px;border: #000000 solid;"></div>
-                		</form>
-					</td>
-					<td>&nbsp;&nbsp;</td>
-				</tr>
-				<tr><td colspan="4"></td></tr>
-			</table>
-    	</div>
+    	<h2>Google Map</h2>
+    	<form action="#" onsubmit="showAddress(this.address.value); return false">
+			<p>
+				<input type="text" size="40" name="address" value="" />
+				<input type="submit" value="Search" />
+			</p>
+			<div id="map_canvas" style="width:650px;height:400px;border: #000000 solid;"></div>
+		</form>
 	</body> 
 </html>
