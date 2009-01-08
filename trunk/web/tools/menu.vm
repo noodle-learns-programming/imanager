@@ -11,4 +11,5 @@
 	<div><a href="$env.appUrl/tools/toolsAction!weather.action">天气预报</a></div>
 	##<div><a href="$env.appUrl/tools/toolsAction!googleMap.action" target="_blank">Google地图</a></div>
 	<div><a href="http://ditu.google.cn/" target="_blank">Google地图</a></div>
+	<div><a href="http://www.google.cn/" target="_blank">Google搜索</a></div>
 </div>
