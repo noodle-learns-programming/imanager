@@ -13,4 +13,5 @@
 	##<div><a href="$env.appUrl/tools/toolsAction!googleMap.action" target="_blank">Google地图</a></div>
 	<div><a href="http://ditu.google.cn/" target="_blank">Google地图</a></div>
 	<div><a href="http://www.google.cn/" target="_blank">Google搜索</a></div>
+	<div><a href="$env.appUrl/tools/toolsAction!getEmbedToolsList.action">工具列表</a></div>
 </div>

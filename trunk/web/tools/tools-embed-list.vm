@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		<meta http-equiv="content-type" content="text/html; charset=gbk"/>
+    	<title>iManager MyTools</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
+    	<script type="text/javascript" src="../resource/js/util.js"></script>
+		<script type="text/javascript" src="../resource/js/tools/tools.js"></script>
+    </head>
+	<body>
+    	#parse("/framework/header.vm")
+		<div align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150px">
+        				#parse("/tools/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+                		<h2>嵌入工具详细列表</h2>
+						<a href="toolsAction!initAddEmbedTools.action">添加</a>
+                		<table bgcolor="#FFDEAD" border="1" bordercolor="#FFF5EE" width="90%" cellpadding="0" cellspacing="0">
+                			<tr bgcolor="#FFD700">
+                				<th align="center">工具名称</th>
+                				<th align="center">工具简介</th>
+								<th align="center">工具脚本</th>
+								<th align="center">类型</th>
+                				<th align="center">操作</th>
+                			</tr>
+							#foreach($embedTools in $embedList)
+                				<tr>
+                					<td align = "center">$esc.html($embedTools.toolsName)</td>
+									<td align = "center">$esc.html($embedTools.toolsDescription)</td>
+									<td align = "center">$esc.html($embedTools.toolsScript)</td>
+									<td align = "center">
+										#if($embedTools.toolsType == "1")
+											工具类
+										#elseif($embedTools.toolsType == "2")
+											游戏类
+										#elseif($embedTools.toolsType == "3")
+											娱乐类
+										#else
+											$embedTools.toolsType
+										#end
+									</td>
+									<td align = "center">
+                						<a href="toolsAction!getEmbedToolsById.action?embedToolsId=$embedTools.embedToolsId">更新</a>&nbsp;|
+                						<a href="#" onclick="deleteEmbedTools('$embedTools.embedToolsId');">删除</a>
+                					</td>
+                				</tr>
+							#end
+                		</table>
+					</td>
+					<td>&nbsp;&nbsp;</td>
+				</tr>
+				<tr><td colspan="4"></td></tr>
+			</table>
+    	</div>
+	</body>
+</html>

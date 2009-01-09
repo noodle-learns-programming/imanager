@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=gbk"/>
+		<title>iManager MyTools</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
+		<script type="text/javascript" src="../resource/js/util.js"></script>
+		<script type="text/javascript" src="../resource/js/tools/tools.js"></script>
+	</head>
+	
+    <body>
+		#parse("/framework/header.vm")
+		<div align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150px">
+        				#parse("/tools/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+                    	<h2>更新嵌入工具</h2>
+                    	<form id="embedToolsForm" action="toolsAction!updateEmbedTools.action" enctype="multipart/form-data" method="post">
+                    		<input type="hidden" name="embedTools.embedToolsId" value="$embedTools.embedToolsId" />
+							<table bgcolor="#FFF5EE" border="1" bordercolor="#FE4FA8" width="800" cellpadding="0" cellspacing="0">
+                    			<tr>
+                    				<td align="left" width="100">工具名称:</td>
+                    				<td align="left" width="700"><input type="text" id="embedTools.toolsName" name="embedTools.toolsName" onkeydown="KeyDown(event)" value="$esc.html($!embedTools.toolsName)" size="100" maxlength="100"></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="left">工具简介:</td>
+                    				<td align="left"><input type="text" id="embedTools.toolsDescription" name="embedTools.toolsDescription" onkeydown="KeyDown(event)" value="$esc.html($!embedTools.toolsDescription)" size="100" maxlength="300"></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="left">工具图片:</td>
+                    				<td align="left"><input type="file" id="picture" name="picture"><a href="$env.srcUrl$!embedTools.toolsPicPath" target="_blank"><img src="$env.srcUrl$!embedTools.toolsPicPath" width="40" height="40" border="0"/></a></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="left">嵌入代码:</td>
+                    				<td align="left"><input type="text" id="embedTools.toolsScript" name="embedTools.toolsScript" onkeydown="KeyDown(event)" value="$!embedTools.toolsScript" size="100" maxlength="300"></td>
+                    			</tr>
+                    			<tr>
+                    				<td align="left">工具类型:</td>
+                    				<td align="left">
+                						<input type="radio" name="embedTools.toolsType" value="1" #if($embedTools.toolsType == "1")checked="true"#end>工具类
+										<input type="radio" name="embedTools.toolsType" value="2" #if($embedTools.toolsType == "2")checked="true"#end>游戏类
+										<input type="radio" name="embedTools.toolsType" value="3" #if($embedTools.toolsType == "3")checked="true"#end>娱乐类
+									</td>
+                    			</tr>
+                    			<tr>
+									<td align="left">登录ID:</td>
+                    				<td align="left">
+											<input type="text" id="embedTools.loginId" name="embedTools.loginId" readonly="true"  value="$!embedTools.loginId" size="20" maxlength="20">
+									</td>
+                    			</tr>
+                    		</table>
+                    		<input type="button" value="更新" onclick="checkEmbedToolsForm();" />&nbsp;&nbsp;
+                    		<input type="reset" value="取消" />
+                    	</form>
+					</td>
+					<td>&nbsp;&nbsp;</td>
+				</tr>
+				<tr><td colspan="4"></td></tr>
+			</table>
+    	</div>
+    </body>
+</html>
