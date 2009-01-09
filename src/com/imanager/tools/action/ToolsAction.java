@@ -71,6 +71,7 @@ public class ToolsAction extends BaseAction {
 	 */
 	public String initAddEmbedTools() throws Exception {
 		try{
+			embedTools.setLoginId(loginService.getCurrentLoginId());
 			return "initAddEmbedTools";
 		}catch (Exception e){
 			log.error(e.getMessage(), e);
