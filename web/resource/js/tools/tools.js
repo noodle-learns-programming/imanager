@@ -20,10 +20,10 @@ function checkEmbedToolsForm(){
 		return;
 	}
 
-	if(!checkPicture()){
+	/*if(!checkPicture()){
 		document.getElementById("picture").focus();
 		return;
-	}
+	}*/
 	
 	if(!checkEmbedToolsScript()){
 		document.getElementById("embedTools.toolsScript").focus();
