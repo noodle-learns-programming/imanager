@@ -28,7 +28,7 @@
                     			</tr>
                     			<tr>
                     				<td align="left">工具简介:</td>
-                    				<td align="left"><textarea id="embedTools.toolsDescription" name="embedTools.toolsDescription" cols="99" rows="3">$esc.html($!embedTools.toolsDescription)</textarea></td>
+                    				<td align="left"><textarea id="embedTools.toolsDescription" name="embedTools.toolsDescription" style="overflow:hidden" cols="101" rows="3">$esc.html($!embedTools.toolsDescription)</textarea></td>
                     			</tr>
                     			<tr>
                     				<td align="left">工具图片:</td>
@@ -36,7 +36,7 @@
                     			</tr>
                     			<tr>
                     				<td align="left">嵌入代码:</td>
-                    				<td align="left"><textarea id="embedTools.toolsScript" name="embedTools.toolsScript" cols="99" rows="3">$esc.html($!embedTools.toolsScript)</textarea></td>
+                    				<td align="left"><textarea id="embedTools.toolsScript" name="embedTools.toolsScript" style="overflow:hidden" cols="101" rows="3">$esc.html($!embedTools.toolsScript)</textarea></td>
                     			</tr>
                     			<tr>
                     				<td align="left">工具类型:</td>
