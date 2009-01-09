@@ -6,7 +6,7 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
 .div_banner_space {height:145px;}
 
 .div_banner_menu_space {float:left;height:30px;width:400px;}
-.div_banner_menu {float:left;height:30px;width:150px;line-height:30px;}
+.div_banner_menu {float:left;height:30px;width:120px;line-height:30px;}
 .div_banner_menu a{display:block;text-align:center;height:30px;}
 .div_banner_menu a:link{color:#FE4FA8;background:url(../images/header/arrow_off.gif) no-repeat 5px 12px;text-decoration:none;}
 .div_banner_menu a:visited{color:#FE4FA8;text-decoration:none;}
