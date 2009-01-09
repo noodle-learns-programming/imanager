@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="EmbedTools">
+
+	<typeAlias alias="embedTools" type="com.imanager.tools.domain.EmbedTools" />
+	
+	<resultMap id="embed-tools-map" class="embedTools">
+		<result property="embedToolsId" column="embed_tools_id"/>
+		<result property="creator" column="creator"/>
+		<result property="gmtCreated" column="gmt_created"/>
+		<result property="modifier" column="modifier"/>
+		<result property="gmtModified" column="gmt_modified"/>
+		<result property="isDeleted" column="is_deleted"/>
+		<result property="loginId" column="login_id"/>
+		<result property="toolsName" column="tools_name"/>
+		<result property="toolsDescription" column="tools_description"/>
+		<result property="toolsPicPath" column="tools_pic_path"/>
+		<result property="toolsScript" column="tools_script"/>
+		<result property="toolsType" column="tools_type"/>
+	</resultMap>
+
+	<insert id="insertEmbedTools"
+		parameterClass="embedTools">
+		<![CDATA[
+			INSERT INTO embed_tools 
+				(creator, gmt_created, modifier, gmt_modified, is_deleted, login_id, tools_name, tools_description, 
+				tools_pic_path, tools_script, tools_type) 
+			VALUES 
+				(#creator#, now(), #modifier#, now(), 'no', #loginId#, #toolsName#, #toolsDescription#, 
+				#toolsPicPath#, #toolsScript#, #toolsType#)
+		]]>
+	</insert>
+	
+	<select id="getEmbedToolsList"
+		parameterClass="java.lang.String" 
+		resultMap="embed-tools-map">
+		<![CDATA[
+			select 	embed_tools_id,
+					creator,
+					gmt_created,
+					modifier,
+					gmt_modified,
+					is_deleted,
+					login_id,
+					tools_name,
+					tools_description,
+					tools_pic_path,
+					tools_script,
+					tools_type
+			from embed_tools
+			where login_id = #loginId# and is_deleted='no'
+			group by tools_type 
+			order by gmt_created asc
+		]]>
+	</select>
+	
+	<select id="getEmbedToolsById"
+		parameterClass="java.lang.String"
+		resultMap="embed-tools-map">
+		<![CDATA[
+			select 	embed_tools_id,
+					creator,
+					gmt_created,
+					modifier,
+					gmt_modified,
+					is_deleted,
+					login_id,
+					tools_name,
+					tools_description,
+					tools_pic_path,
+					tools_script,
+					tools_type
+			from embed_tools
+			where embed_tools_id = #embedToolsId# and is_deleted='no'
+		]]>
+	</select>
+	
+	<update id="updateEmbedTools" 
+		parameterClass="embedTools">
+		<![CDATA[
+			update	embed_tools 
+			set	modifier 			= #modifier#, 
+				gmt_modified 		= now(),
+				tools_name 			= #toolsName#,
+				tools_description	= #toolsDescription#,
+				tools_pic_path		= #toolsPicPath#,
+				tools_script		= #toolsScript#,
+				tools_type			= #toolsType#
+			where	embed_tools_id = #embedToolsId# and is_deleted = 'no'
+		]]>
+	</update>
+	
+	<update id="logicDeleteEmbedToolsById" 
+		parameterClass="java.util.Map">
+		<![CDATA[
+			update	embed_tools set is_deleted = 'yes', modifier = #modifier#, gmt_modified = now()
+			where	embed_tools_id = #embedToolsId#
+		]]>
+	</update>
+		
+	
+</sqlMap>
