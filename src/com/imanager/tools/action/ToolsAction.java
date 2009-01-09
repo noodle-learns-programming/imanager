@@ -62,8 +62,6 @@ public class ToolsAction extends BaseAction {
 		}
 	}
 	
-	
-	
 	/**
 	 * 初始化添加嵌入工具
 	 * @return
@@ -146,7 +144,7 @@ public class ToolsAction extends BaseAction {
 	}
 	
 	/**
-	 * 更新一个嵌入工具
+	 * 更新嵌入工具
 	 * @return
 	 * @throws Exception
 	 */
@@ -185,12 +183,12 @@ public class ToolsAction extends BaseAction {
 			if (embedToolsService.updateEmbedTools(embedTools)) {
 				return "updateEmbedTools";
 			} else {
-				addActionError("系统错误：获得一个嵌入工具出错！");
+				addActionError("系统错误：更新嵌入工具出错！");
 				return ERROR;
 			}
 		}catch (Exception e){
 			log.error(e.getMessage(), e);
-			addActionError("系统错误：获得一个嵌入工具出错！");
+			addActionError("系统错误：更新嵌入工具出错！");
 			return ERROR;
 		}
 	}
@@ -299,6 +297,14 @@ public class ToolsAction extends BaseAction {
 
 	public void setEmbedToolsId(String embedToolsId) {
 		this.embedToolsId = embedToolsId;
+	}
+
+	public ILoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(ILoginService loginService) {
+		this.loginService = loginService;
 	}
 
 }
