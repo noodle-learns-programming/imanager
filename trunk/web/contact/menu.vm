@@ -9,9 +9,14 @@
 	<tr valign="middle">
 		<td align="center"><a href="contactTypeAction!getContactTypeListByLoginId.action">联系类型列表</a></td>
 	</tr>
-</table>*#
+</table>
 <div class="div_left_menu">
 	<div><a href="contactItemAction!initGetContactItemList.action">联系人详细列表</a></div>
 	<div><a href="contactItemAction!initAddContactItem.action">添加联系人详细</a></div>
 	<div><a href="contactTypeAction!getContactTypeListByLoginId.action">联系类型列表</a></div>
-</div>
+</div>*#
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr><td><div class="div_left_menu"><a href="contactItemAction!initGetContactItemList.action">联系人详细列表</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="contactItemAction!initAddContactItem.action">添加联系人详细</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="contactTypeAction!getContactTypeListByLoginId.action">联系类型列表</a></div></td></tr>
+</table>
