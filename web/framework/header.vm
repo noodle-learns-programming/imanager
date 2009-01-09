@@ -7,7 +7,7 @@
 		<td align="center"><a href="$env.appUrl/user/userAction!initUpdateUserInfo.action">我的信息</a></td>
 		<td align="center"><a href="$env.appUrl/login/loginAction!logoutUser.action">退出</a></td>
 	</tr>
-</table>*#
+</table>
 <div class="div_banner_groud">
 	<div class="div_banner_space" align="right">
 		<iframe src="http://m.weather.com.cn/m/p2/weather1.htm?id=101210101T " width="220" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>	
@@ -22,4 +22,22 @@
 	<div class="div_banner_menu"><a href="$env.appUrl/tools/toolsAction!weather.action">我的工具</a></div>
 	<div class="div_banner_menu"><a href="$env.appUrl/login/loginAction!logoutUser.action">退出</a></div>
 	<div class="div_banner_menu_space"></div>
+</div>*#
+<div class="div_banner_groud">
+	<div class="div_banner_space" align="right">
+		<iframe src="http://m.weather.com.cn/m/p2/weather1.htm?id=101210101T " width="220" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>	
+		<br>
+		<iframe src="http://m.weather.com.cn/m/p2/weather1.htm?id=101121501T " width="220" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+	</div>
+	<div class="div_banner_menu_space"></div>
+	<table border="0" height="30px" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="div_banner_menu"><a href="$env.appUrl/consume/consumeItemAction!doInitGetConsumeItemList.action">财务系统管理</a></div></td>
+			<td><div class="div_banner_menu"><a href="$env.appUrl/blog/blogContentAction!initGetBlogContentList.action">日志系统管理</a></div></td>
+			<td><div class="div_banner_menu"><a href="$env.appUrl/contact/contactItemAction!initGetContactItemList.action">联系人管理</a></div></td>
+			<td><div class="div_banner_menu"><a href="$env.appUrl/user/userAction!initUpdateUserInfo.action">我的信息</a></div></td>
+			<td><div class="div_banner_menu"><a href="$env.appUrl/tools/toolsAction!weather.action">我的工具</a></div></td>
+			<td><div class="div_banner_menu"><a href="$env.appUrl/login/loginAction!logoutUser.action">退出</a></div></td>
+		</tr>
+	</table>
 </div>

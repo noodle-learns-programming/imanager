@@ -9,9 +9,14 @@
 	<tr valign="middle">
 		<td align="center"><a href="consumeTypeAction!getConsumeTypeListByLoginId.action">管理消费类型</a></td>
 	</tr>
-</table>*#
+</table>
 <div class="div_left_menu">
 	<div><a href="consumeItemAction!doInitGetConsumeItemList.action">财务状态列表</a></div>
 	<div><a href="consumeItemAction!doInitAddConsumItem.action">添加消费记录</a></div>
 	<div><a href="consumeTypeAction!getConsumeTypeListByLoginId.action">管理消费类型</a></div>
-</div>
+</div>*#
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr><td><div class="div_left_menu"><a href="consumeItemAction!doInitGetConsumeItemList.action">财务状态列表</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="consumeItemAction!doInitAddConsumItem.action">添加消费记录</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="consumeTypeAction!getConsumeTypeListByLoginId.action">管理消费类型</a></div></td></tr>
+</table>

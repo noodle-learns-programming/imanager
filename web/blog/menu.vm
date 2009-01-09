@@ -12,10 +12,16 @@
 	<tr valign="middle">
 		<td align="center"><a href="blogItemAction!getBlogItem2ListByLoginId.action">管理二级类型</a></td>
 	</tr>
-</table>*#
+</table>
 <div class="div_left_menu">
 	<div><a href="blogContentAction!initGetBlogContentList.action">我的博客列表</a></div>
 	<div><a href="blogContentAction!initAddBlogContent.action">添加我的博客</a></div>
 	<div><a href="blogItemAction!getBlogItem1ListByLoginId.action">管理一级类型</a></div>
 	<div><a href="blogItemAction!getBlogItem2ListByLoginId.action">管理二级类型</a></div>
-</div>
+</div>*#
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr><td><div class="div_left_menu"><a href="blogContentAction!initGetBlogContentList.action">我的博客列表</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="blogContentAction!initAddBlogContent.action">添加我的博客</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="blogItemAction!getBlogItem1ListByLoginId.action">管理一级类型</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="blogItemAction!getBlogItem2ListByLoginId.action">管理二级类型</a></div></td></tr>
+</table>

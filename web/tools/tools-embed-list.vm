@@ -30,8 +30,20 @@
 							#foreach($embedTools in $embedList)
                 				<tr>
                 					<td align = "center">$esc.html($embedTools.toolsName)</td>
-									<td align = "center">$esc.html($embedTools.toolsDescription)</td>
-									<td align = "center">$esc.html($embedTools.toolsScript)</td>
+									<td align = "center">
+										#if($embedTools.toolsDescription.length()>25)
+											$esc.html($embedTools.toolsDescription.substring(0,25))...
+										#else
+											$esc.html($embedTools.toolsDescription)
+										#end
+									</td>
+									<td align = "center">
+										#if($embedTools.toolsScript.length()>25)
+											$esc.html($embedTools.toolsScript.substring(0,25))...
+										#else
+											$esc.html($embedTools.toolsScript)
+										#end
+									</td>
 									<td align = "center">
 										#if($embedTools.toolsType == "1")
 											π§æﬂ¿‡
