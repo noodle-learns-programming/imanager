@@ -7,7 +7,7 @@ public class EncodeUtil {
 	
 	
 	/**
-	 * 对特殊字符<>"&等进行预处理，防止HTML解析出错。
+	 * 对特殊字符<>"'&等进行预处理，防止HTML解析出错。
 	 * 当输出input、area等元素的value属性时，必须预处理。例如：
 	 * <input name="foo" value="<%= EncodeUtil.html(value) %>">
 	 */
@@ -16,7 +16,7 @@ public class EncodeUtil {
 			return "";
 		}
 		
-		return obj.toString().replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+		return obj.toString().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("&", "&amp;").replaceAll("\"", "&quot;").replaceAll("\'", "&apos;");
 	}
 	
 }
