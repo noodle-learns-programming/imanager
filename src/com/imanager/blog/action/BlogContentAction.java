@@ -107,7 +107,6 @@ public class BlogContentAction extends BaseAction {
 			blogContent.setLoginId(currentLoginId);
 			blogContent.setWeekday(VeDate.getWeekStr(DateUtil.date(new Date(), DateUtil.DEFAULT_DATE_FORMAT)));
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
-			blogContent.setLoginId(currentLoginId);
 		}catch (Exception e){
 			log.error(e.getMessage());
 			addActionError("系统错误：初始化添加Blog出错！");
