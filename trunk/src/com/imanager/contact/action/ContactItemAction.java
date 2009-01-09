@@ -91,7 +91,7 @@ public class ContactItemAction extends BaseAction {
 				baseFilePath.append("/").
 					append(loginService.getCurrentLoginId()).
 					append("/contact/photo/").
-					append(new Date().getTime()).
+					append(System.currentTimeMillis()).
 					append(FileUtils.getSuffixOfFile(pictureFileName));
 				
 				//将照片保存到固定文件夹下
@@ -225,7 +225,7 @@ public class ContactItemAction extends BaseAction {
 				baseFilePath.append("/").
 					append(loginService.getCurrentLoginId()).
 					append("/contact/photo/").
-					append(new Date().getTime()).
+					append(System.currentTimeMillis()).
 					append(FileUtils.getSuffixOfFile(pictureFileName));
 				
 				//将照片保存到固定文件夹下
