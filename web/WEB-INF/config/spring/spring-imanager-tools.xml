@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
+<beans>
+
+	<bean id="embedToolsDao" class="com.imanager.tools.dao.impl.EmbedToolsDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+	<bean id="embedToolsService" class="com.imanager.tools.service.impl.EmbedToolsServiceImpl">
+		<property name="transactionTemplate" ref="transactionTemplate" />
+		<property name="embedToolsDao" ref="embedToolsDao" />
+	</bean>
+
+</beans>
