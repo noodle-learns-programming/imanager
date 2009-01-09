@@ -285,20 +285,20 @@ public class BlogContentAction extends BaseAction {
 	 */
 	private String checkAttachFolder(String srcDir, String currentLoginId) {
 		File file = new File(srcDir + "/" + currentLoginId);
-		if (!file.exists()) {	//登录用户文件夹未创建
-			return "系统错误：登录用户文件夹未创建！";
+		if (!file.exists() && !file.mkdir()) {	//登录用户文件夹未创建或创建失败
+			return "系统错误：登录用户文件夹不存在！";
 		}
 		
 		file = new File(srcDir + "/" + currentLoginId + "/blog");
-		if (!file.exists()) {	//联系人文件夹未创建
-			return "系统错误：Blog文件夹未创建！";
+		if (!file.exists() && !file.mkdir()) {	//联系人文件夹未创建或创建失败
+			return "系统错误：Blog文件夹不存在！";
 		}
 		
 		file = new File(srcDir + "/" + currentLoginId + "/blog/attach");
-		if (file.exists() || (!file.exists() && file.mkdir())) {	//联系人照片文件夹未创建
+		if (file.exists() || (!file.exists() && file.mkdir())) {	//联系人照片文件夹未创建或创建失败
 			return "has";
 		} else {
-			return "系统错误：创建附件文件夹出错！";
+			return "系统错误：附件文件夹不存在！";
 		}
 	}
 	

@@ -224,20 +224,20 @@ public class ToolsAction extends BaseAction {
 	 */
 	private String checkPhotoFolder(String srcDir, String currentLoginId) {
 		File file = new File(srcDir + "/" + currentLoginId);
-		if (!file.exists()) {	//登录用户文件夹未创建
-			return "系统错误：登录用户文件夹未创建！";
+		if (!file.exists() && !file.mkdir()) {	//登录用户文件夹未创建或创建失败
+			return "系统错误：登录用户文件夹不存在！";
 		}
 		
 		file = new File(srcDir + "/" + currentLoginId + "/tools");
-		if (!file.exists()) {	//工具文件夹未创建
-			return "系统错误：工具文件夹未创建！";
+		if (!file.exists() && !file.mkdir()) {	//工具文件夹未创建或创建失败
+			return "系统错误：工具文件夹不存在！";
 		}
 		
 		file = new File(srcDir + "/" + currentLoginId + "/tools/embed");
-		if (file.exists() || (!file.exists() && file.mkdir())) {	//嵌入工具文件夹未创建
+		if (file.exists() || (!file.exists() && file.mkdir())) {	//嵌入工具文件夹未创建或创建失败
 			return "has";
 		} else {
-			return "系统错误：创建嵌入工具文件夹出错！";
+			return "系统错误：嵌入工具文件夹不存在！";
 		}
 	}
 	
