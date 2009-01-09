@@ -6,6 +6,7 @@
 		<interceptors>
 			<interceptor-stack name="modelParamsStack">
 				<interceptor-ref name="iManagerStack" />
+				<interceptor-ref name="fileUploadStack" />
 			</interceptor-stack>
 		</interceptors>
 		
@@ -17,6 +18,25 @@
 			<result name="weather" type="velocity">tools-weather.vm</result>
 			<result name="calendar" type="velocity">tools-calendar.vm</result>
 			<result name="googlemap" type="velocity">tools-google-map.vm</result>
+			
+			<result name="getEmbedToolsList" type="velocity">tools-embed-list.vm</result>
+			<result name="initAddEmbedTools" type="velocity">tools-embed-add.vm</result>
+			<result name="addEmbedTools" type="redirect-action">
+				<param name="namespace">/tools</param>
+				<param name="actionName">toolsAction</param>
+				<param name="method">getEmbedToolsList</param>
+			</result>
+			<result name="getEmbedToolsById" type="velocity">tools-embed-update.vm</result>
+			<result name="updateEmbedTools" type="redirect-action">
+				<param name="namespace">/tools</param>
+				<param name="actionName">toolsAction</param>
+				<param name="method">getEmbedToolsList</param>
+			</result>
+			<result name="logicDeleteEmbedTools" type="redirect-action">
+				<param name="namespace">/tools</param>
+				<param name="actionName">toolsAction</param>
+				<param name="method">getEmbedToolsList</param>
+			</result>
 			
 			<interceptor-ref name="modelParamsStack" />
 		</action>

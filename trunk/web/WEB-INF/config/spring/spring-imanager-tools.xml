@@ -7,7 +7,6 @@
 	</bean>
 	
 	<bean id="embedToolsService" class="com.imanager.tools.service.impl.EmbedToolsServiceImpl">
-		<property name="transactionTemplate" ref="transactionTemplate" />
 		<property name="embedToolsDao" ref="embedToolsDao" />
 	</bean>
 
