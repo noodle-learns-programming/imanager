@@ -49,8 +49,7 @@
 					tools_type
 			from embed_tools
 			where login_id = #loginId# and is_deleted='no'
-			group by tools_type 
-			order by gmt_created asc
+			order by tools_type asc, gmt_created asc
 		]]>
 	</select>
 	
