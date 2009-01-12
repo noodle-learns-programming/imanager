@@ -31,7 +31,7 @@ public class ToolsAction extends BaseAction {
 	private File picture;
 	private String pictureContentType;
 	private String pictureFileName;
-	
+	private String embedToolsType;
 
 	public String weather() throws Exception {
 		return "weather";
@@ -58,6 +58,39 @@ public class ToolsAction extends BaseAction {
 		}catch (Exception e){
 			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得嵌入工具列表出错！");
+			return ERROR;
+		}
+	}
+	
+	/**
+	 * 根据类型获得嵌入工具列表
+	 * @return
+	 * @throws Exception
+	 */
+	public String getEmbedToolsListByType() throws Exception {
+		try{
+			currentLoginId = loginService.getCurrentLoginId();
+			embedList = embedToolsService.getEmbedToolsListByType(currentLoginId, embedToolsType);
+			return "getEmbedToolsListByType";
+		}catch (Exception e){
+			log.error(e.getMessage(), e);
+			addActionError("系统错误：获得嵌入工具列表出错！");
+			return ERROR;
+		}
+	}
+	
+	/**
+	 * 展现一个嵌入工具
+	 * @return
+	 * @throws Exception
+	 */
+	public String showEmbedTools() throws Exception {
+		try{
+			embedTools = embedToolsService.getEmbedToolsById(embedToolsId);
+			return "showEmbedTools";
+		}catch (Exception e){
+			log.error(e.getMessage(), e);
+			addActionError("系统错误：获得嵌入工具详细出错！");
 			return ERROR;
 		}
 	}
@@ -305,6 +338,14 @@ public class ToolsAction extends BaseAction {
 
 	public void setLoginService(ILoginService loginService) {
 		this.loginService = loginService;
+	}
+
+	public String getEmbedToolsType() {
+		return embedToolsType;
+	}
+
+	public void setEmbedToolsType(String embedToolsType) {
+		this.embedToolsType = embedToolsType;
 	}
 
 }

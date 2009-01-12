@@ -23,6 +23,13 @@ public class EmbedToolsServiceImpl implements IEmbedToolsService {
 	public List<EmbedTools> getEmbedToolsList(String loginId) {
 		return embedToolsDao.getEmbedToolsList(loginId);
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.imanager.tools.service.IEmbedToolsService#getEmbedToolsListByType(java.lang.String, java.lang.String)
+	 */
+	public List<EmbedTools> getEmbedToolsListByType(String loginId, String toolsType){
+		return embedToolsDao.getEmbedToolsListByType(loginId, toolsType);
+	}
 
 	/* (non-Javadoc)
 	 * @see com.imanager.tools.service.IEmbedToolsService#insertEmbedTools(com.imanager.tools.domain.EmbedTools)

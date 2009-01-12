@@ -18,6 +18,14 @@ public interface IEmbedToolsDao {
 	  */
 	@SuppressWarnings("unchecked")
 	public List<EmbedTools> getEmbedToolsList(String loginId);
+	
+	 /**
+	  * 根据类型获得嵌入工具列表
+	  * @return
+	  */
+	@SuppressWarnings("unchecked")
+	public List<EmbedTools> getEmbedToolsListByType(String loginId, String toolsType);
+	
 	/**
 	 * 根据Id获得一个嵌入工具
 	 * @param embedToolsId
