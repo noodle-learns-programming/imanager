@@ -18,7 +18,10 @@
 <table border="0" cellpadding="0" cellspacing="0">
 	<tr><td><div class="div_left_menu"><a href="$env.appUrl/tools/toolsAction!weather.action">天气预报</a></div></td></tr>
 	<tr><td><div class="div_left_menu"><a href="$env.appUrl/tools/toolsAction!calendar.action">万年历</a></div></td></tr>
-	<tr><td><div class="div_left_menu"><a href="http://ditu.google.cn/" target="_blank">Google地图</a></div></td></tr>
-	<tr><td><div class="div_left_menu"><a href="http://www.google.cn/" target="_blank">Google搜索</a></div></td></tr>
-	<tr><td><div class="div_left_menu"><a href="$env.appUrl/tools/toolsAction!getEmbedToolsList.action">工具列表</a></div></td></tr>
+	##<tr><td><div class="div_left_menu"><a href="http://ditu.google.cn/" target="_blank">Google地图</a></div></td></tr>
+	##<tr><td><div class="div_left_menu"><a href="http://www.google.cn/" target="_blank">Google搜索</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="$env.appUrl/tools/toolsAction!getEmbedToolsListByType.action?embedToolsType=1">工具软件</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="$env.appUrl/tools/toolsAction!getEmbedToolsListByType.action?embedToolsType=2">游戏软件</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="$env.appUrl/tools/toolsAction!getEmbedToolsListByType.action?embedToolsType=3">娱乐软件</a></div></td></tr>
+	<tr><td><div class="div_left_menu"><a href="$env.appUrl/tools/toolsAction!getEmbedToolsList.action">管理工具列表</a></div></td></tr>
 </table>
