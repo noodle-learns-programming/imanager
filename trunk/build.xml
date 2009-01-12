@@ -2,6 +2,7 @@
 @author Yang Qiang
 @version $Revision: 1.1.0 $ $Date: 2008/05/01 00:00:00 $
 -->
+<!-- <project name="webwork" basedir="." default="war"> -->
 <project name="webwork" basedir="." default="extract">
 	
 	<target name="init">
