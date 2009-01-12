@@ -23,7 +23,7 @@
     							#if($velocityCount % 11 == 0)
     								</br>
     							#end
-								<a href="javascript:showEmbedTools($!embedTools.embedToolsId);"><img src="$env.srcUrl$!embedTools.toolsPicPath" width="80" height="80" border="0" alt="$embedTools.toolsName"/></a>&nbsp;&nbsp;
+								<a href="javascript:showEmbedTools($!embedTools.embedToolsId);"><img src="$env.srcUrl$!embedTools.toolsPicPath" onerror="this.src='../resource/images/nonepic.jpg'" width="80" height="80" border="0" alt="$embedTools.toolsName"/></a>&nbsp;&nbsp;
     						#end
     						</br>
     						<iframe id="iframe1" src="#" width="800" height="800"  scrolling="no" frameborder="0"></iframe>

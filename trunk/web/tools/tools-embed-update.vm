@@ -33,7 +33,7 @@
                     			</tr>
                     			<tr>
                     				<td align="left">工具图片:</td>
-                    				<td align="left"><input type="file" id="picture" name="picture"><a href="$env.srcUrl$!embedTools.toolsPicPath" target="_blank"><img src="$env.srcUrl$!embedTools.toolsPicPath" width="40" height="40" border="0"/></a></td>
+                    				<td align="left"><input type="file" id="picture" name="picture"><a href="$env.srcUrl$!embedTools.toolsPicPath" target="_blank"><img src="$env.srcUrl$!embedTools.toolsPicPath" onerror="this.src='../resource/images/nonepic.jpg'" width="40" height="40" border="0"/></a></td>
                     			</tr>
                     			<tr>
                     				<td align="left">嵌入代码:</td>
