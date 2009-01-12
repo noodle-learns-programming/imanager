@@ -27,8 +27,19 @@ public class EmbedToolsDaoImpl implements IEmbedToolsDao {
 	  */
 	@SuppressWarnings("unchecked")
 	public List<EmbedTools> getEmbedToolsList(String loginId){
-		 return sqlMapClientTemplate.queryForList("EmbedTools.getEmbedToolsList", loginId);
+		return sqlMapClientTemplate.queryForList("EmbedTools.getEmbedToolsList", loginId);
 	 }
+	
+	/* (non-Javadoc)
+	 * @see com.imanager.tools.dao.IEmbedToolsDao#getEmbedToolsListByType(java.lang.String, java.lang.String)
+	 */
+	@SuppressWarnings("unchecked")
+	public List<EmbedTools> getEmbedToolsListByType(String loginId, String toolsType){
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("loginId", loginId);
+		map.put("toolsType", toolsType);
+		return sqlMapClientTemplate.queryForList("EmbedTools.getEmbedToolsListByType", map);
+	}
 		
 	/**
 	 * 根据Id获得一个嵌入工具
