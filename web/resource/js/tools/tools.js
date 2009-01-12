@@ -52,8 +52,8 @@ function checkEmbedToolsDescription(){
 		alert("工具简介不能为空!");
 		return false;
 	}
-	if(!checkInputLength(Trim(o.value), 300)){
-		alert("工具简介的长度不能大于300!");
+	if(!checkInputLength(Trim(o.value), 600)){
+		alert("工具简介的长度不能大于600!");
 		return false;
 	}
 	return true;
@@ -74,8 +74,8 @@ function checkEmbedToolsScript(){
 		alert("嵌入代码不能为空!");
 		return false;
 	}
-	if(!checkInputLength(Trim(o.value), 300)){
-		alert("嵌入代码的长度不能大于300!");
+	if(!checkInputLength(Trim(o.value), 600)){
+		alert("嵌入代码的长度不能大于600!");
 		return false;
 	}
 	return true;
