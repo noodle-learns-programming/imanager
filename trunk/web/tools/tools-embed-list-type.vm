@@ -20,7 +20,7 @@
 						</br>
 						#if($embedList.size() > 0)
     						#foreach($embedTools in $embedList)
-    							#if($velocityCount % 5 == 0)
+    							#if($velocityCount % 8 == 0)
     								</br>
     							#else
     								<a href="javascript:showEmbedTools($!embedTools.embedToolsId);"><img src="$env.srcUrl$!embedTools.toolsPicPath" width="80" height="80" border="0" alt="$embedTools.toolsName"/></a>&nbsp;&nbsp;
