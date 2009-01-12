@@ -36,7 +36,7 @@
                     			</tr>
                     			<tr>
                     				<td align="left">嵌入代码:</td>
-                    				<td align="left"><textarea id="embedTools.toolsScript" name="embedTools.toolsScript" style="overflow:hidden" cols="101" rows="3">$esc.html($!embedTools.toolsScript)</textarea></td>
+                    				<td align="left"><textarea id="embedTools.toolsScript" name="embedTools.toolsScript" style="overflow:hidden" cols="101" rows="3">$!embedTools.toolsScript</textarea></td>
                     			</tr>
                     			<tr>
                     				<td align="left">工具类型:</td>
