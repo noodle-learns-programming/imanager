@@ -21,6 +21,7 @@
                     	<h2>更新嵌入工具</h2>
                     	<form id="embedToolsForm" action="toolsAction!updateEmbedTools.action" enctype="multipart/form-data" method="post">
                     		<input type="hidden" name="embedTools.embedToolsId" value="$embedTools.embedToolsId" />
+							<input type="hidden" name="embedTools.toolsPicPath" value="$embedTools.toolsPicPath" />
 							<table bgcolor="#FFF5EE" border="1" bordercolor="#FE4FA8" width="800" cellpadding="0" cellspacing="0">
                     			<tr>
                     				<td align="left" width="100">工具名称:</td>
