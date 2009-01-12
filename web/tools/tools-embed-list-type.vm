@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		<meta http-equiv="content-type" content="text/html; charset=gbk"/>
+    	<title>iManager MyTools</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
+    	<script type="text/javascript" src="../resource/js/util.js"></script>
+		<script type="text/javascript" src="../resource/js/tools/tools.js"></script>
+    </head>
+	<body>
+    	#parse("/framework/header.vm")
+		<div align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+        		<tr valign="top">
+        			<td align="left" width="150px">
+        				#parse("/tools/menu.vm")
+        			</td>
+        			<td>&nbsp;&nbsp;</td>
+        			<td align="center">
+						</br>
+						#if($embedList.size() > 0)
+    						#foreach($embedTools in $embedList)
+    							#if($velocityCount % 5 == 0)
+    								</br>
+    							#else
+    								<a href="javascript:showEmbedTools($!embedTools.embedToolsId);"><img src="$env.srcUrl$!embedTools.toolsPicPath" width="80" height="80" border="0" alt="$embedTools.toolsName"/></a>&nbsp;&nbsp;
+    							#end
+    						#end
+    						</br>
+    						<iframe id="iframe1" src="#" width="800" height="800"  scrolling="no" frameborder="0"></iframe>
+						#else
+							<h2>暂时没有工具可用！</h2>
+						#end
+					</td>
+					<td>&nbsp;&nbsp;</td>
+				</tr>
+				<tr><td colspan="4"></td></tr>
+			</table>
+    	</div>
+		
+		
+		
+		#if($embedList.size() > 0)
+			<script type="text/javascript">
+				var obj = document.getElementById("iframe1");
+				var theUrl = ["$env.appUrl/tools/toolsAction!showEmbedTools.action?embedToolsId=", $embedList.get(0).embedToolsId].join("");
+				obj.src = theUrl;
+			</script>
+		#end
+		
+		<script type="text/javascript">
+			function showEmbedTools(embedToolsId){
+				var obj = document.getElementById("iframe1");
+				var theUrl = ["$env.appUrl/tools/toolsAction!showEmbedTools.action?embedToolsId=", embedToolsId].join("");
+				obj.src = theUrl;
+			}
+		</script>
+	</body>
+</html>
