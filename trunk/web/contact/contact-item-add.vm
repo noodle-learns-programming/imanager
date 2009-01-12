@@ -41,7 +41,7 @@
                     			<tr>
                     				<td align="left" width="300">–’√˚:</td>
                     				<td align="left" width="250"><input type="text" id="contactItem.name" name="contactItem.name" value="$esc.html($!contactItem.name)" size="50" maxlength="20"></td>
-									<td align="center" width="350" colspan="2" rowspan="10"><img src="http://localhost:8081/iManager/yangqiang/contact/photo/dddddd.jpg" width="450" height="250" /></td>
+									<td align="center" width="350" colspan="2" rowspan="10"><img src="../resource/images/nonepic.jpg" width="450" height="250" /></td>
                     			</tr>
 								<tr>
 									<td align="left">∆¥“Ù:</td>
