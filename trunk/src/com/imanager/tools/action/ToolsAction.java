@@ -146,9 +146,8 @@ public class ToolsAction extends BaseAction {
 				String absFilePath = srcDir + baseFilePath.toString();
 				FileCopyUtils.copy(picture, new File(absFilePath));
 				embedTools.setToolsPicPath(baseFilePath.toString());
-			} else {
-				embedTools.setToolsPicPath("nopic");
 			}
+			
 			embedToolsService.insertEmbedTools(embedTools);
 			
 		}catch (Exception e){
