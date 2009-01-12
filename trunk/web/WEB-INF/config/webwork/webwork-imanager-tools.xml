@@ -20,6 +20,7 @@
 			<result name="googlemap" type="velocity">tools-google-map.vm</result>
 			
 			<result name="getEmbedToolsList" type="velocity">tools-embed-list.vm</result>
+			<result name="getEmbedToolsListByType" type="velocity">tools-embed-list-type.vm</result>
 			<result name="initAddEmbedTools" type="velocity">tools-embed-add.vm</result>
 			<result name="addEmbedTools" type="redirect-action">
 				<param name="namespace">/tools</param>
@@ -37,6 +38,7 @@
 				<param name="actionName">toolsAction</param>
 				<param name="method">getEmbedToolsList</param>
 			</result>
+			<result name="showEmbedTools" type="velocity">tools-embed-show.vm</result>
 			
 			<interceptor-ref name="modelParamsStack" />
 		</action>
