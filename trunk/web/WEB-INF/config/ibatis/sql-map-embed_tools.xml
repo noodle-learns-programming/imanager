@@ -53,6 +53,28 @@
 		]]>
 	</select>
 	
+	<select id="getEmbedToolsListByType"
+		parameterClass="java.util.Map" 
+		resultMap="embed-tools-map">
+		<![CDATA[
+			select 	embed_tools_id,
+					creator,
+					gmt_created,
+					modifier,
+					gmt_modified,
+					is_deleted,
+					login_id,
+					tools_name,
+					tools_description,
+					tools_pic_path,
+					tools_script,
+					tools_type
+			from embed_tools
+			where login_id = #loginId# and tools_type = #toolsType# and is_deleted='no'
+			order by gmt_created asc
+		]]>
+	</select>
+	
 	<select id="getEmbedToolsById"
 		parameterClass="java.lang.String"
 		resultMap="embed-tools-map">
