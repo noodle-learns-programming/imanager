@@ -41,7 +41,7 @@ public class EnvService{
 				properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
 				FileOutputStream fileOut = new FileOutputStream("d:/env.properties");
 				for (Entry entry : properties.entrySet()) {
-					System.out.println(entry.toString());
+					//System.out.println(entry.toString());
 					fileOut.write(entry.toString().getBytes());
 					fileOut.write("\r\n".getBytes());
 				}
@@ -53,7 +53,7 @@ public class EnvService{
 				properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
 				FileOutputStream fileOut = new FileOutputStream("d:/env.properties");
 				for (Entry entry : properties.entrySet()) {
-					System.out.println(entry.toString());
+					//System.out.println(entry.toString());
 					fileOut.write(entry.toString().getBytes());
 					fileOut.write("\r\n".getBytes());
 				}
