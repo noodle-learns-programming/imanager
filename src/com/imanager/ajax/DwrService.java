@@ -39,8 +39,7 @@ public class DwrService {
 				return "false";
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 			return "error";
 		}
 	}

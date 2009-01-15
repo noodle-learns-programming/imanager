@@ -53,7 +53,7 @@ public class ContactItemAction extends BaseAction {
 		
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化添加联系人详细出错！");
 			return ERROR;
 		}
@@ -103,7 +103,7 @@ public class ContactItemAction extends BaseAction {
 			
 			contactService.insertContactItem(contactItem);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：添加联系人详细出错！");
 			return ERROR;
 		}
@@ -126,7 +126,7 @@ public class ContactItemAction extends BaseAction {
 			}
 			contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得联系人详细列表出错！");
 			return ERROR;
 		}
@@ -151,7 +151,7 @@ public class ContactItemAction extends BaseAction {
 			contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查询联系人详细列表出错！");
 			return ERROR;
 		}
@@ -178,7 +178,7 @@ public class ContactItemAction extends BaseAction {
 				contactItem.setContactType(contactType);
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查询联系人详细出错！");
 			return ERROR;
 		}
@@ -242,7 +242,7 @@ public class ContactItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新联系人详细出错！");
 			return ERROR;
 		}
@@ -265,7 +265,7 @@ public class ContactItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除联系人详细出错！");
 			return ERROR;
 		}

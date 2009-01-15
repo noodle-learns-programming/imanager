@@ -35,7 +35,14 @@ public class EnvService{
      * 初始化环境变量
      */
    static {
-		try {
+	   try {
+			properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
+		} catch (IOException e) {
+			if (log.isErrorEnabled()) {
+				log.error(e.getMessage(), e);
+			}
+		}
+		/*try {
 			FileInputStream fileIn = new FileInputStream("d:/env.properties");
 			if (fileIn.available() == 0) {
 				properties = PropertiesLoaderUtils.loadAllProperties("env.properties");
@@ -70,7 +77,7 @@ public class EnvService{
 			if (log.isErrorEnabled()) {
 				log.error(e3.toString());
 			}
-		}
+		}*/
 	}
 	
 

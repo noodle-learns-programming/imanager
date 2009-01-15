@@ -40,7 +40,7 @@ public class BlogItemAction extends BaseAction {
 			blogItem1.setLoginId(currentLoginId);
 			return "initAddBlogItem1";
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化添加一级类型出错！");
 			return ERROR;
 		}
@@ -65,7 +65,7 @@ public class BlogItemAction extends BaseAction {
 		
 			blogService.insertBlogItem1(blogItem1);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：添加一级类型出错！");
 			return ERROR;
 		}
@@ -83,7 +83,7 @@ public class BlogItemAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得一级类型列表出错！");
 			return ERROR;
 		}
@@ -101,7 +101,7 @@ public class BlogItemAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			blogItem1 = blogService.getBlogItem1ByItemId(blogItem1Id);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查看一级类型详细出错！");
 			return ERROR;
 		}
@@ -132,7 +132,7 @@ public class BlogItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新一级类型详细出错！");
 			return ERROR;
 		}
@@ -155,7 +155,7 @@ public class BlogItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除一级类型详细出错！");
 			return ERROR;
 		}
@@ -171,7 +171,7 @@ public class BlogItemAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			blogItem2List = blogService.getBlogItem2ListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得二级类型列表出错！");
 			return ERROR;
 		}
@@ -190,7 +190,7 @@ public class BlogItemAction extends BaseAction {
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2.setLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化添加二级类型出错！");
 			return ERROR;
 		}
@@ -217,7 +217,7 @@ public class BlogItemAction extends BaseAction {
 		
 			blogService.insertBlogItem2(blogItem2);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：添加二级类型出错！");
 			return ERROR;
 		}
@@ -237,7 +237,7 @@ public class BlogItemAction extends BaseAction {
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2 = blogService.getBlogItem2ByItemId(blogItem2Id);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查看二级类型详细出错！");
 			return ERROR;
 		}
@@ -268,7 +268,7 @@ public class BlogItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新二级类型详细出错！");
 			return ERROR;
 		}
@@ -291,7 +291,7 @@ public class BlogItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除二级类型详细出错！");
 			return ERROR;
 		}

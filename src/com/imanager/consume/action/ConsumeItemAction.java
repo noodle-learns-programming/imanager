@@ -62,7 +62,7 @@ public class ConsumeItemAction extends BaseAction {
 			
 			return "doInitGetConsumeItemList";
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得本月消费列表出错！");
 			return ERROR;
 		}
@@ -91,7 +91,7 @@ public class ConsumeItemAction extends BaseAction {
 			
 			return "doGetConsumeItemListBySearch";
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查询消费列表出错！");
 			return ERROR;
 		}
@@ -112,7 +112,7 @@ public class ConsumeItemAction extends BaseAction {
 			
 			return "doInitAddConsumItem";
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化添加消费列表出错！");
 			return ERROR;
 		}
@@ -149,7 +149,7 @@ public class ConsumeItemAction extends BaseAction {
 			
 			return "doAddConsumItem";
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：添加消费记录出错！");
 			return ERROR;
 		}
@@ -180,7 +180,7 @@ public class ConsumeItemAction extends BaseAction {
 			
 			return "doGetConsumItem";
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查看该消费记录出错！");
 			return ERROR;
 		}
@@ -218,7 +218,7 @@ public class ConsumeItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新该消费记录出错！");
 			return ERROR;
 		}
@@ -241,7 +241,7 @@ public class ConsumeItemAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除该消费记录出错！");
 			return ERROR;
 		}

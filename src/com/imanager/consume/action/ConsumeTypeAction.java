@@ -43,7 +43,7 @@ public class ConsumeTypeAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			consumeTypeList = consumeService.getConsumeTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得消费类型列表出错！");
 			return ERROR;
 		}
@@ -60,7 +60,7 @@ public class ConsumeTypeAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			consumeType.setLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化添加消费类型出错！");
 			return ERROR;
 		}
@@ -84,7 +84,7 @@ public class ConsumeTypeAction extends BaseAction {
 			
 			consumeService.insertConsumeType(consumeType);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：添加消费类型出错！");
 			return ERROR;
 		}
@@ -104,8 +104,7 @@ public class ConsumeTypeAction extends BaseAction {
 			return "getConsumTypeById";
 			
 		}catch (Exception e){
-			log.error("Error: " + ConsumeTypeAction.class + ", getConsumTypeById()", e);
-			//e.printStackTrace();
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得一个消费类型出错！");
 			return ERROR;
 		}
@@ -132,7 +131,7 @@ public class ConsumeTypeAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新消费类型详细出错！");
 			return ERROR;
 		}
@@ -154,7 +153,7 @@ public class ConsumeTypeAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除消费类型详细出错！");
 			return ERROR;
 		}
