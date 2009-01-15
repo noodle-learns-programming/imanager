@@ -240,7 +240,7 @@ public class ToolsAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除嵌入工具出错！");
 			return ERROR;
 		}

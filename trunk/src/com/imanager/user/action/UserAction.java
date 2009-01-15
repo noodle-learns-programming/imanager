@@ -37,7 +37,7 @@ public class UserAction extends BaseAction {
 		try {
 			return "initRegisterUser";
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化用户注册出错！");
 			return ERROR;
 		}
@@ -82,7 +82,7 @@ public class UserAction extends BaseAction {
 			addActionError(e.getMessage());
 			return "registerUserInput";
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：注册用户出错！");
 			return ERROR;
 		}
@@ -98,7 +98,7 @@ public class UserAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			user = userService.getUserByLoginId(currentLoginId);
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查看当前登录用户的信息出错！");
 			return ERROR;
 		}
@@ -126,7 +126,7 @@ public class UserAction extends BaseAction {
 				return ERROR;
 			}
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新用户信息出错！");
 			return ERROR;
 		}
@@ -141,7 +141,7 @@ public class UserAction extends BaseAction {
 		try {
 			return "initUpdateUserPassword";
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化修改用户密码出错！");
 			return ERROR;
 		}
@@ -179,7 +179,7 @@ public class UserAction extends BaseAction {
 				return ERROR;
 			}
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新密码出错！");
 			return ERROR;
 		}

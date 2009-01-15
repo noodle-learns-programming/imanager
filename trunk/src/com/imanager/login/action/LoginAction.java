@@ -67,8 +67,7 @@ public class LoginAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			//log.error("Error: " + LoginAction.class + ", validateUser()",e);
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：验证是否合法用户出错！");
 			return ERROR;
 		}
@@ -83,7 +82,7 @@ public class LoginAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：登出当前用户出错！");
 			return ERROR;
 		}

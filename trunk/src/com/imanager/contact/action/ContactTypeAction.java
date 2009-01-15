@@ -60,7 +60,7 @@ public class ContactTypeAction extends BaseAction {
 			
 			contactService.insertContactType(contactType);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：添加联系人类型出错！");
 			return ERROR;
 		}
@@ -78,7 +78,7 @@ public class ContactTypeAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			contactTypeList = contactService.getContactTypeListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得联系类型列表出错！");
 			return ERROR;
 		}
@@ -96,7 +96,7 @@ public class ContactTypeAction extends BaseAction {
 			currentLoginId = loginService.getCurrentLoginId();
 			contactType = contactService.getContactTypeById(contactTypeId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查看联系类型详细出错！");
 			return ERROR;
 		}
@@ -124,7 +124,7 @@ public class ContactTypeAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新联系类型详细出错！");
 			return ERROR;
 		}
@@ -148,7 +148,7 @@ public class ContactTypeAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除联系类型详细出错！");
 			return ERROR;
 		}

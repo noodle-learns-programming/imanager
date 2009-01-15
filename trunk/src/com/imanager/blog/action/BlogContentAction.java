@@ -63,7 +63,7 @@ public class BlogContentAction extends BaseAction {
 			blogContentOutputList = blogService.getBlogContentListBySearch(blogSearchObj);
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得本月Blog列表出错！");
 			return ERROR;
 		}
@@ -87,7 +87,7 @@ public class BlogContentAction extends BaseAction {
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2List = blogService.getBlogItem2ByItem1IdNLoginId(blogSearchObj.getBlogItem1Id(), currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查找Blog列表出错！");
 			return ERROR;
 		}
@@ -108,7 +108,7 @@ public class BlogContentAction extends BaseAction {
 			blogContent.setWeekday(VeDate.getWeekStr(DateUtil.date(new Date(), DateUtil.DEFAULT_DATE_FORMAT)));
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：初始化添加Blog出错！");
 			return ERROR;
 		}
@@ -162,7 +162,7 @@ public class BlogContentAction extends BaseAction {
 			
 			blogService.insertBlogContent(blogContent);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：添加Blog出错！");
 			return ERROR;
 		}
@@ -182,7 +182,7 @@ public class BlogContentAction extends BaseAction {
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
 			blogItem2List = blogService.getBlogItem2ByItem1IdNLoginId(String.valueOf(blogContent.getBlogItem1Id()), currentLoginId);
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：查看Blog出错！");
 			return ERROR;
 		}
@@ -249,7 +249,7 @@ public class BlogContentAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：更新Blog出错！");
 			return ERROR;
 		}
@@ -271,7 +271,7 @@ public class BlogContentAction extends BaseAction {
 				return ERROR;
 			}
 		}catch (Exception e){
-			log.error(e.getMessage());
+			log.error(e.getMessage(), e);
 			addActionError("系统错误：删除Blog出错！");
 			return ERROR;
 		}
