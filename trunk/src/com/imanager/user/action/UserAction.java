@@ -69,6 +69,7 @@ public class UserAction extends BaseAction {
 					log.info("Create needed folders failure!");
 				}
 			}
+			
 			//登入当前用户
 			if (!loginService.loginCurrentUser(loginIdTrim)) {
 				if (log.isErrorEnabled()) {
