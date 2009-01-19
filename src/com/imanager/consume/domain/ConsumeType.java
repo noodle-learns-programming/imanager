@@ -7,6 +7,8 @@ public class ConsumeType  extends Basement{
 	private int consumeTypeId;
 	
 	private String consumeType;
+	
+	private int sort;
 
 	public int getConsumeTypeId() {
 		return consumeTypeId;
@@ -22,6 +24,14 @@ public class ConsumeType  extends Basement{
 
 	public void setConsumeType(String consumeType) {
 		this.consumeType = consumeType;
+	}
+
+	public int getSort() {
+		return sort;
+	}
+
+	public void setSort(int sort) {
+		this.sort = sort;
 	}
 
 }
