@@ -24,12 +24,14 @@
                 			<tr bgcolor="#FFD700">
                 				<th align="center">编号</th>
                 				<th align="center">消费类型</th>
+								<th align="center">排序字段</th>
                 				<th align="center">操作</th>
                 			</tr>
                 			#foreach ($consumeType in $consumeTypeList)
                 				<tr>
                 					<td align = "center">$!consumeType.consumeTypeId</td>
 									<td align = "center">$esc.html($!consumeType.consumeType)</td>
+									<td align = "center">$!consumeType.sort</td>
                 					<td align = "center">
                 						<a href="consumeTypeAction!getConsumTypeById.action?consumeTypeId=$!consumeType.consumeTypeId">更新</a>&nbsp;|&nbsp;
                 						<a href="#" onclick=deleteConsumeType($!consumeType.consumeTypeId)>删除</a>
