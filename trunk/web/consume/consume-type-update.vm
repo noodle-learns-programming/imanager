@@ -26,6 +26,10 @@
 									<td align="left" width="100">消费类型:</td>
                     				<td align="left" width="700"><input type="text" id="consumeType.consumeType" name="consumeType.consumeType" onkeydown="KeyDown(event)" value="$esc.html($!consumeType.consumeType)" size="100" maxlength="100"></td>
                     			</tr>
+								<tr>
+                    				<td align="left" width="100">排序字段:</td>
+                    				<td align="left" width="700"><input type="text" id="consumeType.sort" name="consumeType.sort" onkeydown="KeyDown(event)" value="$esc.html($!consumeType.sort)" size="100" maxlength="100"></td>
+                    			</tr>
                     			<tr>
 									<td align="left">登录ID:</td>
                     				<td align="left">
