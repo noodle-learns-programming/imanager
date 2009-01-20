@@ -15,6 +15,8 @@ public class ConsumeSearchObj {
 	private String consumeTypeId;
 	
 	private String loginId;
+	
+	private String inOrOut;
 
 	public String getAddress() {
 		return address;
@@ -62,6 +64,14 @@ public class ConsumeSearchObj {
 
 	public void setConsumeTypeId(String consumeTypeId) {
 		this.consumeTypeId = consumeTypeId;
+	}
+
+	public String getInOrOut() {
+		return inOrOut;
+	}
+
+	public void setInOrOut(String inOrOut) {
+		this.inOrOut = inOrOut;
 	}
 
 }
