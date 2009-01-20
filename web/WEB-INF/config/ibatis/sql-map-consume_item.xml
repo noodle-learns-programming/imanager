@@ -72,6 +72,9 @@
 		<isNotEmpty prepend="AND" property="consumeTypeId">
 			<![CDATA[ consume_type_id = #consumeTypeId# ]]>
 		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="inOrOut">
+			<![CDATA[ in_out = #inOrOut# ]]>
+		</isNotEmpty>
 		<![CDATA[ order by fee_date asc,  gmt_created asc]]>
 	</select>
 	
@@ -91,6 +94,9 @@
 		</isNotEmpty>
 		<isNotEmpty prepend="AND" property="consumeTypeId">
 			<![CDATA[ consume_type_id = #consumeTypeId# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="inOrOut">
+			<![CDATA[ in_out = #inOrOut# ]]>
 		</isNotEmpty>
 	</select>
 	
