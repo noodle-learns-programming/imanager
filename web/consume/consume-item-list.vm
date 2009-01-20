@@ -64,7 +64,17 @@
     										#end
     									</select>
     								</td>
-                					<td align="left" colspan="2"><input type="button" name="button" value="查询" onclick="doSubmitSearchForm();"/></td>
+									<td align="left">收支方向:</td>
+    								<td align="left">
+    									<select id="searchObj.inOrOut" name="searchObj.inOrOut">
+    										<option value="">请选择</option>
+    										<option value="in" #if("in" == $searchObj.inOrOut) selected #end>收入</option>
+											<option value="out" #if("out" == $searchObj.inOrOut) selected #end>支出</option>
+    									</select>
+    								</td>
+								</tr>
+    							<tr>
+                					<td align="left" colspan="4"><input type="button" name="button" value="查询" onclick="doSubmitSearchForm();"/></td>
                 				</tr>
     						</table>
                 		</form>

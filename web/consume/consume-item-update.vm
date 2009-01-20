@@ -29,6 +29,7 @@
 							<input type="hidden" name="searchObj.address" value="$esc.html($!searchObj.address)" />
 							<input type="hidden" name="searchObj.startDate" value="$!dateUtil.date($!searchObj.startDate, 'yyyy-MM-dd')" />
 							<input type="hidden" name="searchObj.endDate" value="$!dateUtil.date($!searchObj.endDate, 'yyyy-MM-dd')" />
+							<input type="hidden" name="searchObj.inOrOut" value="$!searchObj.inOrOut" />
 							<input type="hidden" name="searchObj.consumeTypeId" value="$!searchObj.consumeTypeId" />
                     		<table bgcolor="#FFF5EE" border="1" bordercolor="#FE4FA8" width="800" cellpadding="0" cellspacing="0">
                     			<tr>
