@@ -92,8 +92,8 @@
                 				<th align="center">编号</th>
                 				<th align="center">标题</th>
                 				<th align="center">类型</th>
-                				<th align="center">明细1</th>
-                				<th align="center">明细2</th>
+                				<th align="center">明细一</th>
+                				<th align="center">明细二</th>
                 				<th align="center">时间</th>
                 				<th align="center">作者</th>
                 				<th align="center">操作</th>
