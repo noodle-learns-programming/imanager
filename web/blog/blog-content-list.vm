@@ -100,7 +100,7 @@
                 			</tr>
 							#foreach($blogContentOutput in $blogContentOutputList)
                 				<tr>
-                					<td align = "center">$!blogContentOutput.blogContentId</td>
+                					<td align = "center">$velocityCount</td>
                 					<td align = "center">$esc.html($!blogContentOutput.title)</td>
                 					<td align = "center">
 										#if($!blogContentOutput.blogType == 'yc')

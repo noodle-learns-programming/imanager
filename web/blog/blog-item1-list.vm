@@ -32,7 +32,7 @@
                 			</tr>
 							#foreach($blogItem1 in $blogItem1List)
                 				<tr>
-                					<td align = "center">$blogItem1.blogItem1Id</td>
+                					<td align = "center">$velocityCount</td>
                 					<td align = "center">$esc.html($blogItem1.itemChn)</td>
                 					<td align = "center">$esc.html($blogItem1.itemEng)</td>
                 					<td align = "center">
