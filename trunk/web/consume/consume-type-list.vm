@@ -29,7 +29,7 @@
                 			</tr>
                 			#foreach ($consumeType in $consumeTypeList)
                 				<tr>
-                					<td align = "center">$!consumeType.consumeTypeId</td>
+                					<td align = "center">$velocityCount</td>
 									<td align = "center">$esc.html($!consumeType.consumeType)</td>
 									<td align = "center">$!consumeType.sort</td>
                 					<td align = "center">

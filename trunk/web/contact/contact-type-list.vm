@@ -27,7 +27,7 @@
                 			</tr>
 							#foreach($contactType in $contactTypeList)
                 				<tr>
-                					<td align = "center">$contactType.contactTypeId</td>
+                					<td align = "center">$velocityCount</td>
                 					<td align = "center">$esc.html($contactType.contactType)</td>
                 					<td align = "center">
                 						<a href="contactTypeAction!getContactTypeById.action?contactTypeId=$!contactType.contactTypeId">¸üÐÂ</a>&nbsp;|&nbsp;
