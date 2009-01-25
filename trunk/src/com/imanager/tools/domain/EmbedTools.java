@@ -15,6 +15,8 @@ public class EmbedTools extends Basement{
 	String toolsScript;
 	
 	String toolsType;
+	
+	String toolsShow;
 
 	public int getEmbedToolsId() {
 		return embedToolsId;
@@ -62,5 +64,13 @@ public class EmbedTools extends Basement{
 
 	public void setToolsType(String toolsType) {
 		this.toolsType = toolsType;
+	}
+
+	public String getToolsShow() {
+		return toolsShow;
+	}
+
+	public void setToolsShow(String toolsShow) {
+		this.toolsShow = toolsShow;
 	}
 }
