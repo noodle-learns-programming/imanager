@@ -17,6 +17,7 @@
 		<result property="toolsPicPath" column="tools_pic_path"/>
 		<result property="toolsScript" column="tools_script"/>
 		<result property="toolsType" column="tools_type"/>
+		<result property="toolsShow" column="tools_show"/>
 	</resultMap>
 
 	<insert id="insertEmbedTools"
@@ -24,10 +25,10 @@
 		<![CDATA[
 			INSERT INTO embed_tools 
 				(creator, gmt_created, modifier, gmt_modified, is_deleted, login_id, tools_name, tools_description, 
-				tools_pic_path, tools_script, tools_type) 
+				tools_pic_path, tools_script, tools_type, tools_show) 
 			VALUES 
 				(#creator#, now(), #modifier#, now(), 'no', #loginId#, #toolsName#, #toolsDescription#, 
-				#toolsPicPath#, #toolsScript#, #toolsType#)
+				#toolsPicPath#, #toolsScript#, #toolsType#, 'yes')
 		]]>
 	</insert>
 	
@@ -46,7 +47,8 @@
 					tools_description,
 					tools_pic_path,
 					tools_script,
-					tools_type
+					tools_type,
+					tools_show
 			from embed_tools
 			where login_id = #loginId# and is_deleted='no'
 			order by tools_type asc, gmt_created asc
@@ -68,9 +70,11 @@
 					tools_description,
 					tools_pic_path,
 					tools_script,
-					tools_type
+					tools_type,
+					tools_show
 			from embed_tools
-			where login_id = #loginId# and tools_type = #toolsType# and is_deleted='no'
+			where login_id = #loginId# and tools_type = #toolsType# 
+				and tools_show = 'yes' and is_deleted='no' 
 			order by gmt_created asc
 		]]>
 	</select>
@@ -90,7 +94,8 @@
 					tools_description,
 					tools_pic_path,
 					tools_script,
-					tools_type
+					tools_type,
+					tools_show
 			from embed_tools
 			where embed_tools_id = #embedToolsId# and is_deleted='no'
 		]]>
@@ -106,7 +111,8 @@
 				tools_description	= #toolsDescription#,
 				tools_pic_path		= #toolsPicPath#,
 				tools_script		= #toolsScript#,
-				tools_type			= #toolsType#
+				tools_type			= #toolsType#,
+				tools_show			= #toolsShow#
 			where	embed_tools_id = #embedToolsId# and is_deleted = 'no'
 		]]>
 	</update>
