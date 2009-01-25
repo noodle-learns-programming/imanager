@@ -68,7 +68,7 @@
                 				<th align="center">²Ù×÷</th>
                 			</tr>
 							#foreach($contactItem in $contactItemList)
-                				<tr>
+                				<tr #if($velocityCount % 2 == 1) bgcolor="#FFDEAD" #else bgcolor="#FFE4C4" #end>
                 					<td align = "center">$esc.html($contactItem.name)</td>
                 					<td align = "center">
 										#if($!stringUtil.isBlank($!contactItem.contactType.contactType))

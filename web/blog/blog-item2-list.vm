@@ -29,7 +29,7 @@
                 				<th align="center">²Ù×÷</th>
                 			</tr>
 							#foreach($blogItem2 in $blogItem2List)
-                				<tr>
+                				<tr #if($velocityCount % 2 == 1) bgcolor="#FFDEAD" #else bgcolor="#FFE4C4" #end>
                 					<td align = "center">$velocityCount</td>
                 					<td align = "center">$esc.html($blogItem2.item1Chn)</td>
                 					<td align = "center">$esc.html($blogItem2.item1Eng)</td>					
