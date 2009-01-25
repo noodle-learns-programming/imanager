@@ -50,6 +50,13 @@
 									</td>
                     			</tr>
                     			<tr>
+                    				<td align="left">是否显示:</td>
+                    				<td align="left">
+                						<input type="radio" name="embedTools.toolsShow" value="yes" checked="true">显示
+										<input type="radio" name="embedTools.toolsShow" value="no">不显示
+									</td>
+                    			</tr>
+                    			<tr>
 									<td align="left">登录ID:</td>
                     				<td align="left">
 											<input type="text" id="embedTools.loginId" name="embedTools.loginId" readonly="true"  value="$!embedTools.loginId" size="20" maxlength="20">

@@ -25,6 +25,7 @@
                 				<th align="center">工具简介</th>
 								<th align="center">工具脚本</th>
 								<th align="center">类型</th>
+								<th align="center">显示</th>
                 				<th align="center">操作</th>
                 			</tr>
 							#foreach($embedTools in $embedList)
@@ -53,6 +54,15 @@
 											娱乐类
 										#else
 											$embedTools.toolsType
+										#end
+									</td>
+									<td align = "center">
+										#if($embedTools.toolsShow == "yes")
+											是
+										#elseif($embedTools.toolsShow == "no")
+											否
+										#else
+											$embedTools.toolsShow
 										#end
 									</td>
 									<td align = "center">
