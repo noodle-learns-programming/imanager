@@ -8,6 +8,8 @@
 		<script type="text/javascript" src="../resource/js/login/login.js"></script>
 		
 		<script language="javascript">
+			if (top.location != location) top.location.href = location.href;
+			
 			window.onload = function() {
 				document.getElementById("loginId").focus();
 			}
