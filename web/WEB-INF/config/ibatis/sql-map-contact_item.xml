@@ -113,6 +113,12 @@
 		<isNotEmpty prepend="AND" property="pinyin">
 			<![CDATA[pinyin like '%$pinyin$%' ]]>
 		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mobile">
+			<![CDATA[mobile1 like '%$mobile$%' or mobile2 like '%$mobile$%']]>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="qq">
+			<![CDATA[qq1 like '%$qq$%' or qq2 like '%$qq$%']]>
+		</isNotEmpty>
 		<isNotEmpty property="contactTypeId">
 			<![CDATA[ and contact_type_id = #contactTypeId# ]]>
 		</isNotEmpty>

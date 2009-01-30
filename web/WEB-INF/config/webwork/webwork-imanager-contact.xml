@@ -52,6 +52,7 @@
 				<param name="namespace">/contact</param>
 				<param name="actionName">contactItemAction</param>
 				<param name="method">initGetContactItemList</param>
+				<!--<param name="contactTypeId">${contactTypeId}</param>-->
 			</result>
 			
 			<result name="initGetContactItemList" type="velocity">contact-item-list.vm</result>
