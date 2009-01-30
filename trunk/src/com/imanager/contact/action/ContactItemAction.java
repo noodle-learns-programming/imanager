@@ -204,13 +204,11 @@ public class ContactItemAction extends BaseAction {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
 			String srcDir = env.get(EnvService.SRC_DIR).toString();
-			String nameTrim = contactItem.getName().trim();
-			String pinyinTrim = contactItem.getPinyin().trim();
 		
 			contactItem.setModifier(currentLoginId);
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
-			contactItem.setName(nameTrim);
-			contactItem.setPinyin(pinyinTrim);
+			contactItem.setName(contactItem.getName().trim());
+			contactItem.setPinyin(contactItem.getPinyin().trim());
 			
 			if (picture != null) {
 				String checkFolderResult = checkPhotoFolder(srcDir, currentLoginId);
