@@ -6,6 +6,8 @@ public class ContactItemSearchObj {
 	private String pinyin;
 	private String contactTypeId;
 	private String loginId;
+	private String mobile;
+	private String qq;
 	
 	public String getName() {
 		return name;
@@ -30,6 +32,18 @@ public class ContactItemSearchObj {
 	}
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getQq() {
+		return qq;
+	}
+	public void setQq(String qq) {
+		this.qq = qq;
 	}
 
 

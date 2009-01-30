@@ -30,6 +30,7 @@ public class ContactItemAction extends BaseAction {
 	// Domain or Var
 	private String currentLoginId;
 	private String contactItemId;
+	//private String contactTypeId;
 	private ContactItem contactItem = new ContactItem();
 	private ContactItemSearchObj contactSearchObj = new ContactItemSearchObj();
 	private List<ContactItem> contactItemList;
@@ -70,14 +71,13 @@ public class ContactItemAction extends BaseAction {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
 			String srcDir = env.get(EnvService.SRC_DIR).toString();
-			String nameTrim = contactItem.getName().trim();
-			String pinyinTrim = contactItem.getPinyin().trim();
 		
 			contactItem.setCreator(currentLoginId);
 			contactItem.setModifier(currentLoginId);
 			contactItem.setAge(DateUtil.getQuotAge(contactItem.getBirthday()));
-			contactItem.setName(nameTrim);
-			contactItem.setPinyin(pinyinTrim);
+			contactItem.setName(contactItem.getName().trim());
+			contactItem.setPinyin(contactItem.getPinyin().trim());
+			//contactTypeId = String.valueOf(contactItem.getContactType().getContactTypeId());
 			
 			if (picture != null) {
 				String checkFolderResult = checkPhotoFolder(srcDir, currentLoginId);
@@ -125,6 +125,15 @@ public class ContactItemAction extends BaseAction {
 				contactSearchObj.setContactTypeId(String.valueOf(contactTypeList.get(0).getContactTypeId()));
 			}
 			contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
+			contactSearchObj.setContactTypeId("");
+			/*if (StringUtils.isBlank(contactTypeId) && contactTypeList.size() != 0) {
+				contactSearchObj.setContactTypeId(String.valueOf(contactTypeList.get(0).getContactTypeId()));
+				contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
+				contactSearchObj.setContactTypeId("");
+			} else {
+				contactSearchObj.setContactTypeId(contactTypeId);
+				contactItemList = contactService.getContactItemListBySearch(contactSearchObj);
+			}*/
 		}catch (Exception e){
 			log.error(e.getMessage(), e);
 			addActionError("系统错误：获得联系人详细列表出错！");
@@ -375,5 +384,13 @@ public class ContactItemAction extends BaseAction {
 	public void setPictureFileName(String pictureFileName) {
 		this.pictureFileName = pictureFileName;
 	}
+
+	/*public String getContactTypeId() {
+		return contactTypeId;
+	}
+
+	public void setContactTypeId(String contactTypeId) {
+		this.contactTypeId = contactTypeId;
+	}*/
 
 }
