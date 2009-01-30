@@ -118,11 +118,9 @@ public class ConsumeTypeAction extends BaseAction {
 	public String updateConsumType() throws Exception {
 		try{
 			currentLoginId = loginService.getCurrentLoginId();
-			
-			String consumeTypeTrim = consumeType.getConsumeType().trim();
 		
 			consumeType.setModifier(currentLoginId);
-			consumeType.setConsumeType(consumeTypeTrim);
+			consumeType.setConsumeType(consumeType.getConsumeType().trim());
 			
 			if(consumeService.updateConsumeType(consumeType)){
 				return "updateConsumType";
