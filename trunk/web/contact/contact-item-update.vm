@@ -41,6 +41,8 @@
 							<input type="hidden" id="area" name="area" value="" />
 							<input type="hidden" name="contactSearchObj.name" value="$esc.html($!contactSearchObj.name)" />
 							<input type="hidden" name="contactSearchObj.pinyin" value="$esc.html($!contactSearchObj.pinyin)" />
+							<input type="hidden" name="contactSearchObj.mobile" value="$esc.html($!contactSearchObj.mobile)" />
+							<input type="hidden" name="contactSearchObj.qq" value="$!contactSearchObj.qq" />
 							<input type="hidden" name="contactSearchObj.contactTypeId" value="$!contactSearchObj.contactTypeId" />
 							<input type="hidden" name="contactItem.contactItemId" value="$contactItem.contactItemId" />
 							<input type="hidden" name="contactItem.photo" value="$!contactItem.photo" />
