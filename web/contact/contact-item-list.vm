@@ -42,7 +42,13 @@
 									<td align="left"><input type="text" name="contactSearchObj.name" value="$esc.html($!contactSearchObj.name)" size="20" maxlength="20"/></td>
                 					<td align="left">拼音:</td>
 									<td align="left"><input type="text" name="contactSearchObj.pinyin" value="$esc.html($!contactSearchObj.pinyin)" size="20" maxlength="20"/></td>
-                					</tr>
+                				</tr>
+								<tr>
+									<td align="left">手机:</td>
+									<td align="left"><input type="text" name="contactSearchObj.mobile" value="$esc.html($!contactSearchObj.mobile)" size="20" maxlength="20"/></td>
+                					<td align="left">QQ:</td>
+									<td align="left"><input type="text" name="contactSearchObj.qq" value="$esc.html($!contactSearchObj.qq)" size="20" maxlength="20"/></td>
+                				</tr>
                 				<tr>
 									<td align="left">联系类型:</td>
                 					<td align="left">
