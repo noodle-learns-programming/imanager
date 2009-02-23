@@ -17,7 +17,7 @@
 	
 	<target name="clean" depends="init">
 		<echo message="begin to clean......" />
-		<!-- <delete file="${build.deploy}/iManager.war" /> -->
+		<!-- <delete file="${build.deploy}/${war.name}" /> -->
 		<echo message="begin to clean......success!" />
 	</target>
 	
@@ -62,7 +62,7 @@
 		
 		<!-- <mkdir dir="${build.deploy}"/> -->
 		
-		<war destfile="${build.deploy}/iManager.war" webxml="${build.dir}/web.xml">
+		<war destfile="${build.deploy}/${war.name}" webxml="${build.dir}/web.xml">
 			<!-- <classes dir="${build.dir}/classes" /> -->
 			<webinf dir="${build.dir}/lib" includes="*.tld,*.dtd" />
 			<fileset dir="web" excludes="WEB-INF/web.xml" />
@@ -75,7 +75,7 @@
 	<target name="extract" depends="war">
 		<echo message="begin to extract......" />
 		
-		<unwar src="${build.deploy}/iManager.war" dest="${build.deploy}"/>
+		<unwar src="${build.deploy}/${war.name}" dest="${build.deploy}"/>
 		
 		<echo message="end of extract......success!" />
 	</target>
