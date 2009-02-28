@@ -25,7 +25,7 @@
 			from	blog_content bc, blog_item1 bi1, blog_item2 bi2 
 			where	bc.is_deleted = bi1.is_deleted and bi1.is_deleted = bi2.is_deleted and bi2.is_deleted = 'no' 
 					and bc.login_id = bi1.login_id and bi1.login_id = bi2.login_id and bi2.login_id = #loginId# 
-					and bc.blog_date >= #startBlogDate# and bc.blog_date <= #engBlogDate#
+					and bc.blog_date >= #startBlogDate# and bc.blog_date <= #endBlogDate#
 					and bc.blog_item1_id = bi1.blog_item1_id and bc.blog_item2_id = bi2.blog_item2_id 
 		]]>
 		<isNotEmpty prepend="AND" property="title">
