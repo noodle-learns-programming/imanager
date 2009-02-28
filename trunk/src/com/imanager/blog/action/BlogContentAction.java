@@ -57,7 +57,7 @@ public class BlogContentAction extends BaseAction {
 			Date endDate = DateUtil.getMaxDate();
 			
 			blogSearchObj.setStartBlogDate(DateUtil.dateOnlyExt(startDate));
-			blogSearchObj.setEngBlogDate(DateUtil.dateLastTime(endDate));
+			blogSearchObj.setEndBlogDate(DateUtil.dateLastTime(endDate));
 			blogSearchObj.setLoginId(currentLoginId);
 		
 			blogContentOutputList = blogService.getBlogContentListBySearch(blogSearchObj);
@@ -82,6 +82,8 @@ public class BlogContentAction extends BaseAction {
 			String titleTrim = blogSearchObj.getTitle().trim();
 			blogSearchObj.setTitle(titleTrim);
 			blogSearchObj.setLoginId(currentLoginId);
+			Date endDate = blogSearchObj.getEndBlogDate();
+			blogSearchObj.setEndBlogDate(DateUtil.dateLastTime(endDate));
 		
 			blogContentOutputList = blogService.getBlogContentListBySearch(blogSearchObj);
 			blogItem1List = blogService.getBlogItem1ListByLoginId(currentLoginId);
