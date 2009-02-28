@@ -8,7 +8,7 @@ public class BlogContentSearchObj {
 	
 	Date startBlogDate;	//必选 默认当月第一天
 	
-	Date engBlogDate;	//必选 默认当月最后一天
+	Date endBlogDate;	//必选 默认当月最后一天
 	
 	String blogType;	//可选
 	
@@ -34,12 +34,12 @@ public class BlogContentSearchObj {
 		this.startBlogDate = startBlogDate;
 	}
 
-	public Date getEngBlogDate() {
-		return engBlogDate;
+	public Date getEndBlogDate() {
+		return endBlogDate;
 	}
 
-	public void setEngBlogDate(Date engBlogDate) {
-		this.engBlogDate = engBlogDate;
+	public void setEndBlogDate(Date endBlogDate) {
+		this.endBlogDate = endBlogDate;
 	}
 
 	public String getBlogType() {
