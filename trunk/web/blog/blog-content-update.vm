@@ -34,7 +34,7 @@
                     	<form id="blogContentForm" action="blogContentAction!updateBlogContent.action" enctype="multipart/form-data" method="post">
 							<input type="hidden" name="blogSearchObj.title" value="$esc.html($!blogSearchObj.title)" />
 							<input type="hidden" name="blogSearchObj.startBlogDate" value="$!dateUtil.date($!blogSearchObj.startBlogDate, 'yyyy-MM-dd')" />
-							<input type="hidden" name="blogSearchObj.engBlogDate" value="$!dateUtil.date($!blogSearchObj.engBlogDate, 'yyyy-MM-dd')" />
+							<input type="hidden" name="blogSearchObj.endBlogDate" value="$!dateUtil.date($!blogSearchObj.endBlogDate, 'yyyy-MM-dd')" />
 							<input type="hidden" name="blogSearchObj.blogType" value="$!blogSearchObj.blogType" />
 							<input type="hidden" name="blogSearchObj.blogItem1Id" value="$!blogSearchObj.blogItem1Id" />
 							<input type="hidden" name="blogSearchObj.blogItem2Id" value="$!blogSearchObj.blogItem2Id" />

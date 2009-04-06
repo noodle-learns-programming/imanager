@@ -78,7 +78,7 @@
                 					</td>
 									<td align="left">结束日期:</td>
 									<td align="left">
-										<input type="text" id="blogSearchObj.engBlogDate" name="blogSearchObj.engBlogDate" readonly="true" value="$!dateUtil.date($!blogSearchObj.engBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('blogSearchObj.engBlogDate', '%Y-%m-%d');">
+										<input type="text" id="blogSearchObj.endBlogDate" name="blogSearchObj.endBlogDate" readonly="true" value="$!dateUtil.date($!blogSearchObj.endBlogDate, 'yyyy-MM-dd')" size="20"><input type="button" value="日历" onclick="return showCalendar('blogSearchObj.endBlogDate', '%Y-%m-%d');">
 									</td>
                 				</tr>
                 				<tr>
