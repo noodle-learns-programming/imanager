@@ -28,7 +28,7 @@
     <script>
     	jQuery.ajax({
 			type: "GET",
-			url: "$env.appUrl/framework/headerAction!canWeatherShow.action",
+			url: '$env.appUrl/framework/headerAction!canWeatherShow.action?t=' + new Date().getTime(),
 			success: function(msg){
 				if(msg){
 					document.getElementById("weather").style.display="";
