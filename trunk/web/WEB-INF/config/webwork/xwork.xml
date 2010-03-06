@@ -9,5 +9,6 @@
 	<include file="webwork-imanager-blog.xml" />
 	<include file="webwork-imanager-contact.xml" />
 	<include file="webwork-imanager-tools.xml" />
+	<include file="webwork-imanager-header.xml" />
 </xwork>
   
