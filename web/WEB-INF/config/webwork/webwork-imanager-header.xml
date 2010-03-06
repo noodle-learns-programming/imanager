@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="imanager-header" extends="webwork-default" namespace="/framework">
+		
+		<action name="headerAction" class="com.imanager.framework.action.HeaderAction" >
+			<result name="canWeatherShow" type="velocity">/framework/canWeatherShow.vm</result>
+		</action>
+
+	</package>
+</xwork>
