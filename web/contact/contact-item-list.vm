@@ -5,7 +5,7 @@
     	<title>iManager Contact</title>
 		<link rel="stylesheet" type="text/css" media="all" href="../resource/css/globle.css"/>
     	<script type="text/javascript" src="../resource/js/util.js"></script>
-		<script type="text/javascript" src="../resource/js/contact/contact-type.js"></script>
+		<script type="text/javascript" src="../resource/js/contact/contact-item.js"></script>
 		<script type="text/javascript">
     		function doSubmitSearchForm(){
             	var theForm = document.getElementById("contactItemSearchForm");
